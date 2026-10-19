@@ -12,7 +12,7 @@
     
     <style>
         :root {
-            --bg-dark: #0D0D0D;
+            --bg-dark: #0A0A0A;
             --bg-card: #151515;
             --bg-card-hover: #1C1C1C;
             --bronze: #C58348;
@@ -32,22 +32,6 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            position: relative;
-        }
-
-        /* ВИДЕОФОН */
-        .video-bg-container {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -2; overflow: hidden; background: #080808;
-        }
-        .video-bg-container video {
-            width: 100%; height: 100%; object-fit: cover;
-            opacity: 0.28; filter: contrast(1.1) brightness(0.8);
-        }
-        .video-overlay {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1; background: radial-gradient(circle at center, rgba(13, 13, 13, 0.5) 0%, rgba(13, 13, 13, 0.94) 100%);
-            pointer-events: none;
         }
 
         /* УВЕДОМЛЕНИЯ */
@@ -76,7 +60,7 @@
         /* ШАПКА */
         header {
             display: flex; justify-content: space-between; align-items: center; padding: 18px 8%;
-            background: rgba(13, 13, 13, 0.88); backdrop-filter: blur(16px); position: sticky;
+            background: rgba(10, 10, 10, 0.92); backdrop-filter: blur(16px); position: sticky;
             top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color);
         }
         .logo-group { display: flex; align-items: center; gap: 14px; text-decoration: none; }
@@ -105,7 +89,7 @@
         .btn-shop-header:hover { transform: translateY(-2px); background: var(--bronze-light); }
 
         /* HERO СЕКЦИЯ */
-        .hero-container { max-width: 1100px; margin: 0 auto; padding: 90px 8% 80px; text-align: center; }
+        .hero-container { max-width: 1100px; margin: 0 auto; padding: 80px 8% 60px; text-align: center; }
         .edition-badge {
             display: inline-flex; align-items: center; gap: 8px; background: rgba(197, 131, 72, 0.12); border: 1px solid var(--bronze);
             color: var(--bronze-light); padding: 7px 18px; border-radius: 30px; font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px;
@@ -119,6 +103,15 @@
             border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 12px; transition: all 0.35s ease; box-shadow: 0 10px 30px rgba(197, 131, 72, 0.35); text-transform: uppercase;
         }
         .btn-angebot-cta:hover { transform: translateY(-4px) scale(1.03); }
+
+        /* ВИДЕО РАЗДЕЛ (ОБЗОР КОРОБКИ) */
+        .video-review-section { padding: 40px 8% 80px; max-width: 900px; margin: 0 auto; text-align: center; }
+        .video-wrapper {
+            position: relative; width: 100%; border-radius: 20px; overflow: hidden;
+            border: 1px solid var(--bronze); box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            background: #000; margin-top: 20px; aspect-ratio: 16/9;
+        }
+        .video-wrapper video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
         /* КАРТОЧКИ (ПЕРКИ И СОДЕРЖИМОЕ) */
         .perks-bar { max-width: 1250px; margin: 0 auto 80px; padding: 0 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
@@ -191,13 +184,6 @@
 </head>
 <body>
 
-    <div class="video-bg-container">
-        <video autoplay loop muted playsinline id="bgVideo">
-            <source src="./video.mp4" type="video/mp4">
-        </video>
-    </div>
-    <div class="video-overlay"></div>
-
     <div id="toastNotification" class="toast-notification">
         <span id="toast-txt">✨ Gutscheincode LYS10 kopiert!</span>
     </div>
@@ -210,15 +196,14 @@
     <header>
         <a href="#" class="logo-group">
             <div class="logo-icon-card">
-                <!-- Оставлен logo.png. Если он не загрузится, будет показана иконка лисы -->
                 <img src="./logo.png" alt="LYS Fox Logo" onerror="this.outerHTML='<span style=\'font-size:24px; color: var(--bronze);\'>🦊</span>'">
             </div>
             <div class="logo-text">LYS <span id="hdr-slogan">Smart Choices. More Possibilities.</span></div>
         </a>
         <nav>
+            <a href="#unboxing" id="nav-unboxing">Unboxing</a>
             <a href="#inside" id="nav-inside">Inhalt der Box</a>
             <a href="#shop" id="nav-shop">Editions & Preise</a>
-            <a href="#faq" id="nav-faq">FAQ</a>
         </nav>
 
         <div style="display: flex; align-items: center; gap: 14px;">
@@ -228,7 +213,6 @@
                 <button class="lang-btn" onclick="switchLanguage('ru', this)">RU</button>
                 <button class="lang-btn" onclick="switchLanguage('ua', this)">UA</button>
             </div>
-
             <button class="btn-shop-header" id="btn-header-buy" onclick="openCheckout('LYS Signature Detailing Box', 89)">
                 🛒 Jetzt bestellen
             </button>
@@ -246,6 +230,18 @@
             </button>
         </div>
     </main>
+
+    <!-- НОВЫЙ БЛОК: ВИДЕООБЗОР КОРОБКИ -->
+    <section class="video-review-section" id="unboxing" data-aos="fade-up">
+        <div class="section-subtitle" id="sec-vid-sub">UNBOXING EXPERIENCE</div>
+        <h2 class="section-title" id="sec-vid-title">Die LYS Box im Detail</h2>
+        <div class="video-wrapper">
+            <!-- Здесь будет воспроизводиться загруженный video.mp4 -->
+            <video controls playsinline poster="./box-closed.jpg">
+                <source src="./video.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
 
     <div class="perks-bar">
         <div class="perk-item" data-aos="fade-up">
@@ -467,7 +463,6 @@
     <script>
         AOS.init({ duration: 800, once: true });
 
-        // Функции модального окна и калькулятора
         function openCheckout(editionName, price) {
             setFormStep(1);
             const select = document.getElementById('select-edition');
@@ -517,12 +512,13 @@
                 promoText: "🎁 Exklusiver Launch-Rabatt: 10% auf deine erste Box mit dem Code <span class='promo-badge'>LYS10</span>",
                 copyBtn: "Code kopieren ✨",
                 toast: "✨ Gutscheincode LYS10 kopiert!",
-                navInside: "Inhalt der Box", navShop: "Editions & Preise", navFaq: "FAQ",
+                navUnboxing: "Unboxing", navInside: "Inhalt der Box", navShop: "Editions & Preise",
                 btnBuyHeader: "🛒 Jetzt bestellen",
                 heroSub: "🦊 LIMITIERTE ERSTE AUFLAGE • 1 VON 50",
                 heroTitle: "Exklusive Geschenkboxen für <em>wahre Autoliebhaber</em>.",
                 heroDesc: "Kompromisslose Fahrzeugpflege verpackt in einer edlen Magnetbox mit Soft-Touch-Finish. Das perfekte Geschenk für Innenraum, Glas und Felgen – handgefertigt mit Liebe zum Detail in Berlin.",
                 heroCta: "Box jetzt sichern — 89 € ❯",
+                secVidSub: "UNBOXING EXPERIENCE", secVidTitle: "Die LYS Box im Detail",
                 p1: "Edle Magnetbox mit Band", p2: "3x Premium Rezepturen", p3: "Kostenloser DHL-Versand (DE)",
                 secInsideSub: "KOMPLETTES PFLEGESYSTEM", secInsideTitle: "Was ist in der LYS Box?",
                 item1t: "01 | INNENRAUMREINIGER (330 ml)", item1d: "Schonende und tiefenwirksame Reinigung für Cockpit, Kunststoff und Leder.",
@@ -546,12 +542,13 @@
                 promoText: "🎁 Exclusive Launch Discount: 10% off your first box with code <span class='promo-badge'>LYS10</span>",
                 copyBtn: "Copy code ✨",
                 toast: "✨ Promo code LYS10 copied!",
-                navInside: "What's inside", navShop: "Editions & Prices", navFaq: "FAQ",
+                navUnboxing: "Unboxing", navInside: "What's inside", navShop: "Editions & Prices",
                 btnBuyHeader: "🛒 Order Now",
                 heroSub: "🦊 LIMITED FIRST EDITION • 1 OF 50",
                 heroTitle: "Exclusive Gift Boxes for <em>True Car Lovers</em>.",
                 heroDesc: "Uncompromising car care packed in a luxury magnetic box with a soft-touch finish. The ultimate gift for interior, glass, and rims – handcrafted in Berlin.",
                 heroCta: "Secure your box — 89 € ❯",
+                secVidSub: "UNBOXING EXPERIENCE", secVidTitle: "The LYS Box in Detail",
                 p1: "Premium magnetic box", p2: "3x Premium formulas", p3: "Free DHL Shipping (DE)",
                 secInsideSub: "COMPLETE CARE SYSTEM", secInsideTitle: "What is in the LYS Box?",
                 item1t: "01 | INTERIOR CLEANER (330 ml)", item1d: "Deep and gentle cleaning for dashboard, plastics, and leather.",
@@ -575,12 +572,13 @@
                 promoText: "🎁 Эксклюзивная скидка: 10% на первый бокс по коду <span class='promo-badge'>LYS10</span>",
                 copyBtn: "Копировать ✨",
                 toast: "✨ Промокод LYS10 скопирован!",
-                navInside: "Что внутри", navShop: "Версии и цены", navFaq: "Вопросы",
+                navUnboxing: "Распаковка", navInside: "Что внутри", navShop: "Версии и цены",
                 btnBuyHeader: "🛒 Заказать сейчас",
                 heroSub: "🦊 ЛИМИТИРОВАННАЯ ПЕРВАЯ СЕРИЯ • 1 ИЗ 50",
                 heroTitle: "Эксклюзивные боксы для <em>истинных ценителей авто</em>.",
                 heroDesc: "Бескомпромиссный уход за автомобилем в роскошной магнитной коробке с покрытием Soft-Touch. Идеальный подарок ручной сборки из Берлина.",
                 heroCta: "Заказать бокс — 89 € ❯",
+                secVidSub: "UNBOXING EXPERIENCE", secVidTitle: "Детальный обзор бокса",
                 p1: "Премиум магнитный бокс", p2: "3 премиум-состава (DE)", p3: "Бесплатная доставка DHL (DE)",
                 secInsideSub: "ПОЛНЫЙ УХОД", secInsideTitle: "Что внутри бокса LYS?",
                 item1t: "01 | ОЧИСТИТЕЛЬ САЛОНА (330 мл)", item1d: "Бережная и глубокая очистка пластика, кожи и приборной панели.",
@@ -604,19 +602,20 @@
                 promoText: "🎁 Ексклюзивна знижка: 10% на перший бокс за кодом <span class='promo-badge'>LYS10</span>",
                 copyBtn: "Скопіювати ✨",
                 toast: "✨ Промокод LYS10 скопійовано!",
-                navInside: "Що всередині", navShop: "Версії та ціни", navFaq: "Питання",
+                navUnboxing: "Розпакування", navInside: "Що всередині", navShop: "Версії та ціни",
                 btnBuyHeader: "🛒 Замовити зараз",
                 heroSub: "🦊 ЛІМІТОВАНА ПЕРША СЕРІЯ • 1 З 50",
                 heroTitle: "Ексклюзивні бокси для <em>справжніх автолюбів</em>.",
                 heroDesc: "Безкомпромісний догляд за автомобілем у розкішній магнітній коробці з покриттям Soft-Touch. Ідеальний подарунок ручної збірки з Берліна.",
                 heroCta: "Замовити бокс — 89 € ❯",
+                secVidSub: "UNBOXING EXPERIENCE", secVidTitle: "Детальний огляд боксу",
                 p1: "Преміум магнітний бокс", p2: "3 преміум-засоби (DE)", p3: "Безкоштовна доставка DHL (DE)",
                 secInsideSub: "ПОВНИЙ ДОГЛЯД", secInsideTitle: "Що всередині боксу LYS?",
                 item1t: "01 | ОЧИСНИК САЛОНУ (330 мл)", item1d: "Делікатне та глибоке очищення пластику, шкіри та панелі приладів.",
                 item2t: "02 | ОЧИСНИК СКЛА (330 мл)", item2d: "Кришталева чистота без розводів. Видаляє жир та нікотиновий наліт.",
                 item3t: "03 | ОЧИСНИК ДИСКІВ (330 мл)", item3d: "Потужна формула проти гальмівного пилу – безпечна для литих дисків.",
                 item4t: "3x Профі мікрофібри", item4d: "Дві сірі фібри для скла та кузова, і одна пухнаста чорна для делікатного салону.",
-                item5t: "Автопарфум Ikeda та Пензлі", item5d: "Дітейлінг-пензлі та ексклюзивний аромат акуратно укладені в наповнювач SizzlePak.",
+                item5t: "Автопарфюм Ikeda та Пензлі", item5d: "Дітейлінг-пензлі та ексклюзивний аромат акуратно укладені в наповнювач SizzlePak.",
                 item6t: "Soft-Touch інструкція", item6d: "Елегантна покрокова картка закріплена на внутрішній стороні кришки.",
                 secShopSub: "ОНЛАЙН МАГАЗИН", secShopTitle: "Оберіть свою версію",
                 prcT1: "LYS Signature Detailing Box", prcD1: "Повний подарунковий набір у матовій магнітній коробці з бронзовим 3D-логотипом.", prcU1: "вкл. ПДВ та доставку", prcBtn1: "У кошик — 89 € →",
@@ -640,15 +639,18 @@
             document.getElementById('btn-copy-promo').innerText = t.copyBtn;
             document.getElementById('toast-txt').innerText = t.toast;
             
+            document.getElementById('nav-unboxing').innerText = t.navUnboxing;
             document.getElementById('nav-inside').innerText = t.navInside;
             document.getElementById('nav-shop').innerText = t.navShop;
-            document.getElementById('nav-faq').innerText = t.navFaq;
             document.getElementById('btn-header-buy').innerText = t.btnBuyHeader;
 
             document.getElementById('hero-sub').innerText = t.heroSub;
             document.getElementById('hero-title').innerHTML = t.heroTitle;
             document.getElementById('hero-desc').innerText = t.heroDesc;
             document.getElementById('hero-btn-cta').innerText = t.heroCta;
+
+            document.getElementById('sec-vid-sub').innerText = t.secVidSub;
+            document.getElementById('sec-vid-title').innerText = t.secVidTitle;
 
             document.getElementById('perk-1').innerText = t.p1;
             document.getElementById('perk-2').innerText = t.p2;
