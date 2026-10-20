@@ -1,49 +1,599 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="description" content="LYS Auto Care – hochwertige Autopflege-Geschenkboxen. Mit Liebe zum Detail in Berlin zusammengestellt.">
+
+<title>LYS Auto Care — Premium Geschenkboxen</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-/* Переливающийся текст */
-@keyframes lysShimmer {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
+:root {
+    color-scheme: dark;
+    --bg: #0a0a0a;
+    --card: #151515;
+    --gold: #d6a06b;
+    --gold-light: #f0c59a;
+    --text: #f5f5f7;
+    --muted: #aaa39c;
+    --border: rgba(214,160,107,.24);
+    --radius: 22px;
 }
 
-.hero h1 em,
-.section-title,
-.logo-name,
-.footer-brand {
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 130px;
+}
+
+body {
+    min-width: 320px;
+    color: var(--text);
+    background:
+        radial-gradient(ellipse at 50% 4%, #302014 0%, transparent 35%),
+        var(--bg);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+button, input, select, textarea {
+    font: inherit;
+}
+
+button, a, summary {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+:focus-visible {
+    outline: 2px solid var(--gold-light);
+    outline-offset: 5px;
+}
+
+::selection {
+    color: #17100b;
+    background: var(--gold-light);
+}
+
+.container {
+    width: min(1180px, 90%);
+    margin-inline: auto;
+}
+
+.section {
+    padding-block: 85px;
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.section-title {
+    font-size: clamp(28px, 4vw, 44px);
+    line-height: 1.2;
+    text-align: center;
+    letter-spacing: -1.4px;
+    margin-bottom: 38px;
+}
+
+.center {
+    text-align: center;
+}
+
+/* Переливающийся золотой текст */
+
+.shimmer {
+    color: var(--gold-light);
     background-image: linear-gradient(
         110deg,
-        #b57946 0%,
-        #f0c59a 25%,
-        #fff4df 45%,
-        #d6a06b 65%,
-        #b57946 100%
+        #ac713e 0%,
+        #e8b888 22%,
+        #fff2db 42%,
+        #f0c59a 58%,
+        #ac713e 100%
     );
-    background-size: 200% auto;
+    background-size: 220% auto;
     background-clip: text;
     -webkit-background-clip: text;
-    color: transparent;
     -webkit-text-fill-color: transparent;
-    animation: lysShimmer 6s linear infinite;
+    animation: shimmer 7s linear infinite;
 }
 
-/* Мягкое свечение карточек */
-.content-card,
-.price-card,
-.benefit {
+@keyframes shimmer {
+    to { background-position: 220% center; }
+}
+
+/* Промобаннер */
+
+.promo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 16px;
+    background: linear-gradient(90deg, #111, #2a1d13, #111);
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+}
+
+.promo strong {
+    color: var(--gold-light);
+    letter-spacing: 1px;
+}
+
+.promo button {
+    padding: 6px 12px;
+    color: var(--gold-light);
+    background: transparent;
+    border: 1px solid var(--gold);
+    border-radius: 30px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* Шапка */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #0a0a0ae8;
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow .3s;
+}
+
+.header.scrolled {
+    box-shadow: 0 12px 40px #0007;
+}
+
+.header-inner {
+    width: min(1440px, 94%);
+    min-height: 100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 86px;
+    height: 86px;
+    object-fit: contain;
+    transition: transform .4s;
+}
+
+.logo:hover img {
+    transform: rotate(-4deg) scale(1.05);
+}
+
+.logo-name {
+    font: 800 28px "Cinzel", serif;
+    letter-spacing: 3px;
+}
+
+.logo-tagline {
+    display: block;
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.desktop-nav {
+    display: flex;
+    gap: 24px;
+}
+
+.desktop-nav a,
+.mobile-nav a {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: color .25s;
+}
+
+.desktop-nav a {
+    position: relative;
+}
+
+.desktop-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0;
+    height: 1px;
+    background: var(--gold-light);
+    transition: width .3s;
+}
+
+.desktop-nav a:hover {
+    color: var(--gold-light);
+}
+
+.desktop-nav a:hover::after {
+    width: 100%;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.languages {
+    display: flex;
+    gap: 2px;
+    padding: 4px;
+    background: #ffffff05;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+}
+
+.lang {
+    padding: 7px;
+    color: var(--muted);
+    background: transparent;
+    border: 0;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.lang.active {
+    color: #17100b;
+    background: var(--gold);
+}
+
+.mobile-nav {
+    display: none;
+    justify-content: center;
+    gap: 20px;
+    padding: 12px;
+    background: #15110e;
+}
+
+/* Кнопки */
+
+.btn {
     position: relative;
     isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 25px;
+    overflow: hidden;
+    color: #17100b;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    border: 1px solid transparent;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+    transition: transform .25s, box-shadow .25s, filter .25s;
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -100%;
+    background: linear-gradient(
+        110deg,
+        transparent 40%,
+        #ffffff65 50%,
+        transparent 60%
+    );
+    transform: translateX(-110%);
+    transition: transform .7s;
+    pointer-events: none;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px #d6a06b38;
+    filter: brightness(1.05);
+}
+
+.btn:hover::after {
+    transform: translateX(110%);
+}
+
+.btn:active {
+    transform: translateY(1px) scale(.98);
+}
+
+.btn-small {
+    padding: 12px 17px;
+    font-size: 11px;
+}
+
+.btn-secondary {
+    color: var(--text);
+    background: #ffffff07;
+    border-color: var(--border);
+}
+
+.btn-wide {
+    width: 100%;
+}
+
+/* Первый экран */
+
+.hero {
+    position: relative;
+    isolation: isolate;
+    padding-top: 76px;
+    padding-bottom: 40px;
+    text-align: center;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 50%;
+    width: min(1000px, 100%);
+    height: 650px;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse, #cf935227, transparent 65%);
+    animation: ambient 7s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes ambient {
+    from { opacity: .35; }
+    to { opacity: 1; }
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 17px;
+    margin-bottom: 26px;
+    color: var(--gold-light);
+    background: #d6a06b09;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.badge::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--gold-light);
+    border-radius: 50%;
+    box-shadow: 0 0 12px #f0c59a80;
+    animation: pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    50% { opacity: .4; }
+}
+
+.hero h1 {
+    max-width: 1050px;
+    margin: 0 auto 24px;
+    font-size: clamp(36px, 5.7vw, 76px);
+    line-height: 1.15;
+    letter-spacing: -2px;
+    animation: enter .8s both;
+}
+
+.hero h1 em {
+    display: block;
+    font-family: "Cinzel", serif;
+    font-style: normal;
+}
+
+.hero-description {
+    max-width: 710px;
+    margin: 0 auto 30px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.9;
+    animation: enter .8s .1s both;
+}
+
+.hero > .container > .btn {
+    padding: 19px 34px;
+}
+
+.trust {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 28px 0 38px;
+    color: #d7c2af;
+    font-size: 10px;
+}
+
+.product-visual {
+    position: relative;
+    max-width: 900px;
+    aspect-ratio: 3 / 2;
+    margin: auto;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at center, #352418, #111 75%);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: 0 35px 90px #0008;
+}
+
+.product-visual > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s;
+}
+
+.product-visual:hover > img {
+    transform: scale(1.04);
+}
+
+.visual-fallback {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 12px;
+}
+
+.visual-fallback strong {
+    font: 700 clamp(55px, 10vw, 110px) "Cinzel", serif;
+    letter-spacing: 10px;
+}
+
+.visual-fallback span {
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 5px;
+}
+
+.product-label {
+    position: absolute;
+    left: 18px;
+    bottom: 18px;
+    padding: 10px 13px;
+    color: var(--gold-light);
+    background: #090909b5;
+    border-radius: 8px;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+/* Видео */
+
+.video-wrapper {
+    position: relative;
+    max-width: 860px;
+    aspect-ratio: 16 / 9;
+    margin: auto;
+    overflow: hidden;
+    background: #15110e;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+}
+
+.video-wrapper video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-fallback {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    gap: 16px;
+    padding: 25px;
+    text-align: center;
+    background: radial-gradient(ellipse, #352418, #111 75%);
+}
+
+.video-fallback strong {
+    font: 700 28px "Cinzel", serif;
+    letter-spacing: 4px;
+}
+
+.video-fallback p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* Карточки и свечение */
+
+.contents-grid,
+.benefits-grid,
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.content-card,
+.benefit,
+.price-card {
+    position: relative;
+    isolation: isolate;
+    color: var(--text);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    transition:
+        transform .3s,
+        border-color .3s,
+        box-shadow .3s;
 }
 
 .content-card::before,
-.price-card::before,
-.benefit::before {
+.benefit::before,
+.price-card::before {
     content: "";
     position: absolute;
-    inset: 0;
     z-index: -1;
+    inset: 0;
     border-radius: inherit;
     background: radial-gradient(
-        320px circle at var(--mx, 50%) var(--my, 50%),
-        rgba(240, 197, 154, .16),
+        330px circle at var(--mx, 50%) var(--my, 50%),
+        #f0c59a20,
         transparent 75%
     );
     opacity: 0;
@@ -51,106 +601,312 @@
     pointer-events: none;
 }
 
+.content-card:hover,
+.benefit:hover,
+.price-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--gold);
+    box-shadow: 0 18px 45px #0005;
+}
+
 .content-card:hover::before,
-.price-card:hover::before,
-.benefit:hover::before {
+.benefit:hover::before,
+.price-card:hover::before {
     opacity: 1;
+}
+
+.content-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    padding: 25px;
+    text-align: left;
+}
+
+.card-number {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    color: var(--gold);
+    background: #d6a06b0b;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    font: 700 17px "Cinzel", serif;
+    transition: color .3s, background .3s, box-shadow .3s;
 }
 
 .content-card:hover .card-number {
     color: #17100b;
     background: var(--gold-light);
-    box-shadow: 0 0 24px #d6a06b40;
+    box-shadow: 0 0 24px #d6a06b35;
 }
 
-.card-number {
-    transition: color .3s, background .3s, box-shadow .3s;
+.content-card h3 {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 8px;
 }
 
-/* Живые кнопки */
-.btn {
-    transition:
-        transform .25s,
-        box-shadow .25s,
-        filter .25s;
+.content-card p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
 }
 
-.btn:hover {
-    box-shadow:
-        0 10px 35px #d6a06b40,
-        0 0 25px #d6a06b20;
-}
-
-.lys-photo-link {
+.photo-link {
     display: inline-block;
-    margin-top: 12px;
+    margin-top: 13px;
     color: var(--gold-light);
-    font-size: 11px;
-    font-weight: 700;
+    font-size: 10px;
+    font-weight: 800;
 }
 
-/* Окно с фотографиями */
-.lys-gallery {
+.benefits {
+    background: linear-gradient(180deg, #0c0b0a, #1c140e, #0b0b0b);
+}
+
+.benefits-grid {
+    margin-bottom: 32px;
+}
+
+.benefit {
+    padding: 30px;
+}
+
+.benefit > span {
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.benefit h3 {
+    margin: 18px 0 12px;
+    font-size: 21px;
+}
+
+.benefit p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+/* Цены */
+
+.price-card {
+    display: flex;
+    flex-direction: column;
+    padding: 34px 28px;
+    border-radius: var(--radius);
+}
+
+.price-card.featured {
+    background: linear-gradient(180deg, #271c13, #141414);
+    border: 2px solid var(--gold);
+}
+
+.popular {
+    position: absolute;
+    top: -13px;
+    right: 20px;
+    padding: 7px 13px;
+    color: #17100b;
+    background: var(--gold);
+    border-radius: 20px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.price-card h3 {
+    font-size: 21px;
+}
+
+.price {
+    margin-top: 20px;
+    color: var(--gold-light);
+    font-size: 44px;
+    font-weight: 800;
+}
+
+.price-note {
+    margin: 6px 0 22px;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.price-description {
+    flex-grow: 1;
+    margin-bottom: 28px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+/* FAQ */
+
+.faq {
+    max-width: 880px;
+}
+
+.faq details {
+    padding: 23px 4px;
+    border-bottom: 1px solid var(--border);
+}
+
+.faq summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq summary::after {
+    content: "+";
+    color: var(--gold);
+    font-size: 22px;
+}
+
+.faq details[open] summary::after {
+    content: "−";
+}
+
+.faq details p {
+    padding-top: 16px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+/* Футер */
+
+footer {
+    margin-top: 30px;
+    padding: 55px 0 30px;
+    background: #080808;
+    border-top: 1px solid var(--border);
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 35px;
+    padding-bottom: 30px;
+}
+
+.footer-brand {
+    font: 700 28px "Cinzel", serif;
+    letter-spacing: 2px;
+}
+
+.footer-description {
+    max-width: 390px;
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.contacts p {
+    margin-bottom: 12px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.contacts a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.footer-bottom {
+    padding-top: 22px;
+    border-top: 1px solid #ffffff12;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.9;
+}
+
+.legal-note {
+    margin-top: 10px;
+}
+
+/* Окна */
+
+dialog {
     position: fixed;
     inset: 0;
-    margin: auto;
-    width: min(900px, calc(100% - 28px));
+    width: min(620px, calc(100% - 28px));
     max-height: 90dvh;
-    padding: 32px;
+    margin: auto;
+    padding: 34px;
     overflow-y: auto;
     color: var(--text);
     background: linear-gradient(145deg, #211a14, #111);
     border: 1px solid var(--gold);
     border-radius: 24px;
     box-shadow: 0 30px 100px #0009;
+    scrollbar-width: thin;
 }
 
-.lys-gallery[open] {
-    animation: lysGalleryEnter .3s ease both;
+dialog[open] {
+    animation: enter .3s ease both;
 }
 
-.lys-gallery::backdrop {
-    background: #000c;
+dialog::backdrop {
+    background: #000d;
     backdrop-filter: blur(10px);
 }
 
-@keyframes lysGalleryEnter {
-    from { opacity: 0; transform: translateY(18px) scale(.97); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.lys-gallery-close {
+.modal-close {
     position: absolute;
     top: 10px;
-    right: 16px;
+    right: 13px;
     width: 44px;
     height: 44px;
-    border: 0;
-    background: transparent;
     color: var(--gold-light);
+    background: transparent;
+    border: 0;
     font-size: 32px;
 }
 
-.lys-gallery-title {
-    padding-right: 40px;
+.modal-title {
+    padding-right: 36px;
+    margin-bottom: 12px;
     color: var(--gold-light);
-    font-size: clamp(20px, 4vw, 28px);
+    font-size: 24px;
 }
 
-.lys-gallery-description {
-    margin: 12px 0 24px;
+.modal-notice {
+    margin-bottom: 23px;
     color: var(--muted);
-    font-size: 13px;
-    line-height: 1.8;
+    font-size: 12px;
+    line-height: 1.9;
 }
 
-.lys-gallery-grid {
+/* Галерея */
+
+.product-gallery {
+    width: min(880px, calc(100% - 28px));
+}
+
+.gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
 }
 
-.lys-gallery figure {
+.gallery-grid figure {
     min-width: 0;
     padding: 18px;
     background: #ffffff04;
@@ -158,21 +914,21 @@
     border-radius: 16px;
 }
 
-.lys-gallery figcaption {
+.gallery-grid figcaption {
     margin-bottom: 15px;
     color: var(--gold-light);
     font-size: 12px;
     text-align: center;
 }
 
-.lys-photo-frame {
-    height: 350px;
+.photo-frame {
     display: grid;
     place-items: center;
+    height: 350px;
     overflow: hidden;
 }
 
-.lys-photo-frame img {
+.photo-frame img {
     display: block;
     width: 100%;
     height: 100%;
@@ -181,256 +937,1445 @@
     transition: transform .5s;
 }
 
-.lys-photo-frame:hover img {
-    transform: scale(1.06);
+.photo-frame:hover img {
+    transform: scale(1.07);
 }
 
-.lys-photo-missing {
+.photo-missing {
+    padding: 20px;
     color: var(--muted);
-    font-size: 13px;
+    font-size: 12px;
+    line-height: 1.8;
     text-align: center;
 }
 
-/* Плавное появление карточек */
-@keyframes lysCardEnter {
-    from { opacity: 0; transform: translateY(24px); }
+/* Форма */
+
+.progress {
+    height: 4px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    background: #ffffff12;
+    border-radius: 10px;
+}
+
+.progress > div {
+    width: 33.333%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), #fff0dc);
+    transition: width .35s;
+}
+
+.step-title {
+    margin-bottom: 20px;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.field {
+    margin-bottom: 17px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.input {
+    width: 100%;
+    min-width: 0;
+    padding: 13px 14px;
+    color: var(--text);
+    background: #0c0c0c;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    font-size: 12px;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px #d6a06b18;
+}
+
+textarea.input {
+    resize: vertical;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    margin-top: 20px;
+    background: #d6a06b09;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+
+.summary small {
+    display: block;
+    margin-top: 5px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.summary strong {
+    color: var(--gold-light);
+    font-size: 25px;
+    white-space: nowrap;
+}
+
+.step-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 23px;
+}
+
+.step-buttons > * {
+    flex: 1;
+}
+
+.form-agree {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.form-agree input {
+    flex-shrink: 0;
+    margin-top: 4px;
+    accent-color: var(--gold);
+}
+
+.email-result {
+    margin-top: 25px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+}
+
+.email-result p {
+    margin-bottom: 16px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.email-result details {
+    margin-top: 18px;
+}
+
+.email-result summary {
+    margin-bottom: 12px;
+    color: var(--gold-light);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.toast {
+    position: fixed;
+    z-index: 200;
+    left: 50%;
+    bottom: 30px;
+    width: max-content;
+    max-width: calc(100% - 30px);
+    padding: 14px 20px;
+    color: var(--gold-light);
+    background: #20180ff5;
+    border: 1px solid var(--gold);
+    border-radius: 14px;
+    box-shadow: 0 10px 40px #0007;
+    transform: translateX(-50%);
+    font-size: 12px;
+    text-align: center;
+}
+
+.mobile-buy {
+    display: none;
+}
+
+/* Появление при прокрутке */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .7s, transform .7s;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes enter {
+    from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-.content-card.lys-visible {
-    animation: lysCardEnter .6s ease both;
-    animation-delay: var(--lys-delay, 0ms);
+/* Адаптация */
+
+@media (max-width: 1050px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: flex;
+    }
+
+    .contents-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .header-inner {
+        min-height: 88px;
+    }
+
+    .logo img {
+        width: 74px;
+        height: 74px;
+    }
 }
 
-@media (max-width: 600px) {
-    .lys-gallery { padding: 28px 18px; }
-    .lys-gallery-grid { grid-template-columns: 1fr; }
-    .lys-photo-frame { height: 280px; }
+@media (max-width: 760px) {
+    .section {
+        padding-block: 60px;
+    }
+
+    .benefits-grid,
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .price-card {
+        padding: 30px 25px;
+    }
+
+    .hero {
+        padding-top: 48px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1.3px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .trust {
+        gap: 12px;
+        font-size: 9px;
+    }
+
+    .header-order {
+        display: none;
+    }
+
+    .logo-name {
+        font-size: 23px;
+    }
+
+    .logo-tagline {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .mobile-buy {
+        position: fixed;
+        z-index: 40;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 5%;
+        padding-bottom: max(12px, env(safe-area-inset-bottom));
+        background: #0b0b0bf2;
+        backdrop-filter: blur(16px);
+        border-top: 1px solid var(--border);
+    }
+
+    .mobile-buy span {
+        color: var(--gold-light);
+        font-size: 10px;
+    }
+
+    footer {
+        padding-bottom: 100px;
+    }
+
+    .toast {
+        bottom: 90px;
+    }
+}
+
+@media (max-width: 560px) {
+    .contents-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .content-card {
+        padding: 22px;
+    }
+
+    .header-inner {
+        gap: 8px;
+    }
+
+    .logo {
+        gap: 4px;
+    }
+
+    .logo img {
+        width: 54px;
+        height: 64px;
+    }
+
+    .logo-name {
+        font-size: 21px;
+    }
+
+    .logo-tagline {
+        max-width: 110px;
+        font-size: 6px;
+    }
+
+    .lang {
+        padding: 7px 5px;
+        font-size: 9px;
+    }
+
+    .mobile-nav {
+        gap: 16px;
+    }
+
+    .mobile-nav a {
+        font-size: 10px;
+    }
+
+    .product-label {
+        left: 12px;
+        bottom: 12px;
+        font-size: 7px;
+    }
+
+    dialog {
+        padding: 30px 20px;
+    }
+
+    .photo-frame {
+        height: 300px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .summary {
+        align-items: flex-start;
+    }
+
+    .summary strong {
+        font-size: 22px;
+    }
+
+    .step-buttons .btn {
+        padding: 14px 10px;
+        font-size: 11px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .hero h1 em,
-    .section-title,
-    .logo-name,
-    .footer-brand,
-    .lys-gallery[open],
-    .content-card.lys-visible {
-        animation: none;
+    html {
+        scroll-behavior: auto;
     }
 
-    .lys-photo-frame img {
-        transition: none;
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
     }
 }
 </style>
+</head>
+
+<body>
+
+<div class="promo">
+    <span data-i18n="promo"></span>
+    <strong>LYS10</strong>
+    <button id="copy-code" type="button" data-i18n="copy"></button>
+</div>
+
+<header class="header" id="header">
+    <div class="header-inner">
+        <a class="logo" href="#" aria-label="LYS Auto Care">
+            <img id="logo-image" src="./logo.png" alt="" width="86" height="86">
+            <div>
+                <span class="logo-name shimmer">LYS</span>
+                <span class="logo-tagline">Luxury for your shine</span>
+            </div>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Navigation">
+            <a href="#unboxing" data-i18n="navVideo"></a>
+            <a href="#inside" data-i18n="navInside"></a>
+            <a href="#shop" data-i18n="navShop"></a>
+        </nav>
+
+        <div class="header-actions">
+            <div class="languages" aria-label="Language">
+                <button class="lang active" type="button" data-lang="de" aria-pressed="true">DE</button>
+                <button class="lang" type="button" data-lang="en" aria-pressed="false">EN</button>
+                <button class="lang" type="button" data-lang="ru" aria-pressed="false">RU</button>
+                <button class="lang" type="button" data-lang="ua" aria-pressed="false">UA</button>
+            </div>
+
+            <button class="btn btn-small header-order"
+                    type="button" data-order="signature" data-i18n="buy"></button>
+        </div>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+        <a href="#unboxing" data-i18n="navVideo"></a>
+        <a href="#inside" data-i18n="navInside"></a>
+        <a href="#shop" data-i18n="navShop"></a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <div class="badge">LYS AUTO CARE · BERLIN</div>
+
+            <h1>
+                <span data-i18n="heroTitle"></span>
+                <em class="shimmer" data-i18n="heroAccent"></em>
+            </h1>
+
+            <p class="hero-description" data-i18n="heroDescription"></p>
+
+            <button class="btn" type="button"
+                    data-order="signature" data-i18n="heroButton"></button>
+
+            <div class="trust">
+                <span data-i18n="trust1"></span>
+                <span data-i18n="trust2"></span>
+                <span data-i18n="trust3"></span>
+            </div>
+
+            <div class="product-visual">
+                <img id="hero-image" src="./products.png"
+                     alt="LYS Auto Care Geschenkbox"
+                     width="900" height="600"
+                     fetchpriority="high">
+
+                <div class="visual-fallback" id="hero-fallback" hidden>
+                    <strong class="shimmer">LYS</strong>
+                    <span>AUTO CARE · BERLIN</span>
+                </div>
+
+                <div class="product-label">THE SIGNATURE DETAILING BOX</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="unboxing">
+        <div class="container">
+            <p class="eyebrow">THE LYS EXPERIENCE</p>
+            <h2 class="section-title shimmer" data-i18n="videoTitle"></h2>
+
+            <div class="video-wrapper">
+                <video id="unboxing-video"
+                       muted loop playsinline controls preload="metadata"
+                       poster="./products.png">
+                    <source id="video-source" src="./video.mp4" type="video/mp4">
+                </video>
+
+                <div class="video-fallback" id="video-fallback" hidden>
+                    <strong class="shimmer">LYS AUTO CARE</strong>
+                    <p data-i18n="videoMissing"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="inside">
+        <div class="container">
+            <p class="eyebrow" data-i18n="insideEyebrow"></p>
+            <h2 class="section-title shimmer" data-i18n="insideTitle"></h2>
+            <div class="contents-grid" id="contents-grid"></div>
+        </div>
+    </section>
+
+    <section class="section benefits">
+        <div class="container">
+            <p class="eyebrow" data-i18n="benefitEyebrow"></p>
+            <h2 class="section-title shimmer" data-i18n="benefitTitle"></h2>
+            <div class="benefits-grid" id="benefits-grid"></div>
+
+            <div class="center">
+                <a class="btn" href="#shop" data-i18n="choose"></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="shop">
+        <div class="container">
+            <p class="eyebrow">LYS COLLECTION</p>
+            <h2 class="section-title shimmer" data-i18n="shopTitle"></h2>
+
+            <div class="pricing-grid">
+                <article class="price-card featured">
+                    <span class="popular" data-i18n="bestseller"></span>
+                    <h3>Signature Box</h3>
+                    <div class="price">89 €</div>
+                    <p class="price-note" data-i18n="priceNote"></p>
+                    <p class="price-description" data-i18n="signatureDescription"></p>
+                    <button class="btn btn-wide" type="button"
+                            data-order="signature" data-i18n="order"></button>
+                </article>
+
+                <article class="price-card">
+                    <h3>Gift Edition</h3>
+                    <div class="price">95 €</div>
+                    <p class="price-note" data-i18n="priceNote"></p>
+                    <p class="price-description" data-i18n="giftDescription"></p>
+                    <button class="btn btn-secondary btn-wide" type="button"
+                            data-order="gift" data-i18n="giftButton"></button>
+                </article>
+
+                <article class="price-card">
+                    <h3>Duo Pack · 2× Box</h3>
+                    <div class="price">165 €</div>
+                    <p class="price-note" data-i18n="duoNote"></p>
+                    <p class="price-description" data-i18n="duoDescription"></p>
+                    <button class="btn btn-secondary btn-wide" type="button"
+                            data-order="duo" data-i18n="order"></button>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container faq">
+            <p class="eyebrow" data-i18n="faqEyebrow"></p>
+            <h2 class="section-title shimmer" data-i18n="faqTitle"></h2>
+            <div id="faq-list"></div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand shimmer">LYS AUTO CARE</div>
+                <p class="footer-description" data-i18n="footerDescription"></p>
+            </div>
+
+            <div class="contacts">
+                <p data-i18n="location"></p>
+                <p>
+                    <a href="mailto:autocare.lys@gmail.com">
+                        autocare.lys@gmail.com
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© <span id="year"></span> LYS Auto Care.</p>
+            <p class="legal-note" data-i18n="legalPending"></p>
+        </div>
+    </div>
+</footer>
+
+<div class="mobile-buy">
+    <span data-i18n="mobilePrice"></span>
+    <button class="btn btn-small" type="button"
+            data-order="signature" data-i18n="buy"></button>
+</div>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<!-- Фотографии товара -->
+
+<dialog class="product-gallery"
+        id="product-gallery"
+        aria-labelledby="gallery-title"
+        aria-describedby="gallery-description">
+
+    <button class="modal-close" type="button"
+            data-close-dialog="product-gallery"
+            data-close-label>×</button>
+
+    <h2 class="modal-title" id="gallery-title"></h2>
+    <p class="modal-notice" id="gallery-description"></p>
+    <div class="gallery-grid" id="gallery-grid"></div>
+</dialog>
+
+<!-- Заявка -->
+
+<dialog id="checkout"
+        aria-labelledby="checkout-title"
+        aria-describedby="checkout-notice">
+
+    <button class="modal-close" type="button"
+            data-close-dialog="checkout"
+            data-close-label>×</button>
+
+    <h2 class="modal-title" id="checkout-title"
+        data-i18n="checkoutTitle"></h2>
+
+    <p class="modal-notice" id="checkout-notice"
+       data-i18n="checkoutNotice"></p>
+
+    <div class="progress" id="progress"
+         role="progressbar"
+         aria-label="Progress"
+         aria-valuemin="1"
+         aria-valuemax="3"
+         aria-valuenow="1">
+        <div id="progress-fill"></div>
+    </div>
+
+    <form id="order-form">
+        <div class="form-step" data-step="1">
+            <p class="step-title" data-i18n="step1"></p>
+
+            <div class="field">
+                <label for="edition" data-i18n="edition"></label>
+                <select class="input" id="edition" name="Edition">
+                    <option value="signature">Signature Box — 89 €</option>
+                    <option value="gift">Gift Edition — 95 €</option>
+                    <option value="duo">Duo Pack · 2× Box — 165 €</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="field">
+                    <label for="quantity" data-i18n="quantity"></label>
+                    <input class="input" id="quantity" name="Quantity"
+                           type="number" min="1" max="10" step="1"
+                           value="1" required>
+                </div>
+
+                <div class="field">
+                    <label for="promo-code" data-i18n="promoLabel"></label>
+                    <input class="input" id="promo-code"
+                           maxlength="30" autocomplete="off"
+                           placeholder="LYS10">
+                </div>
+            </div>
+
+            <div class="field" id="gift-field" hidden>
+                <label for="gift-message" data-i18n="giftMessage"></label>
+                <textarea class="input" id="gift-message"
+                          name="GiftMessage" rows="3"
+                          maxlength="250" disabled></textarea>
+            </div>
+
+            <div class="summary">
+                <div>
+                    <span data-i18n="total"></span>
+                    <small data-i18n="shippingIncluded"></small>
+                </div>
+                <strong id="total">89,00 €</strong>
+            </div>
+
+            <div class="step-buttons">
+                <button class="btn" type="button"
+                        data-next="2" data-i18n="nextShipping"></button>
+            </div>
+        </div>
+
+        <div class="form-step" data-step="2" hidden>
+            <p class="step-title" data-i18n="step2"></p>
+
+            <div class="field">
+                <label for="shipping" data-i18n="shipping"></label>
+                <select class="input" id="shipping" name="Shipping">
+                    <option value="dhl" data-i18n="shippingDhl"></option>
+                    <option value="pickup" data-i18n="shippingPickup"></option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="payment" data-i18n="payment"></label>
+                <select class="input" id="payment" name="Payment">
+                    <option value="paypal" data-i18n="paymentPaypal"></option>
+                    <option value="bank" data-i18n="paymentBank"></option>
+                </select>
+            </div>
+
+            <div class="step-buttons">
+                <button class="btn btn-secondary" type="button"
+                        data-prev="1" data-i18n="back"></button>
+                <button class="btn" type="button"
+                        data-next="3" data-i18n="nextAddress"></button>
+            </div>
+        </div>
+
+        <div class="form-step" data-step="3" hidden>
+            <p class="step-title" data-i18n="step3"></p>
+
+            <div class="field">
+                <label for="customer-name" data-i18n="name"></label>
+                <input class="input" id="customer-name" name="Name"
+                       autocomplete="name" required maxlength="100">
+            </div>
+
+            <div class="form-row">
+                <div class="field">
+                    <label for="customer-email">E-Mail *</label>
+                    <input class="input" id="customer-email" name="Email"
+                           type="email" autocomplete="email"
+                           required maxlength="150">
+                </div>
+
+                <div class="field">
+                    <label for="customer-phone" data-i18n="phone"></label>
+                    <input class="input" id="customer-phone" name="Phone"
+                           type="tel" autocomplete="tel" maxlength="40">
+                </div>
+            </div>
+
+            <div id="address-fields">
+                <div class="field">
+                    <label for="street" data-i18n="street"></label>
+                    <input class="input" id="street" name="Street"
+                           autocomplete="address-line1"
+                           required maxlength="150">
+                </div>
+
+                <div class="form-row">
+                    <div class="field">
+                        <label for="postal" data-i18n="postal"></label>
+                        <input class="input" id="postal" name="Postal"
+                               autocomplete="postal-code"
+                               inputmode="numeric" pattern="[0-9]{5}"
+                               maxlength="5" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="city" data-i18n="city"></label>
+                        <input class="input" id="city" name="City"
+                               autocomplete="address-level2"
+                               required maxlength="100">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="extra" data-i18n="extra"></label>
+                    <input class="input" id="extra" name="Extra"
+                           autocomplete="address-line2" maxlength="150">
+                </div>
+            </div>
+
+            <label class="form-agree">
+                <input type="checkbox" id="email-agreement" required>
+                <span data-i18n="emailAgreement"></span>
+            </label>
+
+            <div class="step-buttons">
+                <button class="btn btn-secondary" type="button"
+                        data-prev="2" data-i18n="back"></button>
+                <button class="btn" type="submit"
+                        data-i18n="prepare"></button>
+            </div>
+        </div>
+
+        <div class="email-result" id="email-result" hidden role="status">
+            <p data-i18n="emailReady"></p>
+
+            <a class="btn" id="email-link"
+               href="mailto:autocare.lys@gmail.com"
+               data-i18n="openEmail"></a>
+
+            <details>
+                <summary data-i18n="copyMessage"></summary>
+                <textarea class="input" id="email-body"
+                          rows="12" readonly
+                          aria-label="Order inquiry"></textarea>
+            </details>
+        </div>
+    </form>
+</dialog>
 
 <script>
-(() => {
-    "use strict";
+"use strict";
 
-    /*
-     * Создай папку images рядом с HTML.
-     * Положи туда фото с указанными ниже именами
-     * или замени пути на ссылки на свои фотографии.
-     */
-    const photos = [
-        {
-            front: "./images/innenraum-front.png",
-            back: "./images/innenraum-back.png"
-        },
-        {
-            front: "./images/glas-front.png",
-            back: "./images/glas-back.png"
-        },
-        {
-            front: "./images/felgen-front.png",
-            back: "./images/felgen-back.png"
-        },
-        {
-            front: "./images/microfibres-front.png",
-            back: "./images/microfibres-back.png"
-        },
-        {
-            front: "./images/brushes-case-front.png",
-            back: "./images/brushes-case-back.png"
-        },
-        {
-            front: "./images/guide-front.png",
-            back: "./images/guide-back.png"
-        },
-        {
-            front: "./images/surprise-front.png",
-            back: "./images/surprise-back.png"
-        }
-    ];
+/*
+ФАЙЛЫ РЯДОМ С HTML:
+logo.png       — логотип
+products.png   — фото бокса
+video.mp4      — видео распаковки
 
-    const copy = {
-        de: {
-            brushes: [
-                "Detailing-Pinsel mit Etui",
-                "Detailing-Pinsel für kleine Zwischenräume – inklusive praktischem Etui."
-            ],
-            surprise: [
-                "Überraschung von LYS",
-                "Eine besondere Überraschung von LYS in deiner Box."
-            ],
-            faq: "Drei Pflegeprodukte à 330 ml, drei Mikrofasertücher, Detailing-Pinsel mit Etui, eine Anleitung und eine Überraschung von LYS.",
-            view: "Fotos ansehen ↗",
-            front: "Vorderseite",
-            back: "Rückseite",
-            missing: "Foto noch nicht verfügbar.",
-            close: "Schließen"
-        },
-        en: {
-            brushes: [
-                "Detailing brushes with case",
-                "Detailing brushes for small spaces, including a practical storage case."
-            ],
-            surprise: [
-                "A surprise from LYS",
-                "A special surprise from LYS inside your box."
-            ],
-            faq: "Three 330 ml care products, three microfibre cloths, detailing brushes with a case, a guide and a surprise from LYS.",
-            view: "View photos ↗",
-            front: "Front",
-            back: "Back",
-            missing: "Photo not available yet.",
-            close: "Close"
-        },
-        ru: {
-            brushes: [
-                "Кисточки с чехлом",
-                "Детейлинг-кисточки для труднодоступных мест в комплекте с удобным чехлом."
-            ],
-            surprise: [
-                "Сюрприз от LYS",
-                "Особенный сюрприз от LYS внутри вашего бокса."
-            ],
-            faq: "Три средства по 330 мл, три микрофибры, кисточки с чехлом, инструкция и сюрприз от LYS.",
-            view: "Смотреть фото ↗",
-            front: "Спереди",
-            back: "Сзади",
-            missing: "Фото пока не добавлено.",
-            close: "Закрыть"
-        },
-        ua: {
-            brushes: [
-                "Пензлі з чохлом",
-                "Детейлінг-пензлі для важкодоступних місць у комплекті зі зручним чохлом."
-            ],
-            surprise: [
-                "Сюрприз від LYS",
-                "Особливий сюрприз від LYS усередині вашого боксу."
-            ],
-            faq: "Три засоби по 330 мл, три мікрофібри, пензлі з чохлом, інструкція та сюрприз від LYS.",
-            view: "Переглянути фото ↗",
-            front: "Спереду",
-            back: "Ззаду",
-            missing: "Фото поки не додано.",
-            close: "Закрити"
-        }
+ФОТО ТОВАРОВ:
+Создай папку images рядом с HTML и добавь фотографии
+с именами из productPhotos ниже.
+Вместо путей можно указать полные URL фотографий.
+
+Приложенное фото бутылки относится к очистителю дисков.
+Переименуй его в felgen-front.png и положи в images.
+*/
+
+const productPhotos = [
+    {
+        front: "./images/innenraum-front.png",
+        back: "./images/innenraum-back.png"
+    },
+    {
+        front: "./images/glas-front.png",
+        back: "./images/glas-back.png"
+    },
+    {
+        front: "./images/felgen-front.png",
+        back: "./images/felgen-back.png"
+    },
+    {
+        front: "./images/microfibres-front.png",
+        back: "./images/microfibres-back.png"
+    },
+    {
+        front: "./images/brushes-case-front.png",
+        back: "./images/brushes-case-back.png"
+    },
+    {
+        front: "./images/guide-front.png",
+        back: "./images/guide-back.png"
+    },
+    {
+        front: "./images/surprise-front.png",
+        back: "./images/surprise-back.png"
+    }
+];
+
+const translations = {
+    de: {
+        promo: "10 % Rabatt mit Code",
+        copy: "Code kopieren",
+        copied: "LYS10 kopiert und angewendet!",
+        copyFallback: "Dein Gutscheincode: LYS10",
+        navVideo: "Unboxing",
+        navInside: "Inhalt der Box",
+        navShop: "Editionen & Preise",
+        buy: "Jetzt anfragen ↗",
+        heroTitle: "Exklusive Geschenkboxen für",
+        heroAccent: "wahre Autoliebhaber.",
+        heroDescription: "Hochwertige Fahrzeugpflege in einer edlen Magnetbox mit Soft-Touch-Finish. Für Innenraum, Glas und Felgen – mit Liebe zum Detail in Berlin zusammengestellt.",
+        heroButton: "Box anfragen — 89 €",
+        trust1: "✦ 3 Premium-Pflegeprodukte",
+        trust2: "✦ Bereit zum Verschenken",
+        trust3: "✦ Versand in Deutschland inklusive",
+        videoTitle: "Die LYS Box im Detail",
+        videoMissing: "Das Unboxing-Video ist noch nicht verfügbar.",
+        insideEyebrow: "KOMPLETTES PFLEGESYSTEM",
+        insideTitle: "Was ist in der LYS Box?",
+        contents: [
+            ["Innenraumreiniger · 330 ml", "Für die Pflege von Cockpit und Innenraum. Anwendungshinweise auf dem Produkt beachten."],
+            ["Glasreiniger · 330 ml", "Für klare Scheiben und Spiegel – ein sauberes Finish bis ins Detail."],
+            ["Felgenreiniger · 330 ml", "Für die Reinigung deiner Felgen. Materialverträglichkeit und Anwendungshinweise beachten."],
+            ["3× Profi-Mikrofasertücher", "Zwei graue Tücher für Glas und Finish, ein schwarzes Tuch für den Innenraum."],
+            ["Detailing-Pinsel mit Etui", "Detailing-Pinsel für kleine Zwischenräume – inklusive praktischem Etui zur Aufbewahrung."],
+            ["Soft-Touch Anleitung", "Eine elegante Anleitung für deine persönliche Pflegeroutine."],
+            ["Überraschung von LYS", "Eine besondere Überraschung von LYS in deiner Box."]
+        ],
+        viewPhotos: "Fotos ansehen ↗",
+        front: "Vorderseite",
+        backPhoto: "Rückseite",
+        photoMissing: "Foto noch nicht verfügbar.",
+        close: "Schließen",
+        benefitEyebrow: "DAS GESCHENK, DAS GENUTZT WIRD",
+        benefitTitle: "Mehr als nur eine schöne Box.",
+        benefits: [
+            ["Auspacken & freuen", "Eine besondere Geschenkidee für Menschen, die ihr Auto lieben."],
+            ["Alles an einem Ort", "Innenraum, Glas und Felgen – ein abgestimmtes Set für deine Pflegeroutine."],
+            ["Persönlich schenken", "Mit der Gift Edition wird deine persönliche Grußbotschaft Teil des Geschenks."]
+        ],
+        choose: "Edition auswählen",
+        shopTitle: "Wähle deine Edition",
+        bestseller: "BESTSELLER",
+        priceNote: "inkl. MwSt. & Versand in Deutschland",
+        signatureDescription: "Das komplette Geschenkset in der mattschwarzen Magnetbox. Für alle, die Wert auf Details legen.",
+        giftDescription: "Die Signature Box mit deiner persönlichen Grußbotschaft. Wir beschriften die Karte individuell.",
+        duoDescription: "Eine Box für dich, eine zum Verschenken. Zwei Signature Boxen zum gemeinsamen Vorteilspreis.",
+        duoNote: "statt 178 € · spare 13 € · inkl. Versand",
+        order: "Anfragen",
+        giftButton: "Als Geschenk",
+        faqEyebrow: "GUT ZU WISSEN",
+        faqTitle: "Häufige Fragen",
+        faq: [
+            ["Was ist in der Box enthalten?", "Drei Pflegeprodukte à 330 ml, drei Mikrofasertücher, Detailing-Pinsel mit Etui, eine Anleitung und eine Überraschung von LYS."],
+            ["Kann ich eine persönliche Nachricht ergänzen?", "Ja. Wähle die Gift Edition und trage deine Nachricht mit bis zu 250 Zeichen ein."],
+            ["Wie funktioniert die Bestellung?", "Du bereitest eine unverbindliche Anfrage vor und sendest sie über dein E-Mail-Programm. Wir bestätigen Verfügbarkeit und Zahlungsinformationen anschließend per E-Mail."],
+            ["Was kostet der Versand?", "Der Versand innerhalb Deutschlands ist in den angezeigten Preisen enthalten."],
+            ["Wie nutze ich LYS10?", "Trage LYS10 im Anfrageformular ein. Die angezeigte Summe reduziert sich um 10 %. Der endgültige Preis wird mit der Bestätigung geprüft."]
+        ],
+        footerDescription: "Exklusive Autopflege-Geschenkboxen. Mit Liebe zum Detail in Berlin zusammengestellt.",
+        location: "Berlin · Versand innerhalb Deutschlands",
+        legalPending: "Unternehmensangaben und vollständige Rechtstexte müssen noch ergänzt werden.",
+        mobilePrice: "ab 89 € · inkl. Versand",
+        checkoutTitle: "Deine LYS Anfrage",
+        checkoutNotice: "Unverbindliche Anfrage ohne Online-Zahlung. Das Formular bereitet eine E-Mail vor, die du anschließend selbst versendest.",
+        step1: "SCHRITT 1 / 3 · DEINE AUSWAHL",
+        step2: "SCHRITT 2 / 3 · VERSAND & ZAHLUNG",
+        step3: "SCHRITT 3 / 3 · KONTAKT & ADRESSE",
+        edition: "Edition",
+        quantity: "Anzahl",
+        promoLabel: "Gutscheincode",
+        giftMessage: "Persönliche Nachricht · max. 250 Zeichen",
+        shippingIncluded: "Versand in Deutschland inklusive",
+        total: "Gesamtbetrag",
+        nextShipping: "Zum Versand →",
+        nextAddress: "Zur Adresse →",
+        shipping: "Versandart",
+        shippingDhl: "DHL · Deutschland",
+        shippingPickup: "Abholung in Berlin · nach Absprache",
+        payment: "Gewünschte Zahlungsart",
+        paymentPaypal: "PayPal · nach Bestätigung",
+        paymentBank: "Überweisung · nach Bestätigung",
+        back: "← Zurück",
+        name: "Vollständiger Name *",
+        phone: "Telefon · optional",
+        street: "Straße & Hausnummer *",
+        postal: "PLZ *",
+        city: "Ort *",
+        extra: "Adresszusatz · optional",
+        emailAgreement: "Ich möchte diese Angaben als unverbindliche Anfrage per E-Mail an LYS Auto Care senden.",
+        prepare: "Anfrage vorbereiten →",
+        emailReady: "Deine Anfrage ist vorbereitet. Öffne dein E-Mail-Programm und sende die Nachricht. Alternativ kopiere den Text und sende ihn an autocare.lys@gmail.com.",
+        openEmail: "E-Mail öffnen ↗",
+        copyMessage: "Nachricht zum Kopieren"
+    },
+
+    en: {
+        promo: "10% off with code",
+        copy: "Copy code",
+        copied: "LYS10 copied and applied!",
+        copyFallback: "Your discount code: LYS10",
+        navVideo: "Unboxing",
+        navInside: "What's inside",
+        navShop: "Editions & prices",
+        buy: "Request a box ↗",
+        heroTitle: "Exclusive gift boxes for",
+        heroAccent: "true car enthusiasts.",
+        heroDescription: "Premium car care in an elegant soft-touch magnetic box. A thoughtful gift for interior, glass and wheels – carefully assembled in Berlin.",
+        heroButton: "Request a box — €89",
+        trust1: "✦ 3 premium care products",
+        trust2: "✦ Ready to gift",
+        trust3: "✦ Shipping within Germany included",
+        videoTitle: "Discover the LYS Box",
+        videoMissing: "The unboxing video is not available yet.",
+        insideEyebrow: "THE COMPLETE CARE ROUTINE",
+        insideTitle: "What's inside your LYS Box?",
+        contents: [
+            ["Interior cleaner · 330 ml", "For your cockpit and interior. Follow the product's application instructions."],
+            ["Glass cleaner · 330 ml", "For clear windows and mirrors, with attention to every detail."],
+            ["Wheel cleaner · 330 ml", "For your wheel cleaning routine. Follow material compatibility and application instructions."],
+            ["3× professional microfibres", "Two grey cloths for glass and finishing, one black cloth for the interior."],
+            ["Detailing brushes with case", "Detailing brushes for small spaces, including a practical storage case."],
+            ["Soft-touch guide", "An elegant guide to your personal car care routine."],
+            ["A surprise from LYS", "A special surprise from LYS inside your box."]
+        ],
+        viewPhotos: "View photos ↗",
+        front: "Front",
+        backPhoto: "Back",
+        photoMissing: "Photo not available yet.",
+        close: "Close",
+        benefitEyebrow: "A GIFT THEY WILL USE",
+        benefitTitle: "More than a beautiful box.",
+        benefits: [
+            ["Unbox & enjoy", "A special gift for someone who loves their car."],
+            ["Everything together", "Interior, glass and wheels – one coordinated care collection."],
+            ["Make it personal", "Add your own greeting with the Gift Edition."]
+        ],
+        choose: "Choose your edition",
+        shopTitle: "Find your edition",
+        bestseller: "BESTSELLER",
+        priceNote: "VAT & shipping within Germany included",
+        signatureDescription: "The complete gift collection in a matte black magnetic box. Made for people who appreciate the details.",
+        giftDescription: "The Signature Box with your personal greeting. We write your message on the included card.",
+        duoDescription: "One for you, one to give. Two Signature Boxes at a combined special price.",
+        duoNote: "instead of €178 · save €13 · shipping included",
+        order: "Request",
+        giftButton: "Give as a gift",
+        faqEyebrow: "GOOD TO KNOW",
+        faqTitle: "Frequently asked questions",
+        faq: [
+            ["What's included?", "Three 330 ml care products, three microfibre cloths, detailing brushes with a case, a guide and a surprise from LYS."],
+            ["Can I add a personal message?", "Yes. Choose the Gift Edition and enter a message of up to 250 characters."],
+            ["How do I order?", "Prepare a non-binding inquiry and send it through your email app. We will confirm availability and payment details by email."],
+            ["How much is shipping?", "Shipping within Germany is included in the displayed prices."],
+            ["How do I use LYS10?", "Enter LYS10 in the inquiry form for a displayed 10% discount. The final price is checked with your confirmation."]
+        ],
+        footerDescription: "Exclusive car care gift boxes. Carefully assembled with attention to detail in Berlin.",
+        location: "Berlin · Shipping within Germany",
+        legalPending: "Company information and full legal notices still need to be added.",
+        mobilePrice: "from €89 · shipping included",
+        checkoutTitle: "Your LYS inquiry",
+        checkoutNotice: "A non-binding inquiry with no online payment. This form prepares an email that you send yourself.",
+        step1: "STEP 1 / 3 · YOUR SELECTION",
+        step2: "STEP 2 / 3 · SHIPPING & PAYMENT",
+        step3: "STEP 3 / 3 · CONTACT & ADDRESS",
+        edition: "Edition",
+        quantity: "Quantity",
+        promoLabel: "Discount code",
+        giftMessage: "Personal message · up to 250 characters",
+        shippingIncluded: "Shipping within Germany included",
+        total: "Total",
+        nextShipping: "To shipping →",
+        nextAddress: "To address →",
+        shipping: "Shipping method",
+        shippingDhl: "DHL · Germany",
+        shippingPickup: "Pickup in Berlin · by arrangement",
+        payment: "Preferred payment method",
+        paymentPaypal: "PayPal · after confirmation",
+        paymentBank: "Bank transfer · after confirmation",
+        back: "← Back",
+        name: "Full name *",
+        phone: "Phone · optional",
+        street: "Street & house number *",
+        postal: "German postal code *",
+        city: "City *",
+        extra: "Address extra · optional",
+        emailAgreement: "I want to send these details to LYS Auto Care by email as a non-binding inquiry.",
+        prepare: "Prepare inquiry →",
+        emailReady: "Your inquiry is ready. Open your email app and send the message. Alternatively, copy the text and email it to autocare.lys@gmail.com.",
+        openEmail: "Open email ↗",
+        copyMessage: "Message to copy"
+    },
+
+    ru: {
+        promo: "Скидка 10% по коду",
+        copy: "Копировать",
+        copied: "LYS10 скопирован и применён!",
+        copyFallback: "Ваш промокод: LYS10",
+        navVideo: "Распаковка",
+        navInside: "Что внутри",
+        navShop: "Версии и цены",
+        buy: "Заказать ↗",
+        heroTitle: "Эксклюзивные боксы для",
+        heroAccent: "истинных ценителей авто.",
+        heroDescription: "Премиальный уход за автомобилем в элегантной магнитной коробке с покрытием Soft-Touch. Для салона, стёкол и дисков — с вниманием к деталям собран в Берлине.",
+        heroButton: "Заказать бокс — 89 €",
+        trust1: "✦ 3 премиум-состава",
+        trust2: "✦ Готово к вручению",
+        trust3: "✦ Доставка по Германии включена",
+        videoTitle: "Рассмотрите бокс LYS",
+        videoMissing: "Видео распаковки пока недоступно.",
+        insideEyebrow: "ПОЛНЫЙ УХОД",
+        insideTitle: "Что внутри бокса LYS?",
+        contents: [
+            ["Очиститель салона · 330 мл", "Для ухода за салоном автомобиля. Соблюдайте инструкцию на флаконе."],
+            ["Очиститель стёкол · 330 мл", "Для чистоты автомобильных стёкол и зеркал до мельчайших деталей."],
+            ["Очиститель дисков · 330 мл", "Для ухода за колёсными дисками. Учитывайте совместимость материалов и инструкцию."],
+            ["3 профессиональные микрофибры", "Две серые салфетки для стёкол и финишного ухода, одна чёрная для салона."],
+            ["Кисточки с чехлом", "Детейлинг-кисточки для труднодоступных мест в комплекте с удобным чехлом."],
+            ["Инструкция Soft-Touch", "Элегантная карточка с инструкцией для вашей процедуры ухода."],
+            ["Сюрприз от LYS", "Особенный сюрприз от LYS внутри вашего бокса."]
+        ],
+        viewPhotos: "Смотреть фото ↗",
+        front: "Спереди",
+        backPhoto: "Сзади",
+        photoMissing: "Фото пока не добавлено.",
+        close: "Закрыть",
+        benefitEyebrow: "ПОДАРОК, КОТОРЫМ ПОЛЬЗУЮТСЯ",
+        benefitTitle: "Больше, чем красивая коробка.",
+        benefits: [
+            ["Распаковка и эмоции", "Особенный подарок для человека, который любит свою машину."],
+            ["Всё в одном месте", "Уход за салоном, стёклами и дисками в одном продуманном наборе."],
+            ["Личное послание", "Добавьте своё пожелание к подарку в версии Gift Edition."]
+        ],
+        choose: "Выбрать версию",
+        shopTitle: "Выберите свой бокс",
+        bestseller: "БЕСТСЕЛЛЕР",
+        priceNote: "НДС и доставка по Германии включены",
+        signatureDescription: "Полный подарочный набор в матовой чёрной магнитной коробке. Для тех, кто ценит детали.",
+        giftDescription: "Signature Box с вашим личным пожеланием. Мы индивидуально подпишем подарочную карточку.",
+        duoDescription: "Один себе, один в подарок. Два бокса Signature по специальной общей цене.",
+        duoNote: "вместо 178 € · экономия 13 € · доставка включена",
+        order: "Заказать",
+        giftButton: "В подарок",
+        faqEyebrow: "ПОЛЕЗНО ЗНАТЬ",
+        faqTitle: "Частые вопросы",
+        faq: [
+            ["Что входит в набор?", "Три средства по 330 мл, три микрофибры, кисточки с чехлом, инструкция и сюрприз от LYS."],
+            ["Можно добавить пожелание?", "Да. Выберите Gift Edition и напишите текст длиной до 250 символов."],
+            ["Как оформить заказ?", "Подготовьте предварительную заявку и отправьте её из своей почты. Мы ответим с подтверждением наличия и реквизитами для оплаты."],
+            ["Сколько стоит доставка?", "Доставка по Германии включена в указанные цены."],
+            ["Как применить LYS10?", "Введите LYS10 в форме заявки. Расчётная сумма уменьшится на 10%. Итоговую стоимость проверим при подтверждении."]
+        ],
+        footerDescription: "Эксклюзивные подарочные боксы для ухода за авто. Собраны с вниманием к деталям в Берлине.",
+        location: "Берлин · Доставка по Германии",
+        legalPending: "Данные компании и полные юридические тексты ещё необходимо добавить.",
+        mobilePrice: "от 89 € · доставка включена",
+        checkoutTitle: "Ваша заявка LYS",
+        checkoutNotice: "Предварительная заявка без онлайн-оплаты. Форма подготовит письмо, которое вы отправите самостоятельно.",
+        step1: "ШАГ 1 / 3 · ВАШ ВЫБОР",
+        step2: "ШАГ 2 / 3 · ДОСТАВКА И ОПЛАТА",
+        step3: "ШАГ 3 / 3 · КОНТАКТЫ И АДРЕС",
+        edition: "Версия",
+        quantity: "Количество",
+        promoLabel: "Промокод",
+        giftMessage: "Пожелание · до 250 символов",
+        shippingIncluded: "Доставка по Германии включена",
+        total: "Итого",
+        nextShipping: "К доставке →",
+        nextAddress: "К адресу →",
+        shipping: "Способ доставки",
+        shippingDhl: "DHL · Германия",
+        shippingPickup: "Самовывоз в Берлине · по договорённости",
+        payment: "Предпочтительный способ оплаты",
+        paymentPaypal: "PayPal · после подтверждения",
+        paymentBank: "Перевод · после подтверждения",
+        back: "← Назад",
+        name: "Имя и фамилия *",
+        phone: "Телефон · необязательно",
+        street: "Улица и дом *",
+        postal: "Индекс в Германии *",
+        city: "Город *",
+        extra: "Дополнение к адресу · необязательно",
+        emailAgreement: "Я хочу отправить эти данные в LYS Auto Care по электронной почте в виде предварительной заявки.",
+        prepare: "Подготовить заявку →",
+        emailReady: "Заявка подготовлена. Откройте почту и отправьте письмо. Или скопируйте текст и отправьте его на autocare.lys@gmail.com.",
+        openEmail: "Открыть почту ↗",
+        copyMessage: "Текст для копирования"
+    },
+
+    ua: {
+        promo: "Знижка 10% за кодом",
+        copy: "Скопіювати",
+        copied: "LYS10 скопійовано та застосовано!",
+        copyFallback: "Ваш промокод: LYS10",
+        navVideo: "Розпакування",
+        navInside: "Що всередині",
+        navShop: "Версії та ціни",
+        buy: "Замовити ↗",
+        heroTitle: "Ексклюзивні бокси для",
+        heroAccent: "справжніх автолюбів.",
+        heroDescription: "Преміальний догляд за автомобілем в елегантній магнітній коробці з покриттям Soft-Touch. Для салону, скла та дисків — з увагою до деталей зібраний у Берліні.",
+        heroButton: "Замовити бокс — 89 €",
+        trust1: "✦ 3 преміальні засоби",
+        trust2: "✦ Готово до вручення",
+        trust3: "✦ Доставку Німеччиною включено",
+        videoTitle: "Розгляньте бокс LYS",
+        videoMissing: "Відео розпакування поки недоступне.",
+        insideEyebrow: "ПОВНИЙ ДОГЛЯД",
+        insideTitle: "Що всередині боксу LYS?",
+        contents: [
+            ["Очисник салону · 330 мл", "Для догляду за салоном автомобіля. Дотримуйтеся інструкції на флаконі."],
+            ["Очисник скла · 330 мл", "Для чистоти автомобільного скла та дзеркал до найменших деталей."],
+            ["Очисник дисків · 330 мл", "Для догляду за колісними дисками. Враховуйте сумісність матеріалів та інструкцію."],
+            ["3 професійні мікрофібри", "Дві сірі серветки для скла та фінішного догляду, одна чорна для салону."],
+            ["Пензлі з чохлом", "Детейлінг-пензлі для важкодоступних місць у комплекті зі зручним чохлом."],
+            ["Інструкція Soft-Touch", "Елегантна картка з інструкцією для вашого догляду за авто."],
+            ["Сюрприз від LYS", "Особливий сюрприз від LYS усередині вашого боксу."]
+        ],
+        viewPhotos: "Переглянути фото ↗",
+        front: "Спереду",
+        backPhoto: "Ззаду",
+        photoMissing: "Фото поки не додано.",
+        close: "Закрити",
+        benefitEyebrow: "ПОДАРУНОК, ЯКИМ КОРИСТУЮТЬСЯ",
+        benefitTitle: "Більше, ніж красива коробка.",
+        benefits: [
+            ["Розпакування та емоції", "Особливий подарунок для людини, яка любить свою машину."],
+            ["Усе в одному місці", "Догляд за салоном, склом та дисками в одному продуманому наборі."],
+            ["Особисте послання", "Додайте своє побажання до подарунка у версії Gift Edition."]
+        ],
+        choose: "Обрати версію",
+        shopTitle: "Оберіть свій бокс",
+        bestseller: "БЕСТСЕЛЕР",
+        priceNote: "ПДВ та доставку Німеччиною включено",
+        signatureDescription: "Повний подарунковий набір у матовій чорній магнітній коробці. Для тих, хто цінує деталі.",
+        giftDescription: "Signature Box із вашим особистим побажанням. Ми індивідуально підпишемо подарункову картку.",
+        duoDescription: "Один собі, один у подарунок. Два бокси Signature за спеціальною загальною ціною.",
+        duoNote: "замість 178 € · економія 13 € · доставку включено",
+        order: "Замовити",
+        giftButton: "У подарунок",
+        faqEyebrow: "КОРИСНО ЗНАТИ",
+        faqTitle: "Часті запитання",
+        faq: [
+            ["Що входить до набору?", "Три засоби по 330 мл, три мікрофібри, пензлі з чохлом, інструкція та сюрприз від LYS."],
+            ["Можна додати побажання?", "Так. Оберіть Gift Edition та напишіть текст до 250 символів."],
+            ["Як оформити замовлення?", "Підготуйте попередню заявку та надішліть її зі своєї пошти. Ми відповімо з підтвердженням наявності та реквізитами для оплати."],
+            ["Скільки коштує доставка?", "Доставку Німеччиною включено у вказані ціни."],
+            ["Як застосувати LYS10?", "Введіть LYS10 у формі заявки. Розрахункова сума зменшиться на 10%. Остаточну вартість перевіримо під час підтвердження."]
+        ],
+        footerDescription: "Ексклюзивні подарункові бокси для догляду за авто. Зібрані з увагою до деталей у Берліні.",
+        location: "Берлін · Доставка Німеччиною",
+        legalPending: "Дані компанії та повні юридичні тексти ще потрібно додати.",
+        mobilePrice: "від 89 € · доставку включено",
+        checkoutTitle: "Ваша заявка LYS",
+        checkoutNotice: "Попередня заявка без онлайн-оплати. Форма підготує лист, який ви надішлете самостійно.",
+        step1: "КРОК 1 / 3 · ВАШ ВИБІР",
+        step2: "КРОК 2 / 3 · ДОСТАВКА ТА ОПЛАТА",
+        step3: "КРОК 3 / 3 · КОНТАКТИ ТА АДРЕСА",
+        edition: "Версія",
+        quantity: "Кількість",
+        promoLabel: "Промокод",
+        giftMessage: "Побажання · до 250 символів",
+        shippingIncluded: "Доставку Німеччиною включено",
+        total: "Разом",
+        nextShipping: "До доставки →",
+        nextAddress: "До адреси →",
+        shipping: "Спосіб доставки",
+        shippingDhl: "DHL · Німеччина",
+        shippingPickup: "Самовивіз у Берліні · за домовленістю",
+        payment: "Бажаний спосіб оплати",
+        paymentPaypal: "PayPal · після підтвердження",
+        paymentBank: "Переказ · після підтвердження",
+        back: "← Назад",
+        name: "Ім’я та прізвище *",
+        phone: "Телефон · необов’язково",
+        street: "Вулиця та будинок *",
+        postal: "Індекс у Німеччині *",
+        city: "Місто *",
+        extra: "Доповнення до адреси · необов’язково",
+        emailAgreement: "Я хочу надіслати ці дані до LYS Auto Care електронною поштою як попередню заявку.",
+        prepare: "Підготувати заявку →",
+        emailReady: "Заявку підготовлено. Відкрийте пошту та надішліть листа. Або скопіюйте текст і надішліть його на autocare.lys@gmail.com.",
+        openEmail: "Відкрити пошту ↗",
+        copyMessage: "Текст для копіювання"
+    }
+};
+
+const editions = {
+    signature: { name: "LYS Signature Detailing Box", price: 89 },
+    gift: { name: "LYS Gift Edition", price: 95 },
+    duo: { name: "LYS Duo Pack · 2× Box", price: 165 }
+};
+
+const $ = selector => document.querySelector(selector);
+
+const form = $("#order-form");
+const checkout = $("#checkout");
+const gallery = $("#product-gallery");
+const video = $("#unboxing-video");
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+
+let language = "de";
+let currentStep = 1;
+let prepared = false;
+let toastTimer;
+let galleryIndex = null;
+
+const dialogState = new WeakMap();
+
+function element(tag, text, className) {
+    const node = document.createElement(tag);
+    if (text !== undefined) node.textContent = text;
+    if (className) node.className = className;
+    return node;
+}
+
+function savedLanguage() {
+    try {
+        return localStorage.getItem("lys-language");
+    } catch {
+        return null;
+    }
+}
+
+function rememberLanguage(value) {
+    try {
+        localStorage.setItem("lys-language", value);
+    } catch {
+        /* Сайт работает без localStorage. */
+    }
+}
+
+function formatMoney(value) {
+    const locales = {
+        de: "de-DE",
+        en: "en-GB",
+        ru: "ru-RU",
+        ua: "uk-UA"
     };
 
-    for (const [lang, text] of Object.entries(copy)) {
-        translations[lang].contents[4] = text.brushes;
-        translations[lang].contents[6] = text.surprise;
-        translations[lang].faq[0][1] = text.faq;
-    }
+    return new Intl.NumberFormat(locales[language], {
+        style: "currency",
+        currency: "EUR"
+    }).format(value);
+}
 
-    const dialog = document.createElement("dialog");
-    dialog.className = "lys-gallery";
-    dialog.id = "lys-photo-dialog";
-    dialog.setAttribute("aria-labelledby", "lys-photo-title");
-    dialog.setAttribute("aria-describedby", "lys-photo-description");
-    dialog.innerHTML = `
-        <button class="lys-gallery-close" type="button">×</button>
-        <h2 class="lys-gallery-title" id="lys-photo-title"></h2>
-        <p class="lys-gallery-description" id="lys-photo-description"></p>
-        <div class="lys-gallery-grid"></div>
-    `;
-    document.body.append(dialog);
+/* Появление блоков при прокрутке */
 
-    let returnFocus = null;
-    let savedOverflow = "";
+const revealObserver =
+    !reducedMotion.matches && "IntersectionObserver" in window
+        ? new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add("visible");
+                revealObserver.unobserve(entry.target);
+            });
+        }, { threshold: .08 })
+        : null;
 
-    const currentCopy = () => copy[language] || copy.de;
+function observeReveal(node) {
+    if (!revealObserver) return;
+    node.classList.add("reveal");
+    revealObserver.observe(node);
+}
 
-    function openPhotos(index) {
-        const product = translations[language].contents[index];
-        if (!product || !photos[index]) return;
+function renderContent() {
+    const t = translations[language];
+    const contents = $("#contents-grid");
+    const benefits = $("#benefits-grid");
+    const faq = $("#faq-list");
 
-        const text = currentCopy();
-        const [title, description] = product;
-
-        dialog.querySelector("h2").textContent =
-            `${String(index + 1).padStart(2, "0")} · ${title}`;
-
-        dialog.querySelector(".lys-gallery-description").textContent =
-            description;
-
-        const closeButton = dialog.querySelector("button");
-        closeButton.setAttribute("aria-label", text.close);
-
-        const grid = dialog.querySelector(".lys-gallery-grid");
-        grid.replaceChildren();
-
-        for (const side of ["front", "back"]) {
-            const figure = document.createElement("figure");
-            const caption = document.createElement("figcaption");
-            const frame = document.createElement("div");
-            const image = document.createElement("img");
-
-            caption.textContent = text[side];
-            frame.className = "lys-photo-frame";
-            image.alt = `${title} — ${text[side]}`;
-
-            image.addEventListener("error", () => {
-                const message = document.createElement("p");
-                message.className = "lys-photo-missing";
-                message.textContent = text.missing;
-                frame.replaceChildren(message);
-            }, { once: true });
-
-            /*
-             * Если используется предыдущий исправленный HTML,
-             * сохраняем уже встроенное фото очистителя дисков.
-             */
-            const existingPhoto =
-                typeof productPhotos !== "undefined"
-                    ? productPhotos[index]?.[side]
-                    : null;
-
-            image.src = existingPhoto?.startsWith("data:")
-                ? existingPhoto
-                : photos[index][side];
-
-            frame.append(image);
-            figure.append(caption, frame);
-            grid.append(figure);
-        }
-
-        returnFocus = document.activeElement;
-        savedOverflow = document.body.style.overflow;
-
-        dialog.showModal();
-        document.body.style.overflow = "hidden";
-        closeButton.focus();
-    }
-
-    dialog.querySelector("button").addEventListener("click", () => {
-        dialog.close();
+    contents.querySelectorAll(".reveal").forEach(node => {
+        revealObserver?.unobserve(node);
     });
 
-    /* Escape поддерживается самим dialog. */
+    contents.replaceChildren();
+    benefits.replaceChildren();
+    faq.replaceChildren();
+
+    t.contents.forEach(([title, description], index) => {
+        const card = element("button", undefined, "content-card");
+        card.type = "button";
+        card.dataset.product = String(index);
+        card.setAttribute("aria-haspopup", "dialog");
+        card.setAttribute("aria-controls", "product-gallery");
+
+        const body = element("div");
+
+        body.append(
+            element("h3", title),
+            element("p", description),
+            element("span", t.viewPhotos, "photo-link")
+        );
+
+        card.append(
+            element(
+                "span",
+                String(index + 1).padStart(2, "0"),
+                "card-number"
+            ),
+            body
+        );
+
+        contents.append(card);
+        observeReveal(card);
+    });
+
+    t.benefits.forEach(([title, description], index) => {
+        const card = element("article", undefined, "benefit");
+
+        card.append(
+            element("span", `0${index + 1} /`),
+            element("h3", title),
+            element("p", description)
+        );
+
+        benefits.append(card);
+    });
+
+    t.faq.forEach(([question, answer]) => {
+        const details = element("details");
+
+        details.append(
+            element("summary", question),
+            element("p", answer)
+        );
+
+        faq.append(details);
+    });
+}
+
+function setLanguage(value) {
+    language = translations[value] ? value : "de";
+    const t = translations[language];
+
+    document.documentElement.lang =
+        language === "ua" ? "uk" : language;
+
+    document.querySelectorAll("[data-i18n]").forEach(node => {
+        const text = t[node.dataset.i18n];
+        if (typeof text === "string") node.textContent = text;
+    });
+
+    document.querySelectorAll("[data-close-label]").forEach(node => {
+        node.setAttribute("aria-label", t.close);
+    });
+
+    document.querySelectorAll(".lang").forEach(button => {
+        const active = button.dataset.lang === language;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+    });
+
+    renderContent();
+    calculateTotal();
+
+    if (gallery.open && galleryIndex !== null) {
+        renderGallery(galleryIndex);
+    }
+
+    if (prepared) prepareEmail();
+
+    rememberLanguage(language);
+}
+
+/* Открытие и закрытие диалогов */
+
+function openDialog(dialog) {
+    if (dialog.open) return;
+
+    dialogState.set(dialog, {
+        focus: document.activeElement,
+        overflow: document.body.style.overflow
+    });
+
+    dialog.showModal();
+    document.body.style.overflow = "hidden";
+}
+
+document.querySelectorAll("dialog").forEach(dialog => {
     dialog.addEventListener("close", () => {
-        document.body.style.overflow = savedOverflow;
-        returnFocus?.focus();
+        const state = dialogState.get(dialog);
+
+        document.body.style.overflow = state?.overflow || "";
+
+        if (state?.focus?.isConnected) {
+            state.focus.focus();
+        }
     });
 
     dialog.addEventListener("click", event => {
         if (event.target !== dialog) return;
 
         const rect = dialog.getBoundingClientRect();
+
         const outside =
             event.clientX < rect.left ||
             event.clientX > rect.right ||
@@ -439,84 +2384,429 @@
 
         if (outside) dialog.close();
     });
+});
 
-    const grid = document.querySelector("#contents-grid");
+/* Фотографии спереди и сзади */
 
-    /*
-     * Перехватываем нажатия до старого обработчика заказа.
-     * Работает и после переключения языка.
-     */
-    grid.addEventListener("click", event => {
-        const card = event.target.closest(".content-card");
-        if (!card) return;
+function renderGallery(index) {
+    const t = translations[language];
+    const product = t.contents[index];
+    const photos = productPhotos[index];
 
-        event.preventDefault();
-        event.stopPropagation();
+    if (!product || !photos) return;
 
-        const cards = [...grid.querySelectorAll(".content-card")];
-        openPhotos(cards.indexOf(card));
-    }, true);
+    const [title, description] = product;
 
-    const reduced = matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
+    $("#gallery-title").textContent =
+        `${String(index + 1).padStart(2, "0")} · ${title}`;
 
-    const observer = !reduced && "IntersectionObserver" in window
-        ? new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add("lys-visible");
-                observer.unobserve(entry.target);
-            });
-        }, { threshold: .12 })
-        : null;
+    $("#gallery-description").textContent = description;
 
-    function decorateCards() {
-        const text = currentCopy();
+    const grid = $("#gallery-grid");
+    grid.replaceChildren();
 
-        grid.querySelectorAll(".content-card").forEach((card, index) => {
-            card.removeAttribute("data-order");
-            card.setAttribute("aria-haspopup", "dialog");
-            card.setAttribute("aria-controls", dialog.id);
-            card.style.setProperty(
-                "--lys-delay",
-                `${(index % 3) * 80}ms`
+    for (const side of ["front", "back"]) {
+        const label = side === "front" ? t.front : t.backPhoto;
+        const figure = element("figure");
+        const frame = element("div", undefined, "photo-frame");
+        const image = element("img");
+
+        image.alt = `${title} — ${label}`;
+        image.decoding = "async";
+
+        image.addEventListener("error", () => {
+            frame.replaceChildren(
+                element("p", t.photoMissing, "photo-missing")
             );
+        }, { once: true });
 
-            /* Убираем подпись из предыдущей версии, если она есть. */
-            card.querySelector(".photo-link")?.remove();
+        image.src = photos[side];
 
-            const body = card.querySelector("div");
-            if (body && !body.querySelector(".lys-photo-link")) {
-                const hint = document.createElement("span");
-                hint.className = "lys-photo-link";
-                hint.textContent = text.view;
-                body.append(hint);
-            }
+        frame.append(image);
+        figure.append(
+            element("figcaption", label),
+            frame
+        );
 
-            observer?.observe(card);
-        });
+        grid.append(figure);
     }
+}
 
-    new MutationObserver(decorateCards).observe(grid, {
-        childList: true
+function openGallery(index) {
+    if (!productPhotos[index]) return;
+
+    galleryIndex = index;
+    renderGallery(index);
+    openDialog(gallery);
+
+    gallery.querySelector(".modal-close").focus();
+}
+
+/* Форма заявки */
+
+function calculateTotal() {
+    const selected = editions[$("#edition").value] || editions.signature;
+    const parsed = Number.parseInt($("#quantity").value, 10);
+
+    const quantity = Number.isFinite(parsed)
+        ? Math.min(10, Math.max(1, parsed))
+        : 1;
+
+    const code = $("#promo-code").value.trim().toUpperCase();
+
+    const total = Math.round(
+        selected.price * quantity * (code === "LYS10" ? .9 : 1) * 100
+    ) / 100;
+
+    const gift = $("#edition").value === "gift";
+
+    $("#gift-field").hidden = !gift;
+    $("#gift-message").disabled = !gift;
+    $("#total").textContent = formatMoney(total);
+
+    return { selected, quantity, code, total };
+}
+
+function invalidatePrepared() {
+    prepared = false;
+    $("#email-result").hidden = true;
+}
+
+function updateShipping() {
+    const pickup = $("#shipping").value === "pickup";
+
+    $("#address-fields").hidden = pickup;
+
+    $("#address-fields").querySelectorAll("input").forEach(input => {
+        input.disabled = pickup;
     });
 
-    renderContent();
-    decorateCards();
+    invalidatePrepared();
+}
 
-    /* Свечение следует за курсором. */
-    document.addEventListener("pointermove", event => {
-        if (reduced || event.pointerType === "touch") return;
+function validateStep(step) {
+    const panel = document.querySelector(`[data-step="${step}"]`);
 
-        const card = event.target.closest(
-            ".content-card, .price-card, .benefit"
+    const invalid = [...panel.querySelectorAll("input, select, textarea")]
+        .find(input => !input.disabled && !input.checkValidity());
+
+    if (!invalid) return true;
+
+    invalid.reportValidity();
+    invalid.focus();
+    return false;
+}
+
+function setStep(step, validate = true) {
+    if (
+        validate &&
+        step > currentStep &&
+        !validateStep(currentStep)
+    ) return;
+
+    currentStep = step;
+
+    document.querySelectorAll(".form-step").forEach(panel => {
+        panel.hidden = Number(panel.dataset.step) !== step;
+    });
+
+    $("#progress-fill").style.width = `${step / 3 * 100}%`;
+    $("#progress").setAttribute("aria-valuenow", String(step));
+
+    document.querySelector(
+        `[data-step="${step}"] input:not(:disabled), ` +
+        `[data-step="${step}"] select:not(:disabled)`
+    )?.focus();
+}
+
+function openCheckout(key = "signature") {
+    $("#edition").value = editions[key] ? key : "signature";
+
+    calculateTotal();
+    invalidatePrepared();
+    openDialog(checkout);
+    setStep(1, false);
+}
+
+function prepareEmail() {
+    const { selected, quantity, code, total } = calculateTotal();
+    const data = new FormData(form);
+    const pickup = $("#shipping").value === "pickup";
+
+    const lines = [
+        "Hallo LYS Auto Care,",
+        "",
+        "ich möchte folgende unverbindliche Bestellanfrage stellen:",
+        "",
+        `Edition: ${selected.name}`,
+        `Anzahl: ${quantity}`,
+        `Gutscheincode: ${code || "—"}`,
+        `Gesamtbetrag: ${formatMoney(total)}`,
+        `Versandart: ${pickup ? "Abholung Berlin" : "DHL Deutschland"}`,
+        `Gewünschte Zahlungsart: ${
+            $("#payment").value === "paypal"
+                ? "PayPal"
+                : "Überweisung"
+        }`,
+        ""
+    ];
+
+    if ($("#edition").value === "gift") {
+        lines.push(
+            `Persönliche Nachricht: ${data.get("GiftMessage") || "—"}`,
+            ""
         );
-        if (!card) return;
+    }
 
-        const rect = card.getBoundingClientRect();
-        card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
-        card.style.setProperty("--my", `${event.clientY - rect.top}px`);
-    }, { passive: true });
-})();
+    lines.push(
+        `Name: ${data.get("Name")}`,
+        `E-Mail: ${data.get("Email")}`,
+        `Telefon: ${data.get("Phone") || "—"}`
+    );
+
+    if (!pickup) {
+        lines.push(
+            `Straße: ${data.get("Street")}`,
+            `PLZ: ${data.get("Postal")}`,
+            `Ort: ${data.get("City")}`,
+            `Adresszusatz: ${data.get("Extra") || "—"}`
+        );
+    }
+
+    lines.push(
+        "",
+        "Bitte bestätigen Sie Verfügbarkeit, Gesamtpreis und Zahlungsinformationen.",
+        "Vielen Dank!"
+    );
+
+    const body = lines.join("\n");
+
+    $("#email-body").value = body;
+
+    $("#email-link").href =
+        "mailto:autocare.lys@gmail.com" +
+        "?subject=" + encodeURIComponent("LYS Auto Care – Bestellanfrage") +
+        "&body=" + encodeURIComponent(body);
+
+    $("#email-result").hidden = false;
+    prepared = true;
+}
+
+function showToast(message) {
+    clearTimeout(toastTimer);
+
+    $("#toast").textContent = message;
+    $("#toast").hidden = false;
+
+    toastTimer = setTimeout(() => {
+        $("#toast").hidden = true;
+    }, 3500);
+}
+
+/* Клики */
+
+document.addEventListener("click", event => {
+    const product = event.target.closest("[data-product]");
+    if (product) {
+        openGallery(Number(product.dataset.product));
+        return;
+    }
+
+    const order = event.target.closest("[data-order]");
+    if (order) {
+        openCheckout(order.dataset.order);
+        return;
+    }
+
+    const lang = event.target.closest("[data-lang]");
+    if (lang) {
+        setLanguage(lang.dataset.lang);
+        return;
+    }
+
+    const close = event.target.closest("[data-close-dialog]");
+    if (close) {
+        document.getElementById(close.dataset.closeDialog)?.close();
+        return;
+    }
+
+    const next = event.target.closest("[data-next]");
+    if (next) setStep(Number(next.dataset.next));
+
+    const previous = event.target.closest("[data-prev]");
+    if (previous) setStep(Number(previous.dataset.prev), false);
+});
+
+/* Подсветка карточек следует за курсором */
+
+document.addEventListener("pointermove", event => {
+    if (reducedMotion.matches || event.pointerType === "touch") return;
+
+    const card = event.target.closest(
+        ".content-card, .benefit, .price-card"
+    );
+
+    if (!card) return;
+
+    const rect = card.getBoundingClientRect();
+
+    card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+    card.style.setProperty("--my", `${event.clientY - rect.top}px`);
+}, { passive: true });
+
+/* Промокод */
+
+$("#copy-code").addEventListener("click", async () => {
+    $("#promo-code").value = "LYS10";
+    calculateTotal();
+    invalidatePrepared();
+
+    try {
+        await navigator.clipboard.writeText("LYS10");
+        showToast(translations[language].copied);
+    } catch {
+        showToast(translations[language].copyFallback);
+    }
+});
+
+/* Изменения формы */
+
+form.addEventListener("input", () => {
+    calculateTotal();
+    invalidatePrepared();
+});
+
+form.addEventListener("change", () => {
+    calculateTotal();
+    invalidatePrepared();
+});
+
+$("#quantity").addEventListener("change", () => {
+    const { quantity } = calculateTotal();
+    $("#quantity").value = quantity;
+});
+
+$("#shipping").addEventListener("change", updateShipping);
+
+/*
+Проверяем поля самостоятельно, чтобы показать
+нужный шаг перед сообщением об ошибке.
+*/
+form.noValidate = true;
+
+form.addEventListener("submit", event => {
+    event.preventDefault();
+
+    for (let step = 1; step <= 3; step++) {
+        setStep(step, false);
+        if (!validateStep(step)) return;
+    }
+
+    prepareEmail();
+    $("#email-link").focus();
+});
+
+/* Изображения: аккуратный вид при отсутствии файлов */
+
+function imageFallback(image, callback) {
+    const handleError = () => {
+        image.hidden = true;
+        callback?.();
+    };
+
+    image.addEventListener("error", handleError, { once: true });
+
+    if (image.complete && image.naturalWidth === 0) {
+        handleError();
+    }
+}
+
+imageFallback($("#logo-image"));
+
+imageFallback($("#hero-image"), () => {
+    $("#hero-fallback").hidden = false;
+});
+
+/* Видео */
+
+function showVideoFallback() {
+    video.pause();
+    video.hidden = true;
+    $("#video-fallback").hidden = false;
+}
+
+video.muted = true;
+video.defaultMuted = true;
+video.playsInline = true;
+video.loop = true;
+
+video.addEventListener("error", showVideoFallback);
+$("#video-source").addEventListener("error", showVideoFallback);
+
+if (video.error || video.networkState === 3) {
+    showVideoFallback();
+}
+
+let videoVisible = false;
+
+function syncVideoPlayback() {
+    const canPlay =
+        videoVisible &&
+        !document.hidden &&
+        !video.hidden &&
+        !reducedMotion.matches;
+
+    if (canPlay) {
+        video.play().catch(() => {
+            /* При блокировке автозапуска остаются элементы плеера. */
+        });
+    } else {
+        video.pause();
+    }
+}
+
+if ("IntersectionObserver" in window) {
+    const videoObserver = new IntersectionObserver(entries => {
+        videoVisible = entries[0].isIntersecting;
+        syncVideoPlayback();
+    }, { threshold: .25 });
+
+    videoObserver.observe(video);
+}
+
+document.addEventListener("visibilitychange", syncVideoPlayback);
+
+reducedMotion.addEventListener("change", () => {
+    syncVideoPlayback();
+
+    if (reducedMotion.matches) {
+        document.querySelectorAll(".reveal").forEach(node => {
+            revealObserver?.unobserve(node);
+            node.classList.add("visible");
+        });
+    }
+});
+
+/* Шапка */
+
+function updateHeader() {
+    $("#header").classList.toggle("scrolled", scrollY > 20);
+}
+
+window.addEventListener("scroll", updateHeader, { passive: true });
+
+/* Запуск */
+
+$("#year").textContent = new Date().getFullYear();
+
+setLanguage(savedLanguage() || "de");
+updateShipping();
+updateHeader();
+
+document.querySelectorAll(
+    "main > section:not(.hero)"
+).forEach(observeReveal);
 </script>
+
+</body>
+</html>
