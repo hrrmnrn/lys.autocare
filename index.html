@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0a0a0a">
-<meta name="description" content="LYS Auto Care – hochwertige Autopflege-Geschenkboxen. Mit Liebe zum Detail in Berlin zusammengestellt.">
+<meta name="description" content="LYS Auto Care — Premium Autopflege-Geschenkboxen aus Berlin.">
 
 <title>LYS Auto Care — Premium Geschenkboxen</title>
 
@@ -21,8 +21,7 @@
     --gold-light: #f0c59a;
     --text: #f5f5f7;
     --muted: #aaa39c;
-    --border: rgba(214,160,107,.24);
-    --radius: 22px;
+    --border: rgba(214,160,107,.25);
 }
 
 * {
@@ -33,293 +32,14 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 130px;
+    scroll-padding-top: 140px;
 }
-    <style>
-.badge {
-    max-width: 100%;
-    line-height: 1.7;
-    text-align: center;
-    letter-spacing: 1.5px;
-}
-
-.lys-socials {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 18px;
-}
-
-.contacts .lys-social {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 44px;
-    padding: 12px 17px;
-    color: var(--gold-light);
-    background: #d6a06b09;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 700;
-    text-decoration: none;
-    transition:
-        transform .25s,
-        background .25s,
-        border-color .25s,
-        box-shadow .25s;
-}
-
-.contacts .lys-social:hover {
-    transform: translateY(-3px);
-    background: #d6a06b18;
-    border-color: var(--gold);
-    box-shadow: 0 8px 28px #d6a06b20;
-}
-
-#unboxing .video-wrapper {
-    background: #0c0c0c;
-    box-shadow:
-        0 25px 70px #0007,
-        0 0 45px #d6a06b0b;
-}
-
-#unboxing-video {
-    object-fit: contain;
-}
-
-/* Своя небольшая кнопка вместо панели проигрывателя */
-.lys-unboxing-toggle {
-    position: absolute;
-    z-index: 2;
-    right: 16px;
-    bottom: 16px;
-    padding: 10px 16px;
-    color: var(--gold-light);
-    background: #0a0a0acc;
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border);
-    border-radius: 30px;
-    font-size: 11px;
-    font-weight: 700;
-    transition: background .25s, border-color .25s;
-}
-
-.lys-unboxing-toggle:hover {
-    background: #2b1e14;
-    border-color: var(--gold);
-}
-
-@media (max-width: 560px) {
-    .badge {
-        font-size: 8px;
-        letter-spacing: 1px;
-        padding: 10px 14px;
-    }
-
-    .lys-unboxing-toggle {
-        right: 10px;
-        bottom: 10px;
-        padding: 8px 12px;
-        font-size: 10px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .contacts .lys-social,
-    .lys-unboxing-toggle {
-        transition: none;
-    }
-}
-</style>
-
-<script>
-(() => {
-    "use strict";
-
-    /* Текст плашки на главном экране */
-    const badge = document.querySelector(".hero .badge");
-
-    if (badge) {
-        badge.textContent = "SMART CHOISES. MORE POSSIBILITIES";
-    }
-
-    /* Соцсети с настоящими ссылками */
-    const contacts = document.querySelector(".contacts");
-
-    if (contacts) {
-        contacts.querySelector(".lys-socials")?.remove();
-
-        const socials = document.createElement("div");
-        socials.className = "lys-socials";
-
-        const links = [
-            {
-                title: "Instagram",
-                url: "https://www.instagram.com/lys_autocare.de/"
-            },
-            {
-                title: "TikTok",
-                url: "https://www.tiktok.com/@lys_autocare.de"
-            },
-            {
-                title: "WhatsApp",
-                url: "https://wa.me/491787242067"
-            }
-        ];
-
-        links.forEach(({ title, url }) => {
-            const link = document.createElement("a");
-
-            link.className = "lys-social";
-            link.textContent = title;
-            link.href = url;
-            link.target = "_blank";
-            link.rel = "noopener noreferrer";
-
-            socials.append(link);
-        });
-
-        contacts.append(socials);
-    }
-
-    /* Распаковка сразу под главным экраном */
-    const unboxingSection = document.querySelector("#unboxing");
-    const hero = document.querySelector(".hero");
-
-    if (hero && unboxingSection) {
-        hero.after(unboxingSection);
-    }
-
-    const labels = {
-        de: {
-            title: "Die LYS Box auspacken",
-            missing: "Das Unboxing-Video ist noch nicht verfügbar.",
-            play: "▶ Abspielen",
-            pause: "Ⅱ Pause"
-        },
-        en: {
-            title: "Unbox the LYS experience",
-            missing: "The unboxing video is not available yet.",
-            play: "▶ Play",
-            pause: "Ⅱ Pause"
-        },
-        ru: {
-            title: "Распаковка бокса LYS",
-            missing: "Видео распаковки пока не добавлено.",
-            play: "▶ Смотреть",
-            pause: "Ⅱ Пауза"
-        },
-        ua: {
-            title: "Розпакування боксу LYS",
-            missing: "Відео розпакування поки не додано.",
-            play: "▶ Дивитися",
-            pause: "Ⅱ Пауза"
-        }
-    };
-
-    for (const [lang, text] of Object.entries(labels)) {
-        translations[lang].videoTitle = text.title;
-        translations[lang].videoMissing = text.missing;
-    }
-
-    const player = document.querySelector("#unboxing-video");
-    const source = document.querySelector("#video-source");
-    const fallback = document.querySelector("#video-fallback");
-    const wrapper = player?.closest(".video-wrapper");
-
-    if (player && source && wrapper) {
-        wrapper.querySelector(".lys-unboxing-toggle")?.remove();
-
-        const toggle = document.createElement("button");
-        toggle.type = "button";
-        toggle.className = "lys-unboxing-toggle";
-        toggle.setAttribute("aria-controls", "unboxing-video");
-        wrapper.append(toggle);
-
-        const text = () => labels[language] || labels.de;
-
-        function updateButton() {
-            toggle.textContent = player.paused
-                ? text().play
-                : text().pause;
-        }
-
-        player.controls = false;
-        player.removeAttribute("controls");
-        player.muted = true;
-        player.defaultMuted = true;
-        player.loop = true;
-        player.playsInline = true;
-        player.preload = "metadata";
-        player.disablePictureInPicture = true;
-        player.disableRemotePlayback = true;
-
-        player.setAttribute("muted", "");
-        player.setAttribute("playsinline", "");
-        player.setAttribute("disablepictureinpicture", "");
-        player.setAttribute("disableremoteplayback", "");
-
-        toggle.addEventListener("click", () => {
-            if (player.paused) {
-                player.play().catch(() => {
-                    updateButton();
-                });
-            } else {
-                player.pause();
-            }
-        });
-
-        player.addEventListener("play", updateButton);
-        player.addEventListener("pause", updateButton);
-
-        player.addEventListener("error", () => {
-            toggle.hidden = true;
-        });
-
-        source.addEventListener("error", () => {
-            toggle.hidden = true;
-        });
-
-        document.querySelectorAll("[data-lang]").forEach(button => {
-            button.addEventListener("click", () => {
-                queueMicrotask(updateButton);
-            });
-        });
-
-        /*
-         * Видео должно лежать рядом с HTML:
-         * unboxing.mp4
-         *
-         * Здесь также можно указать прямую ссылку на MP4.
-         */
-        source.src = "./unboxing.mp4";
-
-        player.hidden = false;
-        if (fallback) fallback.hidden = true;
-
-        player.load();
-        updateButton();
-    }
-
-    /* Обновляем заголовки на выбранном языке */
-    const current = labels[language] || labels.de;
-
-    document.querySelectorAll('[data-i18n="videoTitle"]').forEach(node => {
-        node.textContent = current.title;
-    });
-
-    document.querySelectorAll('[data-i18n="videoMissing"]').forEach(node => {
-        node.textContent = current.missing;
-    });
-})();
-</script>
 
 body {
     min-width: 320px;
     color: var(--text);
     background:
-        radial-gradient(ellipse at 50% 4%, #302014 0%, transparent 35%),
+        radial-gradient(ellipse at 50% 4%, #302014, transparent 35%),
         var(--bg);
     font-family: "Plus Jakarta Sans", sans-serif;
     overflow-x: hidden;
@@ -367,60 +87,79 @@ img {
 }
 
 .section {
-    padding-block: 85px;
+    padding-block: 80px;
 }
 
 .eyebrow {
+    margin-bottom: 16px;
     color: var(--gold);
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 3px;
     text-align: center;
     text-transform: uppercase;
-    margin-bottom: 16px;
 }
 
 .section-title {
+    margin-bottom: 38px;
     font-size: clamp(28px, 4vw, 44px);
     line-height: 1.2;
+    letter-spacing: -1.3px;
     text-align: center;
-    letter-spacing: -1.4px;
-    margin-bottom: 38px;
 }
 
 .center {
     text-align: center;
 }
 
-/* Переливающийся золотой текст */
+/* Золотой перелив */
 
 .shimmer {
     color: var(--gold-light);
     background-image: linear-gradient(
         110deg,
-        #ac713e 0%,
-        #e8b888 22%,
-        #fff2db 42%,
-        #f0c59a 58%,
-        #ac713e 100%
+        #aa6c37 0%,
+        #dfaa78 24%,
+        #fff0d8 41%,
+        #ffffff 48%,
+        #fff0d8 55%,
+        #dfaa78 72%,
+        #aa6c37 100%
     );
-    background-size: 220% auto;
+    background-size: 250% auto;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: shimmer 7s linear infinite;
+    animation: goldShine 5s linear infinite;
 }
 
-@keyframes shimmer {
-    to { background-position: 220% center; }
+.hero h1 em.shimmer {
+    animation-duration: 3s;
+    filter: drop-shadow(0 0 14px #e8b78725);
+}
+
+@keyframes goldShine {
+    from { background-position: 200% center; }
+    to { background-position: -200% center; }
+}
+
+@keyframes enter {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Промобаннер */
 
 .promo {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 10px;
     padding: 10px 16px;
@@ -450,7 +189,7 @@ img {
     position: sticky;
     top: 0;
     z-index: 50;
-    background: #0a0a0ae8;
+    background: #0a0a0aeb;
     backdrop-filter: blur(18px);
     border-bottom: 1px solid var(--border);
     transition: box-shadow .3s;
@@ -495,11 +234,12 @@ img {
 
 .logo-tagline {
     display: block;
-    margin-top: 4px;
-    color: var(--muted);
-    font-size: 8px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+    max-width: 220px;
+    margin-top: 5px;
+    color: #d8bea3;
+    font-size: 7px;
+    line-height: 1.7;
+    letter-spacing: 1px;
 }
 
 .desktop-nav {
@@ -512,11 +252,11 @@ img {
     text-decoration: none;
     font-size: 12px;
     font-weight: 600;
-    transition: color .25s;
 }
 
 .desktop-nav a {
     position: relative;
+    transition: color .25s;
 }
 
 .desktop-nav a::after {
@@ -643,13 +383,13 @@ img {
     width: 100%;
 }
 
-/* Первый экран */
+/* Главный экран */
 
 .hero {
     position: relative;
     isolation: isolate;
-    padding-top: 76px;
-    padding-bottom: 40px;
+    padding-top: 70px;
+    padding-bottom: 35px;
     text-align: center;
 }
 
@@ -662,21 +402,23 @@ img {
     width: min(1000px, 100%);
     height: 650px;
     transform: translateX(-50%);
-    background: radial-gradient(ellipse, #cf935227, transparent 65%);
-    animation: ambient 7s ease-in-out infinite alternate;
+    background: radial-gradient(ellipse, #cf93522b, transparent 65%);
+    animation: ambient 6s ease-in-out infinite alternate;
     pointer-events: none;
 }
 
 @keyframes ambient {
-    from { opacity: .35; }
+    from { opacity: .3; }
     to { opacity: 1; }
 }
 
 .badge {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-    padding: 9px 17px;
+    max-width: 100%;
+    padding: 10px 17px;
     margin-bottom: 26px;
     color: var(--gold-light);
     background: #d6a06b09;
@@ -684,11 +426,13 @@ img {
     border-radius: 30px;
     font-size: 9px;
     font-weight: 800;
-    letter-spacing: 2px;
+    line-height: 1.7;
+    letter-spacing: 1.5px;
 }
 
 .badge::before {
     content: "";
+    flex-shrink: 0;
     width: 6px;
     height: 6px;
     background: var(--gold-light);
@@ -698,13 +442,13 @@ img {
 }
 
 @keyframes pulse {
-    50% { opacity: .4; }
+    50% { opacity: .35; }
 }
 
 .hero h1 {
     max-width: 1050px;
     margin: 0 auto 24px;
-    font-size: clamp(36px, 5.7vw, 76px);
+    font-size: clamp(35px, 5.7vw, 76px);
     line-height: 1.15;
     letter-spacing: -2px;
     animation: enter .8s both;
@@ -745,8 +489,7 @@ img {
     aspect-ratio: 3 / 2;
     margin: auto;
     overflow: hidden;
-    background:
-        radial-gradient(ellipse at center, #352418, #111 75%);
+    background: radial-gradient(ellipse, #352418, #111 75%);
     border: 1px solid var(--border);
     border-radius: 24px;
     box-shadow: 0 35px 90px #0008;
@@ -765,12 +508,12 @@ img {
 }
 
 .visual-fallback {
-    width: 100%;
-    height: 100%;
     display: grid;
     align-content: center;
     justify-items: center;
     gap: 12px;
+    width: 100%;
+    height: 100%;
 }
 
 .visual-fallback strong {
@@ -781,7 +524,7 @@ img {
 .visual-fallback span {
     color: var(--muted);
     font-size: 10px;
-    letter-spacing: 5px;
+    letter-spacing: 4px;
 }
 
 .product-label {
@@ -796,7 +539,7 @@ img {
     letter-spacing: 2px;
 }
 
-/* Видео */
+/* Видео без стандартной панели управления */
 
 .video-wrapper {
     position: relative;
@@ -804,16 +547,26 @@ img {
     aspect-ratio: 16 / 9;
     margin: auto;
     overflow: hidden;
-    background: #15110e;
+    background: #0c0c0c;
     border: 1px solid var(--border);
     border-radius: 22px;
+    box-shadow: 0 25px 70px #0007, 0 0 45px #d6a06b0b;
 }
 
 .video-wrapper video {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+}
+
+video[data-clean-video] {
+    cursor: pointer;
+}
+
+video::-webkit-media-controls,
+video::-webkit-media-controls-enclosure {
+    display: none !important;
 }
 
 .video-fallback {
@@ -835,9 +588,10 @@ img {
 .video-fallback p {
     color: var(--muted);
     font-size: 12px;
+    line-height: 1.8;
 }
 
-/* Карточки и свечение */
+/* Карточки */
 
 .contents-grid,
 .benefits-grid,
@@ -856,10 +610,7 @@ img {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 18px;
-    transition:
-        transform .3s,
-        border-color .3s,
-        box-shadow .3s;
+    transition: transform .3s, border-color .3s, box-shadow .3s;
 }
 
 .content-card::before,
@@ -924,9 +675,9 @@ img {
 }
 
 .content-card h3 {
+    margin-bottom: 8px;
     font-size: 14px;
     line-height: 1.5;
-    margin-bottom: 8px;
 }
 
 .content-card p {
@@ -935,7 +686,7 @@ img {
     line-height: 1.8;
 }
 
-.photo-link {
+.video-link {
     display: inline-block;
     margin-top: 13px;
     color: var(--gold-light);
@@ -978,7 +729,7 @@ img {
     display: flex;
     flex-direction: column;
     padding: 34px 28px;
-    border-radius: var(--radius);
+    border-radius: 22px;
 }
 
 .price-card.featured {
@@ -1067,7 +818,7 @@ img {
     line-height: 1.9;
 }
 
-/* Футер */
+/* Футер и соцсети */
 
 footer {
     margin-top: 30px;
@@ -1104,8 +855,43 @@ footer {
 }
 
 .contacts a {
-    color: var(--text);
     text-decoration: none;
+}
+
+.socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 11px 15px;
+    color: var(--gold-light);
+    background: #d6a06b08;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform .25s, background .25s, border-color .25s;
+}
+
+.social:hover {
+    transform: translateY(-3px);
+    background: #d6a06b18;
+    border-color: var(--gold);
+}
+
+.social svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
 }
 
 .footer-bottom {
@@ -1116,11 +902,7 @@ footer {
     line-height: 1.9;
 }
 
-.legal-note {
-    margin-top: 10px;
-}
-
-/* Окна */
+/* Диалоги */
 
 dialog {
     position: fixed;
@@ -1173,57 +955,28 @@ dialog::backdrop {
     line-height: 1.9;
 }
 
-/* Галерея */
-
-.product-gallery {
+.product-dialog {
     width: min(880px, calc(100% - 28px));
 }
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-}
-
-.gallery-grid figure {
-    min-width: 0;
-    padding: 18px;
-    background: #ffffff04;
+.product-video {
+    display: block;
+    width: 100%;
+    max-height: 65dvh;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
+    background: #090909;
     border: 1px solid var(--border);
     border-radius: 16px;
 }
 
-.gallery-grid figcaption {
-    margin-bottom: 15px;
-    color: var(--gold-light);
-    font-size: 12px;
-    text-align: center;
-}
-
-.photo-frame {
-    display: grid;
-    place-items: center;
-    height: 350px;
-    overflow: hidden;
-}
-
-.photo-frame img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    min-height: 0;
-    object-fit: contain;
-    transition: transform .5s;
-}
-
-.photo-frame:hover img {
-    transform: scale(1.07);
-}
-
-.photo-missing {
-    padding: 20px;
+.product-missing {
+    padding: 65px 24px;
     color: var(--muted);
-    font-size: 12px;
+    background: #ffffff04;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    font-size: 13px;
     line-height: 1.8;
     text-align: center;
 }
@@ -1294,8 +1047,8 @@ textarea.input {
 
 .summary {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     gap: 15px;
     padding: 18px;
     margin-top: 20px;
@@ -1388,7 +1141,7 @@ textarea.input {
     display: none;
 }
 
-/* Появление при прокрутке */
+/* Появление блоков */
 
 .reveal {
     opacity: 0;
@@ -1401,79 +1154,34 @@ textarea.input {
     transform: translateY(0);
 }
 
-@keyframes enter {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 /* Адаптация */
 
 @media (max-width: 1050px) {
-    .desktop-nav {
-        display: none;
-    }
-
-    .mobile-nav {
-        display: flex;
-    }
+    .desktop-nav { display: none; }
+    .mobile-nav { display: flex; }
 
     .contents-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .header-inner {
-        min-height: 88px;
-    }
-
-    .logo img {
-        width: 74px;
-        height: 74px;
-    }
+    .header-inner { min-height: 88px; }
+    .logo img { width: 74px; height: 74px; }
 }
 
 @media (max-width: 760px) {
-    .section {
-        padding-block: 60px;
-    }
+    .section { padding-block: 60px; }
 
     .benefits-grid,
     .pricing-grid {
         grid-template-columns: 1fr;
     }
 
-    .price-card {
-        padding: 30px 25px;
-    }
-
-    .hero {
-        padding-top: 48px;
-    }
-
-    .hero h1 {
-        letter-spacing: -1.3px;
-    }
-
-    .hero-description {
-        font-size: 14px;
-    }
-
-    .trust {
-        gap: 12px;
-        font-size: 9px;
-    }
-
-    .header-order {
-        display: none;
-    }
-
-    .logo-name {
-        font-size: 23px;
-    }
-
-    .logo-tagline {
-        font-size: 7px;
-        letter-spacing: 1px;
-    }
+    .hero { padding-top: 45px; }
+    .hero h1 { letter-spacing: -1.3px; }
+    .hero-description { font-size: 14px; }
+    .trust { gap: 12px; font-size: 9px; }
+    .header-order { display: none; }
+    .logo-name { font-size: 23px; }
 
     .mobile-buy {
         position: fixed;
@@ -1497,58 +1205,32 @@ textarea.input {
         font-size: 10px;
     }
 
-    footer {
-        padding-bottom: 100px;
-    }
-
-    .toast {
-        bottom: 90px;
-    }
+    footer { padding-bottom: 100px; }
+    .toast { bottom: 90px; }
 }
 
 @media (max-width: 560px) {
-    .contents-grid,
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .content-card {
-        padding: 22px;
-    }
-
-    .header-inner {
-        gap: 8px;
-    }
-
-    .logo {
-        gap: 4px;
-    }
-
-    .logo img {
-        width: 54px;
-        height: 64px;
-    }
-
-    .logo-name {
-        font-size: 21px;
-    }
+    .contents-grid { grid-template-columns: 1fr; }
+    .content-card { padding: 22px; }
+    .header-inner { gap: 8px; }
+    .logo { gap: 4px; }
+    .logo img { width: 50px; height: 64px; }
+    .logo-name { font-size: 21px; }
 
     .logo-tagline {
-        max-width: 110px;
-        font-size: 6px;
+        max-width: 122px;
+        font-size: 5.5px;
+        letter-spacing: .5px;
     }
 
-    .lang {
-        padding: 7px 5px;
-        font-size: 9px;
-    }
+    .lang { padding: 7px 5px; font-size: 9px; }
+    .mobile-nav { gap: 16px; }
+    .mobile-nav a { font-size: 10px; }
 
-    .mobile-nav {
-        gap: 16px;
-    }
-
-    .mobile-nav a {
-        font-size: 10px;
+    .badge {
+        padding: 10px 12px;
+        font-size: 8px;
+        letter-spacing: .8px;
     }
 
     .product-label {
@@ -1557,12 +1239,11 @@ textarea.input {
         font-size: 7px;
     }
 
-    dialog {
-        padding: 30px 20px;
-    }
+    dialog { padding: 30px 20px; }
 
-    .photo-frame {
-        height: 300px;
+    .product-video {
+        aspect-ratio: 3 / 4;
+        max-height: 60dvh;
     }
 
     .form-row {
@@ -1570,13 +1251,8 @@ textarea.input {
         gap: 0;
     }
 
-    .summary {
-        align-items: flex-start;
-    }
-
-    .summary strong {
-        font-size: 22px;
-    }
+    .summary { align-items: flex-start; }
+    .summary strong { font-size: 22px; }
 
     .step-buttons .btn {
         padding: 14px 10px;
@@ -1585,9 +1261,7 @@ textarea.input {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
+    html { scroll-behavior: auto; }
 
     *,
     *::before,
@@ -1616,9 +1290,12 @@ textarea.input {
     <div class="header-inner">
         <a class="logo" href="#" aria-label="LYS Auto Care">
             <img id="logo-image" src="./logo.png" alt="" width="86" height="86">
+
             <div>
                 <span class="logo-name shimmer">LYS</span>
-                <span class="logo-tagline">Luxury for your shine</span>
+                <span class="logo-tagline">
+                    SMART CHOISES. MORE POSSIBILITIES
+                </span>
             </div>
         </a>
 
@@ -1630,14 +1307,20 @@ textarea.input {
 
         <div class="header-actions">
             <div class="languages" aria-label="Language">
-                <button class="lang active" type="button" data-lang="de" aria-pressed="true">DE</button>
-                <button class="lang" type="button" data-lang="en" aria-pressed="false">EN</button>
-                <button class="lang" type="button" data-lang="ru" aria-pressed="false">RU</button>
-                <button class="lang" type="button" data-lang="ua" aria-pressed="false">UA</button>
+                <button class="lang active" type="button"
+                        data-lang="de" aria-pressed="true">DE</button>
+                <button class="lang" type="button"
+                        data-lang="en" aria-pressed="false">EN</button>
+                <button class="lang" type="button"
+                        data-lang="ru" aria-pressed="false">RU</button>
+                <button class="lang" type="button"
+                        data-lang="ua" aria-pressed="false">UA</button>
             </div>
 
             <button class="btn btn-small header-order"
-                    type="button" data-order="signature" data-i18n="buy"></button>
+                    type="button"
+                    data-order="signature"
+                    data-i18n="buy"></button>
         </div>
     </div>
 
@@ -1651,7 +1334,9 @@ textarea.input {
 <main>
     <section class="hero">
         <div class="container">
-            <div class="badge">LYS AUTO CARE · BERLIN</div>
+            <div class="badge">
+                SMART CHOISES. MORE POSSIBILITIES
+            </div>
 
             <h1>
                 <span data-i18n="heroTitle"></span>
@@ -1660,8 +1345,10 @@ textarea.input {
 
             <p class="hero-description" data-i18n="heroDescription"></p>
 
-            <button class="btn" type="button"
-                    data-order="signature" data-i18n="heroButton"></button>
+            <button class="btn"
+                    type="button"
+                    data-order="signature"
+                    data-i18n="heroButton"></button>
 
             <div class="trust">
                 <span data-i18n="trust1"></span>
@@ -1670,9 +1357,11 @@ textarea.input {
             </div>
 
             <div class="product-visual">
-                <img id="hero-image" src="./products.png"
+                <img id="hero-image"
+                     src="./products.png"
                      alt="LYS Auto Care Geschenkbox"
-                     width="900" height="600"
+                     width="900"
+                     height="600"
                      fetchpriority="high">
 
                 <div class="visual-fallback" id="hero-fallback" hidden>
@@ -1680,11 +1369,14 @@ textarea.input {
                     <span>AUTO CARE · BERLIN</span>
                 </div>
 
-                <div class="product-label">THE SIGNATURE DETAILING BOX</div>
+                <div class="product-label">
+                    THE SIGNATURE DETAILING BOX
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Видео распаковки -->
     <section class="section" id="unboxing">
         <div class="container">
             <p class="eyebrow">THE LYS EXPERIENCE</p>
@@ -1692,9 +1384,16 @@ textarea.input {
 
             <div class="video-wrapper">
                 <video id="unboxing-video"
-                       muted loop playsinline controls preload="metadata"
-                       poster="./products.png">
-                    <source id="video-source" src="./video.mp4" type="video/mp4">
+                       data-clean-video
+                       muted
+                       loop
+                       playsinline
+                       preload="metadata"
+                       poster="./products.png"
+                       disablepictureinpicture
+                       disableremoteplayback
+                       tabindex="0"
+                       role="button">
                 </video>
 
                 <div class="video-fallback" id="video-fallback" hidden>
@@ -1705,6 +1404,7 @@ textarea.input {
         </div>
     </section>
 
+    <!-- Состав бокса -->
     <section class="section" id="inside">
         <div class="container">
             <p class="eyebrow" data-i18n="insideEyebrow"></p>
@@ -1725,6 +1425,7 @@ textarea.input {
         </div>
     </section>
 
+    <!-- Цены -->
     <section class="section" id="shop">
         <div class="container">
             <p class="eyebrow">LYS COLLECTION</p>
@@ -1736,27 +1437,39 @@ textarea.input {
                     <h3>Signature Box</h3>
                     <div class="price">89 €</div>
                     <p class="price-note" data-i18n="priceNote"></p>
-                    <p class="price-description" data-i18n="signatureDescription"></p>
-                    <button class="btn btn-wide" type="button"
-                            data-order="signature" data-i18n="order"></button>
+                    <p class="price-description"
+                       data-i18n="signatureDescription"></p>
+
+                    <button class="btn btn-wide"
+                            type="button"
+                            data-order="signature"
+                            data-i18n="order"></button>
                 </article>
 
                 <article class="price-card">
                     <h3>Gift Edition</h3>
                     <div class="price">95 €</div>
                     <p class="price-note" data-i18n="priceNote"></p>
-                    <p class="price-description" data-i18n="giftDescription"></p>
-                    <button class="btn btn-secondary btn-wide" type="button"
-                            data-order="gift" data-i18n="giftButton"></button>
+                    <p class="price-description"
+                       data-i18n="giftDescription"></p>
+
+                    <button class="btn btn-secondary btn-wide"
+                            type="button"
+                            data-order="gift"
+                            data-i18n="giftButton"></button>
                 </article>
 
                 <article class="price-card">
                     <h3>Duo Pack · 2× Box</h3>
                     <div class="price">165 €</div>
                     <p class="price-note" data-i18n="duoNote"></p>
-                    <p class="price-description" data-i18n="duoDescription"></p>
-                    <button class="btn btn-secondary btn-wide" type="button"
-                            data-order="duo" data-i18n="order"></button>
+                    <p class="price-description"
+                       data-i18n="duoDescription"></p>
+
+                    <button class="btn btn-secondary btn-wide"
+                            type="button"
+                            data-order="duo"
+                            data-i18n="order"></button>
                 </article>
             </div>
         </div>
@@ -1776,67 +1489,135 @@ textarea.input {
         <div class="footer-grid">
             <div>
                 <div class="footer-brand shimmer">LYS AUTO CARE</div>
-                <p class="footer-description" data-i18n="footerDescription"></p>
+                <p class="footer-description"
+                   data-i18n="footerDescription"></p>
             </div>
 
             <div class="contacts">
                 <p data-i18n="location"></p>
+
                 <p>
                     <a href="mailto:autocare.lys@gmail.com">
                         autocare.lys@gmail.com
                     </a>
                 </p>
+
+                <p>
+                    <a href="tel:+491787242067">
+                        +49 178 7242067
+                    </a>
+                </p>
+
+                <div class="socials">
+                    <a class="social"
+                       href="https://www.instagram.com/lys_autocare.de/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Instagram lys_autocare.de">
+
+                        <svg viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="1.7"
+                             aria-hidden="true">
+                            <rect x="3" y="3" width="18" height="18" rx="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17.5" cy="6.5" r="1"
+                                    fill="currentColor" stroke="none"/>
+                        </svg>
+
+                        Instagram
+                    </a>
+
+                    <a class="social"
+                       href="https://www.tiktok.com/@lys_autocare.de"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="TikTok lys_autocare.de">
+
+                        <svg viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="1.8"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             aria-hidden="true">
+                            <path d="M14 3v12.5a4.5 4.5 0 1 1-4-4.47"/>
+                            <path d="M14 3c.8 3.2 2.8 5 6 5"/>
+                        </svg>
+
+                        TikTok
+                    </a>
+
+                    <a class="social"
+                       href="https://wa.me/491787242067"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="WhatsApp +49 178 7242067">
+
+                        <svg viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="1.6"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             aria-hidden="true">
+                            <path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.7A8.5 8.5 0 1 1 20.5 11.5Z"/>
+                            <path d="M8.5 7.5c-.8 1-.3 3.1 1.7 5.1s4 2.5 5.1 1.7l.7-1.2-2-1-1 .7c-1.2-.6-2.2-1.6-2.8-2.8l.7-1-1-2Z"/>
+                        </svg>
+
+                        WhatsApp
+                    </a>
+                </div>
             </div>
         </div>
 
         <div class="footer-bottom">
             <p>© <span id="year"></span> LYS Auto Care.</p>
-            <p class="legal-note" data-i18n="legalPending"></p>
         </div>
     </div>
 </footer>
 
 <div class="mobile-buy">
     <span data-i18n="mobilePrice"></span>
-    <button class="btn btn-small" type="button"
-            data-order="signature" data-i18n="buy"></button>
+    <button class="btn btn-small"
+            type="button"
+            data-order="signature"
+            data-i18n="buy"></button>
 </div>
 
 <div class="toast" id="toast" role="status" hidden></div>
 
-<!-- Фотографии товара -->
+<!-- Видео товара -->
+<dialog class="product-dialog"
+        id="product-dialog"
+        aria-labelledby="product-title"
+        aria-describedby="product-description">
 
-<dialog class="product-gallery"
-        id="product-gallery"
-        aria-labelledby="gallery-title"
-        aria-describedby="gallery-description">
-
-    <button class="modal-close" type="button"
-            data-close-dialog="product-gallery"
+    <button class="modal-close"
+            type="button"
+            data-close="product-dialog"
             data-close-label>×</button>
 
-    <h2 class="modal-title" id="gallery-title"></h2>
-    <p class="modal-notice" id="gallery-description"></p>
-    <div class="gallery-grid" id="gallery-grid"></div>
+    <h2 class="modal-title" id="product-title"></h2>
+    <p class="modal-notice" id="product-description"></p>
+    <div id="product-media"></div>
 </dialog>
 
-<!-- Заявка -->
-
+<!-- Форма заявки -->
 <dialog id="checkout"
         aria-labelledby="checkout-title"
         aria-describedby="checkout-notice">
 
-    <button class="modal-close" type="button"
-            data-close-dialog="checkout"
+    <button class="modal-close"
+            type="button"
+            data-close="checkout"
             data-close-label>×</button>
 
-    <h2 class="modal-title" id="checkout-title"
+    <h2 class="modal-title"
+        id="checkout-title"
         data-i18n="checkoutTitle"></h2>
 
-    <p class="modal-notice" id="checkout-notice"
+    <p class="modal-notice"
+       id="checkout-notice"
        data-i18n="checkoutNotice"></p>
 
-    <div class="progress" id="progress"
+    <div class="progress"
+         id="progress"
          role="progressbar"
          aria-label="Progress"
          aria-valuemin="1"
@@ -1845,12 +1626,13 @@ textarea.input {
         <div id="progress-fill"></div>
     </div>
 
-    <form id="order-form">
+    <form id="order-form" novalidate>
         <div class="form-step" data-step="1">
             <p class="step-title" data-i18n="step1"></p>
 
             <div class="field">
                 <label for="edition" data-i18n="edition"></label>
+
                 <select class="input" id="edition" name="Edition">
                     <option value="signature">Signature Box — 89 €</option>
                     <option value="gift">Gift Edition — 95 €</option>
@@ -1861,24 +1643,37 @@ textarea.input {
             <div class="form-row">
                 <div class="field">
                     <label for="quantity" data-i18n="quantity"></label>
-                    <input class="input" id="quantity" name="Quantity"
-                           type="number" min="1" max="10" step="1"
-                           value="1" required>
+
+                    <input class="input"
+                           id="quantity"
+                           name="Quantity"
+                           type="number"
+                           min="1"
+                           max="10"
+                           step="1"
+                           value="1"
+                           required>
                 </div>
 
                 <div class="field">
                     <label for="promo-code" data-i18n="promoLabel"></label>
-                    <input class="input" id="promo-code"
-                           maxlength="30" autocomplete="off"
-                           placeholder="LYS10">
+
+                    <input class="input"
+                           id="promo-code"
+                           maxlength="30"
+                           autocomplete="off">
                 </div>
             </div>
 
             <div class="field" id="gift-field" hidden>
                 <label for="gift-message" data-i18n="giftMessage"></label>
-                <textarea class="input" id="gift-message"
-                          name="GiftMessage" rows="3"
-                          maxlength="250" disabled></textarea>
+
+                <textarea class="input"
+                          id="gift-message"
+                          name="GiftMessage"
+                          rows="3"
+                          maxlength="250"
+                          disabled></textarea>
             </div>
 
             <div class="summary">
@@ -1886,12 +1681,15 @@ textarea.input {
                     <span data-i18n="total"></span>
                     <small data-i18n="shippingIncluded"></small>
                 </div>
+
                 <strong id="total">89,00 €</strong>
             </div>
 
             <div class="step-buttons">
-                <button class="btn" type="button"
-                        data-next="2" data-i18n="nextShipping"></button>
+                <button class="btn"
+                        type="button"
+                        data-next="2"
+                        data-i18n="nextShipping"></button>
             </div>
         </div>
 
@@ -1900,6 +1698,7 @@ textarea.input {
 
             <div class="field">
                 <label for="shipping" data-i18n="shipping"></label>
+
                 <select class="input" id="shipping" name="Shipping">
                     <option value="dhl" data-i18n="shippingDhl"></option>
                     <option value="pickup" data-i18n="shippingPickup"></option>
@@ -1908,6 +1707,7 @@ textarea.input {
 
             <div class="field">
                 <label for="payment" data-i18n="payment"></label>
+
                 <select class="input" id="payment" name="Payment">
                     <option value="paypal" data-i18n="paymentPaypal"></option>
                     <option value="bank" data-i18n="paymentBank"></option>
@@ -1915,10 +1715,15 @@ textarea.input {
             </div>
 
             <div class="step-buttons">
-                <button class="btn btn-secondary" type="button"
-                        data-prev="1" data-i18n="back"></button>
-                <button class="btn" type="button"
-                        data-next="3" data-i18n="nextAddress"></button>
+                <button class="btn btn-secondary"
+                        type="button"
+                        data-prev="1"
+                        data-i18n="back"></button>
+
+                <button class="btn"
+                        type="button"
+                        data-next="3"
+                        data-i18n="nextAddress"></button>
             </div>
         </div>
 
@@ -1927,54 +1732,86 @@ textarea.input {
 
             <div class="field">
                 <label for="customer-name" data-i18n="name"></label>
-                <input class="input" id="customer-name" name="Name"
-                       autocomplete="name" required maxlength="100">
+
+                <input class="input"
+                       id="customer-name"
+                       name="Name"
+                       autocomplete="name"
+                       required
+                       maxlength="100">
             </div>
 
             <div class="form-row">
                 <div class="field">
                     <label for="customer-email">E-Mail *</label>
-                    <input class="input" id="customer-email" name="Email"
-                           type="email" autocomplete="email"
-                           required maxlength="150">
+
+                    <input class="input"
+                           id="customer-email"
+                           name="Email"
+                           type="email"
+                           autocomplete="email"
+                           required
+                           maxlength="150">
                 </div>
 
                 <div class="field">
                     <label for="customer-phone" data-i18n="phone"></label>
-                    <input class="input" id="customer-phone" name="Phone"
-                           type="tel" autocomplete="tel" maxlength="40">
+
+                    <input class="input"
+                           id="customer-phone"
+                           name="Phone"
+                           type="tel"
+                           autocomplete="tel"
+                           maxlength="40">
                 </div>
             </div>
 
             <div id="address-fields">
                 <div class="field">
                     <label for="street" data-i18n="street"></label>
-                    <input class="input" id="street" name="Street"
+
+                    <input class="input"
+                           id="street"
+                           name="Street"
                            autocomplete="address-line1"
-                           required maxlength="150">
+                           required
+                           maxlength="150">
                 </div>
 
                 <div class="form-row">
                     <div class="field">
                         <label for="postal" data-i18n="postal"></label>
-                        <input class="input" id="postal" name="Postal"
+
+                        <input class="input"
+                               id="postal"
+                               name="Postal"
                                autocomplete="postal-code"
-                               inputmode="numeric" pattern="[0-9]{5}"
-                               maxlength="5" required>
+                               inputmode="numeric"
+                               pattern="[0-9]{5}"
+                               maxlength="5"
+                               required>
                     </div>
 
                     <div class="field">
                         <label for="city" data-i18n="city"></label>
-                        <input class="input" id="city" name="City"
+
+                        <input class="input"
+                               id="city"
+                               name="City"
                                autocomplete="address-level2"
-                               required maxlength="100">
+                               required
+                               maxlength="100">
                     </div>
                 </div>
 
                 <div class="field">
                     <label for="extra" data-i18n="extra"></label>
-                    <input class="input" id="extra" name="Extra"
-                           autocomplete="address-line2" maxlength="150">
+
+                    <input class="input"
+                           id="extra"
+                           name="Extra"
+                           autocomplete="address-line2"
+                           maxlength="150">
                 </div>
             </div>
 
@@ -1984,24 +1821,36 @@ textarea.input {
             </label>
 
             <div class="step-buttons">
-                <button class="btn btn-secondary" type="button"
-                        data-prev="2" data-i18n="back"></button>
-                <button class="btn" type="submit"
+                <button class="btn btn-secondary"
+                        type="button"
+                        data-prev="2"
+                        data-i18n="back"></button>
+
+                <button class="btn"
+                        type="submit"
                         data-i18n="prepare"></button>
             </div>
         </div>
 
-        <div class="email-result" id="email-result" hidden role="status">
+        <div class="email-result"
+             id="email-result"
+             hidden
+             role="status">
+
             <p data-i18n="emailReady"></p>
 
-            <a class="btn" id="email-link"
+            <a class="btn"
+               id="email-link"
                href="mailto:autocare.lys@gmail.com"
                data-i18n="openEmail"></a>
 
             <details>
                 <summary data-i18n="copyMessage"></summary>
-                <textarea class="input" id="email-body"
-                          rows="12" readonly
+
+                <textarea class="input"
+                          id="email-body"
+                          rows="12"
+                          readonly
                           aria-label="Order inquiry"></textarea>
             </details>
         </div>
@@ -2012,50 +1861,38 @@ textarea.input {
 "use strict";
 
 /*
-ФАЙЛЫ РЯДОМ С HTML:
+ФАЙЛЫ РЯДОМ С index.html:
+
 logo.png       — логотип
-products.png   — фото бокса
-video.mp4      — видео распаковки
+products.png   — фотография бокса
+unboxing.mp4   — видео распаковки
 
-ФОТО ТОВАРОВ:
-Создай папку images рядом с HTML и добавь фотографии
-с именами из productPhotos ниже.
-Вместо путей можно указать полные URL фотографий.
+ВИДЕО ТОВАРОВ В ПАПКЕ videos:
 
-Приложенное фото бутылки относится к очистителю дисков.
-Переименуй его в felgen-front.png и положи в images.
+innenraum.mp4
+glas.mp4
+felgen.mp4
+microfibres.mp4
+brushes-case.mp4
+guide.mp4
+surprise.mp4
+
+Вместо локальных путей можно указать прямые ссылки на MP4.
 */
 
-const productPhotos = [
-    {
-        front: "./images/innenraum-front.png",
-        back: "./images/innenraum-back.png"
-    },
-    {
-        front: "./images/glas-front.png",
-        back: "./images/glas-back.png"
-    },
-    {
-        front: "./images/felgen-front.png",
-        back: "./images/felgen-back.png"
-    },
-    {
-        front: "./images/microfibres-front.png",
-        back: "./images/microfibres-back.png"
-    },
-    {
-        front: "./images/brushes-case-front.png",
-        back: "./images/brushes-case-back.png"
-    },
-    {
-        front: "./images/guide-front.png",
-        back: "./images/guide-back.png"
-    },
-    {
-        front: "./images/surprise-front.png",
-        back: "./images/surprise-back.png"
-    }
-];
+const mediaFiles = {
+    unboxing: "./unboxing.mp4",
+
+    products: [
+        "./videos/innenraum.mp4",
+        "./videos/glas.mp4",
+        "./videos/felgen.mp4",
+        "./videos/microfibres.mp4",
+        "./videos/brushes-case.mp4",
+        "./videos/guide.mp4",
+        "./videos/surprise.mp4"
+    ]
+};
 
 const translations = {
     de: {
@@ -2074,8 +1911,10 @@ const translations = {
         trust1: "✦ 3 Premium-Pflegeprodukte",
         trust2: "✦ Bereit zum Verschenken",
         trust3: "✦ Versand in Deutschland inklusive",
-        videoTitle: "Die LYS Box im Detail",
+        videoTitle: "Die LYS Box auspacken",
         videoMissing: "Das Unboxing-Video ist noch nicht verfügbar.",
+        videoPlay: "Video abspielen",
+        videoPause: "Video pausieren",
         insideEyebrow: "KOMPLETTES PFLEGESYSTEM",
         insideTitle: "Was ist in der LYS Box?",
         contents: [
@@ -2087,10 +1926,8 @@ const translations = {
             ["Soft-Touch Anleitung", "Eine elegante Anleitung für deine persönliche Pflegeroutine."],
             ["Überraschung von LYS", "Eine besondere Überraschung von LYS in deiner Box."]
         ],
-        viewPhotos: "Fotos ansehen ↗",
-        front: "Vorderseite",
-        backPhoto: "Rückseite",
-        photoMissing: "Foto noch nicht verfügbar.",
+        viewVideo: "Video ansehen ↗",
+        productMissing: "Das Produktvideo ist noch nicht verfügbar.",
         close: "Schließen",
         benefitEyebrow: "DAS GESCHENK, DAS GENUTZT WIRD",
         benefitTitle: "Mehr als nur eine schöne Box.",
@@ -2116,11 +1953,10 @@ const translations = {
             ["Kann ich eine persönliche Nachricht ergänzen?", "Ja. Wähle die Gift Edition und trage deine Nachricht mit bis zu 250 Zeichen ein."],
             ["Wie funktioniert die Bestellung?", "Du bereitest eine unverbindliche Anfrage vor und sendest sie über dein E-Mail-Programm. Wir bestätigen Verfügbarkeit und Zahlungsinformationen anschließend per E-Mail."],
             ["Was kostet der Versand?", "Der Versand innerhalb Deutschlands ist in den angezeigten Preisen enthalten."],
-            ["Wie nutze ich LYS10?", "Trage LYS10 im Anfrageformular ein. Die angezeigte Summe reduziert sich um 10 %. Der endgültige Preis wird mit der Bestätigung geprüft."]
+            ["Wie nutze ich meinen Gutscheincode?", "Trage deinen Gutscheincode im Anfrageformular ein. Ein gültiger Code wird bei der angezeigten Summe berücksichtigt. Der endgültige Preis wird mit der Bestätigung geprüft."]
         ],
         footerDescription: "Exklusive Autopflege-Geschenkboxen. Mit Liebe zum Detail in Berlin zusammengestellt.",
         location: "Berlin · Versand innerhalb Deutschlands",
-        legalPending: "Unternehmensangaben und vollständige Rechtstexte müssen noch ergänzt werden.",
         mobilePrice: "ab 89 € · inkl. Versand",
         checkoutTitle: "Deine LYS Anfrage",
         checkoutNotice: "Unverbindliche Anfrage ohne Online-Zahlung. Das Formular bereitet eine E-Mail vor, die du anschließend selbst versendest.",
@@ -2171,8 +2007,10 @@ const translations = {
         trust1: "✦ 3 premium care products",
         trust2: "✦ Ready to gift",
         trust3: "✦ Shipping within Germany included",
-        videoTitle: "Discover the LYS Box",
+        videoTitle: "Unbox the LYS experience",
         videoMissing: "The unboxing video is not available yet.",
+        videoPlay: "Play video",
+        videoPause: "Pause video",
         insideEyebrow: "THE COMPLETE CARE ROUTINE",
         insideTitle: "What's inside your LYS Box?",
         contents: [
@@ -2184,10 +2022,8 @@ const translations = {
             ["Soft-touch guide", "An elegant guide to your personal car care routine."],
             ["A surprise from LYS", "A special surprise from LYS inside your box."]
         ],
-        viewPhotos: "View photos ↗",
-        front: "Front",
-        backPhoto: "Back",
-        photoMissing: "Photo not available yet.",
+        viewVideo: "Watch video ↗",
+        productMissing: "The product video is not available yet.",
         close: "Close",
         benefitEyebrow: "A GIFT THEY WILL USE",
         benefitTitle: "More than a beautiful box.",
@@ -2213,11 +2049,10 @@ const translations = {
             ["Can I add a personal message?", "Yes. Choose the Gift Edition and enter a message of up to 250 characters."],
             ["How do I order?", "Prepare a non-binding inquiry and send it through your email app. We will confirm availability and payment details by email."],
             ["How much is shipping?", "Shipping within Germany is included in the displayed prices."],
-            ["How do I use LYS10?", "Enter LYS10 in the inquiry form for a displayed 10% discount. The final price is checked with your confirmation."]
+            ["How do I use a discount code?", "Enter your discount code in the inquiry form. A valid code is applied to the displayed amount. The final price is checked with your confirmation."]
         ],
         footerDescription: "Exclusive car care gift boxes. Carefully assembled with attention to detail in Berlin.",
         location: "Berlin · Shipping within Germany",
-        legalPending: "Company information and full legal notices still need to be added.",
         mobilePrice: "from €89 · shipping included",
         checkoutTitle: "Your LYS inquiry",
         checkoutNotice: "A non-binding inquiry with no online payment. This form prepares an email that you send yourself.",
@@ -2268,8 +2103,10 @@ const translations = {
         trust1: "✦ 3 премиум-состава",
         trust2: "✦ Готово к вручению",
         trust3: "✦ Доставка по Германии включена",
-        videoTitle: "Рассмотрите бокс LYS",
-        videoMissing: "Видео распаковки пока недоступно.",
+        videoTitle: "Распаковка бокса LYS",
+        videoMissing: "Видео распаковки пока не добавлено.",
+        videoPlay: "Включить видео",
+        videoPause: "Приостановить видео",
         insideEyebrow: "ПОЛНЫЙ УХОД",
         insideTitle: "Что внутри бокса LYS?",
         contents: [
@@ -2281,10 +2118,8 @@ const translations = {
             ["Инструкция Soft-Touch", "Элегантная карточка с инструкцией для вашей процедуры ухода."],
             ["Сюрприз от LYS", "Особенный сюрприз от LYS внутри вашего бокса."]
         ],
-        viewPhotos: "Смотреть фото ↗",
-        front: "Спереди",
-        backPhoto: "Сзади",
-        photoMissing: "Фото пока не добавлено.",
+        viewVideo: "Смотреть видео ↗",
+        productMissing: "Видео товара пока не добавлено.",
         close: "Закрыть",
         benefitEyebrow: "ПОДАРОК, КОТОРЫМ ПОЛЬЗУЮТСЯ",
         benefitTitle: "Больше, чем красивая коробка.",
@@ -2310,11 +2145,10 @@ const translations = {
             ["Можно добавить пожелание?", "Да. Выберите Gift Edition и напишите текст длиной до 250 символов."],
             ["Как оформить заказ?", "Подготовьте предварительную заявку и отправьте её из своей почты. Мы ответим с подтверждением наличия и реквизитами для оплаты."],
             ["Сколько стоит доставка?", "Доставка по Германии включена в указанные цены."],
-            ["Как применить LYS10?", "Введите LYS10 в форме заявки. Расчётная сумма уменьшится на 10%. Итоговую стоимость проверим при подтверждении."]
+            ["Как применить промокод?", "Введите свой промокод в форме заявки. Действующий код учитывается в расчётной сумме. Итоговую стоимость проверим при подтверждении."]
         ],
         footerDescription: "Эксклюзивные подарочные боксы для ухода за авто. Собраны с вниманием к деталям в Берлине.",
         location: "Берлин · Доставка по Германии",
-        legalPending: "Данные компании и полные юридические тексты ещё необходимо добавить.",
         mobilePrice: "от 89 € · доставка включена",
         checkoutTitle: "Ваша заявка LYS",
         checkoutNotice: "Предварительная заявка без онлайн-оплаты. Форма подготовит письмо, которое вы отправите самостоятельно.",
@@ -2365,8 +2199,10 @@ const translations = {
         trust1: "✦ 3 преміальні засоби",
         trust2: "✦ Готово до вручення",
         trust3: "✦ Доставку Німеччиною включено",
-        videoTitle: "Розгляньте бокс LYS",
-        videoMissing: "Відео розпакування поки недоступне.",
+        videoTitle: "Розпакування боксу LYS",
+        videoMissing: "Відео розпакування поки не додано.",
+        videoPlay: "Увімкнути відео",
+        videoPause: "Призупинити відео",
         insideEyebrow: "ПОВНИЙ ДОГЛЯД",
         insideTitle: "Що всередині боксу LYS?",
         contents: [
@@ -2378,10 +2214,8 @@ const translations = {
             ["Інструкція Soft-Touch", "Елегантна картка з інструкцією для вашого догляду за авто."],
             ["Сюрприз від LYS", "Особливий сюрприз від LYS усередині вашого боксу."]
         ],
-        viewPhotos: "Переглянути фото ↗",
-        front: "Спереду",
-        backPhoto: "Ззаду",
-        photoMissing: "Фото поки не додано.",
+        viewVideo: "Переглянути відео ↗",
+        productMissing: "Відео товару поки не додано.",
         close: "Закрити",
         benefitEyebrow: "ПОДАРУНОК, ЯКИМ КОРИСТУЮТЬСЯ",
         benefitTitle: "Більше, ніж красива коробка.",
@@ -2407,11 +2241,10 @@ const translations = {
             ["Можна додати побажання?", "Так. Оберіть Gift Edition та напишіть текст до 250 символів."],
             ["Як оформити замовлення?", "Підготуйте попередню заявку та надішліть її зі своєї пошти. Ми відповімо з підтвердженням наявності та реквізитами для оплати."],
             ["Скільки коштує доставка?", "Доставку Німеччиною включено у вказані ціни."],
-            ["Як застосувати LYS10?", "Введіть LYS10 у формі заявки. Розрахункова сума зменшиться на 10%. Остаточну вартість перевіримо під час підтвердження."]
+            ["Як застосувати промокод?", "Введіть свій промокод у формі заявки. Чинний код враховується в розрахунковій сумі. Остаточну вартість перевіримо під час підтвердження."]
         ],
         footerDescription: "Ексклюзивні подарункові бокси для догляду за авто. Зібрані з увагою до деталей у Берліні.",
         location: "Берлін · Доставка Німеччиною",
-        legalPending: "Дані компанії та повні юридичні тексти ще потрібно додати.",
         mobilePrice: "від 89 € · доставку включено",
         checkoutTitle: "Ваша заявка LYS",
         checkoutNotice: "Попередня заявка без онлайн-оплати. Форма підготує лист, який ви надішлете самостійно.",
@@ -2457,26 +2290,35 @@ const $ = selector => document.querySelector(selector);
 
 const form = $("#order-form");
 const checkout = $("#checkout");
-const gallery = $("#product-gallery");
-const video = $("#unboxing-video");
-const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+const productDialog = $("#product-dialog");
+const unboxingVideo = $("#unboxing-video");
+
+const motionPreference = matchMedia(
+    "(prefers-reduced-motion: reduce)"
+);
 
 let language = "de";
 let currentStep = 1;
 let prepared = false;
 let toastTimer;
-let galleryIndex = null;
+let currentProduct = null;
+let unboxingVisible = false;
+let unboxingUserPaused = false;
 
-const dialogState = new WeakMap();
+const dialogStates = new WeakMap();
 
-function element(tag, text, className) {
+/* Вспомогательные функции */
+
+function makeElement(tag, text, className) {
     const node = document.createElement(tag);
+
     if (text !== undefined) node.textContent = text;
     if (className) node.className = className;
+
     return node;
 }
 
-function savedLanguage() {
+function readLanguage() {
     try {
         return localStorage.getItem("lys-language");
     } catch {
@@ -2484,11 +2326,11 @@ function savedLanguage() {
     }
 }
 
-function rememberLanguage(value) {
+function saveLanguage(value) {
     try {
         localStorage.setItem("lys-language", value);
     } catch {
-        /* Сайт работает без localStorage. */
+        /* Работа сайта не зависит от localStorage. */
     }
 }
 
@@ -2506,13 +2348,25 @@ function formatMoney(value) {
     }).format(value);
 }
 
-/* Появление блоков при прокрутке */
+function showToast(message) {
+    clearTimeout(toastTimer);
+
+    $("#toast").textContent = message;
+    $("#toast").hidden = false;
+
+    toastTimer = setTimeout(() => {
+        $("#toast").hidden = true;
+    }, 3500);
+}
+
+/* Плавное появление */
 
 const revealObserver =
-    !reducedMotion.matches && "IntersectionObserver" in window
+    !motionPreference.matches && "IntersectionObserver" in window
         ? new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
+
                 entry.target.classList.add("visible");
                 revealObserver.unobserve(entry.target);
             });
@@ -2521,12 +2375,16 @@ const revealObserver =
 
 function observeReveal(node) {
     if (!revealObserver) return;
+
     node.classList.add("reveal");
     revealObserver.observe(node);
 }
 
+/* Карточки, преимущества, FAQ */
+
 function renderContent() {
     const t = translations[language];
+
     const contents = $("#contents-grid");
     const benefits = $("#benefits-grid");
     const faq = $("#faq-list");
@@ -2540,22 +2398,23 @@ function renderContent() {
     faq.replaceChildren();
 
     t.contents.forEach(([title, description], index) => {
-        const card = element("button", undefined, "content-card");
+        const card = makeElement("button", undefined, "content-card");
+
         card.type = "button";
         card.dataset.product = String(index);
         card.setAttribute("aria-haspopup", "dialog");
-        card.setAttribute("aria-controls", "product-gallery");
+        card.setAttribute("aria-controls", "product-dialog");
 
-        const body = element("div");
+        const body = makeElement("div");
 
         body.append(
-            element("h3", title),
-            element("p", description),
-            element("span", t.viewPhotos, "photo-link")
+            makeElement("h3", title),
+            makeElement("p", description),
+            makeElement("span", t.viewVideo, "video-link")
         );
 
         card.append(
-            element(
+            makeElement(
                 "span",
                 String(index + 1).padStart(2, "0"),
                 "card-number"
@@ -2568,31 +2427,34 @@ function renderContent() {
     });
 
     t.benefits.forEach(([title, description], index) => {
-        const card = element("article", undefined, "benefit");
+        const card = makeElement("article", undefined, "benefit");
 
         card.append(
-            element("span", `0${index + 1} /`),
-            element("h3", title),
-            element("p", description)
+            makeElement("span", `0${index + 1} /`),
+            makeElement("h3", title),
+            makeElement("p", description)
         );
 
         benefits.append(card);
     });
 
     t.faq.forEach(([question, answer]) => {
-        const details = element("details");
+        const details = makeElement("details");
 
         details.append(
-            element("summary", question),
-            element("p", answer)
+            makeElement("summary", question),
+            makeElement("p", answer)
         );
 
         faq.append(details);
     });
 }
 
+/* Языки */
+
 function setLanguage(value) {
     language = translations[value] ? value : "de";
+
     const t = translations[language];
 
     document.documentElement.lang =
@@ -2600,7 +2462,10 @@ function setLanguage(value) {
 
     document.querySelectorAll("[data-i18n]").forEach(node => {
         const text = t[node.dataset.i18n];
-        if (typeof text === "string") node.textContent = text;
+
+        if (typeof text === "string") {
+            node.textContent = text;
+        }
     });
 
     document.querySelectorAll("[data-close-label]").forEach(node => {
@@ -2609,6 +2474,7 @@ function setLanguage(value) {
 
     document.querySelectorAll(".lang").forEach(button => {
         const active = button.dataset.lang === language;
+
         button.classList.toggle("active", active);
         button.setAttribute("aria-pressed", String(active));
     });
@@ -2616,38 +2482,50 @@ function setLanguage(value) {
     renderContent();
     calculateTotal();
 
-    if (gallery.open && galleryIndex !== null) {
-        renderGallery(galleryIndex);
+    updateVideoLabel(unboxingVideo);
+
+    if (currentProduct !== null && productDialog.open) {
+        updateProductText(currentProduct);
+
+        const missing = $("#product-media .product-missing");
+        if (missing) missing.textContent = t.productMissing;
+
+        const player = $("#product-media video");
+        if (player) updateVideoLabel(player);
     }
 
     if (prepared) prepareEmail();
 
-    rememberLanguage(language);
+    saveLanguage(language);
 }
 
-/* Открытие и закрытие диалогов */
+/* Диалоги */
 
 function openDialog(dialog) {
     if (dialog.open) return;
 
-    dialogState.set(dialog, {
+    dialogStates.set(dialog, {
         focus: document.activeElement,
         overflow: document.body.style.overflow
     });
 
     dialog.showModal();
     document.body.style.overflow = "hidden";
+
+    syncUnboxing();
 }
 
 document.querySelectorAll("dialog").forEach(dialog => {
     dialog.addEventListener("close", () => {
-        const state = dialogState.get(dialog);
+        const state = dialogStates.get(dialog);
 
         document.body.style.overflow = state?.overflow || "";
 
         if (state?.focus?.isConnected) {
             state.focus.focus();
         }
+
+        syncUnboxing();
     });
 
     dialog.addEventListener("click", event => {
@@ -2665,66 +2543,198 @@ document.querySelectorAll("dialog").forEach(dialog => {
     });
 });
 
-/* Фотографии спереди и сзади */
+/* Видео без стандартных элементов управления */
 
-function renderGallery(index) {
+function updateVideoLabel(video) {
     const t = translations[language];
-    const product = t.contents[index];
-    const photos = productPhotos[index];
 
-    if (!product || !photos) return;
+    video.setAttribute(
+        "aria-label",
+        video.paused ? t.videoPlay : t.videoPause
+    );
+}
 
-    const [title, description] = product;
+function configureCleanVideo(video) {
+    video.controls = false;
+    video.removeAttribute("controls");
 
-    $("#gallery-title").textContent =
-        `${String(index + 1).padStart(2, "0")} · ${title}`;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.loop = true;
+    video.playsInline = true;
+    video.disablePictureInPicture = true;
+    video.disableRemotePlayback = true;
 
-    $("#gallery-description").textContent = description;
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+    video.setAttribute("disablepictureinpicture", "");
+    video.setAttribute("disableremoteplayback", "");
+    video.setAttribute("data-clean-video", "");
+    video.setAttribute("role", "button");
 
-    const grid = $("#gallery-grid");
-    grid.replaceChildren();
+    video.tabIndex = 0;
 
-    for (const side of ["front", "back"]) {
-        const label = side === "front" ? t.front : t.backPhoto;
-        const figure = element("figure");
-        const frame = element("div", undefined, "photo-frame");
-        const image = element("img");
+    function toggleVideo() {
+        if (video.paused) {
+            if (video === unboxingVideo) {
+                unboxingUserPaused = false;
+            }
 
-        image.alt = `${title} — ${label}`;
-        image.decoding = "async";
+            video.play().catch(() => {
+                updateVideoLabel(video);
+            });
+        } else {
+            if (video === unboxingVideo) {
+                unboxingUserPaused = true;
+            }
 
-        image.addEventListener("error", () => {
-            frame.replaceChildren(
-                element("p", t.photoMissing, "photo-missing")
-            );
-        }, { once: true });
+            video.pause();
+        }
+    }
 
-        image.src = photos[side];
+    video.addEventListener("click", toggleVideo);
 
-        frame.append(image);
-        figure.append(
-            element("figcaption", label),
-            frame
-        );
+    video.addEventListener("keydown", event => {
+        if (event.key === " " || event.key === "Enter") {
+            event.preventDefault();
+            toggleVideo();
+        }
+    });
 
-        grid.append(figure);
+    video.addEventListener("play", () => updateVideoLabel(video));
+    video.addEventListener("pause", () => updateVideoLabel(video));
+
+    updateVideoLabel(video);
+}
+
+/* Распаковка */
+
+function showUnboxingFallback() {
+    unboxingVideo.pause();
+    unboxingVideo.hidden = true;
+    $("#video-fallback").hidden = false;
+}
+
+function syncUnboxing() {
+    const dialogOpen = Boolean(document.querySelector("dialog[open]"));
+
+    const canAutoplay =
+        unboxingVisible &&
+        !document.hidden &&
+        !unboxingVideo.hidden &&
+        !motionPreference.matches &&
+        !unboxingUserPaused &&
+        !dialogOpen;
+
+    if (canAutoplay) {
+        unboxingVideo.play().catch(() => {
+            /* Можно запустить нажатием на видео. */
+        });
+    } else {
+        unboxingVideo.pause();
     }
 }
 
-function openGallery(index) {
-    if (!productPhotos[index]) return;
+configureCleanVideo(unboxingVideo);
 
-    galleryIndex = index;
-    renderGallery(index);
-    openDialog(gallery);
+unboxingVideo.addEventListener("error", showUnboxingFallback);
+unboxingVideo.src = mediaFiles.unboxing;
 
-    gallery.querySelector(".modal-close").focus();
+if ("IntersectionObserver" in window) {
+    const videoObserver = new IntersectionObserver(entries => {
+        unboxingVisible = entries[0].isIntersecting;
+        syncUnboxing();
+    }, { threshold: .25 });
+
+    videoObserver.observe(unboxingVideo);
 }
 
-/* Форма заявки */
+/* Видео товаров */
+
+function updateProductText(index) {
+    const [title, description] = translations[language].contents[index];
+
+    $("#product-title").textContent =
+        `${String(index + 1).padStart(2, "0")} · ${title}`;
+
+    $("#product-description").textContent = description;
+}
+
+function openProduct(index) {
+    if (!mediaFiles.products[index]) return;
+
+    currentProduct = index;
+
+    const media = $("#product-media");
+
+    media.querySelector("video")?.pause();
+    media.replaceChildren();
+
+    updateProductText(index);
+
+    const video = makeElement("video", undefined, "product-video");
+
+    video.preload = "metadata";
+
+    configureCleanVideo(video);
+
+    video.addEventListener("error", () => {
+        video.pause();
+
+        media.replaceChildren(
+            makeElement(
+                "p",
+                translations[language].productMissing,
+                "product-missing"
+            )
+        );
+    }, { once: true });
+
+    media.append(video);
+
+    openDialog(productDialog);
+    productDialog.querySelector(".modal-close").focus();
+
+    video.src = mediaFiles.products[index];
+
+    if (!motionPreference.matches) {
+        video.play().catch(() => {
+            /* Можно запустить нажатием на видео. */
+        });
+    }
+}
+
+productDialog.addEventListener("close", () => {
+    $("#product-media video")?.pause();
+});
+
+document.addEventListener("visibilitychange", () => {
+    syncUnboxing();
+
+    if (document.hidden) {
+        $("#product-media video")?.pause();
+    }
+});
+
+motionPreference.addEventListener("change", () => {
+    syncUnboxing();
+
+    if (motionPreference.matches) {
+        $("#product-media video")?.pause();
+
+        document.querySelectorAll(".reveal").forEach(node => {
+            revealObserver?.unobserve(node);
+            node.classList.add("visible");
+        });
+    }
+});
+
+/* Расчёт суммы */
 
 function calculateTotal() {
-    const selected = editions[$("#edition").value] || editions.signature;
+    const selected =
+        editions[$("#edition").value] || editions.signature;
+
     const parsed = Number.parseInt($("#quantity").value, 10);
 
     const quantity = Number.isFinite(parsed)
@@ -2734,7 +2744,10 @@ function calculateTotal() {
     const code = $("#promo-code").value.trim().toUpperCase();
 
     const total = Math.round(
-        selected.price * quantity * (code === "LYS10" ? .9 : 1) * 100
+        selected.price *
+        quantity *
+        (code === "LYS10" ? .9 : 1) *
+        100
     ) / 100;
 
     const gift = $("#edition").value === "gift";
@@ -2763,16 +2776,20 @@ function updateShipping() {
     invalidatePrepared();
 }
 
+/* Шаги формы */
+
 function validateStep(step) {
     const panel = document.querySelector(`[data-step="${step}"]`);
 
-    const invalid = [...panel.querySelectorAll("input, select, textarea")]
-        .find(input => !input.disabled && !input.checkValidity());
+    const invalid = [
+        ...panel.querySelectorAll("input, select, textarea")
+    ].find(input => !input.disabled && !input.checkValidity());
 
     if (!invalid) return true;
 
     invalid.reportValidity();
     invalid.focus();
+
     return false;
 }
 
@@ -2781,7 +2798,9 @@ function setStep(step, validate = true) {
         validate &&
         step > currentStep &&
         !validateStep(currentStep)
-    ) return;
+    ) {
+        return;
+    }
 
     currentStep = step;
 
@@ -2806,6 +2825,8 @@ function openCheckout(key = "signature") {
     openDialog(checkout);
     setStep(1, false);
 }
+
+/* Подготовка письма */
 
 function prepareEmail() {
     const { selected, quantity, code, total } = calculateTotal();
@@ -2864,62 +2885,66 @@ function prepareEmail() {
 
     $("#email-link").href =
         "mailto:autocare.lys@gmail.com" +
-        "?subject=" + encodeURIComponent("LYS Auto Care – Bestellanfrage") +
-        "&body=" + encodeURIComponent(body);
+        "?subject=" +
+        encodeURIComponent("LYS Auto Care – Bestellanfrage") +
+        "&body=" +
+        encodeURIComponent(body);
 
     $("#email-result").hidden = false;
     prepared = true;
 }
 
-function showToast(message) {
-    clearTimeout(toastTimer);
-
-    $("#toast").textContent = message;
-    $("#toast").hidden = false;
-
-    toastTimer = setTimeout(() => {
-        $("#toast").hidden = true;
-    }, 3500);
-}
-
-/* Клики */
+/* Общие клики */
 
 document.addEventListener("click", event => {
     const product = event.target.closest("[data-product]");
+
     if (product) {
-        openGallery(Number(product.dataset.product));
+        openProduct(Number(product.dataset.product));
         return;
     }
 
     const order = event.target.closest("[data-order]");
+
     if (order) {
         openCheckout(order.dataset.order);
         return;
     }
 
     const lang = event.target.closest("[data-lang]");
+
     if (lang) {
         setLanguage(lang.dataset.lang);
         return;
     }
 
-    const close = event.target.closest("[data-close-dialog]");
+    const close = event.target.closest("[data-close]");
+
     if (close) {
-        document.getElementById(close.dataset.closeDialog)?.close();
+        document.getElementById(close.dataset.close)?.close();
         return;
     }
 
     const next = event.target.closest("[data-next]");
-    if (next) setStep(Number(next.dataset.next));
+
+    if (next) {
+        setStep(Number(next.dataset.next));
+    }
 
     const previous = event.target.closest("[data-prev]");
-    if (previous) setStep(Number(previous.dataset.prev), false);
+
+    if (previous) {
+        setStep(Number(previous.dataset.prev), false);
+    }
 });
 
-/* Подсветка карточек следует за курсором */
+/* Подсветка карточек */
 
 document.addEventListener("pointermove", event => {
-    if (reducedMotion.matches || event.pointerType === "touch") return;
+    if (
+        motionPreference.matches ||
+        event.pointerType === "touch"
+    ) return;
 
     const card = event.target.closest(
         ".content-card, .benefit, .price-card"
@@ -2929,14 +2954,22 @@ document.addEventListener("pointermove", event => {
 
     const rect = card.getBoundingClientRect();
 
-    card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
-    card.style.setProperty("--my", `${event.clientY - rect.top}px`);
+    card.style.setProperty(
+        "--mx",
+        `${event.clientX - rect.left}px`
+    );
+
+    card.style.setProperty(
+        "--my",
+        `${event.clientY - rect.top}px`
+    );
 }, { passive: true });
 
-/* Промокод */
+/* Промокод: поле остаётся без подсказки */
 
 $("#copy-code").addEventListener("click", async () => {
     $("#promo-code").value = "LYS10";
+
     calculateTotal();
     invalidatePrepared();
 
@@ -2967,17 +3000,12 @@ $("#quantity").addEventListener("change", () => {
 
 $("#shipping").addEventListener("change", updateShipping);
 
-/*
-Проверяем поля самостоятельно, чтобы показать
-нужный шаг перед сообщением об ошибке.
-*/
-form.noValidate = true;
-
 form.addEventListener("submit", event => {
     event.preventDefault();
 
     for (let step = 1; step <= 3; step++) {
         setStep(step, false);
+
         if (!validateStep(step)) return;
     }
 
@@ -2985,85 +3013,30 @@ form.addEventListener("submit", event => {
     $("#email-link").focus();
 });
 
-/* Изображения: аккуратный вид при отсутствии файлов */
+/* Резервный вид при отсутствии изображений */
 
-function imageFallback(image, callback) {
-    const handleError = () => {
+function handleImageFallback(image, callback) {
+    let handled = false;
+
+    const fallback = () => {
+        if (handled) return;
+        handled = true;
+
         image.hidden = true;
         callback?.();
     };
 
-    image.addEventListener("error", handleError, { once: true });
+    image.addEventListener("error", fallback, { once: true });
 
     if (image.complete && image.naturalWidth === 0) {
-        handleError();
+        fallback();
     }
 }
 
-imageFallback($("#logo-image"));
+handleImageFallback($("#logo-image"));
 
-imageFallback($("#hero-image"), () => {
+handleImageFallback($("#hero-image"), () => {
     $("#hero-fallback").hidden = false;
-});
-
-/* Видео */
-
-function showVideoFallback() {
-    video.pause();
-    video.hidden = true;
-    $("#video-fallback").hidden = false;
-}
-
-video.muted = true;
-video.defaultMuted = true;
-video.playsInline = true;
-video.loop = true;
-
-video.addEventListener("error", showVideoFallback);
-$("#video-source").addEventListener("error", showVideoFallback);
-
-if (video.error || video.networkState === 3) {
-    showVideoFallback();
-}
-
-let videoVisible = false;
-
-function syncVideoPlayback() {
-    const canPlay =
-        videoVisible &&
-        !document.hidden &&
-        !video.hidden &&
-        !reducedMotion.matches;
-
-    if (canPlay) {
-        video.play().catch(() => {
-            /* При блокировке автозапуска остаются элементы плеера. */
-        });
-    } else {
-        video.pause();
-    }
-}
-
-if ("IntersectionObserver" in window) {
-    const videoObserver = new IntersectionObserver(entries => {
-        videoVisible = entries[0].isIntersecting;
-        syncVideoPlayback();
-    }, { threshold: .25 });
-
-    videoObserver.observe(video);
-}
-
-document.addEventListener("visibilitychange", syncVideoPlayback);
-
-reducedMotion.addEventListener("change", () => {
-    syncVideoPlayback();
-
-    if (reducedMotion.matches) {
-        document.querySelectorAll(".reveal").forEach(node => {
-            revealObserver?.unobserve(node);
-            node.classList.add("visible");
-        });
-    }
 });
 
 /* Шапка */
@@ -3078,7 +3051,7 @@ window.addEventListener("scroll", updateHeader, { passive: true });
 
 $("#year").textContent = new Date().getFullYear();
 
-setLanguage(savedLanguage() || "de");
+setLanguage(readLanguage() || "de");
 updateShipping();
 updateHeader();
 
