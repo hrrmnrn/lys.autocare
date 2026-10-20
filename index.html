@@ -35,6 +35,285 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 130px;
 }
+    <style>
+.badge {
+    max-width: 100%;
+    line-height: 1.7;
+    text-align: center;
+    letter-spacing: 1.5px;
+}
+
+.lys-socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.contacts .lys-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 12px 17px;
+    color: var(--gold-light);
+    background: #d6a06b09;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition:
+        transform .25s,
+        background .25s,
+        border-color .25s,
+        box-shadow .25s;
+}
+
+.contacts .lys-social:hover {
+    transform: translateY(-3px);
+    background: #d6a06b18;
+    border-color: var(--gold);
+    box-shadow: 0 8px 28px #d6a06b20;
+}
+
+#unboxing .video-wrapper {
+    background: #0c0c0c;
+    box-shadow:
+        0 25px 70px #0007,
+        0 0 45px #d6a06b0b;
+}
+
+#unboxing-video {
+    object-fit: contain;
+}
+
+/* Своя небольшая кнопка вместо панели проигрывателя */
+.lys-unboxing-toggle {
+    position: absolute;
+    z-index: 2;
+    right: 16px;
+    bottom: 16px;
+    padding: 10px 16px;
+    color: var(--gold-light);
+    background: #0a0a0acc;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 700;
+    transition: background .25s, border-color .25s;
+}
+
+.lys-unboxing-toggle:hover {
+    background: #2b1e14;
+    border-color: var(--gold);
+}
+
+@media (max-width: 560px) {
+    .badge {
+        font-size: 8px;
+        letter-spacing: 1px;
+        padding: 10px 14px;
+    }
+
+    .lys-unboxing-toggle {
+        right: 10px;
+        bottom: 10px;
+        padding: 8px 12px;
+        font-size: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contacts .lys-social,
+    .lys-unboxing-toggle {
+        transition: none;
+    }
+}
+</style>
+
+<script>
+(() => {
+    "use strict";
+
+    /* Текст плашки на главном экране */
+    const badge = document.querySelector(".hero .badge");
+
+    if (badge) {
+        badge.textContent = "SMART CHOISES. MORE POSSIBILITIES";
+    }
+
+    /* Соцсети с настоящими ссылками */
+    const contacts = document.querySelector(".contacts");
+
+    if (contacts) {
+        contacts.querySelector(".lys-socials")?.remove();
+
+        const socials = document.createElement("div");
+        socials.className = "lys-socials";
+
+        const links = [
+            {
+                title: "Instagram",
+                url: "https://www.instagram.com/lys_autocare.de/"
+            },
+            {
+                title: "TikTok",
+                url: "https://www.tiktok.com/@lys_autocare.de"
+            },
+            {
+                title: "WhatsApp",
+                url: "https://wa.me/491787242067"
+            }
+        ];
+
+        links.forEach(({ title, url }) => {
+            const link = document.createElement("a");
+
+            link.className = "lys-social";
+            link.textContent = title;
+            link.href = url;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+
+            socials.append(link);
+        });
+
+        contacts.append(socials);
+    }
+
+    /* Распаковка сразу под главным экраном */
+    const unboxingSection = document.querySelector("#unboxing");
+    const hero = document.querySelector(".hero");
+
+    if (hero && unboxingSection) {
+        hero.after(unboxingSection);
+    }
+
+    const labels = {
+        de: {
+            title: "Die LYS Box auspacken",
+            missing: "Das Unboxing-Video ist noch nicht verfügbar.",
+            play: "▶ Abspielen",
+            pause: "Ⅱ Pause"
+        },
+        en: {
+            title: "Unbox the LYS experience",
+            missing: "The unboxing video is not available yet.",
+            play: "▶ Play",
+            pause: "Ⅱ Pause"
+        },
+        ru: {
+            title: "Распаковка бокса LYS",
+            missing: "Видео распаковки пока не добавлено.",
+            play: "▶ Смотреть",
+            pause: "Ⅱ Пауза"
+        },
+        ua: {
+            title: "Розпакування боксу LYS",
+            missing: "Відео розпакування поки не додано.",
+            play: "▶ Дивитися",
+            pause: "Ⅱ Пауза"
+        }
+    };
+
+    for (const [lang, text] of Object.entries(labels)) {
+        translations[lang].videoTitle = text.title;
+        translations[lang].videoMissing = text.missing;
+    }
+
+    const player = document.querySelector("#unboxing-video");
+    const source = document.querySelector("#video-source");
+    const fallback = document.querySelector("#video-fallback");
+    const wrapper = player?.closest(".video-wrapper");
+
+    if (player && source && wrapper) {
+        wrapper.querySelector(".lys-unboxing-toggle")?.remove();
+
+        const toggle = document.createElement("button");
+        toggle.type = "button";
+        toggle.className = "lys-unboxing-toggle";
+        toggle.setAttribute("aria-controls", "unboxing-video");
+        wrapper.append(toggle);
+
+        const text = () => labels[language] || labels.de;
+
+        function updateButton() {
+            toggle.textContent = player.paused
+                ? text().play
+                : text().pause;
+        }
+
+        player.controls = false;
+        player.removeAttribute("controls");
+        player.muted = true;
+        player.defaultMuted = true;
+        player.loop = true;
+        player.playsInline = true;
+        player.preload = "metadata";
+        player.disablePictureInPicture = true;
+        player.disableRemotePlayback = true;
+
+        player.setAttribute("muted", "");
+        player.setAttribute("playsinline", "");
+        player.setAttribute("disablepictureinpicture", "");
+        player.setAttribute("disableremoteplayback", "");
+
+        toggle.addEventListener("click", () => {
+            if (player.paused) {
+                player.play().catch(() => {
+                    updateButton();
+                });
+            } else {
+                player.pause();
+            }
+        });
+
+        player.addEventListener("play", updateButton);
+        player.addEventListener("pause", updateButton);
+
+        player.addEventListener("error", () => {
+            toggle.hidden = true;
+        });
+
+        source.addEventListener("error", () => {
+            toggle.hidden = true;
+        });
+
+        document.querySelectorAll("[data-lang]").forEach(button => {
+            button.addEventListener("click", () => {
+                queueMicrotask(updateButton);
+            });
+        });
+
+        /*
+         * Видео должно лежать рядом с HTML:
+         * unboxing.mp4
+         *
+         * Здесь также можно указать прямую ссылку на MP4.
+         */
+        source.src = "./unboxing.mp4";
+
+        player.hidden = false;
+        if (fallback) fallback.hidden = true;
+
+        player.load();
+        updateButton();
+    }
+
+    /* Обновляем заголовки на выбранном языке */
+    const current = labels[language] || labels.de;
+
+    document.querySelectorAll('[data-i18n="videoTitle"]').forEach(node => {
+        node.textContent = current.title;
+    });
+
+    document.querySelectorAll('[data-i18n="videoMissing"]').forEach(node => {
+        node.textContent = current.missing;
+    });
+})();
+</script>
 
 body {
     min-width: 320px;
