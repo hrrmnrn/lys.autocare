@@ -90,22 +90,33 @@
         }
         .btn-shop-header:hover { transform: translateY(-2px); background: var(--bronze-light); }
 
-        /* HERO СЕКЦИЯ */
-        .hero-container { max-width: 1100px; margin: 0 auto; padding: 80px 8% 60px; text-align: center; }
+        /* Conversion-focused redesign */
+        :root {--bronze:#D6A06B;--bronze-light:#F0C59A;--border-color:rgba(214,160,107,.24)}
+        body {background:radial-gradient(ellipse at 50% 12%,#20170f 0%,#0a0a0a 45%);}
+        .hero-container{max-width:1250px;margin: 0 auto;padding:66px 8% 30px; text-align: center;}
         .edition-badge {
             display: inline-flex; align-items: center; gap: 8px; background: rgba(197, 131, 72, 0.12); border: 1px solid var(--bronze);
             color: var(--bronze-light); padding: 7px 18px; border-radius: 30px; font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px;
         }
-        .hero-title { font-size: 54px; line-height: 1.15; font-weight: 800; color: var(--text-light); margin-bottom: 22px; letter-spacing: -0.5px; }
+        .hero-title{max-width:940px;margin:0 auto 20px;font-size:clamp(39px,5.8vw,78px);letter-spacing:-2px; font-weight: 800; line-height: 1.15;}
         .hero-title em { font-style: normal; color: var(--bronze); font-family: 'Cinzel', serif; }
-        .hero-desc { font-size: 18px; line-height: 1.65; color: var(--text-muted); max-width: 720px; margin: 0 auto 38px; }
-
+        .hero-desc{max-width:700px; margin: 0 auto 38px; font-size: 18px; line-height: 1.65; color: var(--text-muted);}
+        
         .btn-angebot-cta {
             background: linear-gradient(135deg, var(--bronze-light) 0%, var(--bronze) 100%); color: #0D0D0D; padding: 18px 42px; border-radius: 14px; font-size: 16px; font-weight: 800;
             border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 12px; transition: all 0.35s ease; box-shadow: 0 10px 30px rgba(197, 131, 72, 0.35); text-transform: uppercase;
         }
         .btn-angebot-cta:hover { transform: translateY(-4px) scale(1.03); }
 
+        .hero-trust{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin:30px auto;color:#d8c9b9;font-size:12px;font-weight:600}
+        .hero-product{height:410px;max-width:830px;margin:25px auto 0;position:relative;display:flex;align-items:center;justify-content:center;isolation:isolate;overflow:hidden;border-radius:30px;background:radial-gradient(ellipse at center,#302117 0%,#14100e 50%,#0b0b0b 82%);border:1px solid #403021;box-shadow:0 30px 90px #0009}
+        .product-ambient{position:absolute;width:580px;height:250px;border-radius:50%;background:#c5834822;filter:blur(55px);bottom:-100px}
+        .box-lid{position:absolute;width:530px;height:265px;border-radius:17px;background:linear-gradient(150deg,#252525,#080808 65%);border:2px solid #8e6848;box-shadow:0 25px 55px #000, inset 0 0 55px #ffffff08;transform:perspective(850px) rotateX(16deg) rotateZ(-7deg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;top:60px}
+        .box-lid span{font-family:Cinzel,serif;font-size:100px;letter-spacing:16px;color:#d4a06e;text-shadow:0 4px 15px #000}.box-lid small{font-size:10px;letter-spacing:4px;color:#d6b28b}
+        .bottle-set{position:absolute;display:flex;gap:20px;bottom:22px;right:35px;transform:rotate(-6deg)}
+        .bottle{height:154px;width:68px;border-radius:10px 10px 12px 12px;background:linear-gradient(90deg,#161616,#393939 30%,#111 85%);border:1px solid #7d624b;box-shadow:7px 12px 25px #000b;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}.bottle i{position:absolute;top:-17px;width:33px;height:19px;background:#111;border:1px solid #795c42;border-radius:3px}.bottle strong{font-family:Cinzel,serif;color:#dbad7d;font-size:22px}.bottle small{font-size:8px;letter-spacing:1px;color:#ddd}
+        .visual-caption{position:absolute;left:20px;bottom:15px;color:#aaa;font-size:10px}
+        
         /* ВИДЕО РАЗДЕЛ (ОБЗОР КОРОБКИ) */
         .video-review-section { padding: 40px 8% 80px; max-width: 900px; margin: 0 auto; text-align: center; }
         .video-wrapper {
@@ -115,17 +126,14 @@
         }
         .video-wrapper video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        /* КАРТОЧКИ (ПЕРКИ И СОДЕРЖИМОЕ) */
-        .perks-bar { max-width: 1250px; margin: 0 auto 80px; padding: 0 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
-        .perk-item { background: rgba(21, 21, 21, 0.9); border: 1px solid var(--border-color); padding: 22px 24px; border-radius: 18px; display: flex; align-items: center; gap: 16px; transition: all 0.3s ease; }
-        .perk-item:hover { transform: translateY(-5px); border-color: var(--bronze); }
-        .perk-icon-wrapper { width: 46px; height: 46px; background: rgba(197, 131, 72, 0.12); border: 1px solid rgba(197, 131, 72, 0.3); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
-        .perk-title { font-size: 15px; font-weight: 700; color: var(--text-light); }
-
+        .conversion-band{padding:80px 8%;text-align:center;background:linear-gradient(180deg,#0c0b0a,#17110d,#0b0b0b)}
+        .benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1150px;margin:35px auto}
+        .benefit-grid article{text-align:left;padding:28px;border:1px solid var(--border-color);background:#171513;border-radius:18px}.benefit-grid article span{color:var(--bronze);font-weight:800}.benefit-grid h3{margin:14px 0;font-size:21px}.benefit-grid p{line-height:1.7;color:var(--text-muted);font-size:14px}
+        .link-cta{display:inline-flex;gap:20px;align-items:center;padding:14px 23px;background:var(--bronze);color:#15100d;text-decoration:none;border-radius:12px;font-weight:800}
+        
         .services-section { padding: 70px 8%; max-width: 1300px; margin: 0 auto; }
         .section-title { font-size: 38px; font-weight: 800; color: var(--text-light); margin-bottom: 14px; text-align: center; }
         .section-subtitle { text-align: center; color: var(--bronze); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 45px; }
-        
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 22px; }
         .card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 26px; border-radius: 18px; display: flex; align-items: flex-start; gap: 18px; transition: all 0.35s ease; cursor: pointer; }
         .card:hover { transform: translateY(-6px); border-color: var(--bronze); background: var(--bg-card-hover); }
@@ -133,86 +141,54 @@
         .card-body h3 { font-size: 17px; font-weight: 800; color: var(--text-light); margin-bottom: 6px; }
         .card-body p { font-size: 13.5px; color: var(--text-muted); line-height: 1.55; }
 
-        /* МАГАЗИН (PRICING) */
+        .faq-section{max-width:920px;margin:0 auto;padding:80px 6%}.faq-list{margin-top:34px}.faq-list details{border-bottom:1px solid #453426;padding:20px 6px}.faq-list summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:15px}.faq-list summary::after{content:'+';color:var(--bronze);font-size:24px}.faq-list details[open] summary::after{content:'−'}.faq-list p{padding-top:14px;color:var(--text-muted);line-height:1.7;font-size:14px}
+        
         .pricing-section { padding: 80px 8%; max-width: 1250px; margin: 0 auto; }
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; margin-top: 20px; }
-        .pricing-card { background: var(--bg-card); border-radius: 22px; padding: 36px 30px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.35s ease; position: relative; }
-        .pricing-card:hover { transform: translateY(-8px); border-color: var(--bronze); }
-        .pricing-card.featured { border: 2px solid var(--bronze); background: linear-gradient(180deg, #1A140F 0%, #121212 100%); }
+        .pricing-card.featured{box-shadow:0 20px 60px #b47b3520; border: 2px solid var(--bronze); background: linear-gradient(180deg, #1A140F 0%, #121212 100%);}.pricing-card{min-height:340px; background: var(--bg-card); border-radius: 22px; padding: 36px 30px; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.35s ease; position: relative;}
         .badge-popular { position: absolute; top: -13px; right: 24px; background: var(--bronze); color: #0D0D0D; padding: 4px 14px; border-radius: 20px; font-size: 11px; font-weight: 800; text-transform: uppercase; }
         .pricing-header h4 { font-size: 22px; font-weight: 800; color: var(--text-light); margin-bottom: 6px; }
         .pricing-rate { font-size: 38px; font-weight: 800; color: var(--bronze); margin: 16px 0 12px; }
         .pricing-rate span { font-size: 14px; font-weight: 500; color: var(--text-muted); }
         .pricing-desc { font-size: 14px; color: var(--text-muted); line-height: 1.65; margin-bottom: 25px; }
-        .pricing-features { list-style: none; margin-bottom: 28px; font-size: 13.5px; color: var(--text-light); }
-        .pricing-features li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .pricing-features li::before { content: '✓'; color: var(--bronze); font-weight: 800; }
-        .pricing-btn { width: 100%; padding: 15px 20px; background: var(--bronze); color: #0D0D0D; border-radius: 12px; font-size: 15px; font-weight: 800; border: none; cursor: pointer; transition: all 0.25s ease; text-transform: uppercase; }
-        .pricing-btn:hover { background: var(--bronze-light); transform: translateY(-2px); }
+        .pricing-btn,.btn-angebot-cta,.btn-shop-header{transition:transform .2s,box-shadow .2s}.pricing-btn:hover,.btn-angebot-cta:hover{box-shadow:0 12px 30px #c5834840; background: var(--bronze-light); transform: translateY(-2px);}
+        .pricing-btn { width: 100%; padding: 15px 20px; background: var(--bronze); color: #0D0D0D; border-radius: 12px; font-size: 15px; font-weight: 800; border: none; cursor: pointer; text-transform: uppercase; }
 
-        /* МОДАЛЬНОЕ ОКНО CHECKOUT */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.82); backdrop-filter: blur(12px); z-index: 99999; align-items: center; justify-content: center; }
-        .modal-content { background: #141414; color: var(--text-light); padding: 36px 38px; border-radius: 24px; border: 1px solid var(--bronze); max-width: 620px; width: 92%; max-height: 90vh; overflow-y: auto; position: relative; }
+        .mobile-buy{display:none}.video-wrapper video{min-height:200px}
+        .modal{ display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.82); backdrop-filter: blur(12px); z-index: 99999; align-items: center; justify-content: center; }
+        .modal[aria-hidden="true"]{display:none!important}.modal-content{scrollbar-width:thin; background: #141414; color: var(--text-light); padding: 36px 38px; border-radius: 24px; border: 1px solid var(--bronze); max-width: 620px; width: 92%; max-height: 90vh; overflow-y: auto; position: relative;}
         .modal-close { position: absolute; top: 20px; right: 25px; font-size: 28px; cursor: pointer; color: var(--text-muted); }
-        
         .progress-bar-wrap { width: 100%; height: 5px; background: rgba(255,255,255,0.1); border-radius: 10px; margin-bottom: 22px; overflow: hidden; }
         .progress-bar-fill { height: 100%; width: 33.33%; background: linear-gradient(90deg, var(--bronze), var(--bronze-light)); transition: width 0.4s ease; }
-        
         .step-heading { font-size: 12px; font-weight: 800; color: var(--bronze); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
         .form-step { display: none; animation: fadeIn 0.3s ease; }
         .form-step.active { display: block; }
-
         .sa-field { margin-bottom: 16px; text-align: left; }
         .sa-label { display: block; font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 6px; }
         .sa-input, .sa-select { width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid rgba(197, 131, 72, 0.35); background-color: #0D0D0D; font-size: 14px; color: var(--text-light); outline: none; }
-        .sa-input:focus, .sa-select:focus { border-color: var(--bronze); }
-        
+        .sa-input:focus,.sa-select:focus{box-shadow:0 0 0 3px #d6a06b25; border-color: var(--bronze);}
         .order-summary-box { background: rgba(197, 131, 72, 0.08); border: 1px solid var(--border-color); padding: 16px 20px; border-radius: 14px; margin: 18px 0; display: flex; justify-content: space-between; align-items: center; }
         .order-total-price { font-size: 24px; font-weight: 800; color: var(--bronze); }
-
         .step-nav-buttons { display: flex; gap: 12px; margin-top: 22px; }
         .btn-step-next, .sa-submit-btn { flex: 2; background: var(--bronze); color: #0D0D0D; padding: 15px; border-radius: 12px; font-size: 15px; font-weight: 800; border: none; cursor: pointer; }
         .btn-step-prev { flex: 1; background: rgba(255,255,255,0.08); color: var(--text-light); padding: 15px; border-radius: 12px; font-size: 14px; font-weight: 700; border: none; cursor: pointer; }
 
-        /* ФУТЕР */
         footer { background: #080808; border-top: 1px solid var(--border-color); padding: 70px 8% 35px; margin-top: 60px; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 40px; }
         .footer-logo { font-family: 'Cinzel', serif; font-size: 28px; font-weight: 800; color: var(--bronze); letter-spacing: 2px; }
         .footer-contacts p { margin-bottom: 8px; color: var(--text-muted); font-size: 14px; }
         .footer-contacts a { color: var(--text-light); text-decoration: none; font-weight: 600; }
-
         .legal-links {display:flex;flex-wrap:wrap;gap:18px;margin-top:22px;font-size:13px}
         .legal-links a {color:var(--bronze-light)}
         .legal-notice {color:var(--text-muted);font-size:12px;line-height:1.6;margin-top:14px}
+        
         .mobile-nav {display:none;padding:12px 8%;background:#151515;border-bottom:1px solid var(--border-color);gap:16px;flex-wrap:wrap}
         .mobile-nav a {color:var(--text-light);text-decoration:none;font-size:13px}
         .sa-input:focus-visible,.sa-select:focus-visible,button:focus-visible,a:focus-visible {outline:2px solid var(--bronze-light);outline-offset:3px}
+        
         @media (max-width: 992px) {nav {display:none} .mobile-nav {display:flex} header {padding:12px 5%;gap:12px;flex-wrap:wrap} .logo-text {font-size:19px} .logo-icon-card {width:40px;height:40px} .hero-title {font-size:clamp(30px,7vw,54px)} .services-grid,.pricing-grid {grid-template-columns:1fr} .hero-container {padding:55px 6% 35px} .modal-content {padding:24px 18px} }
-        @media (max-width: 480px) { .lang-switch {gap:0} .lang-btn {padding:4px 5px} .btn-shop-header {padding:9px 12px;font-size:12px} .section-title {font-size:29px} .promo-banner {font-size:11px} }
-        /* Conversion-focused redesign */
-        :root {--bronze:#D6A06B;--bronze-light:#F0C59A;--border-color:rgba(214,160,107,.24)}
-        body {background:radial-gradient(ellipse at 50% 12%,#20170f 0%,#0a0a0a 45%);}
-        .hero-container{max-width:1250px;padding-top:66px;padding-bottom:30px}
-        .hero-title{max-width:940px;margin:0 auto 20px;font-size:clamp(39px,5.8vw,78px);letter-spacing:-2px}
-        .hero-desc{max-width:700px}
-        .hero-trust{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin:30px auto;color:#d8c9b9;font-size:12px;font-weight:600}
-        .hero-product{height:410px;max-width:830px;margin:25px auto 0;position:relative;display:flex;align-items:center;justify-content:center;isolation:isolate;overflow:hidden;border-radius:30px;background:radial-gradient(ellipse at center,#302117 0%,#14100e 50%,#0b0b0b 82%);border:1px solid #403021;box-shadow:0 30px 90px #0009}
-        .product-ambient{position:absolute;width:580px;height:250px;border-radius:50%;background:#c5834822;filter:blur(55px);bottom:-100px}
-        .box-lid{position:absolute;width:530px;height:265px;border-radius:17px;background:linear-gradient(150deg,#252525,#080808 65%);border:2px solid #8e6848;box-shadow:0 25px 55px #000, inset 0 0 55px #ffffff08;transform:perspective(850px) rotateX(16deg) rotateZ(-7deg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;top:60px}
-        .box-lid span{font-family:Cinzel,serif;font-size:100px;letter-spacing:16px;color:#d4a06e;text-shadow:0 4px 15px #000}.box-lid small{font-size:10px;letter-spacing:4px;color:#d6b28b}
-        .bottle-set{position:absolute;display:flex;gap:20px;bottom:22px;right:35px;transform:rotate(-6deg)}
-        .bottle{height:154px;width:68px;border-radius:10px 10px 12px 12px;background:linear-gradient(90deg,#161616,#393939 30%,#111 85%);border:1px solid #7d624b;box-shadow:7px 12px 25px #000b;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}.bottle i{position:absolute;top:-17px;width:33px;height:19px;background:#111;border:1px solid #795c42;border-radius:3px}.bottle strong{font-family:Cinzel,serif;color:#dbad7d;font-size:22px}.bottle small{font-size:8px;letter-spacing:1px;color:#ddd}
-        .visual-caption{position:absolute;left:20px;bottom:15px;color:#aaa;font-size:10px}
-        .conversion-band{padding:80px 8%;text-align:center;background:linear-gradient(180deg,#0c0b0a,#17110d,#0b0b0b)}
-        .benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1150px;margin:35px auto}
-        .benefit-grid article{text-align:left;padding:28px;border:1px solid var(--border-color);background:#171513;border-radius:18px}.benefit-grid article span{color:var(--bronze);font-weight:800}.benefit-grid h3{margin:14px 0;font-size:21px}.benefit-grid p{line-height:1.7;color:var(--text-muted);font-size:14px}
-        .link-cta{display:inline-flex;gap:20px;align-items:center;padding:14px 23px;background:var(--bronze);color:#15100d;text-decoration:none;border-radius:12px;font-weight:800}
-        .faq-section{max-width:920px;margin:0 auto;padding:80px 6%}.faq-list{margin-top:34px}.faq-list details{border-bottom:1px solid #453426;padding:20px 6px}.faq-list summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:15px}.faq-list summary::after{content:'+';color:var(--bronze);font-size:24px}.faq-list details[open] summary::after{content:'−'}.faq-list p{padding-top:14px;color:var(--text-muted);line-height:1.7;font-size:14px}
-        .pricing-card.featured{box-shadow:0 20px 60px #b47b3520}.pricing-card{min-height:340px}.pricing-btn,.btn-angebot-cta,.btn-shop-header{transition:transform .2s,box-shadow .2s}.pricing-btn:hover,.btn-angebot-cta:hover{box-shadow:0 12px 30px #c5834840}
-        .mobile-buy{display:none}.video-wrapper video{min-height:200px}
-        .modal[aria-hidden="true"]{display:none!important}.modal-content{scrollbar-width:thin}.sa-input:focus,.sa-select:focus{box-shadow:0 0 0 3px #d6a06b25}
         @media(max-width:800px){.hero-product{height:300px}.box-lid{width:370px;height:205px;top:38px}.box-lid span{font-size:67px}.box-lid small{font-size:7px}.bottle-set{transform:scale(.7) rotate(-6deg);transform-origin:bottom right;right:10px;bottom:12px}.benefit-grid{grid-template-columns:1fr}.mobile-buy{position:fixed;bottom:0;left:0;right:0;z-index:1002;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#14110ff5;border-top:1px solid var(--bronze);padding:11px 16px;backdrop-filter:blur(14px)}.mobile-buy strong,.mobile-buy small{display:block}.mobile-buy strong{font-size:13px}.mobile-buy small{font-size:11px;color:var(--text-muted)}.mobile-buy button{border:0;border-radius:9px;background:var(--bronze);color:#14100d;padding:12px 15px;font-weight:800}body{padding-bottom:65px}.hero-trust{gap:12px}.hero-title{letter-spacing:-1px}}
-        @media(max-width:480px){.hero-product{height:245px}.box-lid{width:290px;height:160px;top:30px}.box-lid span{font-size:52px}.box-lid small{font-size:5px;letter-spacing:2px}.bottle-set{transform:scale(.55) rotate(-6deg)}.hero-trust{font-size:11px}.btn-angebot-cta{padding:15px 20px;font-size:13px}.hero-product{border-radius:16px}}
+        @media(max-width:480px){.hero-product{height:245px}.box-lid{width:290px;height:160px;top:30px}.box-lid span{font-size:52px}.box-lid small{font-size:5px;letter-spacing:2px}.bottle-set{transform:scale(.55) rotate(-6deg)}.hero-trust{font-size:11px}.btn-angebot-cta{padding:15px 20px;font-size:13px}.hero-product{border-radius:16px} .lang-switch {gap:0} .lang-btn {padding:4px 5px} .btn-shop-header {padding:9px 12px;font-size:12px} .section-title {font-size:29px} .promo-banner {font-size:11px}}
         @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
     </style>
 </head>
@@ -253,7 +229,12 @@
         </div>
     </header>
 
-    <div class="mobile-nav" aria-label="Mobile Navigation"><a href="#unboxing">Unboxing</a><a href="#inside">Inhalt der Box</a><a href="#shop">Editions & Preise</a></div>
+    <div class="mobile-nav" aria-label="Mobile Navigation">
+        <a href="#unboxing">Unboxing</a>
+        <a href="#inside">Inhalt der Box</a>
+        <a href="#shop">Editions & Preise</a>
+    </div>
+
     <main class="hero-container" data-aos="fade-up">
         <div class="edition-badge" id="hero-sub">🦊 LYS SIGNATURE EDITION</div>
         <h1 class="hero-title" id="hero-title">Exklusive Geschenkboxen für <em>wahre Autoliebhaber</em>.</h1>
@@ -264,10 +245,19 @@
                 Box jetzt sichern — 89 € ❯
             </button>
         </div>
-        <div class="hero-trust" aria-label="Produktvorteile"><span>✦ 3 Premium-Pflegeprodukte</span><span>✦ Geschenkfertig verpackt</span><span>✦ Versand in Deutschland inklusive</span></div>
+        <div class="hero-trust" aria-label="Produktvorteile">
+            <span id="hero-trust-1">✦ 3 Premium-Pflegeprodukte</span>
+            <span id="hero-trust-2">✦ Geschenkfertig verpackt</span>
+            <span id="hero-trust-3">✦ Versand in Deutschland inklusive</span>
+        </div>
         <div class="hero-product" aria-label="Illustration der Geschenkbox – kein Produktfoto">
-          <div class="product-ambient"></div><div class="box-lid"><span>LYS</span><small>AUTO CARE · SIGNATURE EDITION</small></div>
-          <div class="bottle-set"><div class="bottle"><i></i><strong>LYS</strong><small>INTERIOR</small></div><div class="bottle"><i></i><strong>LYS</strong><small>GLASS</small></div><div class="bottle"><i></i><strong>LYS</strong><small>WHEELS</small></div></div>
+          <div class="product-ambient"></div>
+          <div class="box-lid"><span>LYS</span><small>AUTO CARE · SIGNATURE EDITION</small></div>
+          <div class="bottle-set">
+              <div class="bottle"><i></i><strong>LYS</strong><small>INTERIOR</small></div>
+              <div class="bottle"><i></i><strong>LYS</strong><small>GLASS</small></div>
+              <div class="bottle"><i></i><strong>LYS</strong><small>WHEELS</small></div>
+          </div>
           <span class="visual-caption">Designvorschau · Produktdarstellung symbolisch</span>
         </div>
     </main>
@@ -283,28 +273,13 @@
         </div>
     </section>
 
-    <div class="perks-bar">
-        <div class="perk-item" data-aos="fade-up">
-            <div class="perk-icon-wrapper">🎁</div>
-            <div class="perk-title" id="perk-1">Edle Magnetbox mit Band</div>
-        </div>
-        <div class="perk-item" data-aos="fade-up" data-aos-delay="50">
-            <div class="perk-icon-wrapper">🧪</div>
-            <div class="perk-title" id="perk-2">3x Premium Rezepturen (Made in DE)</div>
-        </div>
-        <div class="perk-item" data-aos="fade-up" data-aos-delay="100">
-            <div class="perk-icon-wrapper">🚚</div>
-            <div class="perk-title" id="perk-3">Kostenloser DHL-Versand (DE)</div>
-        </div>
-    </div>
-
     <!-- ЧТО ВНУТРИ КОРОБКИ -->
     <section class="services-section" id="inside">
         <div class="section-subtitle" id="sec-inside-sub">KOMPLETTES PFLEGESYSTEM</div>
         <h2 class="section-title" id="sec-inside-title">Was ist in der LYS Box?</h2>
         <div class="services-grid">
             
-            <div class="card" data-aos="fade-up">
+            <div class="card" data-aos="fade-up" onclick="openCheckout('LYS Signature Detailing Box', 89)">
                 <div class="card-number">01</div>
                 <div class="card-body">
                     <h3 id="item-1-t">01 | INNENRAUMREINIGER (330 ml)</h3>
@@ -312,7 +287,7 @@
                 </div>
             </div>
 
-            <div class="card" data-aos="fade-up" data-aos-delay="50">
+            <div class="card" data-aos="fade-up" data-aos-delay="50" onclick="openCheckout('LYS Signature Detailing Box', 89)">
                 <div class="card-number">02</div>
                 <div class="card-body">
                     <h3 id="item-2-t">02 | GLASREINIGER (330 ml)</h3>
@@ -320,7 +295,7 @@
                 </div>
             </div>
 
-            <div class="card" data-aos="fade-up" data-aos-delay="100">
+            <div class="card" data-aos="fade-up" data-aos-delay="100" onclick="openCheckout('LYS Signature Detailing Box', 89)">
                 <div class="card-number">03</div>
                 <div class="card-body">
                     <h3 id="item-3-t">03 | FELGENREINIGER (330 ml)</h3>
@@ -328,7 +303,7 @@
                 </div>
             </div>
 
-            <div class="card" data-aos="fade-up" data-aos-delay="150">
+            <div class="card" data-aos="fade-up" data-aos-delay="150" onclick="openCheckout('LYS Signature Detailing Box', 89)">
                 <div class="card-number">🧺</div>
                 <div class="card-body">
                     <h3 id="item-4-t">3x Profi-Mikrofasertücher</h3>
@@ -336,7 +311,7 @@
                 </div>
             </div>
 
-            <div class="card" data-aos="fade-up" data-aos-delay="200">
+            <div class="card" data-aos="fade-up" data-aos-delay="200" onclick="openCheckout('LYS Signature Detailing Box', 89)">
                 <div class="card-number">✨</div>
                 <div class="card-body">
                     <h3 id="item-5-t">Ikeda Autoparfüm & Pinsel-Set</h3>
@@ -344,7 +319,7 @@
                 </div>
             </div>
 
-            <div class="card" data-aos="fade-up" data-aos-delay="250">
+            <div class="card" data-aos="fade-up" data-aos-delay="250" onclick="openCheckout('LYS Signature Detailing Box', 89)">
                 <div class="card-number">✉️</div>
                 <div class="card-body">
                     <h3 id="item-6-t">Soft-Touch Anleitung</h3>
@@ -355,15 +330,18 @@
         </div>
     </section>
 
+    <!-- ПРЕИМУЩЕСТВА -->
     <section class="conversion-band" aria-labelledby="benefits-title">
-      <div class="section-subtitle">DAS GESCHENK, DAS GENUTZT WIRD</div><h2 class="section-title" id="benefits-title">Mehr als nur eine schöne Box.</h2>
+      <div class="section-subtitle" id="sec-benefits-sub">DAS GESCHENK, DAS GENUTZT WIRD</div>
+      <h2 class="section-title" id="benefits-title">Mehr als nur eine schöne Box.</h2>
       <div class="benefit-grid">
-        <article><span>01 /</span><h3>Auspacken & freuen</h3><p>Eine Geschenkidee für Menschen, die ihr Auto lieben.</p></article>
-        <article><span>02 /</span><h3>Alles an einem Ort</h3><p>Innenraum, Scheiben und Felgen mit einem Set pflegen.</p></article>
-        <article><span>03 /</span><h3>Persönlich schenken</h3><p>Mit der Gift Edition eine Grußbotschaft ergänzen.</p></article>
+        <article><span id="ben-num-1">01 /</span><h3 id="ben-t-1">Auspacken & freuen</h3><p id="ben-d-1">Eine Geschenkidee für Menschen, die ihr Auto lieben.</p></article>
+        <article><span id="ben-num-2">02 /</span><h3 id="ben-t-2">Alles an einem Ort</h3><p id="ben-d-2">Innenraum, Scheiben und Felgen mit einem Set pflegen.</p></article>
+        <article><span id="ben-num-3">03 /</span><h3 id="ben-t-3">Persönlich schenken</h3><p id="ben-d-3">Mit der Gift Edition eine Grußbotschaft ergänzen.</p></article>
       </div>
-      <a href="#shop" class="link-cta">Edition auswählen <span aria-hidden="true">↗</span></a>
+      <a href="#shop" class="link-cta" id="ben-btn">Edition auswählen <span aria-hidden="true">↗</span></a>
     </section>
+
     <!-- ВИТРИНА МАГАЗИНА -->
     <section class="pricing-section" id="shop">
         <div class="section-subtitle" id="sec-shop-sub">ONLINE SHOP</div>
@@ -407,16 +385,24 @@
         </div>
     </section>
 
-    <section class="faq-section" id="faq"><div class="section-subtitle">GUT ZU WISSEN</div><h2 class="section-title">Häufige Fragen</h2>
-      <div class="faq-list">
-        <details><summary>Was ist in der LYS Signature Box enthalten?</summary><p>Drei Pflegeprodukte à 330 ml (Innenraum, Glas, Felgen), drei Mikrofasertücher, ein Pinsel-Set mit Autoduft und eine Anleitung.</p></details>
-        <details><summary>Kann ich eine persönliche Nachricht beilegen?</summary><p>Ja, bei der Gift Edition kannst du im Anfrageformular einen persönlichen Wunschtext eingeben.</p></details>
-        <details><summary>Wie funktioniert die Bestellung?</summary><p>Du sendest zunächst eine unverbindliche Anfrage. Wir prüfen die Verfügbarkeit und senden dir anschließend die Bestätigung und Zahlungsinformationen. Auf dieser Website wird noch keine Zahlung ausgelöst.</p></details>
-        <details><summary>Was kostet der Versand?</summary><p>Die angegebenen Preise enthalten den Versand innerhalb Deutschlands. Bitte prüfe die konkreten Versandbedingungen vor der Bestellung.</p></details>
-        <details><summary>Wie löse ich LYS10 ein?</summary><p>Gib LYS10 im Anfrageformular ein. Der angezeigte Rabatt beträgt 10 %. Der endgültige Preis wird mit der Bestätigung geprüft.</p></details>
-      </div>
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+        <div class="section-subtitle" id="sec-faq-sub">GUT ZU WISSEN</div>
+        <h2 class="section-title" id="sec-faq-title">Häufige Fragen</h2>
+        <div class="faq-list">
+            <details><summary id="faq-q1">Was ist in der LYS Signature Box enthalten?</summary><p id="faq-a1">Drei Pflegeprodukte à 330 ml (Innenraum, Glas, Felgen), drei Mikrofasertücher, ein Pinsel-Set mit Autoduft und eine Anleitung.</p></details>
+            <details><summary id="faq-q2">Kann ich eine persönliche Nachricht beilegen?</summary><p id="faq-a2">Ja, bei der Gift Edition kannst du im Anfrageformular einen persönlichen Wunschtext eingeben.</p></details>
+            <details><summary id="faq-q3">Wie funktioniert die Bestellung?</summary><p id="faq-a3">Du sendest zunächst eine unverbindliche Anfrage. Wir prüfen die Verfügbarkeit und senden dir anschließend die Bestätigung und Zahlungsinformationen. Auf dieser Website wird noch keine Zahlung ausgelöst.</p></details>
+            <details><summary id="faq-q4">Was kostet der Versand?</summary><p id="faq-a4">Die angegebenen Preise enthalten den Versand innerhalb Deutschlands. Bitte prüfe die konkreten Versandbedingungen vor der Bestellung.</p></details>
+            <details><summary id="faq-q5">Wie löse ich LYS10 ein?</summary><p id="faq-a5">Gib LYS10 im Anfrageformular ein. Der angezeigte Rabatt beträgt 10 %. Der endgültige Preis wird mit der Bestätigung geprüft.</p></details>
+        </div>
     </section>
-    <aside class="mobile-buy"><span><strong>LYS Signature</strong><small>ab 89 € · inkl. Versand</small></span><button type="button" onclick="openCheckout('LYS Signature Detailing Box',89)">Box anfragen ↗</button></aside>
+
+    <aside class="mobile-buy">
+        <span><strong id="mob-buy-t">LYS Signature</strong><small id="mob-buy-d">ab 89 € · inkl. Versand</small></span>
+        <button type="button" id="mob-buy-btn" onclick="openCheckout('LYS Signature Detailing Box',89)">Box anfragen ↗</button>
+    </aside>
+
     <!-- ФУТЕР -->
     <footer>
         <div class="footer-content">
@@ -430,8 +416,13 @@
                 <p>✉️ E-Mail: <a href="mailto:info@lys-detailing.de">info@lys-detailing.de</a></p>
             </div>
         </div>
-        <div class="legal-links"><a href="./impressum.html">Impressum</a><a href="./datenschutz.html">Datenschutz</a><a href="./widerruf.html">Widerrufsbelehrung</a><a href="./agb.html">AGB & Versand</a></div>
-        <p class="legal-notice">Bitte rechtliche Angaben vor Veröffentlichung mit echten Unternehmensdaten vervollständigen.</p>
+        <div class="legal-links">
+            <a href="./impressum.html">Impressum</a>
+            <a href="./datenschutz.html">Datenschutz</a>
+            <a href="./widerruf.html">Widerrufsbelehrung</a>
+            <a href="./agb.html">AGB & Versand</a>
+        </div>
+        <p class="legal-notice" id="ft-legal">Bitte rechtliche Angaben vor Veröffentlichung mit echten Unternehmensdaten vervollständigen.</p>
     </footer>
 
     <!-- МОДАЛЬНОЕ ОКНО: CHECKOUT -->
@@ -443,7 +434,7 @@
             <div class="progress-bar-wrap"><div class="progress-bar-fill" id="formProgressBar"></div></div>
 
             <form action="https://api.web3forms.com/submit" method="POST" id="multistepOrderForm">
-                <p class="legal-notice">Dies ist eine unverbindliche Bestellanfrage. Keine Online-Zahlung. Nach Prüfung erhalten Sie eine Bestätigung mit Zahlungsinformationen.</p>
+                <p class="legal-notice" id="mod-notice">Dies ist eine unverbindliche Bestellanfrage. Keine Online-Zahlung. Nach Prüfung erhalten Sie eine Bestätigung mit Zahlungsinformationen.</p>
                 <input type="hidden" name="access_key" value="REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY">
                 <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
                 <input type="hidden" name="subject" value="🦊 Neue Bestellung — LYS Detailing Box!">
@@ -470,7 +461,10 @@
                             <input type="text" name="Gutscheincode" id="input-promo" class="sa-input" placeholder="z. B. LYS10" oninput="recalculateTotal()">
                         </div>
                     </div>
-                    <div class="sa-field" id="gift-message-wrap" hidden><label class="sa-label" for="gift-message">Persönliche Grußbotschaft (max. 250 Zeichen)</label><textarea id="gift-message" name="Grussbotschaft" class="sa-input" rows="3" maxlength="250"></textarea></div>
+                    <div class="sa-field" id="gift-message-wrap" hidden>
+                        <label class="sa-label" for="gift-message" id="lbl-msg">Persönliche Grußbotschaft (max. 250 Zeichen)</label>
+                        <textarea id="gift-message" name="Grussbotschaft" class="sa-input" rows="3" maxlength="250"></textarea>
+                    </div>
                     <div class="order-summary-box">
                         <div>
                             <div style="font-size: 12px; color: var(--text-muted);" id="sum-shipping">Inkl. kostenlosem DHL-Versand</div>
@@ -514,11 +508,13 @@
                     </div>
                     <div class="sa-field"><label class="sa-label" id="lbl-street">Straße & Nr. *</label><input type="text" name="Strasse" class="sa-input" required></div>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-                        <div class="sa-field"><label class="sa-label" for="postal-code">PLZ *</label><input id="postal-code" type="text" name="PLZ" class="sa-input" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" title="5-stellige deutsche Postleitzahl" required></div>
-                        <div class="sa-field"><label class="sa-label" for="city">Ort *</label><input id="city" type="text" name="Ort" class="sa-input" autocomplete="address-level2" required></div>
+                        <div class="sa-field"><label class="sa-label" for="postal-code" id="lbl-zip">PLZ *</label><input id="postal-code" type="text" name="PLZ" class="sa-input" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" required></div>
+                        <div class="sa-field"><label class="sa-label" for="city" id="lbl-city">Ort *</label><input id="city" type="text" name="Ort" class="sa-input" autocomplete="address-level2" required></div>
                     </div>
-                    <div class="sa-field"><label class="sa-label" for="address-extra">Adresszusatz (optional)</label><input id="address-extra" type="text" name="Adresszusatz" class="sa-input"></div>
-                    <label class="legal-notice" style="display:block"><input type="checkbox" name="Datenschutz_zur_Kenntnis_genommen" value="Ja" required> Ich habe die <a href="./datenschutz.html" target="_blank" rel="noopener">Datenschutzhinweise</a> gelesen. *</label>
+                    <div class="sa-field"><label class="sa-label" for="address-extra" id="lbl-extra">Adresszusatz (optional)</label><input id="address-extra" type="text" name="Adresszusatz" class="sa-input"></div>
+                    <label class="legal-notice" style="display:block" id="lbl-agree">
+                        <input type="checkbox" name="Datenschutz_zur_Kenntnis_genommen" value="Ja" required> Ich habe die <a href="./datenschutz.html" target="_blank" rel="noopener">Datenschutzhinweise</a> gelesen. *
+                    </label>
                     <div class="step-nav-buttons">
                         <button type="button" class="btn-step-prev" id="btn-p2" onclick="setFormStep(2)">← Zurück</button>
                         <button type="submit" class="sa-submit-btn" id="btn-submit">Bestellanfrage senden →</button>
@@ -543,10 +539,14 @@
             document.getElementById('checkout-modal').style.display = 'flex';
             document.getElementById('checkout-modal').setAttribute('aria-hidden','false');
             document.body.style.overflow='hidden';
-            document.querySelector('.modal-close').focus();
+            setTimeout(() => document.querySelector('.modal-close').focus(), 100);
         }
 
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; document.getElementById(id).setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+        function closeModal(id) { 
+            document.getElementById(id).style.display = 'none'; 
+            document.getElementById(id).setAttribute('aria-hidden','true'); 
+            document.body.style.overflow=''; 
+        }
         
         window.onclick = function(e) { if (e.target.classList.contains('modal')) closeModal(e.target.id); };
         document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal('checkout-modal')});
@@ -590,137 +590,197 @@
             recalculateTotal();
         }
 
-        // The request is not a payment or a binding order; prices are informational until server-side verification.
         document.getElementById('multistepOrderForm').addEventListener('submit', function(e) {
             recalculateTotal();
-            if (this.querySelector('[name=access_key]').value.startsWith('REPLACE_')) { e.preventDefault(); alert('Das Anfrageformular ist noch nicht eingerichtet. Bitte kontaktieren Sie info@lys-detailing.de.'); return; }
+            if (this.querySelector('[name=access_key]').value.startsWith('REPLACE_')) { 
+                e.preventDefault(); 
+                alert('Das Anfrageformular ist noch nicht eingerichtet. Bitte kontaktieren Sie info@lys-detailing.de.'); 
+                return; 
+            }
             if (!this.checkValidity()) {
                 e.preventDefault();
                 setFormStep(3);
                 this.reportValidity();
             }
         });
+
         // Переключение языков
         const translations = {
             de: {
-                promoText: "🎁 Launch-Aktion: 10% Rabatt mit Code mit dem Code <span class='promo-badge'>LYS10</span>",
-                copyBtn: "Code kopieren ✨",
-                toast: "✨ Gutscheincode LYS10 kopiert!",
+                promoText: "🎁 Launch-Aktion: 10% Rabatt mit Code <span class='promo-badge'>LYS10</span>",
+                copyBtn: "Code kopieren ✨", toast: "✨ Gutscheincode LYS10 kopiert!",
                 navUnboxing: "Unboxing", navInside: "Inhalt der Box", navShop: "Editions & Preise",
                 btnBuyHeader: "🛒 Jetzt bestellen",
                 heroSub: "🦊 LYS SIGNATURE EDITION",
                 heroTitle: "Exklusive Geschenkboxen für <em>wahre Autoliebhaber</em>.",
-                heroDesc: "Kompromisslose Fahrzeugpflege verpackt in einer edlen Magnetbox mit Soft-Touch-Finish. Das perfekte Geschenk für Innenraum, Glas und Felgen – handgefertigt mit Liebe zum Detail in Berlin.",
+                heroDesc: "Kompromisslose Fahrzeugpflege verpackt in einer edlen Magnetbox mit Soft-Touch-Finish. Das perfekte Geschenk für Innenraum, Glas und Felgen – handgefertigt in Berlin.",
                 heroCta: "Box jetzt sichern — 89 € ❯",
+                heroTrust1: "✦ 3 Premium-Pflegeprodukte", heroTrust2: "✦ Geschenkfertig verpackt", heroTrust3: "✦ Versand in Deutschland inklusive",
                 secVidSub: "UNBOXING EXPERIENCE", secVidTitle: "Die LYS Box im Detail",
-                p1: "Edle Magnetbox mit Band", p2: "3x Premium Rezepturen", p3: "Kostenloser DHL-Versand (DE)",
                 secInsideSub: "KOMPLETTES PFLEGESYSTEM", secInsideTitle: "Was ist in der LYS Box?",
                 item1t: "01 | INNENRAUMREINIGER (330 ml)", item1d: "Schonende und tiefenwirksame Reinigung für Cockpit, Kunststoff und Leder.",
-                item2t: "02 | GLASREINIGER (330 ml)", item2d: "Streifenfreie Klarheit für Windschutzscheiben und Spiegel. Entfernt Fett und Nikotinfilme.",
-                item3t: "03 | FELGENREINIGER (330 ml)", item3d: "Hochleistungsformel gegen hartnäckigen Bremsstaub – sicher für Aluminium- und Stahlfelgen.",
-                item4t: "3x Profi-Mikrofasertücher", item4d: "Zwei graue Tücher für Glas & Finish sowie ein ultra-flauschiges schwarzes Tuch für empfindlichen Innenraum.",
-                item5t: "Ikeda Autoparfüm & Pinsel-Set", item5d: "Detailing-Pinsel und exklusiver Innenraumduft sicher verpackt im SizzlePak-Bett.",
-                item6t: "Soft-Touch Anleitung", item6d: "Elegante Schritt-für-Schritt Karte, befestigt auf der Innenseite der magnetischen mattschwarzen Box.",
+                item2t: "02 | GLASREINIGER (330 ml)", item2d: "Streifenfreie Klarheit für Windschutzscheiben und Spiegel.",
+                item3t: "03 | FELGENREINIGER (330 ml)", item3d: "Hochleistungsformel gegen hartnäckigen Bremsstaub.",
+                item4t: "3x Profi-Mikrofasertücher", item4d: "Zwei graue Tücher für Glas & Finish sowie ein schwarzes Tuch für den Innenraum.",
+                item5t: "Ikeda Autoparfüm & Pinsel-Set", item5d: "Detailing-Pinsel und exklusiver Innenraumduft im SizzlePak-Bett.",
+                item6t: "Soft-Touch Anleitung", item6d: "Elegante Schritt-für-Schritt Karte auf der Innenseite der Box.",
+                secBenSub: "DAS GESCHENK, DAS GENUTZT WIRD", benTitle: "Mehr als nur eine schöne Box.",
+                benT1: "Auspacken & freuen", benD1: "Eine Geschenkidee für Menschen, die ihr Auto lieben.",
+                benT2: "Alles an einem Ort", benD2: "Innenraum, Scheiben und Felgen mit einem Set pflegen.",
+                benT3: "Persönlich schenken", benD3: "Mit der Gift Edition eine Grußbotschaft ergänzen.",
+                benBtn: "Edition auswählen ↗",
                 secShopSub: "ONLINE SHOP", secShopTitle: "Wähle deine Edition",
-                prcT1: "LYS Signature Detailing Box", prcD1: "Das komplette Geschenkset in der mattschwarzen Magnetbox mit bronzefarbenem 3D-Logo.", prcU1: "inkl. MwSt. & Versand", prcBtn1: "In den Warenkorb — 89 € →",
-                prcT2: "LYS Gift Edition (+ Wunschtext)", prcD2: "Perfekt zum Geburtstag: Wir beschriften die Soft-Touch-Karte individuell mit deiner Grußbotschaft.", prcU2: "inkl. MwSt. & Versand", prcBtn2: "Als Geschenk bestellen — 95 € →",
-                prcT3: "LYS Duo Pack (2x Boxen)", prcD3: "Eine Box für dich, eine zum Verschenken: Sichere dir zwei limitierte Boxen zum Vorzugspreis.", prcU3: "statt 178 € (Spare 13 €)", prcBtn3: "Duo-Pack sichern — 165 € →",
-                ftDesc: "Exklusive Detailing-Geschenkboxen für Autoliebhaber. Handgefertigt in Berlin.",
-                modalTitle: "Bestellung abschließen", step1: "Schritt 1 von 3: Deine Auswahl", step2: "Schritt 2 von 3: Versand & Zahlung", step3: "Schritt 3 von 3: Lieferadresse",
-                lblEdition: "Gewählte Edition", lblQty: "Anzahl", lblPromo: "Gutscheincode", sumShipping: "Inkl. kostenlosem DHL-Versand", sumLabel: "Gesamtbetrag:",
+                prcT1: "LYS Signature Detailing Box", prcD1: "Das komplette Geschenkset in der mattschwarzen Magnetbox.", prcU1: "inkl. MwSt. & Versand", prcBtn1: "In den Warenkorb — 89 € →",
+                prcT2: "LYS Gift Edition (+ Wunschtext)", prcD2: "Perfekt zum Geburtstag: Wir beschriften die Karte individuell.", prcU2: "inkl. MwSt. & Versand", prcBtn2: "Als Geschenk bestellen — 95 € →",
+                prcT3: "LYS Duo Pack (2x Boxen)", prcD3: "Eine Box für dich, eine zum Verschenken.", prcU3: "statt 178 € (Spare 13 €)", prcBtn3: "Duo-Pack sichern — 165 € →",
+                secFaqSub: "GUT ZU WISSEN", secFaqTitle: "Häufige Fragen",
+                faqQ1: "Was ist in der Box enthalten?", faqA1: "Pflegeprodukte, Mikrofasertücher, Pinsel, Autoduft und Anleitung.",
+                faqQ2: "Persönliche Nachricht möglich?", faqA2: "Ja, bei der Gift Edition.",
+                faqQ3: "Wie funktioniert die Bestellung?", faqA3: "Unverbindliche Anfrage senden, wir prüfen und bestätigen.",
+                faqQ4: "Versandkosten?", faqA4: "Der Versand in Deutschland ist inklusive.",
+                faqQ5: "Gutscheincode?", faqA5: "Gib LYS10 ein für 10% Rabatt.",
+                mobBuyT: "LYS Signature", mobBuyD: "ab 89 € · inkl. Versand", mobBuyBtn: "Box anfragen ↗",
+                ftDesc: "Exklusive Detailing-Geschenkboxen. Handgefertigt in Berlin.", ftLegal: "Bitte rechtliche Angaben vervollständigen.",
+                modalTitle: "Bestellung abschließen", modNotice: "Dies ist eine unverbindliche Bestellanfrage. Keine Online-Zahlung.",
+                step1: "Schritt 1: Auswahl", step2: "Schritt 2: Versand & Zahlung", step3: "Schritt 3: Adresse",
+                lblEdition: "Gewählte Edition", lblQty: "Anzahl", lblPromo: "Gutscheincode", lblMsg: "Persönliche Grußbotschaft",
+                sumShipping: "Inkl. kostenlosem DHL-Versand", sumLabel: "Gesamtbetrag:",
                 lblShip: "Versandart", lblPay: "Zahlungsmethode",
-                lblName: "Name *", lblEmail: "E-Mail *", lblPhone: "Telefon *", lblStreet: "Straße & Nr. *",
-                btnN1: "Weiter zum Versand →", btnN2: "Weiter zur Adresse →", btnP1: "← Zurück", btnP2: "← Zurück", btnSubmit: "Bestellanfrage senden →"
+                lblName: "Name *", lblEmail: "E-Mail *", lblPhone: "Telefon *", lblStreet: "Straße & Nr. *", lblZip: "PLZ *", lblCity: "Ort *", lblExtra: "Adresszusatz",
+                btnN1: "Weiter zum Versand →", btnN2: "Weiter zur Adresse →", btnP1: "← Zurück", btnP2: "← Zurück", btnSubmit: "Bestellanfrage senden →",
+                optShip1: "📦 DHL Paket Deutschland", optShip2: "📍 Selbstabholung in Berlin", optPay1: "💳 PayPal", optPay2: "🏦 Banküberweisung"
             },
             en: {
-                promoText: "🎁 Exclusive Launch Discount: 10% off your first box with code <span class='promo-badge'>LYS10</span>",
-                copyBtn: "Copy code ✨",
-                toast: "✨ Promo code LYS10 copied!",
+                promoText: "🎁 Launch Action: 10% Off with code <span class='promo-badge'>LYS10</span>",
+                copyBtn: "Copy code ✨", toast: "✨ Promo code LYS10 copied!",
                 navUnboxing: "Unboxing", navInside: "What's inside", navShop: "Editions & Prices",
                 btnBuyHeader: "🛒 Order Now",
                 heroSub: "🦊 LYS SIGNATURE EDITION",
                 heroTitle: "Exclusive Gift Boxes for <em>True Car Lovers</em>.",
-                heroDesc: "Uncompromising car care packed in a luxury magnetic box with a soft-touch finish. The ultimate gift for interior, glass, and rims – handcrafted in Berlin.",
+                heroDesc: "Uncompromising car care packed in a luxury magnetic box with a soft-touch finish. Handcrafted in Berlin.",
                 heroCta: "Secure your box — 89 € ❯",
+                heroTrust1: "✦ 3 Premium formulas", heroTrust2: "✦ Ready to gift", heroTrust3: "✦ Free DE Shipping",
                 secVidSub: "UNBOXING EXPERIENCE", secVidTitle: "The LYS Box in Detail",
-                p1: "Premium magnetic box", p2: "3x Premium formulas", p3: "Free DHL Shipping (DE)",
                 secInsideSub: "COMPLETE CARE SYSTEM", secInsideTitle: "What is in the LYS Box?",
-                item1t: "01 | INTERIOR CLEANER (330 ml)", item1d: "Deep and gentle cleaning for dashboard, plastics, and leather.",
-                item2t: "02 | GLASS CLEANER (330 ml)", item2d: "Streak-free clarity for windshields and mirrors. Removes grease and nicotine.",
-                item3t: "03 | WHEEL CLEANER (330 ml)", item3d: "High-performance formula against brake dust – safe for all alloys.",
-                item4t: "3x Pro Microfiber Towels", item4d: "Two grey towels for glass & finish, plus an ultra-fluffy black towel for delicate interiors.",
-                item5t: "Ikeda Perfume & Brush Set", item5d: "Detailing brushes and exclusive car scent safely packed in a SizzlePak bed.",
-                item6t: "Soft-Touch Guide", item6d: "Elegant step-by-step card attached to the inside of the magnetic matte black box.",
+                item1t: "01 | INTERIOR CLEANER (330 ml)", item1d: "Deep and gentle cleaning for dashboard and leather.",
+                item2t: "02 | GLASS CLEANER (330 ml)", item2d: "Streak-free clarity for windshields and mirrors.",
+                item3t: "03 | WHEEL CLEANER (330 ml)", item3d: "High-performance formula against brake dust.",
+                item4t: "3x Pro Microfiber Towels", item4d: "Two grey towels for glass, plus a black towel for interiors.",
+                item5t: "Ikeda Perfume & Brush Set", item5d: "Detailing brushes and exclusive car scent.",
+                item6t: "Soft-Touch Guide", item6d: "Elegant step-by-step card attached inside.",
+                secBenSub: "A GIFT THAT GETS USED", benTitle: "More than just a pretty box.",
+                benT1: "Unbox & Enjoy", benD1: "A gift idea for people who love their cars.",
+                benT2: "All in one place", benD2: "Clean interior, glass, and wheels with one set.",
+                benT3: "Personal touch", benD3: "Add a custom message with the Gift Edition.",
+                benBtn: "Choose Edition ↗",
                 secShopSub: "ONLINE SHOP", secShopTitle: "Choose Your Edition",
-                prcT1: "LYS Signature Detailing Box", prcD1: "The complete gift set in a matte black magnetic box with a 3D bronze logo.", prcU1: "incl. VAT & Shipping", prcBtn1: "Add to cart — 89 € →",
-                prcT2: "LYS Gift Edition (+ Custom Text)", prcD2: "Perfect for birthdays: We will handwrite your personal greeting on the soft-touch card.", prcU2: "incl. VAT & Shipping", prcBtn2: "Order as a gift — 95 € →",
-                prcT3: "LYS Duo Pack (2x Boxes)", prcD3: "One for you, one to gift: Get two limited boxes at a special price.", prcU3: "instead of 178 € (Save 13 €)", prcBtn3: "Get Duo Pack — 165 € →",
-                ftDesc: "Exclusive detailing gift boxes for car lovers. Handcrafted in Berlin.",
-                modalTitle: "Complete Your Order", step1: "Step 1 of 3: Your Selection", step2: "Step 2 of 3: Shipping & Payment", step3: "Step 3 of 3: Delivery Address",
-                lblEdition: "Selected Edition", lblQty: "Quantity", lblPromo: "Promo Code", sumShipping: "Incl. free DHL shipping", sumLabel: "Total Amount:",
+                prcT1: "LYS Signature Detailing Box", prcD1: "The complete gift set in a matte black magnetic box.", prcU1: "incl. VAT & Shipping", prcBtn1: "Add to cart — 89 € →",
+                prcT2: "LYS Gift Edition (+ Custom Text)", prcD2: "Perfect for birthdays: We handwrite your personal greeting.", prcU2: "incl. VAT & Shipping", prcBtn2: "Order as a gift — 95 € →",
+                prcT3: "LYS Duo Pack (2x Boxes)", prcD3: "One for you, one to gift.", prcU3: "instead of 178 € (Save 13 €)", prcBtn3: "Get Duo Pack — 165 € →",
+                secFaqSub: "GOOD TO KNOW", secFaqTitle: "FAQ",
+                faqQ1: "What's included?", faqA1: "Care products, towels, brushes, scent, and manual.",
+                faqQ2: "Custom message?", faqA2: "Yes, available with the Gift Edition.",
+                faqQ3: "How to order?", faqA3: "Send an inquiry, we confirm and send payment info.",
+                faqQ4: "Shipping costs?", faqA4: "Shipping within Germany is free.",
+                faqQ5: "Promo code?", faqA5: "Use LYS10 for a 10% discount.",
+                mobBuyT: "LYS Signature", mobBuyD: "from 89 € · incl. shipping", mobBuyBtn: "Inquire Now ↗",
+                ftDesc: "Exclusive detailing gift boxes. Handcrafted in Berlin.", ftLegal: "Please complete legal details.",
+                modalTitle: "Complete Your Order", modNotice: "This is a non-binding inquiry. No online payment.",
+                step1: "Step 1: Selection", step2: "Step 2: Shipping & Payment", step3: "Step 3: Address",
+                lblEdition: "Selected Edition", lblQty: "Quantity", lblPromo: "Promo Code", lblMsg: "Personal Message",
+                sumShipping: "Incl. free DHL shipping", sumLabel: "Total Amount:",
                 lblShip: "Shipping Method", lblPay: "Payment Method",
-                lblName: "Full Name *", lblEmail: "Email *", lblPhone: "Phone *", lblStreet: "Street & No. *",
-                btnN1: "Continue to Shipping →", btnN2: "Continue to Address →", btnP1: "← Back", btnP2: "← Back", btnSubmit: "Send order inquiry →"
+                lblName: "Full Name *", lblEmail: "Email *", lblPhone: "Phone *", lblStreet: "Street & No. *", lblZip: "ZIP *", lblCity: "City *", lblExtra: "Address Extra",
+                btnN1: "Continue to Shipping →", btnN2: "Continue to Address →", btnP1: "← Back", btnP2: "← Back", btnSubmit: "Send Inquiry →",
+                optShip1: "📦 DHL Parcel Germany", optShip2: "📍 Pickup in Berlin", optPay1: "💳 PayPal", optPay2: "🏦 Bank Transfer"
             },
             ru: {
-                promoText: "🎁 Эксклюзивная скидка: 10% на первый бокс по коду <span class='promo-badge'>LYS10</span>",
-                copyBtn: "Копировать ✨",
-                toast: "✨ Промокод LYS10 скопирован!",
+                promoText: "🎁 Скидка 10% по коду <span class='promo-badge'>LYS10</span>",
+                copyBtn: "Копировать ✨", toast: "✨ Промокод LYS10 скопирован!",
                 navUnboxing: "Распаковка", navInside: "Что внутри", navShop: "Версии и цены",
                 btnBuyHeader: "🛒 Заказать сейчас",
                 heroSub: "🦊 LYS SIGNATURE EDITION",
                 heroTitle: "Эксклюзивные боксы для <em>истинных ценителей авто</em>.",
-                heroDesc: "Бескомпромиссный уход за автомобилем в роскошной магнитной коробке с покрытием Soft-Touch. Идеальный подарок ручной сборки из Берлина.",
+                heroDesc: "Бескомпромиссный уход за автомобилем в роскошной магнитной коробке с покрытием Soft-Touch. Ручная сборка в Берлине.",
                 heroCta: "Заказать бокс — 89 € ❯",
+                heroTrust1: "✦ 3 премиум-состава", heroTrust2: "✦ Готово к вручению", heroTrust3: "✦ Бесплатная доставка (DE)",
                 secVidSub: "UNBOXING EXPERIENCE", secVidTitle: "Детальный обзор бокса",
-                p1: "Премиум магнитный бокс", p2: "3 премиум-состава (DE)", p3: "Бесплатная доставка DHL (DE)",
                 secInsideSub: "ПОЛНЫЙ УХОД", secInsideTitle: "Что внутри бокса LYS?",
-                item1t: "01 | ОЧИСТИТЕЛЬ САЛОНА (330 мл)", item1d: "Бережная и глубокая очистка пластика, кожи и приборной панели.",
-                item2t: "02 | ОЧИСТИТЕЛЬ СТЕКОЛ (330 мл)", item2d: "Кристальная чистота без разводов. Удаляет жир и никотиновый налет.",
-                item3t: "03 | ОЧИСТИТЕЛЬ ДИСКОВ (330 мл)", item3d: "Мощная формула против тормозной пыли – безопасна для литых дисков.",
-                item4t: "3x Профи микрофибры", item4d: "Две серые фибры для стекол и кузова, и одна пушистая черная для деликатного салона.",
-                item5t: "Автопарфюм Ikeda и Кисти", item5d: "Детейлинг-кисти и эксклюзивный аромат аккуратно уложены в наполнитель SizzlePak.",
-                item6t: "Soft-Touch инструкция", item6d: "Элегантная пошаговая карточка закреплена на внутренней стороне крышки.",
+                item1t: "01 | ОЧИСТИТЕЛЬ САЛОНА (330 мл)", item1d: "Бережная очистка пластика и кожи.",
+                item2t: "02 | ОЧИСТИТЕЛЬ СТЕКОЛ (330 мл)", item2d: "Кристальная чистота без разводов.",
+                item3t: "03 | ОЧИСТИТЕЛЬ ДИСКОВ (330 мл)", item3d: "Мощная формула против тормозной пыли.",
+                item4t: "3x Профи микрофибры", item4d: "Две серые фибры для стекол, одна черная для салона.",
+                item5t: "Автопарфюм Ikeda и Кисти", item5d: "Детейлинг-кисти и эксклюзивный аромат.",
+                item6t: "Soft-Touch инструкция", item6d: "Элегантная пошаговая карточка.",
+                secBenSub: "ПОДАРОК, КОТОРЫМ ПОЛЬЗУЮТСЯ", benTitle: "Больше, чем просто коробка.",
+                benT1: "Распаковка и эмоции", benD1: "Идеально для тех, кто любит свою машину.",
+                benT2: "Всё в одном месте", benD2: "Уход за салоном, стеклами и дисками в одном наборе.",
+                benT3: "Личное послание", benD3: "Добавьте пожелание с Gift Edition.",
+                benBtn: "Выбрать версию ↗",
                 secShopSub: "ОНЛАЙН МАГАЗИН", secShopTitle: "Выберите свою версию",
-                prcT1: "LYS Signature Detailing Box", prcD1: "Полный подарочный набор в матовой магнитной коробке с бронзовым 3D-логотипом.", prcU1: "вкл. НДС и доставку", prcBtn1: "В корзину — 89 € →",
-                prcT2: "LYS Gift Edition (+ Ваш текст)", prcD2: "Идеально для подарка: мы подпишем карточку вручную с вашим поздравлением.", prcU2: "вкл. НДС и доставку", prcBtn2: "Заказать как подарок — 95 € →",
-                prcT3: "LYS Duo Pack (2x Бокса)", prcD3: "Один для себя, один в подарок: закажите два лимитированных бокса по спеццене.", prcU3: "вместо 178 € (Скидка 13 €)", prcBtn3: "Заказать Duo Pack — 165 € →",
-                ftDesc: "Эксклюзивные подарочные боксы для автолюбителей. Ручная сборка в Берлине.",
-                modalTitle: "Оформление заказа", step1: "Шаг 1 из 3: Ваш выбор", step2: "Шаг 2 из 3: Доставка и Оплата", step3: "Шаг 3 из 3: Адрес доставки",
-                lblEdition: "Выбранная версия", lblQty: "Количество", lblPromo: "Промокод", sumShipping: "Вкл. бесплатную доставку DHL", sumLabel: "Итого к оплате:",
+                prcT1: "LYS Signature Detailing Box", prcD1: "Полный подарочный набор в матовой магнитной коробке.", prcU1: "вкл. НДС и доставку", prcBtn1: "В корзину — 89 € →",
+                prcT2: "LYS Gift Edition (+ Ваш текст)", prcD2: "Мы подпишем карточку вручную с вашим пожеланием.", prcU2: "вкл. НДС и доставку", prcBtn2: "В подарок — 95 € →",
+                prcT3: "LYS Duo Pack (2x Бокса)", prcD3: "Один себе, один в подарок.", prcU3: "вместо 178 € (Скидка 13 €)", prcBtn3: "Заказать Duo — 165 € →",
+                secFaqSub: "ПОЛЕЗНО ЗНАТЬ", secFaqTitle: "Частые вопросы",
+                faqQ1: "Что в коробке?", faqA1: "Химия, микрофибры, кисти, парфюм и инструкция.",
+                faqQ2: "Можно добавить текст?", faqA2: "Да, в версии Gift Edition.",
+                faqQ3: "Как заказать?", faqA3: "Отправьте заявку, мы подтвердим и пришлем реквизиты.",
+                faqQ4: "Доставка?", faqA4: "По Германии доставка бесплатная.",
+                faqQ5: "Промокод?", faqA5: "Введите LYS10 для скидки 10%.",
+                mobBuyT: "LYS Signature", mobBuyD: "от 89 € · вкл. доставку", mobBuyBtn: "Заказать ↗",
+                ftDesc: "Эксклюзивные подарочные боксы. Ручная сборка в Берлине.", ftLegal: "Заполните юр. данные.",
+                modalTitle: "Оформление заказа", modNotice: "Это предварительная заявка без онлайн-оплаты.",
+                step1: "Шаг 1: Выбор", step2: "Шаг 2: Доставка и Оплата", step3: "Шаг 3: Адрес",
+                lblEdition: "Версия", lblQty: "Количество", lblPromo: "Промокод", lblMsg: "Пожелание (до 250 симв.)",
+                sumShipping: "Вкл. бесплатную доставку DHL", sumLabel: "Итого:",
                 lblShip: "Способ доставки", lblPay: "Способ оплаты",
-                lblName: "Ваше Имя *", lblEmail: "E-Mail *", lblPhone: "Телефон *", lblStreet: "Улица и номер дома *",
-                btnN1: "Далее к доставке →", btnN2: "Далее к адресу →", btnP1: "← Назад", btnP2: "← Назад", btnSubmit: "Отправить заявку →"
+                lblName: "Имя *", lblEmail: "E-Mail *", lblPhone: "Телефон *", lblStreet: "Улица и дом *", lblZip: "Индекс *", lblCity: "Город *", lblExtra: "Квартира (опц.)",
+                btnN1: "К доставке →", btnN2: "К адресу →", btnP1: "← Назад", btnP2: "← Назад", btnSubmit: "Отправить заявку →",
+                optShip1: "📦 Посылка DHL (Германия)", optShip2: "📍 Самовывоз (Берлин)", optPay1: "💳 PayPal", optPay2: "🏦 Банковский перевод"
             },
             ua: {
-                promoText: "🎁 Ексклюзивна знижка: 10% на перший бокс за кодом <span class='promo-badge'>LYS10</span>",
-                copyBtn: "Скопіювати ✨",
-                toast: "✨ Промокод LYS10 скопійовано!",
+                promoText: "🎁 Знижка 10% за кодом <span class='promo-badge'>LYS10</span>",
+                copyBtn: "Скопіювати ✨", toast: "✨ Промокод LYS10 скопійовано!",
                 navUnboxing: "Розпакування", navInside: "Що всередині", navShop: "Версії та ціни",
                 btnBuyHeader: "🛒 Замовити зараз",
                 heroSub: "🦊 LYS SIGNATURE EDITION",
                 heroTitle: "Ексклюзивні бокси для <em>справжніх автолюбів</em>.",
-                heroDesc: "Безкомпромісний догляд за автомобілем у розкішній магнітній коробці з покриттям Soft-Touch. Ідеальний подарунок ручної збірки з Берліна.",
+                heroDesc: "Безкомпромісний догляд за автомобілем у розкішній магнітній коробці. Ручна збірка з Берліна.",
                 heroCta: "Замовити бокс — 89 € ❯",
+                heroTrust1: "✦ 3 преміум-засоби", heroTrust2: "✦ Готово до вручення", heroTrust3: "✦ Безкоштовна доставка (DE)",
                 secVidSub: "UNBOXING EXPERIENCE", secVidTitle: "Детальний огляд боксу",
-                p1: "Преміум магнітний бокс", p2: "3 преміум-засоби (DE)", p3: "Безкоштовна доставка DHL (DE)",
                 secInsideSub: "ПОВНИЙ ДОГЛЯД", secInsideTitle: "Що всередині боксу LYS?",
-                item1t: "01 | ОЧИСНИК САЛОНУ (330 мл)", item1d: "Делікатне та глибоке очищення пластику, шкіри та панелі приладів.",
-                item2t: "02 | ОЧИСНИК СКЛА (330 мл)", item2d: "Кришталева чистота без розводів. Видаляє жир та нікотиновий наліт.",
-                item3t: "03 | ОЧИСНИК ДИСКІВ (330 мл)", item3d: "Потужна формула проти гальмівного пилу – безпечна для литих дисків.",
-                item4t: "3x Профі мікрофібри", item4d: "Дві сірі фібри для скла та кузова, і одна пухнаста чорна для делікатного салону.",
-                item5t: "Автопарфюм Ikeda та Пензлі", item5d: "Дітейлінг-пензлі та ексклюзивний аромат акуратно укладені в наповнювач SizzlePak.",
-                item6t: "Soft-Touch інструкція", item6d: "Елегантна покрокова картка закріплена на внутрішній стороні кришки.",
+                item1t: "01 | ОЧИСНИК САЛОНУ (330 мл)", item1d: "Делікатне очищення пластику та шкіри.",
+                item2t: "02 | ОЧИСНИК СКЛА (330 мл)", item2d: "Кришталева чистота без розводів.",
+                item3t: "03 | ОЧИСНИК ДИСКІВ (330 мл)", item3d: "Потужна формула проти гальмівного пилу.",
+                item4t: "3x Профі мікрофібри", item4d: "Дві сірі фібри для скла, одна чорна для салону.",
+                item5t: "Автопарфюм Ikeda та Пензлі", item5d: "Дітейлінг-пензлі та ексклюзивний аромат.",
+                item6t: "Soft-Touch інструкція", item6d: "Елегантна покрокова картка.",
+                secBenSub: "ПОДАРУНОК, ЯКИМ КОРИСТУЮТЬСЯ", benTitle: "Більше, ніж просто коробка.",
+                benT1: "Розпакування та емоції", benD1: "Ідеально для тих, хто любить свою машину.",
+                benT2: "Усе в одному місці", benD2: "Догляд за салоном, склом і дисками в одному наборі.",
+                benT3: "Особисте послання", benD3: "Додайте побажання з Gift Edition.",
+                benBtn: "Обрати версію ↗",
                 secShopSub: "ОНЛАЙН МАГАЗИН", secShopTitle: "Оберіть свою версію",
-                prcT1: "LYS Signature Detailing Box", prcD1: "Повний подарунковий набір у матовій магнітній коробці з бронзовим 3D-логотипом.", prcU1: "вкл. ПДВ та доставку", prcBtn1: "У кошик — 89 € →",
-                prcT2: "LYS Gift Edition (+ Ваш текст)", prcD2: "Ідеально для подарунка: ми підпишемо картку вручну з вашим привітанням.", prcU2: "вкл. ПДВ та доставку", prcBtn2: "Замовити як подарунок — 95 € →",
-                prcT3: "LYS Duo Pack (2x Бокси)", prcD3: "Один для себе, один у подарунок: замовте два лімітовані бокси за спецціною.", prcU3: "замість 178 € (Знижка 13 €)", prcBtn3: "Замовити Duo Pack — 165 € →",
-                ftDesc: "Ексклюзивні подарункові бокси для автолюбів. Ручна збірка в Берліні.",
-                modalTitle: "Оформлення замовлення", step1: "Крок 1 з 3: Ваш вибір", step2: "Крок 2 з 3: Доставка та Оплата", step3: "Крок 3 з 3: Адреса доставки",
-                lblEdition: "Обрана версія", lblQty: "Кількість", lblPromo: "Промокод", sumShipping: "Вкл. безкоштовну доставку DHL", sumLabel: "Всього до сплати:",
+                prcT1: "LYS Signature Detailing Box", prcD1: "Повний подарунковий набір у матовій коробці.", prcU1: "вкл. ПДВ та доставку", prcBtn1: "У кошик — 89 € →",
+                prcT2: "LYS Gift Edition (+ Ваш текст)", prcD2: "Ми підпишемо картку вручну з вашим побажанням.", prcU2: "вкл. ПДВ та доставку", prcBtn2: "У подарунок — 95 € →",
+                prcT3: "LYS Duo Pack (2x Бокси)", prcD3: "Один собі, один у подарунок.", prcU3: "замість 178 € (Знижка 13 €)", prcBtn3: "Замовити Duo — 165 € →",
+                secFaqSub: "КОРИСНО ЗНАТИ", secFaqTitle: "Часті питання",
+                faqQ1: "Що в коробці?", faqA1: "Хімія, мікрофібри, пензлі, парфум та інструкція.",
+                faqQ2: "Можна додати текст?", faqA2: "Так, у версії Gift Edition.",
+                faqQ3: "Як замовити?", faqA3: "Надішліть заявку, ми підтвердимо і надішлемо реквізити.",
+                faqQ4: "Доставка?", faqA4: "По Німеччині доставка безкоштовна.",
+                faqQ5: "Промокод?", faqA5: "Введіть LYS10 для знижки 10%.",
+                mobBuyT: "LYS Signature", mobBuyD: "від 89 € · вкл. доставку", mobBuyBtn: "Замовити ↗",
+                ftDesc: "Ексклюзивні подарункові бокси. Ручна збірка в Берліні.", ftLegal: "Заповніть юр. дані.",
+                modalTitle: "Оформлення замовлення", modNotice: "Це попередня заявка без онлайн-оплати.",
+                step1: "Крок 1: Вибір", step2: "Крок 2: Доставка та Оплата", step3: "Крок 3: Адреса",
+                lblEdition: "Версія", lblQty: "Кількість", lblPromo: "Промокод", lblMsg: "Побажання (до 250 симв.)",
+                sumShipping: "Вкл. безкоштовну доставку DHL", sumLabel: "Разом:",
                 lblShip: "Спосіб доставки", lblPay: "Спосіб оплати",
-                lblName: "Ваше Ім'я *", lblEmail: "E-Mail *", lblPhone: "Телефон *", lblStreet: "Вулиця та номер будинку *",
-                btnN1: "Далі до доставки →", btnN2: "Далі до адреси →", btnP1: "← Назад", btnP2: "← Назад", btnSubmit: "Надіслати запит →"
+                lblName: "Ім'я *", lblEmail: "E-Mail *", lblPhone: "Телефон *", lblStreet: "Вулиця та дім *", lblZip: "Індекс *", lblCity: "Місто *", lblExtra: "Квартира (опц.)",
+                btnN1: "До доставки →", btnN2: "До адреси →", btnP1: "← Назад", btnP2: "← Назад", btnSubmit: "Надіслати заявку →",
+                optShip1: "📦 Посилка DHL (Німеччина)", optShip2: "📍 Самовивіз (Берлін)", optPay1: "💳 PayPal", optPay2: "🏦 Банківський переказ"
             }
         };
 
@@ -742,13 +802,13 @@
             document.getElementById('hero-title').innerHTML = t.heroTitle;
             document.getElementById('hero-desc').innerText = t.heroDesc;
             document.getElementById('hero-btn-cta').innerText = t.heroCta;
+            
+            document.getElementById('hero-trust-1').innerText = t.heroTrust1;
+            document.getElementById('hero-trust-2').innerText = t.heroTrust2;
+            document.getElementById('hero-trust-3').innerText = t.heroTrust3;
 
             document.getElementById('sec-vid-sub').innerText = t.secVidSub;
             document.getElementById('sec-vid-title').innerText = t.secVidTitle;
-
-            document.getElementById('perk-1').innerText = t.p1;
-            document.getElementById('perk-2').innerText = t.p2;
-            document.getElementById('perk-3').innerText = t.p3;
 
             document.getElementById('sec-inside-sub').innerText = t.secInsideSub;
             document.getElementById('sec-inside-title').innerText = t.secInsideTitle;
@@ -757,6 +817,14 @@
                 if(document.getElementById('item-'+i+'-t')) document.getElementById('item-'+i+'-t').innerText = t['item'+i+'t'];
                 if(document.getElementById('item-'+i+'-d')) document.getElementById('item-'+i+'-d').innerText = t['item'+i+'d'];
             }
+            
+            document.getElementById('sec-benefits-sub').innerText = t.secBenSub;
+            document.getElementById('benefits-title').innerText = t.benTitle;
+            for(let i=1; i<=3; i++) {
+                if(document.getElementById('ben-t-'+i)) document.getElementById('ben-t-'+i).innerText = t['benT'+i];
+                if(document.getElementById('ben-d-'+i)) document.getElementById('ben-d-'+i).innerText = t['benD'+i];
+            }
+            document.getElementById('ben-btn').innerHTML = t.benBtn;
 
             document.getElementById('sec-shop-sub').innerText = t.secShopSub;
             document.getElementById('sec-pricing-title').innerText = t.secShopTitle;
@@ -767,10 +835,23 @@
                 if(document.getElementById('prc-u'+i)) document.getElementById('prc-u'+i).innerText = t['prcU'+i];
                 if(document.getElementById('prc-btn-'+i)) document.getElementById('prc-btn-'+i).innerText = t['prcBtn'+i];
             }
+            
+            document.getElementById('sec-faq-sub').innerText = t.secFaqSub;
+            document.getElementById('sec-faq-title').innerText = t.secFaqTitle;
+            for(let i=1; i<=5; i++) {
+                if(document.getElementById('faq-q'+i)) document.getElementById('faq-q'+i).innerText = t['faqQ'+i];
+                if(document.getElementById('faq-a'+i)) document.getElementById('faq-a'+i).innerText = t['faqA'+i];
+            }
+            
+            document.getElementById('mob-buy-t').innerText = t.mobBuyT;
+            document.getElementById('mob-buy-d').innerText = t.mobBuyD;
+            document.getElementById('mob-buy-btn').innerText = t.mobBuyBtn;
 
             document.getElementById('ft-desc').innerText = t.ftDesc;
+            document.getElementById('ft-legal').innerText = t.ftLegal;
 
             document.getElementById('modal-form-title').innerText = t.modalTitle;
+            document.getElementById('mod-notice').innerText = t.modNotice;
             document.getElementById('step-title-1').innerText = t.step1;
             document.getElementById('step-title-2').innerText = t.step2;
             document.getElementById('step-title-3').innerText = t.step3;
@@ -778,6 +859,7 @@
             document.getElementById('lbl-edition').innerText = t.lblEdition;
             document.getElementById('lbl-qty').innerText = t.lblQty;
             document.getElementById('lbl-promo').innerText = t.lblPromo;
+            document.getElementById('lbl-msg').innerText = t.lblMsg;
             document.getElementById('sum-shipping').innerText = t.sumShipping;
             document.getElementById('sum-label').innerText = t.sumLabel;
 
@@ -787,12 +869,20 @@
             document.getElementById('lbl-email').innerText = t.lblEmail;
             document.getElementById('lbl-phone').innerText = t.lblPhone;
             document.getElementById('lbl-street').innerText = t.lblStreet;
+            document.getElementById('lbl-zip').innerText = t.lblZip;
+            document.getElementById('lbl-city').innerText = t.lblCity;
+            document.getElementById('lbl-extra').innerText = t.lblExtra;
 
             document.getElementById('btn-n1').innerText = t.btnN1;
             document.getElementById('btn-n2').innerText = t.btnN2;
             document.getElementById('btn-p1').innerText = t.btnP1;
             document.getElementById('btn-p2').innerText = t.btnP2;
             document.getElementById('btn-submit').innerText = t.btnSubmit;
+            
+            document.getElementById('opt-ship-1').innerText = t.optShip1;
+            document.getElementById('opt-ship-2').innerText = t.optShip2;
+            document.getElementById('opt-pay-1').innerText = t.optPay1;
+            document.getElementById('opt-pay-2').innerText = t.optPay2;
         }
     </script>
 </body>
