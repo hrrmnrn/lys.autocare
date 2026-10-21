@@ -32,6 +32,206 @@ html {
     scroll-padding-top: calc(var(--promo-height) + 130px);
 }
 
+<style>
+.hero h1.hero-title-live {
+    max-width: 900px;
+    margin: 0 auto 24px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: clamp(38px, 5vw, 68px);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -2px;
+}
+
+.hero-title-live .hero-first-line,
+.hero-title-live .hero-changing-line {
+    display: block;
+}
+
+.hero-title-live .hero-changing-line {
+    min-height: 1.2em;
+    margin-top: 6px;
+    color: #cba681;
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+}
+
+.hero-title-live .hero-changing-line.is-changing {
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.hero .hero-description {
+    max-width: 570px;
+    color: #aaa198;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.hero-accessible-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+    .hero h1.hero-title-live {
+        font-size: clamp(34px, 9vw, 48px);
+        letter-spacing: -1.3px;
+    }
+
+    .hero .hero-description {
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-title-live .hero-changing-line {
+        transition: none;
+    }
+}
+</style>
+
+<script>
+(() => {
+    const heading = document.querySelector(".hero h1");
+    const description = document.querySelector(".hero .hero-description");
+
+    if (!heading || !description) return;
+
+    const copy = {
+        de: {
+            first: "Dein Auto.",
+            phrases: [
+                "Dein Moment.",
+                "Dein Geschenk.",
+                "Dein Stil."
+            ],
+            description:
+                "Ein Set für die Freude an Details. " +
+                "Für dein eigenes Auto oder einen Menschen, " +
+                "der es genauso liebt."
+        },
+
+        en: {
+            first: "Your car.",
+            phrases: [
+                "Your moment.",
+                "Your gift.",
+                "Your style."
+            ],
+            description:
+                "A set for the joy of the details. " +
+                "For your own car or someone who loves theirs just as much."
+        },
+
+        ru: {
+            first: "Твой автомобиль.",
+            phrases: [
+                "Твой момент.",
+                "Твой подарок.",
+                "Твой стиль."
+            ],
+            description:
+                "Набор для тех, кто замечает детали. " +
+                "Для своего автомобиля или человека, " +
+                "который любит его не меньше."
+        },
+
+        ua: {
+            first: "Твоє авто.",
+            phrases: [
+                "Твій момент.",
+                "Твій подарунок.",
+                "Твій стиль."
+            ],
+            description:
+                "Набір для тих, хто помічає деталі. " +
+                "Для свого автомобіля або людини, " +
+                "яка любить його не менше."
+        }
+    };
+
+    /* Убираем прежнюю подпись над заголовком, если она есть. */
+    document.querySelector(".hero .hero-eyebrow")?.remove();
+
+    heading.className = "hero-title-live";
+    heading.removeAttribute("data-i18n");
+
+    heading.innerHTML = `
+        <span class="hero-first-line"></span>
+        <span class="hero-changing-line" aria-hidden="true"></span>
+        <span class="hero-accessible-text"></span>
+    `;
+
+    description.removeAttribute("data-i18n");
+
+    const firstLine = heading.querySelector(".hero-first-line");
+    const changingLine = heading.querySelector(".hero-changing-line");
+    const accessibleText = heading.querySelector(".hero-accessible-text");
+
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+
+    let interval;
+    let transitionTimer;
+    let index = 0;
+
+    function currentCopy() {
+        const lang = document.documentElement.lang;
+        return copy[lang === "uk" ? "ua" : lang] || copy.de;
+    }
+
+    function refreshHero() {
+        clearInterval(interval);
+        clearTimeout(transitionTimer);
+
+        const text = currentCopy();
+        index = 0;
+
+        firstLine.textContent = text.first;
+        changingLine.textContent = text.phrases[0];
+        changingLine.classList.remove("is-changing");
+        accessibleText.textContent = text.phrases.join(" ");
+        description.textContent = text.description;
+
+        if (motion.matches) return;
+
+        interval = setInterval(() => {
+            if (document.hidden) return;
+
+            changingLine.classList.add("is-changing");
+
+            transitionTimer = setTimeout(() => {
+                index = (index + 1) % text.phrases.length;
+                changingLine.textContent = text.phrases[index];
+                changingLine.classList.remove("is-changing");
+            }, 600);
+        }, 4800);
+    }
+
+    /* Обновляем текст при переключении языка сайта. */
+    new MutationObserver(refreshHero).observe(
+        document.documentElement,
+        {
+            attributes: true,
+            attributeFilter: ["lang"]
+        }
+    );
+
+    motion.addEventListener("change", refreshHero);
+
+    refreshHero();
+})();
+</script>
+    
 body {
     min-width: 320px;
     color: var(--text);
