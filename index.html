@@ -1419,6 +1419,29 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 @media(max-width:600px){.hero-title{font-size:clamp(31px,8.1vw,45px);letter-spacing:-.8px;}.hero-description{font-size:13px;}.hero-atmosphere i:nth-child(n+3){display:none;}}
 @media(prefers-reduced-motion:reduce){.hero-atmosphere{display:none;}.price-card:hover,.content-card:hover,.pillar:hover,.btn:hover{transform:none;}.hero-changing-line{animation:none;}}
 
+
+/* A more visible continuous sheen, without dimming the text. */
+.shimmer,.hero-changing-line {
+    background-image:linear-gradient(105deg,#b98b61 0%,#d9b58f 24%,#f2ddc0 42%,#d6af85 57%,#bb8d65 77%,#dfbd98 100%);
+    background-size:240% auto;
+    animation:lysVisibleSheen 7s linear infinite;
+}
+.hero-first-line {background:linear-gradient(110deg,#f3eee7 20%,#d4bea4 48%,#fff5e6 65%,#f3eee7 85%);background-size:240% auto;background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:lysVisibleSheen 12s linear infinite;}
+.section-title {text-wrap:balance;}
+.hero-title {position:relative;padding-bottom:18px;}
+.hero-title::after {content:"";display:block;width:88px;height:1px;margin:22px auto 0;background:linear-gradient(90deg,transparent,#e3c399,transparent);transform-origin:center;animation:lysAccentBreathe 5s ease-in-out infinite;}
+.hero .hero-slogan,.hero .hero-title,.hero .hero-description,.hero .button-row,.hero .trust {animation:lysArrival .85s cubic-bezier(.2,.65,.3,1) both;}
+.hero .hero-title{animation-delay:.08s;}.hero .hero-description{animation-delay:.18s;}.hero .button-row{animation-delay:.28s;}.hero .trust{animation-delay:.36s;}
+.reveal {transition:opacity .8s ease,transform .8s cubic-bezier(.2,.65,.3,1);}
+#duo-gift-choice {margin:18px 0;}
+#second-card-fields {margin-top:20px;padding-top:20px;border-top:1px solid var(--border);}
+#second-card-fields .eyebrow {margin-bottom:14px;text-align:left;}
+#gift-fee-summary {margin:18px 0 0;color:var(--gold-light);}
+@keyframes lysVisibleSheen {from{background-position:180% center;}to{background-position:-60% center;}}
+@keyframes lysAccentBreathe {0%,100%{transform:scaleX(.75);}50%{transform:scaleX(1.3);}}
+@keyframes lysArrival {from{opacity:.65;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+@media(prefers-reduced-motion:reduce){.hero-title::after{animation:none;} .hero .hero-slogan,.hero .hero-title,.hero .hero-description,.hero .button-row,.hero .trust{animation:none;}}
+
 </style>
 </head>
 
@@ -1947,11 +1970,19 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
                     </div>
                 </div>
 
-                <label class="check-label">
+                <label class="check-label" id="single-card-choice">
                     <input type="checkbox" id="request-card">
                     <span data-i18n="requestCard"></span>
                 </label>
 
+                <div class="field" id="duo-gift-choice" hidden>
+                    <label for="duo-gift-count" data-i18n="duoGiftLabel"></label>
+                    <select class="input" id="duo-gift-count" name="duo_gift_boxes_per_pack" disabled>
+                        <option value="0" data-i18n="duoGiftNone"></option>
+                        <option value="1" data-i18n="duoGiftOne"></option>
+                        <option value="2" data-i18n="duoGiftTwo"></option>
+                    </select>
+                </div>
                 <p class="form-note" id="duo-card-note" data-i18n="duoCardNote" hidden></p>
 
                 <div id="card-fields" hidden>
@@ -1967,6 +1998,18 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
                     </div>
                 </div>
 
+                <div id="second-card-fields" hidden>
+                    <p class="eyebrow" data-i18n="secondCard"></p>
+                    <div class="field">
+                        <label for="order-card-name-2" data-i18n="cardName"></label>
+                        <input class="input" id="order-card-name-2" name="gift_recipient_2" maxlength="70" disabled>
+                    </div>
+                    <div class="field">
+                        <label for="order-card-message-2" data-i18n="cardMessage"></label>
+                        <textarea class="input" id="order-card-message-2" name="gift_message_2" maxlength="250" rows="3" disabled></textarea>
+                    </div>
+                </div>
+                <p class="form-note" id="gift-fee-summary" hidden></p>
                 <div class="summary">
                     <div>
                         <span data-i18n="total"></span>
@@ -2263,7 +2306,7 @@ de:{
 
     heroFirst:"Pflege mit Stil.",
     heroPhrases:["Freude inklusive."],
-    heroDescription:"Drei Pflegeprodukte. Passende Accessoires. Eine Box für dein Auto — oder zum Verschenken.",
+    heroDescription:"Dein Auto verdient Aufmerksamkeit. Pack sie aus — mit drei Pflegeprodukten, passenden Accessoires und einer Überraschung von LYS.",
     heroQuiz:"Quiz starten & Set finden",
     heroShop:"Kollektion ansehen · ab 89 €",
     trust1:"✦ 3 Pflegeprodukte à 250 ml",
@@ -2279,7 +2322,7 @@ de:{
     yourChoice:"DEINE EMPFEHLUNG",
     restart:"Quiz erneut starten",
     quizBonus:"Wenn du einen Rabattcode hast, gib ihn selbst im Anfrageformular ein.",
-    quizDuoBonus:"Zwei Signature Boxen kosten einzeln 178 €. Mit dem Duo Pack sparst du 13 €.",
+    quizDuoBonus:"Basispreis: 165 € statt 178 € für zwei einzelne Signature Boxen. Geschenkgestaltung kommt bei Auswahl hinzu.",
 
     resultDescriptions:[
         "Das klassische Set für deine Pflegeroutine: Innenraum, Glas, Felgen und passende Accessoires.",
@@ -2342,8 +2385,8 @@ de:{
     }
 ],
 
-    shopTitle:"Wähle deine LYS Edition",
-    shopSubtitle:"Ein vollständiges Pflegeset. Drei Möglichkeiten, es zu erleben.",
+    shopTitle:"Welche Box passt zu dir?",
+    shopSubtitle:"Für dich. Zum Verschenken. Oder gleich für zwei.",
     tags:["Für deine Pflegeroutine","Das persönliche Geschenk","Der doppelte Vorteil"],
     descriptions:[
         "Die klassische LYS Box für deine persönliche Autopflege.",
@@ -2353,14 +2396,14 @@ de:{
     includes:[
         ["3 Pflegeprodukte à 250 ml","3 Mikrofasertücher und Pinsel mit Etui","Anleitung und Überraschung von LYS"],
         ["Der vollständige Inhalt der Signature Box","Persönliche Grußkarte","Schwarze Geschenkbox mit orangefarbenem Band"],
-        ["2 vollständige Signature Boxen","6 Pflegeprodukte à 250 ml insgesamt","Accessoires und Überraschung in jeder Box"]
+        ["2 vollständige Signature Boxen","6 Pflegeprodukte à 250 ml insgesamt","Accessoires und Überraschung in jeder Box","Optional: Geschenkgestaltung +6 € je Box"]
     ],
     priceNote:"inkl. MwSt. & Versand in Deutschland",
     duoSaving:"165 € statt 178 € · du sparst 13 €",
     order:"Anfragen",
     giftOrder:"Als Geschenk anfragen",
 
-    insideTitle:"Pflegeprodukte und Accessoires im Detail",
+    insideTitle:"Box auf. Details entdecken.",
     insideSubtitle:"Entdecke den Inhalt der Box und den Moment des Auspackens.",
     tabContent:"Inhalt der Box",
     tabUnboxing:"Unboxing",
@@ -2399,7 +2442,7 @@ de:{
     asmrMicrofibre:"Die Mikrofasern",
     asmrRibbon:"Das Geschenk",
 
-    giftTitle:"Mach dein Geschenk persönlich",
+    giftTitle:"Deine Worte machen den Unterschied.",
     giftSubtitle:"Ein Name, ein paar persönliche Worte und eine Karte, die zu deinem Geschenk gehört.",
     cardName:"Name auf der Karte · optional",
     cardMessage:"Deine Nachricht · bis zu 250 Zeichen",
@@ -2462,7 +2505,15 @@ de:{
     quantity:"Anzahl der Pakete",
     promoLabel:"Gutscheincode",
     requestCard:"Persönliche Grußkarte anfragen",
-    duoCardNote:"Eine zusätzliche Karte für das Duo Pack bestätigen wir zusammen mit deiner Anfrage.",
+    duoGiftLabel:"Geschenkgestaltung pro Duo Pack",
+    duoGiftNone:"Ohne Grußkarten · 165 €",
+    duoGiftOne:"1 Geschenkbox mit Grußkarte · +6 € · gesamt 171 €",
+    duoGiftTwo:"2 Geschenkboxen mit Grußkarten · +12 € · gesamt 177 €",
+    duoCardNote:"6 € pro Geschenkbox inklusive persönlicher Grußkarte. Die Auswahl gilt pro Duo Pack. Bei mehreren Duo Packs werden die eingegebenen Kartentexte wiederholt.",
+    secondCard:"ZWEITE GRUSSKARTE",
+    giftFee:"Geschenkgestaltung",
+    duoQuestion:"Wie viele Boxen möchtest du verschenken?",
+    duoOptions:[["Keine — beide klassisch", "Zwei Signature Boxen ohne Grußkarten · 165 €."], ["Eine als Geschenk", "Ein Geschenkbox-Upgrade mit persönlicher Karte · gesamt 171 €."], ["Beide als Geschenk", "Zwei Geschenkbox-Upgrades, zwei persönliche Karten · gesamt 177 €."]],
     total:"Voraussichtlicher Gesamtbetrag",
     shippingIncluded:"Versand in Deutschland inklusive",
     nextShipping:"Zur Lieferung →",
@@ -2505,7 +2556,7 @@ en:{
 
     heroFirst:"Care with style.",
     heroPhrases:["Made to delight."],
-    heroDescription:"Three care products. Matching accessories. One box for your car — or a thoughtful gift.",
+    heroDescription:"Give your car a little attention. Unbox three care products, matching accessories and a surprise from LYS.",
     heroQuiz:"Take the quiz & find your set",
     heroShop:"Explore the collection · from €89",
     trust1:"✦ 3 care products · 250 ml each",
@@ -2521,7 +2572,7 @@ en:{
     yourChoice:"YOUR RECOMMENDATION",
     restart:"Restart the quiz",
     quizBonus:"If you have a discount code, enter it yourself in the enquiry form.",
-    quizDuoBonus:"Two separate Signature Boxes cost €178. The Duo Pack saves you €13.",
+    quizDuoBonus:"Base price: €165 instead of €178 for two separate Signature Boxes. Gift presentation is added when selected.",
     resultDescriptions:[
         "The classic set for your care routine: interior, glass, wheels and matching accessories.",
         "The complete set as a personal gift. Add a recipient's name and your greeting card message.",
@@ -2582,8 +2633,8 @@ en:{
     }
 ],
 
-    shopTitle:"Choose your LYS edition",
-    shopSubtitle:"One complete care collection. Three ways to experience it.",
+    shopTitle:"Which box feels like you?",
+    shopSubtitle:"For you. For someone special. Or make it two.",
     tags:["For your care routine","The personal gift","Twice the value"],
     descriptions:[
         "The classic LYS box for your personal car care.",
@@ -2593,14 +2644,14 @@ en:{
     includes:[
         ["3 care products · 250 ml each","3 microfibres and brushes with a case","Guide and a surprise from LYS"],
         ["Everything in the Signature Box","Personal greeting card","Black gift box with an orange ribbon"],
-        ["2 complete Signature Boxes","6 care products · 250 ml each in total","Accessories and a surprise in each box"]
+        ["2 complete Signature Boxes","6 care products · 250 ml each in total","Accessories and a surprise in each box","Optional gift presentation: +€6 per box"]
     ],
     priceNote:"VAT & shipping within Germany included",
     duoSaving:"€165 instead of €178 · save €13",
     order:"Request this box",
     giftOrder:"Request as a gift",
 
-    insideTitle:"Care products and accessories in detail",
+    insideTitle:"Open the box. Meet the details.",
     insideSubtitle:"Explore what is inside the box and the moment of unboxing.",
     tabContent:"Inside the box",
     tabUnboxing:"Unboxing",
@@ -2639,7 +2690,7 @@ en:{
     asmrMicrofibre:"The microfibres",
     asmrRibbon:"The gift",
 
-    giftTitle:"Make your gift personal",
+    giftTitle:"Your words make it personal.",
     giftSubtitle:"A name, a few thoughtful words and a card that belongs with your gift.",
     cardName:"Name on the card · optional",
     cardMessage:"Your message · up to 250 characters",
@@ -2702,7 +2753,15 @@ en:{
     quantity:"Number of packs",
     promoLabel:"Discount code",
     requestCard:"Request a personal greeting card",
-    duoCardNote:"An additional card for Duo Pack will be confirmed together with your inquiry.",
+    duoGiftLabel:"Gift presentation per Duo Pack",
+    duoGiftNone:"Without greeting cards · €165",
+    duoGiftOne:"1 gift box with a card · +€6 · total €171",
+    duoGiftTwo:"2 gift boxes with cards · +€12 · total €177",
+    duoCardNote:"€6 per gift box, including a personal card. Your choice applies to each Duo Pack. For multiple packs, the entered card messages are repeated.",
+    secondCard:"SECOND GREETING CARD",
+    giftFee:"Gift presentation",
+    duoQuestion:"How many boxes would you like to give as gifts?",
+    duoOptions:[["Neither — keep both classic", "Two Signature Boxes without greeting cards · €165."], ["One as a gift", "One gift box upgrade with a personal card · total €171."], ["Both as gifts", "Two gift box upgrades, two personal cards · total €177."]],
     total:"Estimated total",
     shippingIncluded:"Shipping within Germany included",
     nextShipping:"To delivery →",
@@ -2745,7 +2804,7 @@ ru:{
 
     heroFirst:"Уход со вкусом.",
     heroPhrases:["Радость в деталях."],
-    heroDescription:"Три средства. Продуманные аксессуары. Один бокс — для своего автомобиля или в подарок.",
+    heroDescription:"Для автомобиля, который вы любите. Внутри — три средства, аксессуары для ухода и сюрприз от LYS.",
     heroQuiz:"Пройти квиз и подобрать набор",
     heroShop:"Смотреть коллекцию · от 89 €",
     trust1:"✦ 3 средства по 250 мл",
@@ -2761,7 +2820,7 @@ ru:{
     yourChoice:"ВАША РЕКОМЕНДАЦИЯ",
     restart:"Пройти квиз заново",
     quizBonus:"Если у вас есть промокод, введите его самостоятельно в форме заявки.",
-    quizDuoBonus:"Два отдельных Signature Box стоят 178 €. Выгода Duo Pack — 13 €.",
+    quizDuoBonus:"Базовая цена — 165 € вместо 178 € за два отдельных Signature Box. Подарочное оформление оплачивается дополнительно при выборе.",
     resultDescriptions:[
         "Классический набор для вашей процедуры ухода: салон, стёкла, диски и подходящие аксессуары.",
         "Полный комплект в персональном подарочном формате. Добавьте имя получателя и поздравление для открытки.",
@@ -2822,8 +2881,8 @@ ru:{
     }
 ],
 
-    shopTitle:"Выберите свою версию LYS",
-    shopSubtitle:"Полный комплект ухода. Три способа его подарить и использовать.",
+    shopTitle:"Какой бокс — ваш?",
+    shopSubtitle:"Себе. Близкому человеку. Или сразу для двоих.",
     tags:["Для личного ухода","Персональный подарок","Двойная выгода"],
     descriptions:[
         "Классический бокс LYS для личного ухода за автомобилем.",
@@ -2833,14 +2892,14 @@ ru:{
     includes:[
         ["3 средства по 250 мл","3 микрофибры и кисточки с чехлом","Инструкция и сюрприз от LYS"],
         ["Полное содержимое Signature Box","Персональная подарочная открытка","Чёрная коробка с оранжевой лентой"],
-        ["2 полных набора Signature","Всего 6 флаконов по 250 мл","Аксессуары и сюрприз в каждом боксе"]
+        ["2 полных набора Signature","Всего 6 флаконов по 250 мл","Аксессуары и сюрприз в каждом боксе","Подарочное оформление: +6 € за бокс"]
     ],
     priceNote:"НДС и доставка по Германии включены",
     duoSaving:"165 € вместо 178 € · экономия 13 €",
     order:"Оставить заявку",
     giftOrder:"Оформить в подарок",
 
-    insideTitle:"Средства и аксессуары в деталях",
+    insideTitle:"Откройте бокс. Рассмотрите детали.",
     insideSubtitle:"Рассмотрите содержимое бокса и момент его распаковки.",
     tabContent:"Состав набора",
     tabUnboxing:"Распаковка",
@@ -2879,7 +2938,7 @@ ru:{
     asmrMicrofibre:"Фактура микрофибры",
     asmrRibbon:"Подарочная подача",
 
-    giftTitle:"Сделайте подарок персональным",
+    giftTitle:"Самое личное — ваши слова.",
     giftSubtitle:"Имя получателя, несколько тёплых слов и открытка, которая станет частью подарка.",
     cardName:"Имя на открытке · необязательно",
     cardMessage:"Поздравление · до 250 символов",
@@ -2942,7 +3001,15 @@ ru:{
     quantity:"Количество комплектов",
     promoLabel:"Промокод",
     requestCard:"Хочу персональную открытку",
-    duoCardNote:"Дополнительную открытку для Duo Pack подтвердим вместе с вашей заявкой.",
+    duoGiftLabel:"Подарочное оформление каждого Duo Pack",
+    duoGiftNone:"Без открыток · 165 €",
+    duoGiftOne:"1 подарочный бокс с открыткой · +6 € · итого 171 €",
+    duoGiftTwo:"2 подарочных бокса с открытками · +12 € · итого 177 €",
+    duoCardNote:"6 € за подарочное оформление одного бокса с персональной открыткой. Выбор действует для каждого Duo Pack. При заказе нескольких комплектов тексты открыток повторяются.",
+    secondCard:"ВТОРАЯ ОТКРЫТКА",
+    giftFee:"Подарочное оформление",
+    duoQuestion:"Сколько боксов оформить в подарок?",
+    duoOptions:[["Ни одного — оба без открыток", "Два классических Signature Box · 165 €."], ["Один в подарок", "Оформление одного бокса с персональной открыткой · итого 171 €."], ["Оба в подарок", "Оформление двух боксов, две персональные открытки · итого 177 €."]],
     total:"Предварительная сумма",
     shippingIncluded:"Доставка по Германии включена",
     nextShipping:"К доставке →",
@@ -2985,7 +3052,7 @@ ua:{
 
     heroFirst:"Догляд зі смаком.",
     heroPhrases:["Радість у деталях."],
-    heroDescription:"Три засоби. Продумані аксесуари. Один бокс — для свого автомобіля або в подарунок.",
+    heroDescription:"Для автомобіля, який ви любите. Усередині — три засоби, аксесуари для догляду та сюрприз від LYS.",
     heroQuiz:"Пройти квіз і підібрати набір",
     heroShop:"Переглянути колекцію · від 89 €",
     trust1:"✦ 3 засоби по 250 мл",
@@ -3001,7 +3068,7 @@ ua:{
     yourChoice:"ВАША РЕКОМЕНДАЦІЯ",
     restart:"Пройти квіз знову",
     quizBonus:"Якщо маєте промокод, введіть його самостійно у формі заявки.",
-    quizDuoBonus:"Два окремі Signature Box коштують 178 €. Вигода Duo Pack — 13 €.",
+    quizDuoBonus:"Базова ціна — 165 € замість 178 € за два окремі Signature Box. Подарункове оформлення оплачується додатково за вибором.",
     resultDescriptions:[
         "Класичний набір для вашого догляду: салон, скло, диски та відповідні аксесуари.",
         "Повний комплект у персональному подарунковому форматі. Додайте ім’я отримувача та побажання для листівки.",
@@ -3062,8 +3129,8 @@ ua:{
     }
 ],
 
-    shopTitle:"Оберіть свою версію LYS",
-    shopSubtitle:"Повний комплект догляду. Три способи його подарувати й використовувати.",
+    shopTitle:"Який бокс — ваш?",
+    shopSubtitle:"Собі. Близькій людині. Або одразу для двох.",
     tags:["Для особистого догляду","Персональний подарунок","Подвійна вигода"],
     descriptions:[
         "Класичний бокс LYS для особистого догляду за автомобілем.",
@@ -3080,7 +3147,7 @@ ua:{
     order:"Залишити заявку",
     giftOrder:"Оформити в подарунок",
 
-    insideTitle:"Засоби й аксесуари в деталях",
+    insideTitle:"Відкрийте бокс. Роздивіться деталі.",
     insideSubtitle:"Розгляньте вміст боксу та момент його розпакування.",
     tabContent:"Вміст набору",
     tabUnboxing:"Розпакування",
@@ -3119,7 +3186,7 @@ ua:{
     asmrMicrofibre:"Фактура мікрофібри",
     asmrRibbon:"Подарункова подача",
 
-    giftTitle:"Зробіть подарунок персональним",
+    giftTitle:"Найособистіше — ваші слова.",
     giftSubtitle:"Ім’я отримувача, кілька теплих слів і листівка як частина подарунка.",
     cardName:"Ім’я на листівці · необов’язково",
     cardMessage:"Побажання · до 250 символів",
@@ -3182,7 +3249,15 @@ ua:{
     quantity:"Кількість комплектів",
     promoLabel:"Промокод",
     requestCard:"Хочу персональну листівку",
-    duoCardNote:"Додаткову листівку для Duo Pack підтвердимо разом із вашою заявкою.",
+    duoGiftLabel:"Подарункове оформлення кожного Duo Pack",
+    duoGiftNone:"Без листівок · 165 €",
+    duoGiftOne:"1 подарунковий бокс із листівкою · +6 € · разом 171 €",
+    duoGiftTwo:"2 подарункові бокси з листівками · +12 € · разом 177 €",
+    duoCardNote:"6 € за подарункове оформлення одного боксу з персональною листівкою. Вибір діє для кожного Duo Pack. Для кількох комплектів тексти листівок повторюються.",
+    secondCard:"ДРУГА ЛИСТІВКА",
+    giftFee:"Подарункове оформлення",
+    duoQuestion:"Скільки боксів оформити в подарунок?",
+    duoOptions:[["Жодного — обидва без листівок", "Два класичні Signature Box · 165 €."], ["Один у подарунок", "Оформлення одного боксу з персональною листівкою · разом 171 €."], ["Обидва в подарунок", "Оформлення двох боксів, дві персональні листівки · разом 177 €."]],
     total:"Попередня сума",
     shippingIncluded:"Доставку Німеччиною включено",
     nextShipping:"До доставки →",
@@ -3402,6 +3477,18 @@ function recommend(answers) {
     return "signature";
 }
 
+function quizGiftCount(answers) {
+    if (answers[0] !== "C") return 0;
+    return answers[1] === "B" ? 1 : answers[1] === "C" ? 2 : 0;
+}
+
+function quizQuestion(step,answers) {
+    if (step === 1 && answers[0] === "C") {
+        return {question:t().duoQuestion,options:t().duoOptions};
+    }
+    return t().quizQuestions[step];
+}
+
 function quizOptionAllowed(answers,step,value) {
     return !(step === 2 && value === "C" && answers[0] === "A");
 }
@@ -3420,7 +3507,7 @@ function renderQuiz() {
         return;
     }
 
-    const question = t().quizQuestions[quizStep];
+    const question = quizQuestion(quizStep,quizAnswers);
 
     $("#quiz-step-label").textContent = `${t().step} ${quizStep + 1} / 3`;
     $("#quiz-question").textContent = question.question;
@@ -3457,19 +3544,23 @@ function renderQuizResult() {
     const key = recommend(quizAnswers);
     const edition = EDITIONS[key];
     const index = EDITION_KEYS.indexOf(key);
+    const giftCount = quizGiftCount(quizAnswers);
+    const price = edition.price + giftCount * 6;
 
     $("#quiz-result-title").textContent = edition.name.toUpperCase();
     $("#quiz-result-description").textContent = t().resultDescriptions[index];
 
     $("#quiz-result-price").replaceChildren(
-        el("span",money(edition.price))
+        el("span",money(price))
     );
 
     $("#quiz-result-bonus").textContent =
-        key === "duo" ? t().quizDuoBonus : t().quizBonus;
+        key === "duo"
+            ? `${t().quizDuoBonus} ${giftCount ? t().duoOptions[giftCount][1] : t().duoOptions[0][1]}`
+            : t().quizBonus;
 
     $("#quiz-order").textContent =
-        `${t().resultCtas[index]} · ${money(edition.price)}`;
+        `${t().resultCtas[index]} · ${money(price)}`;
 }
 
 $("#quiz-options").addEventListener("click",event => {
@@ -3477,6 +3568,9 @@ $("#quiz-options").addEventListener("click",event => {
     if (!button) return;
 
     if (!quizOptionAllowed(quizAnswers,quizStep,button.dataset.quizAnswer)) return;
+    if (quizStep === 0 && quizAnswers[0] !== button.dataset.quizAnswer) {
+        quizAnswers[1] = null;
+    }
     quizAnswers[quizStep] = button.dataset.quizAnswer;
     sanitizeQuizAnswers();
 
@@ -3523,6 +3617,7 @@ $("#quiz-order").addEventListener("click",() => {
 
     openCheckout(key,{
         card:quizAnswers[1] === "B" || key === "gift",
+        giftCount:quizGiftCount(quizAnswers),
         direct:quizAnswers[2] === "C" && quizAnswers[0] !== "A",
         quiz:[...quizAnswers]
     });
@@ -4184,22 +4279,30 @@ function calculateTotal() {
         ? Math.min(10,Math.max(1,parsed))
         : 1;
 
+    const giftBoxes = key === "duo" ? Math.min(2,Math.max(0,Number.parseInt($("#duo-gift-count").value,10) || 0)) : 0;
+    const giftFee = giftBoxes * 6 * quantity;
+    const subtotal = edition.price * quantity + giftFee;
     const code = $("#promo-code").value.trim().toUpperCase();
-    const total = Math.round(edition.price * quantity * (code === "LYS10" ? .9 : 1) * 100) / 100;
+    const total = Math.round(subtotal * (code === "LYS10" ? .9 : 1) * 100) / 100;
 
     $("#total").textContent = money(total);
-    return {key,edition,quantity,code,total};
+    $("#gift-fee-summary").hidden = giftFee === 0;
+    $("#gift-fee-summary").textContent = `${t().giftFee}: ${giftBoxes * quantity} × ${money(6)} = ${money(giftFee)}`;
+    return {key,edition,quantity,code,total,giftBoxes,giftFee,subtotal};
 }
 
 function updateCardFields() {
-    const requested = $("#request-card").checked;
-    $("#card-fields").hidden = !requested;
-
-    $("#card-fields").querySelectorAll("input,textarea").forEach(node => {
-        node.disabled = !requested;
-    });
-
-    $("#duo-card-note").hidden = !requested || $("#edition").value !== "duo";
+    const duo = $("#edition").value === "duo";
+    $("#single-card-choice").hidden = duo;
+    $("#duo-gift-choice").hidden = !duo;
+    $("#duo-gift-count").disabled = !duo;
+    const count = duo ? Number($("#duo-gift-count").value) : ($("#request-card").checked ? 1 : 0);
+    if (duo) $("#request-card").checked = count > 0;
+    $("#card-fields").hidden = count === 0;
+    $("#second-card-fields").hidden = count < 2;
+    $("#card-fields").querySelectorAll("input,textarea").forEach(node => {node.disabled = count === 0;});
+    $("#second-card-fields").querySelectorAll("input,textarea").forEach(node => {node.disabled = count < 2;});
+    $("#duo-card-note").hidden = !duo;
 }
 
 function updateAddressCaption() {
@@ -4292,6 +4395,7 @@ function openCheckout(key = "signature",options = {}) {
     $("#edition").value = EDITIONS[key] ? key : "signature";
     $("#quantity").value = "1";
     $("#request-card").checked = Boolean(options.card || key === "gift");
+    $("#duo-gift-count").value = String(key === "duo" ? Math.min(2,Math.max(0,Number(options.giftCount ?? (options.card ? 1 : 0)) || 0)) : 0);
     $("#direct-delivery").checked = Boolean(options.direct);
 
     if (options.direct) $("#shipping").value = "dhl";
@@ -4330,6 +4434,11 @@ $("#request-card").addEventListener("change",() => {
         $("#edition").value = "signature";
     }
 
+    updateCardFields();
+    calculateTotal();
+});
+
+$("#duo-gift-count").addEventListener("change",() => {
     updateCardFields();
     calculateTotal();
 });
@@ -4381,7 +4490,7 @@ form.addEventListener("submit",async event => {
         if (!validateFormStep(step)) return;
     }
 
-    const {edition,quantity,code,total} = calculateTotal();
+    const {edition,quantity,code,total,giftBoxes,giftFee,subtotal} = calculateTotal();
     const data = new FormData(form);
     const direct = $("#direct-delivery").checked;
 
@@ -4390,6 +4499,10 @@ form.addEventListener("submit",async event => {
     data.set("total_boxes",String(quantity * edition.boxes));
     data.set("promo_code",code);
     data.set("estimated_total_eur",total.toFixed(2));
+    data.set("subtotal_before_discount_eur",subtotal.toFixed(2));
+    data.set("gift_boxes_per_pack",String(edition.boxes === 2 ? giftBoxes : (edition === EDITIONS.gift ? 1 : 0)));
+    data.set("gift_upgrade_fee_eur",giftFee.toFixed(2));
+    data.set("personal_cards_total",String(quantity * (edition.boxes === 2 ? giftBoxes : (edition === EDITIONS.gift ? 1 : 0))));
     data.set("language",language);
     data.set("card_requested",$("#request-card").checked ? "yes" : "no");
     data.set("direct_delivery",direct ? "yes" : "no");
@@ -4416,7 +4529,7 @@ form.addEventListener("submit",async event => {
     if (orderQuizAnswers) {
         orderQuizAnswers.forEach((answer,index) => {
             const optionIndex = ["A","B","C"].indexOf(answer);
-            data.set(`quiz_answer_${index + 1}`,t().quizQuestions[index].options[optionIndex][0]);
+            data.set(`quiz_answer_${index + 1}`,quizQuestion(index,orderQuizAnswers).options[optionIndex][0]);
         });
     }
 
