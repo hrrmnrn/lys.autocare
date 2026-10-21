@@ -6,11 +6,11 @@
 <meta name="theme-color" content="#0b0b0b">
 <meta name="description" content="LYS Auto Care — Autopflege-Geschenkboxen aus Berlin.">
 
-<title>LYS Auto Care — Autopflege, die Freude macht.</title>
+<title>LYS Auto Care — Pflege mit Stil.</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Manrope:wght@400;500;600&family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -1370,10 +1370,60 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 .guide-item:focus-visible { outline:2px solid var(--gold); outline-offset:4px; }
 @media(max-width:600px) { .hero-title { font-size:clamp(29px,7.7vw,42px); letter-spacing:-.8px; } .logo-tagline {font-size:6px;letter-spacing:.5px;} }
 
+
+/* Expressive typography and gentle motion. Text stays legible throughout. */
+.hero-title {
+    font-family:"Outfit","Manrope",sans-serif;
+    font-size:clamp(38px,5.1vw,72px);
+    font-weight:500; letter-spacing:-1.6px; line-height:1.12;
+    max-width:1050px; text-wrap:balance;
+}
+.hero-first-line { color:#f3eee7; }
+.hero-changing-line {
+    min-height:1.2em; margin-top:10px; opacity:1;
+    background:linear-gradient(110deg,#c59970 12%,#e5c9a7 32%,#c79e78 52%,#d9b58e 72%,#c59970 92%);
+    background-size:220% auto; background-clip:text; -webkit-background-clip:text;
+    color:#d3ae86; -webkit-text-fill-color:transparent;
+    animation:lysTextGlow 16s ease-in-out infinite alternate;
+    transform:none;
+}
+.hero-changing-line.is-changing { opacity:1; transform:none; }
+.hero-description {font-size:15px;max-width:560px;line-height:1.8;color:#bdb2a7;}
+.hero-atmosphere { position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden; }
+.hero-atmosphere::before,.hero-atmosphere::after {
+    content:"";position:absolute;width:65%;height:65%;border-radius:50%;
+    background:radial-gradient(ellipse,#b27b3820 0%,#b27b3809 40%,transparent 70%);
+    left:-15%;top:-5%;animation:lysLightDrift 25s ease-in-out infinite alternate;
+}
+.hero-atmosphere::after {left:auto;right:-20%;top:10%;animation-delay:-12s;background:radial-gradient(ellipse,#bc90651c,transparent 68%);}
+.hero-atmosphere i {position:absolute;width:3px;height:3px;background:#d4b28b;border-radius:50%;opacity:.3;animation:lysDust 18s ease-in-out infinite alternate;}
+.hero-atmosphere i:nth-child(1){left:12%;top:24%;}
+.hero-atmosphere i:nth-child(2){left:83%;top:18%;animation-delay:-5s;width:2px;height:2px;}
+.hero-atmosphere i:nth-child(3){left:76%;top:55%;animation-delay:-10s;}
+.hero-atmosphere i:nth-child(4){left:23%;top:47%;animation-delay:-15s;width:2px;height:2px;}
+.reading-progress { position:fixed;top:0;left:0;height:2px;width:100%;transform-origin:left;transform:scaleX(var(--read-progress,0));background:linear-gradient(90deg,#ad8057,#e1bf99);z-index:9999;pointer-events:none; }
+.price-card,.content-card,.pillar { transition:transform .5s ease,border-color .5s ease,box-shadow .5s ease; }
+.btn {transition:transform .3s ease,box-shadow .4s ease,background .4s ease;}
+.hotspot.active {animation:lysPointPulse 4.5s ease-in-out infinite;}
+.desktop-nav a {position:relative;}
+.desktop-nav a::after {content:"";position:absolute;bottom:-7px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s ease;}
+.desktop-nav a:hover::after {transform:scaleX(1);}
+@media(hover:hover) and (pointer:fine) {
+    .price-card:hover,.content-card:hover,.pillar:hover { transform:translateY(-5px);border-color:#c69a7280;box-shadow:0 14px 38px #0005; }
+    .btn:hover {transform:translateY(-2px);box-shadow:0 8px 25px #c69a721b;}
+}
+@keyframes lysTextGlow {from{background-position:0% center;}to{background-position:100% center;}}
+@keyframes lysLightDrift {from{transform:translate3d(0,0,0) scale(1);}to{transform:translate3d(20%,8%,0) scale(1.12);}}
+@keyframes lysDust {from{transform:translate3d(0,0,0);opacity:.17;}to{transform:translate3d(15px,-35px,0);opacity:.4;}}
+@keyframes lysPointPulse {0%,100%{box-shadow:0 0 0 5px #c69a7220;}50%{box-shadow:0 0 0 10px #c69a720c;}}
+@media(max-width:600px){.hero-title{font-size:clamp(31px,8.1vw,45px);letter-spacing:-.8px;}.hero-description{font-size:13px;}.hero-atmosphere i:nth-child(n+3){display:none;}}
+@media(prefers-reduced-motion:reduce){.hero-atmosphere{display:none;}.price-card:hover,.content-card:hover,.pillar:hover,.btn:hover{transform:none;}.hero-changing-line{animation:none;}}
+
 </style>
 </head>
 
 <body>
+<div class="reading-progress" aria-hidden="true"></div>
 
 <div class="promo" id="promo">
     <span data-i18n="promo"></span>
@@ -1420,6 +1470,7 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 <main>
 
 <section class="hero">
+    <div class="hero-atmosphere" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     <video class="hero-background" id="hero-background"
            muted loop playsinline preload="metadata" aria-hidden="true"></video>
 
@@ -1427,8 +1478,8 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
         <p class="hero-slogan">AUTO CARE · BERLIN</p>
 
         <h1 class="hero-title">
-            <span class="hero-first-line" id="hero-first-line">Autopflege,</span>
-            <span class="hero-changing-line" id="hero-changing-line" aria-hidden="true">die Freude macht.</span>
+            <span class="hero-first-line" id="hero-first-line">Pflege mit Stil.</span>
+            <span class="hero-changing-line" id="hero-changing-line" aria-hidden="true">Freude inklusive.</span>
             <span class="sr-only" id="hero-accessible-line"></span>
         </h1>
 
@@ -1456,7 +1507,7 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
                 </div>
             </div>
 
-            <div class="product-label">THE SIGNATURE DETAILING BOX</div>
+            <div class="product-label">LYS AUTO CARE</div>
         </div>
     </div>
 </section>
@@ -2080,10 +2131,10 @@ videos/spray.mp4
 videos/microfibre.mp4
 videos/ribbon.mp4
 
-ПРОМОКОД ИЗ ССЫЛКИ:
-?promo=LYS10
-или
-?code=LYS10
+ФОТО ИНСТРУКЦИИ:
+images/guide.png
+
+Промокод посетитель вводит вручную в форме.
 */
 
 const CONFIG = {
@@ -2169,7 +2220,7 @@ const PRODUCT_MEDIA = [
     },
     null,
     null,
-    null,
+    {type:"images",items:[{src:"./images/guide.png"}]},
     null
 ];
 
@@ -2210,9 +2261,9 @@ de:{
     navGift:"Verschenken",
     findSet:"Set finden",
 
-    heroFirst:"Autopflege,",
-    heroPhrases:["die Freude macht.", "mit Liebe zum Detail.", "zum Verschenken."],
-    heroDescription:"Ein Set für die Freude an Details. Für dein eigenes Auto oder einen Menschen, der es genauso liebt.",
+    heroFirst:"Pflege mit Stil.",
+    heroPhrases:["Freude inklusive."],
+    heroDescription:"Drei Pflegeprodukte. Passende Accessoires. Eine Box für dein Auto — oder zum Verschenken.",
     heroQuiz:"Quiz starten & Set finden",
     heroShop:"Kollektion ansehen · ab 89 €",
     trust1:"✦ 3 Pflegeprodukte à 250 ml",
@@ -2227,8 +2278,8 @@ de:{
     back:"← Zurück",
     yourChoice:"DEINE EMPFEHLUNG",
     restart:"Quiz erneut starten",
-    quizBonus:"LYS10 wird beim Öffnen des Formulars automatisch angewendet.",
-    quizDuoBonus:"Zwei einzelne Signature Boxen kosten 178 €. Mit Duo Pack und LYS10 beträgt deine gesamte Ersparnis 29,50 €.",
+    quizBonus:"Wenn du einen Rabattcode hast, gib ihn selbst im Anfrageformular ein.",
+    quizDuoBonus:"Zwei Signature Boxen kosten einzeln 178 €. Mit dem Duo Pack sparst du 13 €.",
 
     resultDescriptions:[
         "Das klassische Set für deine Pflegeroutine: Innenraum, Glas, Felgen und passende Accessoires.",
@@ -2376,7 +2427,7 @@ de:{
         ["Wie funktioniert die Anfrage?","Du sendest das Formular direkt über die Website. Wir bestätigen anschließend Verfügbarkeit, Gesamtpreis und Zahlungsinformationen."],
         ["Kann direkt an den Empfänger geliefert werden?","Ja. Aktiviere die direkte Geschenkzustellung und gib Name und Lieferadresse des Empfängers an. Deine Kontaktdaten bleiben separat."],
         ["Was kostet der Versand?","Der Versand innerhalb Deutschlands ist in den angezeigten Preisen enthalten. Eine Abholung in Berlin ist nach Absprache möglich."],
-        ["Wie verwende ich LYS10?","Gib LYS10 im Formular ein. Nach dem Quiz und über eine passende Aktionsverlinkung wird der Code automatisch eingetragen."],
+        ["Wie verwende ich LYS10?","Gib LYS10 selbst in das Feld für den Rabattcode im Anfrageformular ein. Der Rabatt wird erst nach deiner Eingabe berechnet."],
         ["Wo finde ich Produktinformationen?","Beachte die Angaben auf den Flaschen und die beigefügte Anleitung. Fragen zu Inhaltsstoffen, Eignung oder Produktunterlagen kannst du uns direkt stellen."]
     ],
 
@@ -2452,9 +2503,9 @@ en:{
     navGift:"Gifting",
     findSet:"Find my set",
 
-    heroFirst:"Car care,",
-    heroPhrases:["made to enjoy.", "with care in every detail.", "ready to give."],
-    heroDescription:"A set for the joy of the details. For your own car or someone who loves theirs just as much.",
+    heroFirst:"Care with style.",
+    heroPhrases:["Made to delight."],
+    heroDescription:"Three care products. Matching accessories. One box for your car — or a thoughtful gift.",
     heroQuiz:"Take the quiz & find your set",
     heroShop:"Explore the collection · from €89",
     trust1:"✦ 3 care products · 250 ml each",
@@ -2469,8 +2520,8 @@ en:{
     back:"← Back",
     yourChoice:"YOUR RECOMMENDATION",
     restart:"Restart the quiz",
-    quizBonus:"LYS10 will be applied automatically when you open the inquiry form.",
-    quizDuoBonus:"Two individual Signature Boxes cost €178. With Duo Pack and LYS10, your total saving is €29.50.",
+    quizBonus:"If you have a discount code, enter it yourself in the enquiry form.",
+    quizDuoBonus:"Two separate Signature Boxes cost €178. The Duo Pack saves you €13.",
     resultDescriptions:[
         "The classic set for your care routine: interior, glass, wheels and matching accessories.",
         "The complete set as a personal gift. Add a recipient's name and your greeting card message.",
@@ -2616,7 +2667,7 @@ en:{
         ["How does the inquiry work?","Send the form directly through the website. We then confirm availability, the total price and payment details."],
         ["Can you deliver directly to the recipient?","Yes. Select direct gift delivery and enter the recipient's name and delivery address. Your contact details remain separate."],
         ["How much is shipping?","Shipping within Germany is included in the displayed prices. Pickup in Berlin is available by arrangement."],
-        ["How do I use LYS10?","Enter LYS10 in the form. After the quiz and through an appropriate promotional link, it is added automatically."],
+        ["How do I use LYS10?","Enter LYS10 yourself in the discount code field in the enquiry form. The discount is calculated only after you enter the code."],
         ["Where can I find product information?","Follow the bottle labels and included guide. Contact us with questions about ingredients, suitability or product documents."]
     ],
 
@@ -2692,9 +2743,9 @@ ru:{
     navGift:"В подарок",
     findSet:"Подобрать набор",
 
-    heroFirst:"Уход за авто,",
-    heroPhrases:["который радует.", "с вниманием к деталям.", "который хочется подарить."],
-    heroDescription:"Набор для тех, кто замечает детали. Для своего автомобиля или человека, который любит его не меньше.",
+    heroFirst:"Уход со вкусом.",
+    heroPhrases:["Радость в деталях."],
+    heroDescription:"Три средства. Продуманные аксессуары. Один бокс — для своего автомобиля или в подарок.",
     heroQuiz:"Пройти квиз и подобрать набор",
     heroShop:"Смотреть коллекцию · от 89 €",
     trust1:"✦ 3 средства по 250 мл",
@@ -2709,8 +2760,8 @@ ru:{
     back:"← Назад",
     yourChoice:"ВАША РЕКОМЕНДАЦИЯ",
     restart:"Пройти квиз заново",
-    quizBonus:"Промокод LYS10 автоматически применится при открытии формы заявки.",
-    quizDuoBonus:"Два отдельных Signature Box стоят 178 €. С Duo Pack и LYS10 общая экономия составляет 29,50 €.",
+    quizBonus:"Если у вас есть промокод, введите его самостоятельно в форме заявки.",
+    quizDuoBonus:"Два отдельных Signature Box стоят 178 €. Выгода Duo Pack — 13 €.",
     resultDescriptions:[
         "Классический набор для вашей процедуры ухода: салон, стёкла, диски и подходящие аксессуары.",
         "Полный комплект в персональном подарочном формате. Добавьте имя получателя и поздравление для открытки.",
@@ -2856,7 +2907,7 @@ ru:{
         ["Как оформить заявку?","Отправьте форму прямо на сайте. Мы подтвердим наличие, итоговую стоимость и способ оплаты."],
         ["Можно отправить подарок прямо получателю?","Да. Выберите прямую доставку и укажите имя и адрес получателя. Ваши контактные данные заполняются отдельно."],
         ["Сколько стоит доставка?","Доставка по Германии включена в указанные цены. Самовывоз в Берлине возможен по договорённости."],
-        ["Как применить LYS10?","Введите LYS10 в форме. После квиза и при переходе по ссылке с промокодом он добавляется автоматически."],
+        ["Как применить LYS10?","Введите LYS10 самостоятельно в поле промокода в форме заявки. Скидка рассчитывается только после ввода кода."],
         ["Где найти информацию о средствах?","Следуйте маркировке на флаконах и вложенной инструкции. Вопросы о составе, совместимости и документах можно задать нам напрямую."]
     ],
 
@@ -2932,9 +2983,9 @@ ua:{
     navGift:"У подарунок",
     findSet:"Підібрати набір",
 
-    heroFirst:"Догляд за авто,",
-    heroPhrases:["який тішить.", "з увагою до деталей.", "який хочеться подарувати."],
-    heroDescription:"Набір для тих, хто помічає деталі. Для свого автомобіля або людини, яка любить його не менше.",
+    heroFirst:"Догляд зі смаком.",
+    heroPhrases:["Радість у деталях."],
+    heroDescription:"Три засоби. Продумані аксесуари. Один бокс — для свого автомобіля або в подарунок.",
     heroQuiz:"Пройти квіз і підібрати набір",
     heroShop:"Переглянути колекцію · від 89 €",
     trust1:"✦ 3 засоби по 250 мл",
@@ -2949,8 +3000,8 @@ ua:{
     back:"← Назад",
     yourChoice:"ВАША РЕКОМЕНДАЦІЯ",
     restart:"Пройти квіз знову",
-    quizBonus:"Промокод LYS10 автоматично застосовується під час відкриття форми заявки.",
-    quizDuoBonus:"Два окремі Signature Box коштують 178 €. З Duo Pack та LYS10 загальна економія становить 29,50 €.",
+    quizBonus:"Якщо маєте промокод, введіть його самостійно у формі заявки.",
+    quizDuoBonus:"Два окремі Signature Box коштують 178 €. Вигода Duo Pack — 13 €.",
     resultDescriptions:[
         "Класичний набір для вашого догляду: салон, скло, диски та відповідні аксесуари.",
         "Повний комплект у персональному подарунковому форматі. Додайте ім’я отримувача та побажання для листівки.",
@@ -3096,7 +3147,7 @@ ua:{
         ["Як оформити заявку?","Надішліть форму прямо на сайті. Ми підтвердимо наявність, остаточну вартість та спосіб оплати."],
         ["Можна надіслати подарунок просто отримувачу?","Так. Оберіть пряму доставку й укажіть ім’я та адресу отримувача. Ваші контакти заповнюються окремо."],
         ["Скільки коштує доставка?","Доставку Німеччиною включено у вказані ціни. Самовивіз у Берліні можливий за домовленістю."],
-        ["Як застосувати LYS10?","Введіть LYS10 у формі. Після квізу та за посиланням із промокодом він додається автоматично."],
+        ["Як застосувати LYS10?","Введіть LYS10 самостійно в поле промокоду у формі заявки. Знижка розраховується лише після введення коду."],
         ["Де знайти інформацію про засоби?","Дотримуйтеся маркування на флаконах та вкладеної інструкції. Питання про склад, сумісність і документи можна поставити нам напряму."]
     ],
 
@@ -3233,16 +3284,7 @@ function showToast(message) {
     toastTimer = setTimeout(() => $("#toast").hidden = true,3500);
 }
 
-function promoFromUrl() {
-    const url = new URL(location.href);
 
-    for (const key of ["promo","code"]) {
-        const value = (url.searchParams.get(key) || "").trim().toUpperCase();
-        if (value === "LYS10") return value;
-    }
-
-    return "";
-}
 
 function addCampaignData(data) {
     const params = new URL(location.href).searchParams;
@@ -3277,29 +3319,11 @@ function observeReveal(node) {
 function renderHero() {
     clearInterval(heroInterval);
     clearTimeout(heroTransitionTimer);
-
-    const phrases = [...t().heroPhrases];
     const line = $("#hero-changing-line");
-    let index = 0;
-
     $("#hero-first-line").textContent = t().heroFirst;
-    line.textContent = phrases[0];
+    line.textContent = t().heroPhrases[0];
     line.classList.remove("is-changing");
-    $("#hero-accessible-line").textContent = phrases.join(" ");
-
-    if (motionPreference.matches) return;
-
-    heroInterval = setInterval(() => {
-        if (document.hidden || document.querySelector("dialog[open]")) return;
-
-        line.classList.add("is-changing");
-
-        heroTransitionTimer = setTimeout(() => {
-            index = (index + 1) % phrases.length;
-            line.textContent = phrases[index];
-            line.classList.remove("is-changing");
-        },CONFIG.heroRotation.transition);
-    },CONFIG.heroRotation.interval);
+    $("#hero-accessible-line").textContent = t().heroPhrases[0];
 }
 
 /* Язык */
@@ -3378,7 +3402,16 @@ function recommend(answers) {
     return "signature";
 }
 
+function quizOptionAllowed(answers,step,value) {
+    return !(step === 2 && value === "C" && answers[0] === "A");
+}
+
+function sanitizeQuizAnswers() {
+    if (!quizOptionAllowed(quizAnswers,2,quizAnswers[2])) quizAnswers[2] = null;
+}
+
 function renderQuiz() {
+    sanitizeQuizAnswers();
     $("#quiz-step-panel").hidden = quizFinished;
     $("#quiz-result").hidden = !quizFinished;
 
@@ -3399,6 +3432,7 @@ function renderQuiz() {
 
     question.options.forEach(([title,description],index) => {
         const value = ["A","B","C"][index];
+        if (!quizOptionAllowed(quizAnswers,quizStep,value)) return;
         const selected = quizAnswers[quizStep] === value;
         const button = el("button",undefined,"quiz-option");
 
@@ -3428,22 +3462,23 @@ function renderQuizResult() {
     $("#quiz-result-description").textContent = t().resultDescriptions[index];
 
     $("#quiz-result-price").replaceChildren(
-        el("s",money(edition.price)),
-        el("span",money(discounted(edition.price)))
+        el("span",money(edition.price))
     );
 
     $("#quiz-result-bonus").textContent =
         key === "duo" ? t().quizDuoBonus : t().quizBonus;
 
     $("#quiz-order").textContent =
-        `${t().resultCtas[index]} · ${money(discounted(edition.price))}`;
+        `${t().resultCtas[index]} · ${money(edition.price)}`;
 }
 
 $("#quiz-options").addEventListener("click",event => {
     const button = event.target.closest("[data-quiz-answer]");
     if (!button) return;
 
+    if (!quizOptionAllowed(quizAnswers,quizStep,button.dataset.quizAnswer)) return;
     quizAnswers[quizStep] = button.dataset.quizAnswer;
+    sanitizeQuizAnswers();
 
     $("#quiz-options").querySelectorAll("[data-quiz-answer]").forEach(node => {
         const selected = node.dataset.quizAnswer === quizAnswers[quizStep];
@@ -3487,9 +3522,8 @@ $("#quiz-order").addEventListener("click",() => {
     const key = recommend(quizAnswers);
 
     openCheckout(key,{
-        promo:"LYS10",
         card:quizAnswers[1] === "B" || key === "gift",
-        direct:quizAnswers[2] === "C",
+        direct:quizAnswers[2] === "C" && quizAnswers[0] !== "A",
         quiz:[...quizAnswers]
     });
     if (quizAnswers[2] === "B") {
@@ -3673,7 +3707,11 @@ function updateHotspot(index) {
 
 $(".inside-photo-column").addEventListener("click",event => {
     const button = event.target.closest("[data-hotspot]");
-    if (button) updateHotspot(Number(button.dataset.hotspot));
+    if (button) {
+        const index = Number(button.dataset.hotspot);
+        updateHotspot(index);
+        if (button.classList.contains("guide-item") && hasMedia(index)) openProduct(index);
+    }
 });
 
 $("#hotspot-open").addEventListener("click",() => openProduct(selectedHotspot));
@@ -4241,8 +4279,6 @@ function resetCompletedForm() {
     $("#order-card-name").value = giftDraft.name;
     $("#order-card-message").value = giftDraft.message;
 
-    const urlPromo = promoFromUrl();
-    if (urlPromo) $("#promo-code").value = urlPromo;
 }
 
 function openCheckout(key = "signature",options = {}) {
@@ -4260,8 +4296,6 @@ function openCheckout(key = "signature",options = {}) {
 
     if (options.direct) $("#shipping").value = "dhl";
 
-    const promo = options.promo || promoFromUrl();
-    if (promo) $("#promo-code").value = promo;
 
     orderQuizAnswers = options.quiz ? [...options.quiz] : null;
     $("#order-card-name").value = giftDraft.name;
@@ -4573,11 +4607,6 @@ document.addEventListener("pointermove",event => {
 /* Копирование кода */
 
 $("#copy-code").addEventListener("click",async () => {
-    if (!submitting && !submissionComplete) {
-        $("#promo-code").value = "LYS10";
-        calculateTotal();
-    }
-
     try { await navigator.clipboard.writeText("LYS10"); }
     catch {}
 
@@ -4657,17 +4686,17 @@ if ("ResizeObserver" in window) {
 /* Шапка */
 
 function updateHeader() {
+    const distance = document.documentElement.scrollHeight - innerHeight;
+    document.documentElement.style.setProperty("--read-progress",String(distance > 0 ? Math.min(1,Math.max(0,scrollY / distance)) : 0));
     $("#header").classList.toggle("scrolled",scrollY > 20);
 }
 
 window.addEventListener("scroll",updateHeader,{passive:true});
+window.addEventListener("resize",updateHeader,{passive:true});
 
 /* Запуск */
 
 $("#year").textContent = new Date().getFullYear();
-
-const initialPromo = promoFromUrl();
-if (initialPromo) $("#promo-code").value = initialPromo;
 
 setLanguage(readStorage("lys-language") || "de");
 setInsideTab("content");
