@@ -6,11 +6,11 @@
 <meta name="theme-color" content="#0b0b0b">
 <meta name="description" content="LYS Auto Care — Autopflege-Geschenkboxen aus Berlin.">
 
-<title>LYS Auto Care — Dein Auto. Dein Moment.</title>
+<title>LYS Auto Care — Autopflege, die Freude macht.</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -1355,6 +1355,21 @@ textarea.input { resize:vertical; }
     .reveal { opacity:1; transform:none; }
     .gift-card { transform:none; }
 }
+
+/* Updated typography and a separate key for the included guide. */
+h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
+.hero-title { font-family:"Manrope","Plus Jakarta Sans",sans-serif; font-weight:400; font-size:clamp(34px,4.5vw,60px); letter-spacing:-1.5px; line-height:1.24; max-width:1000px; }
+.hero-changing-line { font-weight:400; color:#bd9c7b; }
+.hero-slogan { font-size:11px; letter-spacing:3px; }
+.logo-tagline { font-size:7px; letter-spacing:.9px; line-height:1.7; max-width:180px; }
+.inside-photo-column { min-width:0; }
+.guide-item { display:flex; align-items:center; gap:12px; width:100%; margin-top:14px; padding:15px 18px; text-align:left; background:#141210; border:1px solid var(--border); border-radius:14px; color:var(--text); cursor:pointer; }
+.guide-number { display:grid; place-items:center; width:36px; height:36px; flex-shrink:0; background:var(--gold); color:#17100b; border-radius:50%; font-weight:700; }
+.guide-item>span:last-child { margin-left:auto; color:var(--gold); }
+.guide-item:hover,.guide-item.active { border-color:var(--gold); background:#201a15; }
+.guide-item:focus-visible { outline:2px solid var(--gold); outline-offset:4px; }
+@media(max-width:600px) { .hero-title { font-size:clamp(29px,7.7vw,42px); letter-spacing:-.8px; } .logo-tagline {font-size:6px;letter-spacing:.5px;} }
+
 </style>
 </head>
 
@@ -1372,7 +1387,7 @@ textarea.input { resize:vertical; }
             <img id="logo-image" src="./logo.png" alt="" width="78" height="78">
             <div>
                 <span class="logo-name shimmer">LYS</span>
-                <span class="logo-tagline">AUTO CARE · BERLIN</span>
+                <span class="logo-tagline">SMART CHOICES.<br>MORE POSSIBILITIES</span>
             </div>
         </a>
 
@@ -1409,11 +1424,11 @@ textarea.input { resize:vertical; }
            muted loop playsinline preload="metadata" aria-hidden="true"></video>
 
     <div class="container">
-        <p class="hero-slogan">SMART CHOICES. MORE POSSIBILITIES</p>
+        <p class="hero-slogan">AUTO CARE · BERLIN</p>
 
         <h1 class="hero-title">
-            <span class="hero-first-line" id="hero-first-line">Dein Auto.</span>
-            <span class="hero-changing-line" id="hero-changing-line" aria-hidden="true">Dein Moment.</span>
+            <span class="hero-first-line" id="hero-first-line">Autopflege,</span>
+            <span class="hero-changing-line" id="hero-changing-line" aria-hidden="true">die Freude macht.</span>
             <span class="sr-only" id="hero-accessible-line"></span>
         </h1>
 
@@ -1514,6 +1529,7 @@ textarea.input { resize:vertical; }
 
         <div id="panel-content" role="tabpanel" aria-labelledby="tab-content">
             <div class="inside-showcase">
+                <div class="inside-photo-column">
                 <div class="hotspot-image">
                     <img id="inside-image" src="./kit-open.png"
                          alt="LYS Auto Care — vollständiges Set" loading="lazy">
@@ -1521,6 +1537,12 @@ textarea.input { resize:vertical; }
                     <p class="photo-error" id="inside-photo-error" data-i18n="photoMissing" hidden></p>
                 </div>
 
+                <button class="guide-item" type="button" data-hotspot="5">
+                    <span class="guide-number">6</span>
+                    <span id="guide-item-label">Anleitung</span>
+                    <span aria-hidden="true">↗</span>
+                </button>
+                </div>
                 <div class="hotspot-details" aria-live="polite">
                     <span class="eyebrow" id="hotspot-number"></span>
                     <h3 id="hotspot-title"></h3>
@@ -2188,8 +2210,8 @@ de:{
     navGift:"Verschenken",
     findSet:"Set finden",
 
-    heroFirst:"Dein Auto.",
-    heroPhrases:["Dein Moment.","Dein Geschenk.","Dein Stil."],
+    heroFirst:"Autopflege,",
+    heroPhrases:["die Freude macht.", "mit Liebe zum Detail.", "zum Verschenken."],
     heroDescription:"Ein Set für die Freude an Details. Für dein eigenes Auto oder einen Menschen, der es genauso liebt.",
     heroQuiz:"Quiz starten & Set finden",
     heroShop:"Kollektion ansehen · ab 89 €",
@@ -2216,31 +2238,58 @@ de:{
     resultCtas:["Signature Box anfragen","Gift Edition + Karte anfragen","Duo Pack anfragen"],
 
     quizQuestions:[
-        {
-            question:"Für wen wählst du dein LYS Auto Care Set?",
-            options:[
-                ["Für mein eigenes Auto","Ich möchte ein abgestimmtes Set für meine Pflegeroutine."],
-                ["Als Geschenk für einen Autoliebhaber","Ich suche ein stilvolles und nützliches Geschenk."],
-                ["Für zwei Autos / die Familie","Ich möchte zwei vollständige Sets und einen Preisvorteil."]
+    {
+        "question": "Wie viele Sets möchtest du?",
+        "options": [
+            [
+                "Ein Set für mein Auto",
+                "Eine vollständige Box für meine Pflegeroutine."
+            ],
+            [
+                "Ein Set zum Verschenken",
+                "Eine vollständige Box für einen besonderen Menschen."
+            ],
+            [
+                "Zwei vollständige Sets",
+                "Zwei Signature Boxen für 165 € statt 178 €. "
             ]
-        },
-        {
-            question:"Was ist dir bei deinem LYS Erlebnis am wichtigsten?",
-            options:[
-                ["Pflege und Aufmerksamkeit für Details","Ein Set für Innenraum, Glas und Felgen."],
-                ["Auspacken, Freude und Stil","Eine besondere Geschenkbox mit persönlicher Note."],
-                ["Preisvorteil und zusätzlicher Vorrat","Zwei vollständige Boxen statt eines einzelnen Sets."]
+        ]
+    },
+    {
+        "question": "Wie möchtest du deine Box gestalten?",
+        "options": [
+            [
+                "Klassisch, ohne Grußkarte",
+                "Das Pflegeset steht im Mittelpunkt."
+            ],
+            [
+                "Mit persönlicher Grußkarte",
+                "Ich ergänze einen Namen und meine Nachricht."
+            ],
+            [
+                "Noch nicht entschieden",
+                "Ich wähle die Details später in der Anfrage."
             ]
-        },
-        {
-            question:"Möchtest du dein Geschenk persönlich gestalten?",
-            options:[
-                ["Nein, ich wähle das Set für mich","Die Pflegeprodukte und Accessoires stehen im Mittelpunkt."],
-                ["Ja, mit persönlicher Grußkarte","Ich möchte einen Namen und eine Nachricht ergänzen."],
-                ["Direkt an den Empfänger senden","Ich möchte eine separate Lieferadresse angeben."]
+        ]
+    },
+    {
+        "question": "Wohin soll deine Bestellung gehen?",
+        "options": [
+            [
+                "An meine Adresse",
+                "Ich gebe meine Lieferadresse in der Anfrage an."
+            ],
+            [
+                "Abholung in Berlin",
+                "Den Abholtermin vereinbaren wir persönlich."
+            ],
+            [
+                "Direkt an den Beschenkten",
+                "Ich gebe einen separaten Namen und eine Lieferadresse an."
             ]
-        }
-    ],
+        ]
+    }
+],
 
     shopTitle:"Wähle deine LYS Edition",
     shopSubtitle:"Ein vollständiges Pflegeset. Drei Möglichkeiten, es zu erleben.",
@@ -2403,8 +2452,8 @@ en:{
     navGift:"Gifting",
     findSet:"Find my set",
 
-    heroFirst:"Your car.",
-    heroPhrases:["Your moment.","Your gift.","Your style."],
+    heroFirst:"Car care,",
+    heroPhrases:["made to enjoy.", "with care in every detail.", "ready to give."],
     heroDescription:"A set for the joy of the details. For your own car or someone who loves theirs just as much.",
     heroQuiz:"Take the quiz & find your set",
     heroShop:"Explore the collection · from €89",
@@ -2429,31 +2478,58 @@ en:{
     ],
     resultCtas:["Request Signature Box","Request Gift Edition + card","Request Duo Pack"],
     quizQuestions:[
-        {
-            question:"Who are you choosing your LYS Auto Care set for?",
-            options:[
-                ["For my own car","I want a coordinated set for my care routine."],
-                ["As a gift for a car enthusiast","I am looking for a stylish and useful gift."],
-                ["For two cars / the family","I want two complete sets and better value."]
+    {
+        "question": "How many sets would you like?",
+        "options": [
+            [
+                "One set for my car",
+                "A complete box for my care routine."
+            ],
+            [
+                "One set as a gift",
+                "A complete box for someone special."
+            ],
+            [
+                "Two complete sets",
+                "Two Signature Boxes for €165 instead of €178."
             ]
-        },
-        {
-            question:"What matters most in your LYS experience?",
-            options:[
-                ["Care and attention to detail","A set for interior, glass and wheels."],
-                ["Unboxing, emotion and style","A special gift box with a personal touch."],
-                ["Value and extra supply","Two complete boxes rather than one set."]
+        ]
+    },
+    {
+        "question": "How would you like your box?",
+        "options": [
+            [
+                "Classic, without a greeting card",
+                "The care set takes centre stage."
+            ],
+            [
+                "With a personal greeting card",
+                "I will add a name and my own message."
+            ],
+            [
+                "I have not decided yet",
+                "I will choose the details in the enquiry form."
             ]
-        },
-        {
-            question:"Would you like to personalise your gift?",
-            options:[
-                ["No, I am choosing it for myself","The products and accessories are my priority."],
-                ["Yes, add a personal greeting card","I would like to include a name and a message."],
-                ["Send it directly to the recipient","I would like to use a separate delivery address."]
+        ]
+    },
+    {
+        "question": "Where should your order go?",
+        "options": [
+            [
+                "To my address",
+                "I will enter my shipping address in the form."
+            ],
+            [
+                "Collection in Berlin",
+                "We will arrange a collection time together."
+            ],
+            [
+                "Directly to the recipient",
+                "I will provide a separate recipient name and address."
             ]
-        }
-    ],
+        ]
+    }
+],
 
     shopTitle:"Choose your LYS edition",
     shopSubtitle:"One complete care collection. Three ways to experience it.",
@@ -2616,8 +2692,8 @@ ru:{
     navGift:"В подарок",
     findSet:"Подобрать набор",
 
-    heroFirst:"Твой автомобиль.",
-    heroPhrases:["Твой момент.","Твой подарок.","Твой стиль."],
+    heroFirst:"Уход за авто,",
+    heroPhrases:["который радует.", "с вниманием к деталям.", "который хочется подарить."],
     heroDescription:"Набор для тех, кто замечает детали. Для своего автомобиля или человека, который любит его не меньше.",
     heroQuiz:"Пройти квиз и подобрать набор",
     heroShop:"Смотреть коллекцию · от 89 €",
@@ -2642,31 +2718,58 @@ ru:{
     ],
     resultCtas:["Забрать Signature Box","Оформить Gift Edition + открытка","Заказать Duo Pack"],
     quizQuestions:[
-        {
-            question:"Для кого вы выбираете набор LYS Auto Care?",
-            options:[
-                ["Для своего автомобиля","Хочу продуманный набор для своей процедуры ухода."],
-                ["В подарок автолюбителю","Ищу стильный и действительно полезный подарок."],
-                ["Для двух машин / в семью","Нужны два полных набора и выгода для пары автомобилей."]
+    {
+        "question": "Сколько наборов вам нужно?",
+        "options": [
+            [
+                "Один для своего автомобиля",
+                "Полный бокс для личного ухода."
+            ],
+            [
+                "Один в подарок",
+                "Полный бокс для близкого человека."
+            ],
+            [
+                "Два полных набора",
+                "Два Signature Box за 165 € вместо 178 €. "
             ]
-        },
-        {
-            question:"Что для вас наиболее важно в LYS Experience?",
-            options:[
-                ["Уход и внимание к деталям","Комплект для салона, стёкол и дисков."],
-                ["Эмоции от распаковки и стиль","Особенная подарочная коробка с персональным дополнением."],
-                ["Выгода и дополнительный запас","Два полных бокса вместо одного набора."]
+        ]
+    },
+    {
+        "question": "Как оформить ваш бокс?",
+        "options": [
+            [
+                "Без открытки",
+                "Хочу только набор для ухода."
+            ],
+            [
+                "С персональной открыткой",
+                "Добавлю имя получателя и своё поздравление."
+            ],
+            [
+                "Пока не решила / не решил",
+                "Выберу детали при заполнении заявки."
             ]
-        },
-        {
-            question:"Хотите сделать подарок персональным?",
-            options:[
-                ["Нет, беру себе","Главное — средства и аксессуары."],
-                ["Да, подпишите открытку","Хочу добавить имя получателя и тёплые пожелания."],
-                ["Хочу отправить прямо адресату","Укажу отдельное имя и адрес получателя подарка."]
+        ]
+    },
+    {
+        "question": "Как вам удобно получить заказ?",
+        "options": [
+            [
+                "Доставка на мой адрес",
+                "Укажу свой адрес в заявке."
+            ],
+            [
+                "Самовывоз в Берлине",
+                "Согласуем время получения отдельно."
+            ],
+            [
+                "Доставка прямо получателю",
+                "Укажу отдельное имя и адрес получателя подарка."
             ]
-        }
-    ],
+        ]
+    }
+],
 
     shopTitle:"Выберите свою версию LYS",
     shopSubtitle:"Полный комплект ухода. Три способа его подарить и использовать.",
@@ -2829,8 +2932,8 @@ ua:{
     navGift:"У подарунок",
     findSet:"Підібрати набір",
 
-    heroFirst:"Твоє авто.",
-    heroPhrases:["Твій момент.","Твій подарунок.","Твій стиль."],
+    heroFirst:"Догляд за авто,",
+    heroPhrases:["який тішить.", "з увагою до деталей.", "який хочеться подарувати."],
     heroDescription:"Набір для тих, хто помічає деталі. Для свого автомобіля або людини, яка любить його не менше.",
     heroQuiz:"Пройти квіз і підібрати набір",
     heroShop:"Переглянути колекцію · від 89 €",
@@ -2855,31 +2958,58 @@ ua:{
     ],
     resultCtas:["Обрати Signature Box","Оформити Gift Edition + листівка","Замовити Duo Pack"],
     quizQuestions:[
-        {
-            question:"Для кого ви обираєте набір LYS Auto Care?",
-            options:[
-                ["Для свого автомобіля","Хочу продуманий набір для свого догляду."],
-                ["У подарунок автолюбителю","Шукаю стильний і справді корисний подарунок."],
-                ["Для двох машин / у родину","Потрібні два повні набори та вигода для пари автомобілів."]
+    {
+        "question": "Скільки наборів вам потрібно?",
+        "options": [
+            [
+                "Один для свого автомобіля",
+                "Повний бокс для особистого догляду."
+            ],
+            [
+                "Один у подарунок",
+                "Повний бокс для близької людини."
+            ],
+            [
+                "Два повні набори",
+                "Два Signature Box за 165 € замість 178 €. "
             ]
-        },
-        {
-            question:"Що для вас найважливіше в LYS Experience?",
-            options:[
-                ["Догляд та увага до деталей","Комплект для салону, скла й дисків."],
-                ["Емоції від розпакування та стиль","Особлива подарункова коробка з персональним доповненням."],
-                ["Вигода та додатковий запас","Два повні бокси замість одного набору."]
+        ]
+    },
+    {
+        "question": "Як оформити ваш бокс?",
+        "options": [
+            [
+                "Без листівки",
+                "Хочу лише набір для догляду."
+            ],
+            [
+                "З персональною листівкою",
+                "Додам ім’я отримувача та своє привітання."
+            ],
+            [
+                "Ще не визначилася / не визначився",
+                "Оберу деталі під час заповнення заявки."
             ]
-        },
-        {
-            question:"Хочете зробити подарунок персональним?",
-            options:[
-                ["Ні, обираю для себе","Головне — засоби та аксесуари."],
-                ["Так, підпишіть листівку","Хочу додати ім’я отримувача й теплі побажання."],
-                ["Хочу надіслати просто адресату","Вкажу окреме ім’я та адресу отримувача подарунка."]
+        ]
+    },
+    {
+        "question": "Як вам зручно отримати замовлення?",
+        "options": [
+            [
+                "Доставка на мою адресу",
+                "Вкажу свою адресу в заявці."
+            ],
+            [
+                "Самовивіз у Берліні",
+                "Окремо узгодимо час отримання."
+            ],
+            [
+                "Доставка просто отримувачу",
+                "Вкажу окреме ім’я та адресу отримувача подарунка."
             ]
-        }
-    ],
+        ]
+    }
+],
 
     shopTitle:"Оберіть свою версію LYS",
     shopSubtitle:"Повний комплект догляду. Три способи його подарувати й використовувати.",
@@ -3243,15 +3373,8 @@ function setLanguage(value) {
 /* Квиз */
 
 function recommend(answers) {
-    if (answers[0] === "C" || answers[1] === "C") return "duo";
-
-    if (
-        answers[0] === "B" ||
-        answers[1] === "B" ||
-        answers[2] === "B" ||
-        answers[2] === "C"
-    ) return "gift";
-
+    if (answers[0] === "C") return "duo";
+    if (answers[0] === "B" || answers[1] === "B") return "gift";
     return "signature";
 }
 
@@ -3365,10 +3488,14 @@ $("#quiz-order").addEventListener("click",() => {
 
     openCheckout(key,{
         promo:"LYS10",
-        card:quizAnswers[2] === "B" || key === "gift",
+        card:quizAnswers[1] === "B" || key === "gift",
         direct:quizAnswers[2] === "C",
         quiz:[...quizAnswers]
     });
+    if (quizAnswers[2] === "B") {
+        $("#shipping").value = "pickup";
+        updateShipping();
+    }
 });
 
 /* Коллекция */
@@ -3522,6 +3649,7 @@ function renderHotspots() {
         container.append(button);
     });
 
+    $("#guide-item-label").textContent = t().contents[5][0];
     updateHotspot(selectedHotspot);
 }
 
@@ -3543,7 +3671,7 @@ function updateHotspot(index) {
     });
 }
 
-$("#hotspot-buttons").addEventListener("click",event => {
+$(".inside-photo-column").addEventListener("click",event => {
     const button = event.target.closest("[data-hotspot]");
     if (button) updateHotspot(Number(button.dataset.hotspot));
 });
