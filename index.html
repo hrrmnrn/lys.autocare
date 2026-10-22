@@ -1753,11 +1753,6 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
                     <p class="photo-error" id="inside-photo-error" data-i18n="photoMissing" hidden></p>
                 </div>
 
-                <button class="guide-item" type="button" data-hotspot="5">
-                    <span class="guide-number">6</span>
-                    <span id="guide-item-label">Anleitung</span>
-                    <span aria-hidden="true">↗</span>
-                </button>
                 </div>
                 <div class="hotspot-details" aria-live="polite">
                     <span class="eyebrow" id="hotspot-number"></span>
@@ -2467,6 +2462,7 @@ const HOTSPOTS = [
     {productIndex:2,x:58,y:77},
     {productIndex:3,x:29,y:81},
     {productIndex:4,x:32,y:55},
+    {productIndex:5,x:50.5,y:22.5},
     {productIndex:6,x:76,y:47}
 ];
 
@@ -4172,7 +4168,6 @@ function renderHotspots() {
         container.append(button);
     });
 
-    $("#guide-item-label").textContent = t().contents[5][0];
     updateHotspot(selectedHotspot);
 }
 
@@ -4199,7 +4194,7 @@ $(".inside-photo-column").addEventListener("click",event => {
     if (button) {
         const index = Number(button.dataset.hotspot);
         updateHotspot(index);
-        if (button.classList.contains("guide-item") && hasMedia(index)) openProduct(index);
+        if (index === 5 && hasMedia(index)) openProduct(index);
     }
 });
 
