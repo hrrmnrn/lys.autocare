@@ -1493,6 +1493,32 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 .quiz-selection-summary {display:flex;justify-content:center;flex-wrap:wrap;gap:9px;list-style:none;margin:20px 0 25px;padding:0;}
 .quiz-selection-summary li {padding:9px 14px;border:1px solid var(--border);border-radius:30px;background:#c69a720b;color:var(--gold-light);font-size:12px;line-height:1.5;}
 @media(max-width:600px){.quiz-selection-summary li{font-size:11px;}}
+
+/* About LYS: an editorial split layout replaces the four matching cards. */
+#about {background:radial-gradient(ellipse at 15% 45%,#81542c14,transparent 65%),#0d0c0b;}
+.about-layout {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,5vw,76px);align-items:center;}
+.about-visual {position:relative;min-width:0;aspect-ratio:1;overflow:hidden;border-radius:22px;background:radial-gradient(ellipse at center,#241c13,#11100e 75%);border:1px solid var(--border);}
+.about-visual>img,.about-visual>video {position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:contain;padding:20px 15px 45px;}
+.about-visual>video {cursor:pointer;}
+.about-visual-label {position:absolute;left:22px;right:22px;bottom:18px;display:flex;justify-content:space-between;gap:12px;font-size:9px;letter-spacing:2px;color:#d5b18a;pointer-events:none;}
+.about-monogram {position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;}
+.about-monogram>span {font:600 80px "Cinzel",serif;color:var(--gold-light);letter-spacing:12px;}
+.about-monogram>small {font-size:10px;letter-spacing:3px;color:var(--muted);}
+.about-copy {min-width:0;}.about-copy>.eyebrow {text-align:left;margin-bottom:18px;}
+.about-title {font-family:"Outfit","Manrope",sans-serif;font-size:clamp(30px,3.3vw,47px);font-weight:500;line-height:1.15;letter-spacing:-1px;text-wrap:balance;margin:0 0 20px;}
+.about-intro {font-size:14px;line-height:1.9;color:#b8ada1;max-width:560px;}
+.brand-reasons {margin:24px 0 28px;}
+.brand-reason {display:grid;grid-template-columns:32px minmax(0,1fr);gap:14px;padding:17px 0;border-bottom:1px solid #c69a7220;}
+.brand-reason-number {font-size:10px;letter-spacing:1px;color:var(--gold);padding-top:5px;}
+.brand-reason h3 {font:500 17px/1.4 "Outfit","Manrope",sans-serif;margin:0 0 6px;color:var(--text);}
+.brand-reason p {font-size:12px;line-height:1.8;color:var(--muted);}
+.about-actions {display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+.about-actions .btn {font-size:12px;padding:15px 20px;}
+.about-contact {color:var(--gold-light);font-size:11px;text-decoration:none;text-underline-offset:5px;}
+.about-contact:hover {text-decoration:underline;}
+@media(max-width:900px){.about-layout{grid-template-columns:1fr;max-width:680px;}.about-visual{width:100%;max-width:520px;margin:auto;}.about-copy>.eyebrow{text-align:left;}}
+@media(max-width:500px){.about-title{font-size:32px;letter-spacing:-.6px;}.about-intro{font-size:13px;}.about-actions{gap:16px;}.about-visual{border-radius:16px;}.about-visual-label{font-size:8px;letter-spacing:1px;}}
+
 </style>
 </head>
 
@@ -1781,12 +1807,23 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 </section>
 
 <section class="section brand-section" id="about">
-    <div class="container">
-        <p class="eyebrow">LYS AUTO CARE · BERLIN</p>
-        <h2 class="section-title shimmer" data-i18n="brandTitle"></h2>
-        <p class="section-description" data-i18n="brandSubtitle"></p>
-        <div class="pillars-grid" id="pillars-grid"></div>
-        <p class="manifesto" data-i18n="manifesto"></p>
+    <div class="container about-layout">
+        <div class="about-visual">
+            <img id="about-set-photo" src="./kit-open.png" alt="LYS Auto Care Box" loading="lazy">
+            <video id="about-box-video" muted loop playsinline preload="none" poster="./kit-open.png" hidden></video>
+            <div class="about-monogram" id="about-monogram" hidden><span>LYS</span><small>AUTO CARE · BERLIN</small></div>
+            <div class="about-visual-label" aria-hidden="true"><span>LYS AUTO CARE</span><span>BERLIN</span></div>
+        </div>
+        <div class="about-copy">
+            <p class="eyebrow" data-i18n="aboutEyebrow"></p>
+            <h2 class="about-title shimmer" data-i18n="brandTitle"></h2>
+            <p class="about-intro" data-i18n="brandSubtitle"></p>
+            <div class="brand-reasons" id="pillars-grid"></div>
+            <div class="about-actions">
+                <a class="btn" href="#shop" data-i18n="aboutShop"></a>
+                <a class="about-contact" data-whatsapp href="https://wa.me/491787242067" target="_blank" rel="noopener noreferrer" data-i18n="aboutContact"></a>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -2586,14 +2623,25 @@ de:{
     giftCta:"Gift Edition gestalten · 95 €",
     directDelivery:"Direkt an den Geschenkempfänger liefern",
 
-    brandTitle:"Ein Ritual. Dein eigener Stil.",
-    brandSubtitle:"LYS verbindet aufmerksame Autopflege mit einer klaren Geschenkidee aus Berlin.",
+    brandTitle:"Für Menschen, die ihr Auto lieben.",
+    brandSubtitle:"Ein gutes Pflegeset muss nicht kompliziert sein. LYS bringt Pflegeprodukte, passende Accessoires und eine klare Geschenkidee in einer Box zusammen. Aus Berlin. Für deinen Alltag.",
+    aboutEyebrow:"ÜBER LYS · BERLIN",
+    aboutShop:"Unsere Boxen entdecken",
+    aboutContact:"Frag uns auf WhatsApp ↗",
     pillars:[
-        ["Unboxing Ceremony","Eine schwarze Box, ein orangefarbenes Band und ein bewusst gestalteter erster Moment."],
-        ["Das abgestimmte Set","Drei Pflegeprodukte und passende Accessoires für deine Routine."],
-        ["Deine LYS Edition","Für dich, als persönliches Geschenk oder als Duo für zwei Fahrzeuge."],
-        ["Persönlicher Kontakt","Eine Karte, eine passende Lieferadresse und direkter Kontakt zu LYS."]
+    [
+        "Alles beisammen.",
+        "Drei Reiniger à 250 ml, Mikrofasertücher und Pinsel mit Etui — ergänzt durch Anleitung und Überraschung."
     ],
+    [
+        "Für dich. Oder mit einer persönlichen Note.",
+        "Wähle die Signature Box oder ergänze beim Geschenk eine Karte mit deinen eigenen Worten."
+    ],
+    [
+        "Ein direkter Draht zu LYS.",
+        "Du fragst an, wir bestätigen die Details persönlich. Auch per WhatsApp."
+    ]
+],
     manifesto:"Zeit für dein Auto, Freude an Details und eine besondere Art zu schenken.",
     communityTitle:"LYS in deinem Alltag",
     communitySubtitle:"Echte Erfahrungen und Bilder aus unserer Community.",
@@ -2871,14 +2919,25 @@ en:{
     giftCta:"Personalise Gift Edition · €95",
     directDelivery:"Deliver directly to the gift recipient",
 
-    brandTitle:"A ritual. Your own style.",
-    brandSubtitle:"LYS combines thoughtful car care with a clear gift concept from Berlin.",
+    brandTitle:"For people who love their cars.",
+    brandSubtitle:"A good care set does not have to be complicated. LYS brings care products, matching accessories and a thoughtful gift together in one box. From Berlin. For your everyday life.",
+    aboutEyebrow:"ABOUT LYS · BERLIN",
+    aboutShop:"Explore the boxes",
+    aboutContact:"Ask us on WhatsApp ↗",
     pillars:[
-        ["Unboxing Ceremony","A black box, an orange ribbon and a carefully considered first moment."],
-        ["The coordinated set","Three care products and matching accessories for your routine."],
-        ["Your LYS edition","For yourself, as a personal gift or as a duo for two vehicles."],
-        ["Personal contact","A card, the right delivery address and direct contact with LYS."]
+    [
+        "Everything together.",
+        "Three 250 ml cleaners, microfibre cloths and brushes with a case, plus a guide and a surprise."
     ],
+    [
+        "For you. Or with a personal touch.",
+        "Choose the Signature Box or add a card with your own words when giving it as a gift."
+    ],
+    [
+        "A direct line to LYS.",
+        "Send your enquiry and we will confirm the details personally. You can also reach us on WhatsApp."
+    ]
+],
     manifesto:"Time for your car, enjoyment of the details and a special way to give.",
     communityTitle:"LYS in your everyday life",
     communitySubtitle:"Real experiences and photographs from our community.",
@@ -3156,14 +3215,25 @@ ru:{
     giftCta:"Персонализировать Gift Edition · 95 €",
     directDelivery:"Отправить прямо получателю подарка",
 
-    brandTitle:"Ваш ритуал. Ваш собственный стиль.",
-    brandSubtitle:"LYS объединяет внимательный уход за автомобилем и продуманную подарочную идею из Берлина.",
+    brandTitle:"Для тех, кто любит свой автомобиль.",
+    brandSubtitle:"Хороший набор для ухода не должен быть сложным. Мы собрали средства, подходящие аксессуары и идею подарка в одном боксе LYS. Из Берлина — для ваших повседневных забот об автомобиле.",
+    aboutEyebrow:"О LYS · БЕРЛИН",
+    aboutShop:"Посмотреть боксы",
+    aboutContact:"Написать в WhatsApp ↗",
     pillars:[
-        ["Момент распаковки","Чёрная коробка, оранжевая лента и продуманное первое впечатление."],
-        ["Комплект ухода","Три средства и подходящие аксессуары для вашей процедуры."],
-        ["Ваша версия LYS","Для себя, в персональный подарок или в формате Duo для двух автомобилей."],
-        ["Личный контакт","Открытка, подходящий адрес доставки и прямой контакт с LYS."]
+    [
+        "Всё собрано вместе.",
+        "Три очистителя по 250 мл, микрофибры и кисти с чехлом. Плюс инструкция и сюрприз."
     ],
+    [
+        "Себе. Или с личным пожеланием.",
+        "Выберите Signature Box или добавьте к подарку открытку со своими словами."
+    ],
+    [
+        "Всегда можно написать.",
+        "Вы отправляете заявку, мы лично подтверждаем детали. В том числе в WhatsApp."
+    ]
+],
     manifesto:"Время для вашего автомобиля, удовольствие от деталей и особенный способ дарить.",
     communityTitle:"LYS в вашей жизни",
     communitySubtitle:"Настоящие впечатления и фотографии нашего сообщества.",
@@ -3441,14 +3511,25 @@ ua:{
     giftCta:"Персоналізувати Gift Edition · 95 €",
     directDelivery:"Надіслати просто отримувачу подарунка",
 
-    brandTitle:"Ваш ритуал. Ваш власний стиль.",
-    brandSubtitle:"LYS поєднує уважний догляд за автомобілем і продуману подарункову ідею з Берліна.",
+    brandTitle:"Для тих, хто любить свій автомобіль.",
+    brandSubtitle:"Хороший набір для догляду не має бути складним. Ми зібрали засоби, відповідні аксесуари та ідею подарунка в одному боксі LYS. З Берліна — для щоденної турботи про автомобіль.",
+    aboutEyebrow:"ПРО LYS · БЕРЛІН",
+    aboutShop:"Переглянути бокси",
+    aboutContact:"Написати у WhatsApp ↗",
     pillars:[
-        ["Момент розпакування","Чорна коробка, помаранчева стрічка та продумане перше враження."],
-        ["Комплект догляду","Три засоби й відповідні аксесуари для вашого догляду."],
-        ["Ваша версія LYS","Для себе, в персональний подарунок або у форматі Duo для двох автомобілів."],
-        ["Особистий контакт","Листівка, відповідна адреса доставки та прямий контакт із LYS."]
+    [
+        "Усе зібрано разом.",
+        "Три очисники по 250 мл, мікрофібри та пензлі з чохлом. Плюс інструкція й сюрприз."
     ],
+    [
+        "Собі. Або з особистим побажанням.",
+        "Оберіть Signature Box або додайте до подарунка листівку зі своїми словами."
+    ],
+    [
+        "Завжди можна написати.",
+        "Ви надсилаєте заявку, ми особисто підтверджуємо деталі. Зокрема у WhatsApp."
+    ]
+],
     manifesto:"Час для вашого автомобіля, задоволення від деталей та особливий спосіб дарувати.",
     communityTitle:"LYS у вашому житті",
     communitySubtitle:"Справжні враження та фотографії нашої спільноти.",
@@ -4137,9 +4218,11 @@ function renderPillars() {
     grid.replaceChildren();
 
     t().pillars.forEach(([title,description],index) => {
-        const card = el("article",undefined,"pillar");
-        card.append(el("span",`0${index + 1} /`),el("h3",title),el("p",description));
-        grid.append(card);
+        const row = el("article",undefined,"brand-reason");
+        const body = el("div");
+        body.append(el("h3",title),el("p",description));
+        row.append(el("span",`0${index + 1}`,"brand-reason-number"),body);
+        grid.append(row);
     });
 }
 
@@ -5210,6 +5293,45 @@ document.addEventListener("keydown",event => {
 });
 matchMedia("(max-width:1050px)").addEventListener("change",() => setMobileMenu(false));
 
+
+function initAboutVisual() {
+    const photo = $("#about-set-photo");
+    const video = $("#about-box-video");
+    photo.addEventListener("error",() => {
+        photo.hidden = true;
+        $("#about-monogram").hidden = !video.hidden;
+    },{once:true});
+    if (photo.complete && photo.naturalWidth === 0) {
+        photo.hidden = true;
+        $("#about-monogram").hidden = false;
+    }
+    if (!CONFIG.rotationVideo || motionPreference.matches) return;
+    function load() {
+        if (video.dataset.initialized === "true") return;
+        video.dataset.initialized = "true";
+        video.addEventListener("loadeddata",() => {
+            video.hidden = false;
+            photo.hidden = true;
+            $("#about-monogram").hidden = true;
+            syncAllVideos();
+        },{once:true});
+        video.addEventListener("error",() => {
+            unregisterVideo(video);
+            video.hidden = true;
+            photo.hidden = photo.naturalWidth === 0;
+            $("#about-monogram").hidden = !photo.hidden;
+        },{once:true});
+        registerVideo(video);
+        video.preload = "metadata";
+        video.src = CONFIG.rotationVideo;
+    }
+    if (!("IntersectionObserver" in window)) {load();return;}
+    const observer = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) {observer.disconnect();load();}
+    },{rootMargin:"250px"});
+    observer.observe($("#about"));
+}
+
 /* Запуск */
 
 $("#year").textContent = new Date().getFullYear();
@@ -5222,6 +5344,7 @@ updatePromoHeight();
 updateHeader();
 
 initMainVideos();
+initAboutVisual();
 initAsmr();
 initComparison();
 initCommunity();
