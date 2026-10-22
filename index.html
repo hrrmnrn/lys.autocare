@@ -1535,6 +1535,44 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 .about-story .about-makers {padding-top:18px;border-top:1px solid var(--border);margin-top:22px;color:#c6b29c;}
 @media(min-width:901px){.about-visual{position:sticky;top:calc(var(--promo-height) + 120px);}}
 @media(max-width:600px){.about-story p{font-size:13px;}.about-title{font-size:36px;}}
+
+/* The printed guide belongs inside item 6 rather than in another page section. */
+.product-dialog.guide-mode {width:min(1020px,calc(100% - 24px));}
+.product-dialog.guide-reading {width:min(1500px,calc(100% - 24px));}
+.guide-viewer {max-width:100%;}
+.guide-switches {display:flex;justify-content:center;gap:8px;margin-bottom:20px;}
+.guide-side {padding:10px 20px;border:1px solid var(--border);border-radius:30px;color:var(--muted);background:transparent;font:inherit;font-size:12px;cursor:pointer;}
+.guide-side[aria-pressed="true"] {background:#c69a7218;border-color:var(--gold);color:var(--gold-light);}
+.guide-stage {perspective:1600px;width:min(100%,800px);margin:auto;}
+.guide-card {position:relative;width:100%;aspect-ratio:1748/1240;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.2,.7,.25,1);}
+.guide-card.is-back {transform:rotateY(180deg);}
+.guide-face {position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;border:1px solid #b58a514d;box-shadow:0 18px 45px #0007;background:#0d0d0d;}
+.guide-face-back {transform:rotateY(180deg);}
+.guide-face img {display:block;width:100%;height:100%;object-fit:contain;}
+.guide-reader {max-height:62dvh;overflow:auto;border:1px solid var(--border);border-radius:12px;background:#0d0d0d;overscroll-behavior:contain;}
+.guide-reader img {display:block;width:max(100%,1400px);max-width:none;height:auto;}
+.guide-reader:focus-visible {outline:2px solid var(--gold);outline-offset:3px;}
+.guide-actions {display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:26px;}
+.guide-actions .btn {font-size:12px;padding:13px 20px;}
+.guide-hint {margin:18px 0 0;text-align:center;color:var(--muted);font-size:11px;line-height:1.8;}
+@media(max-width:600px){.product-dialog.guide-mode{padding:28px 16px 20px;}.guide-actions{gap:8px;}.guide-actions .btn{padding:12px 14px;font-size:11px;}.guide-reader{max-height:58dvh;}.guide-side{font-size:11px;padding:10px 16px;}}
+@media(prefers-reduced-motion:reduce){.guide-card{transition:none;}}
+
+
+/* A physical card: two printed faces, a fine edge and pointer-driven perspective. */
+.guide-stage {position:relative;padding:16px 0 22px;perspective:1500px;touch-action:pan-y pinch-zoom;user-select:none;cursor:grab;}
+.guide-stage::before {content:"";position:absolute;left:9%;right:9%;bottom:0;height:16%;background:radial-gradient(ellipse,#0009,transparent 72%);filter:blur(10px);pointer-events:none;}
+.guide-stage.is-dragging {cursor:grabbing;}
+.guide-tilt {transform-style:preserve-3d;transform:rotateX(var(--tilt-x,-5deg)) rotateY(var(--tilt-y,-8deg));transition:transform .22s ease-out;}
+.guide-card,.guide-card.is-back {transform:rotateY(var(--guide-turn,0deg));}
+.guide-card.is-dragging {transition:none;}
+.guide-face {border-radius:10px;box-shadow:0 22px 40px #0005;transform:translateZ(2px);}
+.guide-face-back {transform:rotateY(180deg) translateZ(2px);}
+.guide-face::after {content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 20%,#e0bf861c 42%,#fff1d526 48%,transparent 66%);background-size:190% 100%;background-position:var(--gloss-x,38%) center;opacity:.45;pointer-events:none;border-radius:inherit;}
+.guide-edge {position:absolute;inset:0;border:1px solid #ad8452;border-radius:10px;background:#28221b;transform:translateZ(var(--edge-depth));backface-visibility:visible;pointer-events:none;}
+@media(max-width:600px){.guide-stage{padding:12px 0 17px;}.guide-tilt{transform:rotateX(var(--tilt-x,-3deg)) rotateY(var(--tilt-y,-6deg));}}
+@media(prefers-reduced-motion:reduce){.guide-tilt{transform:none;transition:none;}.guide-card{transition:none;}.guide-face::after{display:none;}}
+
 </style>
 </head>
 
@@ -2325,7 +2363,8 @@ videos/microfibre.mp4
 videos/ribbon.mp4
 
 ФОТО ИНСТРУКЦИИ:
-images/guide.png
+images/guide-front.png
+images/guide-back.png
 
 Промокод посетитель вводит вручную в форме.
 */
@@ -2417,7 +2456,7 @@ const PRODUCT_MEDIA = [
     },
     null,
     null,
-    {type:"images",items:[{src:"./images/guide.png"}]},
+    {type:"images",presentation:"flip",items:[{src:"./images/guide-front.png",side:"front"},{src:"./images/guide-back.png",side:"back"}]},
     null
 ];
 
@@ -2605,6 +2644,11 @@ de:{
     ]
 ],
     details:"Details ansehen",
+    guideReadHint:"Das vergrößerte Bild lässt sich seitlich und nach unten scrollen.",
+    guideHint:"Mit der Maus neigen und ziehen oder mit dem Finger seitlich wischen. Die Rückseite lässt sich zum Lesen vergrößern.",
+    guideZoomOut:"Zur Kartenansicht",
+    guideZoom:"Zum Lesen vergrößern",
+    guideFlip:"Karte umdrehen",
     front:"Vorderseite",
     backPhoto:"Rückseite",
     mediaMissing:"Dieses Bild oder Video ist noch nicht verfügbar.",
@@ -2891,6 +2935,11 @@ en:{
     ]
 ],
     details:"View details",
+    guideReadHint:"Scroll sideways and down to explore the enlarged image.",
+    guideHint:"Tilt and drag with your mouse, or swipe sideways with your finger. Enlarge the back to read it.",
+    guideZoomOut:"Back to card view",
+    guideZoom:"Enlarge to read",
+    guideFlip:"Turn the card over",
     front:"Front",
     backPhoto:"Back",
     mediaMissing:"This image or video is not available yet.",
@@ -3177,6 +3226,11 @@ ru:{
     ]
 ],
     details:"Подробнее",
+    guideReadHint:"Увеличенное изображение можно прокручивать в стороны и вниз.",
+    guideHint:"Наклоняйте мышью, перетаскивайте или смахните пальцем в сторону. Для чтения оборота нажмите «Увеличить».",
+    guideZoomOut:"Вернуться к карточке",
+    guideZoom:"Увеличить для чтения",
+    guideFlip:"Перевернуть карточку",
     front:"Спереди",
     backPhoto:"Сзади",
     mediaMissing:"Фото или видео пока не добавлено.",
@@ -3463,6 +3517,11 @@ ua:{
     ]
 ],
     details:"Докладніше",
+    guideReadHint:"Збільшене зображення можна прокручувати вбік і вниз.",
+    guideHint:"Нахиляйте мишею, перетягуйте або проведіть пальцем убік. Для читання звороту натисніть «Збільшити».",
+    guideZoomOut:"Повернутися до картки",
+    guideZoom:"Збільшити для читання",
+    guideFlip:"Перевернути картку",
     front:"Спереду",
     backPhoto:"Ззаду",
     mediaMissing:"Фото або відео поки не додано.",
@@ -3609,6 +3668,7 @@ let quizStep = 0;
 let quizAnswers = [null,null,null];
 let quizFinished = false;
 let currentProduct = null;
+let updateGuideViewer = null;
 let selectedHotspot = 0;
 let activeFilter = "all";
 let activeInsideTab = "content";
@@ -3765,6 +3825,7 @@ function setLanguage(value) {
 
     if (currentProduct !== null && productDialog.open) {
         updateProductText(currentProduct);
+        updateGuideViewer?.();
 
         document.querySelectorAll("#product-media [data-side]").forEach(node => {
             node.textContent = node.dataset.side === "back" ? t().backPhoto : t().front;
@@ -4434,10 +4495,163 @@ function clearProductVideo() {
     }
 }
 
+
+/* Two-sided guide: a gentle flip, plus a large, scrollable reading view. */
+function renderGuideViewer(container,media) {
+    let side = "front";
+    let turn = 0;
+    let pointer = null;
+    let zoomed = false;
+    const root = el("div",undefined,"guide-viewer");
+    const switches = el("div",undefined,"guide-switches");
+    switches.setAttribute("role","group");
+    const frontButton = el("button",undefined,"guide-side");
+    const backButton = el("button",undefined,"guide-side");
+    const stage = el("div",undefined,"guide-stage");
+    const tilt = el("div",undefined,"guide-tilt");
+    const card = el("div",undefined,"guide-card");
+    for (let layer = -3; layer <= 3; layer++) {
+        const edge = el("div",undefined,"guide-edge");
+        edge.style.setProperty("--edge-depth",`${layer * .5}px`);
+        edge.setAttribute("aria-hidden","true");
+        card.append(edge);
+    }
+    const faces = [];
+    media.items.forEach(item => {
+        const face = el("div",undefined,"guide-face guide-face-" + item.side);
+        const img = el("img");
+        img.decoding = "async";
+        img.draggable = false;
+        img.src = item.src;
+        img.addEventListener("error",() => {
+            face.replaceChildren(el("p",t().mediaMissing,"media-missing"));
+        },{once:true});
+        face.append(img);card.append(face);
+        faces.push({face,img,side:item.side});
+    });
+    tilt.append(card);
+    stage.append(tilt);
+    const reader = el("div",undefined,"guide-reader");
+    reader.hidden = true;reader.tabIndex = 0;
+    const largeImage = el("img");
+    largeImage.draggable = false;
+    largeImage.addEventListener("error",() => {
+        largeImage.alt = t().mediaMissing;
+    });
+    reader.append(largeImage);
+    const actions = el("div",undefined,"guide-actions");
+    const flip = el("button",undefined,"btn btn-secondary");
+    const zoom = el("button",undefined,"btn");
+    const hint = el("p",undefined,"guide-hint");
+    for (const button of [frontButton,backButton,flip,zoom]) button.type = "button";
+    function showSide(next,direction = 1) {
+        if (next !== side) turn += direction * 180;
+        side = next;
+        update();
+    }
+    frontButton.addEventListener("click",() => showSide("front"));
+    backButton.addEventListener("click",() => showSide("back"));
+    flip.addEventListener("click",() => showSide(side === "front" ? "back" : "front"));
+    zoom.addEventListener("click",() => {
+        zoomed = !zoomed;update();
+        if (zoomed) reader.focus();else zoom.focus();
+    });
+    function update() {
+        frontButton.textContent = t().front;
+        backButton.textContent = t().backPhoto;
+        frontButton.setAttribute("aria-pressed",String(side === "front"));
+        backButton.setAttribute("aria-pressed",String(side === "back"));
+        switches.setAttribute("aria-label",t().contents[5][0]);
+        card.classList.toggle("is-back",side === "back");
+        card.style.setProperty("--guide-turn",`${turn}deg`);
+        stage.hidden = zoomed;reader.hidden = !zoomed;
+        productDialog.classList.toggle("guide-reading",zoomed);
+        flip.textContent = t().guideFlip;
+        flip.setAttribute("aria-pressed",String(side === "back"));
+        zoom.textContent = zoomed ? t().guideZoomOut : t().guideZoom;
+        zoom.setAttribute("aria-expanded",String(zoomed));
+        hint.textContent = zoomed ? t().guideReadHint : t().guideHint;
+        const label = t().contents[5][0] + " — " + (side === "front" ? t().front : t().backPhoto);
+        reader.setAttribute("aria-label",label);
+        faces.forEach(item => {
+            item.face.setAttribute("aria-hidden",String(item.side !== side || zoomed));
+            item.img.alt = t().contents[5][0] + " — " + (item.side === "front" ? t().front : t().backPhoto);
+        });
+        const item = media.items.find(item=>item.side === side);
+        if (zoomed && largeImage.getAttribute("src") !== item.src) {
+            largeImage.src = item.src;
+            reader.scrollTop=0;reader.scrollLeft=0;
+        }
+        largeImage.alt = label;
+    }
+    function resetTilt() {
+        tilt.style.removeProperty("--tilt-x");
+        tilt.style.removeProperty("--tilt-y");
+        card.style.removeProperty("--gloss-x");
+    }
+    function finishPointer(cancel = false) {
+        if (!pointer) return;
+        const saved = pointer;
+        pointer = null;
+        card.classList.remove("is-dragging");
+        stage.classList.remove("is-dragging");
+        try {stage.releasePointerCapture(saved.id);} catch {}
+        if (!cancel && saved.dragging && Math.abs(saved.dx) > 45) {
+            showSide(side === "front" ? "back" : "front",Math.sign(saved.dx));
+        } else update();
+        resetTilt();
+    }
+    stage.addEventListener("pointerdown",event => {
+        if (zoomed || motionPreference.matches || event.isPrimary === false || (event.button !== undefined && event.button !== 0)) return;
+        pointer = {id:event.pointerId,x:event.clientX,y:event.clientY,dx:0,dragging:false};
+    });
+    stage.addEventListener("pointermove",event => {
+        if (zoomed || motionPreference.matches) return;
+        if (pointer) {
+            if (pointer.id !== event.pointerId) return;
+            const dx = event.clientX - pointer.x;
+            const dy = event.clientY - pointer.y;
+            if (!pointer.dragging && event.pointerType === "touch" && Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 12) {
+                finishPointer(true);return;
+            }
+            if (!pointer.dragging && Math.abs(dx) < 8) return;
+            if (!pointer.dragging) {
+                pointer.dragging = true;
+                card.classList.add("is-dragging");stage.classList.add("is-dragging");
+                try {stage.setPointerCapture(pointer.id);} catch {}
+            }
+            pointer.dx = dx;
+            if (event.cancelable) event.preventDefault();
+            const angle = Math.min(140,Math.max(-140,dx * .7));
+            card.style.setProperty("--guide-turn",`${turn + angle}deg`);
+            tilt.style.setProperty("--tilt-x",`${Math.min(12,Math.max(-12,-dy * .1))}deg`);
+        } else if (event.pointerType === "mouse") {
+            const rect = stage.getBoundingClientRect();
+            if (!rect.width || !rect.height) return;
+            const x = Math.min(1,Math.max(0,(event.clientX - rect.left) / rect.width));
+            const y = Math.min(1,Math.max(0,(event.clientY - rect.top) / rect.height));
+            tilt.style.setProperty("--tilt-x",`${(y - .5) * -12}deg`);
+            tilt.style.setProperty("--tilt-y",`${(x - .5) * 18}deg`);
+            card.style.setProperty("--gloss-x",`${x * 100}%`);
+        }
+    },{passive:false});
+    stage.addEventListener("pointerup",() => finishPointer());
+    stage.addEventListener("pointercancel",() => finishPointer(true));
+    stage.addEventListener("pointerleave",() => {if (!pointer) resetTilt();});
+    switches.append(frontButton,backButton);
+    actions.append(flip,zoom);
+    root.append(switches,stage,reader,actions,hint);
+    container.append(root);
+    updateGuideViewer = update;
+    update();
+}
+
 function openProduct(index) {
     if (!hasMedia(index)) return;
 
     clearProductVideo();
+    updateGuideViewer = null;
+    productDialog.classList.remove("guide-mode","guide-reading");
     currentProduct = index;
 
     const media = PRODUCT_MEDIA[index];
@@ -4447,7 +4661,10 @@ function openProduct(index) {
     updateProductText(index);
     openDialog(productDialog);
 
-    if (media.type === "video") {
+    if (media.presentation === "flip") {
+        productDialog.classList.add("guide-mode");
+        renderGuideViewer(container,media);
+    } else if (media.type === "video") {
         const video = el("video",undefined,"product-video");
         video.preload = "metadata";
 
@@ -4497,6 +4714,8 @@ function openProduct(index) {
 productDialog.addEventListener("close",() => {
     clearProductVideo();
     $("#product-media").replaceChildren();
+    updateGuideViewer = null;
+    productDialog.classList.remove("guide-mode","guide-reading");
     currentProduct = null;
 });
 
