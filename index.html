@@ -1551,7 +1551,9 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 .guide-face img {display:block;width:100%;height:100%;object-fit:contain;}
 .guide-reader {position:relative;width:min(100%,640px,calc(46dvh * 1748 / 1240));margin:auto;overflow:hidden;touch-action:none;cursor:crosshair;border:1px solid var(--border);border-radius:12px;background:#0d0d0d;overscroll-behavior:contain;}
 .guide-reader img {display:block;width:100%;height:auto;user-select:none;}
-.guide-lens {position:absolute;width:clamp(110px,25vw,170px);aspect-ratio:1;border-radius:50%;border:2px solid #dfbb91;box-shadow:0 8px 28px #0009,0 0 0 4px #0b0b0b77;pointer-events:none;background-color:#0d0d0d;background-repeat:no-repeat;}
+.guide-lens {position:absolute;width:clamp(100px,22vw,146px);aspect-ratio:1;border-radius:50%;pointer-events:none;isolation:isolate;background:transparent;box-shadow:0 4px 16px #0002;}
+.guide-lens::before {content:"";position:absolute;inset:0;border-radius:inherit;background-image:var(--lens-image);background-size:var(--lens-size);background-position:var(--lens-position);background-repeat:no-repeat;-webkit-mask-image:radial-gradient(circle,#000 38%,#000e 62%,#0008 82%,transparent 100%);mask-image:radial-gradient(circle,#000 38%,#000e 62%,#0008 82%,transparent 100%);}
+.guide-lens::after {content:"";position:absolute;inset:0;border-radius:inherit;border:1px solid #ffffff24;background:radial-gradient(ellipse at 28% 17%,#ffffff1c,transparent 43%),radial-gradient(ellipse at 74% 88%,#ffffff0c,transparent 38%);box-shadow:inset 0 1px 2px #ffffff38,inset 0 -1px 3px #ffffff12;}
 .guide-reader:focus-visible {outline:2px solid var(--gold);outline-offset:3px;}
 .guide-actions {display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:26px;}
 .guide-actions .btn {font-size:12px;padding:13px 20px;}
@@ -4570,16 +4572,17 @@ function renderGuideViewer(container,media) {
         const rect = largeImage.getBoundingClientRect();
         if (!rect.width || !rect.height) return;
         lens.hidden = false;
-        const diameter = lens.offsetWidth || 160;
+        const diameter = lens.offsetWidth || 140;
+        const magnification = 1.45;
         const radius = diameter / 2;
         const px = lensPoint.x * rect.width, py = lensPoint.y * rect.height;
         const cx = Math.max(radius,Math.min(rect.width - radius,px));
         const cy = Math.max(radius,Math.min(rect.height - radius,py));
         lens.style.left = `${cx - radius}px`;
         lens.style.top = `${cy - radius}px`;
-        lens.style.backgroundImage = `url("${largeImage.getAttribute("src")}")`;
-        lens.style.backgroundSize = `${rect.width * 3}px ${rect.height * 3}px`;
-        lens.style.backgroundPosition = `${radius - px * 3}px ${radius - py * 3}px`;
+        lens.style.setProperty("--lens-image",`url("${largeImage.getAttribute("src")}")`);
+        lens.style.setProperty("--lens-size",`${rect.width * magnification}px ${rect.height * magnification}px`);
+        lens.style.setProperty("--lens-position",`${radius - px * magnification}px ${radius - py * magnification}px`);
         lens.hidden = false;
     }
     function moveLens(event) {
