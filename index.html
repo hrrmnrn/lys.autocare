@@ -1490,6 +1490,9 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 }
 @media(max-width:480px){.mobile-nav:not([hidden]){grid-template-columns:repeat(2,minmax(0,1fr));}}
 
+.quiz-selection-summary {display:flex;justify-content:center;flex-wrap:wrap;gap:9px;list-style:none;margin:20px 0 25px;padding:0;}
+.quiz-selection-summary li {padding:9px 14px;border:1px solid var(--border);border-radius:30px;background:#c69a720b;color:var(--gold-light);font-size:12px;line-height:1.5;}
+@media(max-width:600px){.quiz-selection-summary li{font-size:11px;}}
 </style>
 </head>
 
@@ -1625,6 +1628,7 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
                 <p class="eyebrow" data-i18n="yourChoice"></p>
                 <h3 id="quiz-result-title"></h3>
                 <p class="quiz-result-description" id="quiz-result-description"></p>
+                <ul class="quiz-selection-summary" id="quiz-selection-summary"></ul>
                 <div class="result-price" id="quiz-result-price"></div>
                 <p class="result-bonus" id="quiz-result-bonus"></p>
                 <button class="btn" type="button" id="quiz-order"></button>
@@ -2435,13 +2439,13 @@ de:{
     trust2:"✦ Bereit zum Verschenken",
     trust3:"✦ Versand in Deutschland inklusive",
 
-    quizTitle:"Finde dein ideales LYS Set in 3 kurzen Schritten",
-    quizSubtitle:"Wähle zwischen persönlicher Autopflege, einem Geschenk und zwei vollständigen Boxen.",
+    quizTitle:"Deine LYS Box in wenigen Klicks",
+    quizSubtitle:"Für dich oder zum Verschenken? Wähle die Anzahl und bei Geschenken die passenden Grußkarten.",
     step:"SCHRITT",
     next:"Weiter →",
-    seeResult:"Empfehlung ansehen →",
+    seeResult:"Mein Set ansehen →",
     back:"← Zurück",
-    yourChoice:"DEINE EMPFEHLUNG",
+    yourChoice:"DEINE AUSWAHL",
     restart:"Quiz erneut starten",
     quizBonus:"Wenn du einen Rabattcode hast, gib ihn selbst im Anfrageformular ein.",
     quizDuoBonus:"Basispreis: 165 € statt 178 € für zwei einzelne Signature Boxen. Geschenkgestaltung kommt bei Auswahl hinzu.",
@@ -2455,53 +2459,41 @@ de:{
 
     quizQuestions:[
     {
-        "question": "Wie viele Sets möchtest du?",
+        "question": "Für wen ist deine LYS Box?",
         "options": [
             [
-                "Ein Set für mein Auto",
-                "Eine vollständige Box für meine Pflegeroutine."
+                "Für mich",
+                "Für die Pflege meines eigenen Autos."
             ],
             [
-                "Ein Set zum Verschenken",
-                "Eine vollständige Box für einen besonderen Menschen."
-            ],
-            [
-                "Zwei vollständige Sets",
-                "Zwei Signature Boxen für 165 € statt 178 €. "
+                "Zum Verschenken",
+                "Für einen Menschen, dem ich eine Freude machen möchte."
             ]
         ]
     },
     {
-        "question": "Wie möchtest du deine Box gestalten?",
+        "question": "Wie viele Boxen möchtest du?",
         "options": [
             [
-                "Klassisch, ohne Grußkarte",
-                "Das Pflegeset steht im Mittelpunkt."
+                "Eine Box",
+                "Ein vollständiges Set · ab 89 €."
+            ],
+            [
+                "Zwei Boxen · Duo Pack",
+                "Zwei vollständige Sets · ab 165 € statt 178 €."
+            ]
+        ]
+    },
+    {
+        "question": "Möchtest du eine persönliche Grußkarte dazu?",
+        "options": [
+            [
+                "Ohne Grußkarte",
+                "Signature Box · 89 €."
             ],
             [
                 "Mit persönlicher Grußkarte",
-                "Ich ergänze einen Namen und meine Nachricht."
-            ],
-            [
-                "Noch nicht entschieden",
-                "Ich wähle die Details später in der Anfrage."
-            ]
-        ]
-    },
-    {
-        "question": "Wohin soll deine Bestellung gehen?",
-        "options": [
-            [
-                "An meine Adresse",
-                "Ich gebe meine Lieferadresse in der Anfrage an."
-            ],
-            [
-                "Abholung in Berlin",
-                "Den Abholtermin vereinbaren wir persönlich."
-            ],
-            [
-                "Direkt an den Beschenkten",
-                "Ich gebe einen separaten Namen und eine Lieferadresse an."
+                "Gift Edition · 95 €. Deinen Text ergänzt du im Formular."
             ]
         ]
     }
@@ -2659,8 +2651,8 @@ de:{
     duoCardNote:"6 € pro Geschenkbox inklusive persönlicher Grußkarte. Die Auswahl gilt pro Duo Pack. Bei mehreren Duo Packs werden die eingegebenen Kartentexte wiederholt.",
     secondCard:"ZWEITE GRUSSKARTE",
     giftFee:"Geschenkgestaltung",
-    duoQuestion:"Wie viele Boxen möchtest du verschenken?",
-    duoOptions:[["Keine — beide klassisch", "Zwei Signature Boxen ohne Grußkarten · 165 €."], ["Eine als Geschenk", "Ein Geschenkbox-Upgrade mit persönlicher Karte · gesamt 171 €."], ["Beide als Geschenk", "Zwei Geschenkbox-Upgrades, zwei persönliche Karten · gesamt 177 €."]],
+    duoQuestion:"Wie viele persönliche Grußkarten möchtest du?",
+    duoOptions:[["Keine Grußkarte", "Zwei Signature Boxen · gesamt 165 €."], ["Eine Grußkarte · +6 €", "Eine Geschenkbox und eine Signature Box · gesamt 171 €."], ["Zwei Grußkarten · +12 €", "Zwei Geschenkboxen mit je einer eigenen Karte · gesamt 177 €."]],
     total:"Voraussichtlicher Gesamtbetrag",
     shippingIncluded:"Versand in Deutschland inklusive",
     nextShipping:"Zur Lieferung →",
@@ -2734,13 +2726,13 @@ en:{
     trust2:"✦ Ready to gift",
     trust3:"✦ Shipping within Germany included",
 
-    quizTitle:"Find your perfect LYS set in 3 quick steps",
-    quizSubtitle:"Choose between personal car care, a thoughtful gift and two complete boxes.",
+    quizTitle:"Your LYS box in a few clicks",
+    quizSubtitle:"For you or as a gift? Choose the number of boxes and, for gifts, your greeting cards.",
     step:"STEP",
     next:"Next →",
-    seeResult:"See my recommendation →",
+    seeResult:"See my set →",
     back:"← Back",
-    yourChoice:"YOUR RECOMMENDATION",
+    yourChoice:"YOUR SELECTION",
     restart:"Restart the quiz",
     quizBonus:"If you have a discount code, enter it yourself in the enquiry form.",
     quizDuoBonus:"Base price: €165 instead of €178 for two separate Signature Boxes. Gift presentation is added when selected.",
@@ -2752,53 +2744,41 @@ en:{
     resultCtas:["Request Signature Box","Request Gift Edition + card","Request Duo Pack"],
     quizQuestions:[
     {
-        "question": "How many sets would you like?",
+        "question": "Who is your LYS box for?",
         "options": [
             [
-                "One set for my car",
-                "A complete box for my care routine."
+                "For me",
+                "For taking care of my own car."
             ],
             [
-                "One set as a gift",
-                "A complete box for someone special."
-            ],
-            [
-                "Two complete sets",
-                "Two Signature Boxes for €165 instead of €178."
+                "As a gift",
+                "For someone I would like to treat."
             ]
         ]
     },
     {
-        "question": "How would you like your box?",
+        "question": "How many boxes would you like?",
         "options": [
             [
-                "Classic, without a greeting card",
-                "The care set takes centre stage."
+                "One box",
+                "One complete set · from €89."
+            ],
+            [
+                "Two boxes · Duo Pack",
+                "Two complete sets · from €165 instead of €178."
+            ]
+        ]
+    },
+    {
+        "question": "Would you like a personal greeting card?",
+        "options": [
+            [
+                "Without a greeting card",
+                "Signature Box · €89."
             ],
             [
                 "With a personal greeting card",
-                "I will add a name and my own message."
-            ],
-            [
-                "I have not decided yet",
-                "I will choose the details in the enquiry form."
-            ]
-        ]
-    },
-    {
-        "question": "Where should your order go?",
-        "options": [
-            [
-                "To my address",
-                "I will enter my shipping address in the form."
-            ],
-            [
-                "Collection in Berlin",
-                "We will arrange a collection time together."
-            ],
-            [
-                "Directly to the recipient",
-                "I will provide a separate recipient name and address."
+                "Gift Edition · €95. Add your message in the form."
             ]
         ]
     }
@@ -2956,8 +2936,8 @@ en:{
     duoCardNote:"€6 per gift box, including a personal card. Your choice applies to each Duo Pack. For multiple packs, the entered card messages are repeated.",
     secondCard:"SECOND GREETING CARD",
     giftFee:"Gift presentation",
-    duoQuestion:"How many boxes would you like to give as gifts?",
-    duoOptions:[["Neither — keep both classic", "Two Signature Boxes without greeting cards · €165."], ["One as a gift", "One gift box upgrade with a personal card · total €171."], ["Both as gifts", "Two gift box upgrades, two personal cards · total €177."]],
+    duoQuestion:"How many personal greeting cards would you like?",
+    duoOptions:[["No greeting cards", "Two Signature Boxes · total €165."], ["One greeting card · +€6", "One gift box and one Signature Box · total €171."], ["Two greeting cards · +€12", "Two gift boxes, each with its own card · total €177."]],
     total:"Estimated total",
     shippingIncluded:"Shipping within Germany included",
     nextShipping:"To delivery →",
@@ -3031,13 +3011,13 @@ ru:{
     trust2:"✦ Готово к вручению",
     trust3:"✦ Доставка по Германии включена",
 
-    quizTitle:"Найдите свой идеальный набор LYS за 3 быстрых шага",
-    quizSubtitle:"Выберите уход для себя, персональный подарок или два полных бокса.",
+    quizTitle:"Ваш бокс LYS — за пару ответов",
+    quizSubtitle:"Себе или в подарок? Выберите количество боксов, а для подарка — открытки.",
     step:"ШАГ",
     next:"Далее →",
-    seeResult:"Показать рекомендацию →",
+    seeResult:"Посмотреть мой набор →",
     back:"← Назад",
-    yourChoice:"ВАША РЕКОМЕНДАЦИЯ",
+    yourChoice:"ВАШ ВЫБОР",
     restart:"Пройти квиз заново",
     quizBonus:"Если у вас есть промокод, введите его самостоятельно в форме заявки.",
     quizDuoBonus:"Базовая цена — 165 € вместо 178 € за два отдельных Signature Box. Подарочное оформление оплачивается дополнительно при выборе.",
@@ -3049,53 +3029,41 @@ ru:{
     resultCtas:["Забрать Signature Box","Оформить Gift Edition + открытка","Заказать Duo Pack"],
     quizQuestions:[
     {
-        "question": "Сколько наборов вам нужно?",
+        "question": "Для кого выбираете LYS?",
         "options": [
             [
-                "Один для своего автомобиля",
-                "Полный бокс для личного ухода."
+                "Для себя",
+                "Для ухода за своим автомобилем."
             ],
             [
-                "Один в подарок",
-                "Полный бокс для близкого человека."
-            ],
-            [
-                "Два полных набора",
-                "Два Signature Box за 165 € вместо 178 €. "
+                "В подарок",
+                "Для человека, которого хочется порадовать."
             ]
         ]
     },
     {
-        "question": "Как оформить ваш бокс?",
+        "question": "Сколько боксов вам нужно?",
+        "options": [
+            [
+                "Один бокс",
+                "Один полный набор · от 89 €."
+            ],
+            [
+                "Два бокса · Duo Pack",
+                "Два полных набора · от 165 € вместо 178 €."
+            ]
+        ]
+    },
+    {
+        "question": "Добавим персональную открытку?",
         "options": [
             [
                 "Без открытки",
-                "Хочу только набор для ухода."
+                "Signature Box · 89 €."
             ],
             [
                 "С персональной открыткой",
-                "Добавлю имя получателя и своё поздравление."
-            ],
-            [
-                "Пока не решила / не решил",
-                "Выберу детали при заполнении заявки."
-            ]
-        ]
-    },
-    {
-        "question": "Как вам удобно получить заказ?",
-        "options": [
-            [
-                "Доставка на мой адрес",
-                "Укажу свой адрес в заявке."
-            ],
-            [
-                "Самовывоз в Берлине",
-                "Согласуем время получения отдельно."
-            ],
-            [
-                "Доставка прямо получателю",
-                "Укажу отдельное имя и адрес получателя подарка."
+                "Gift Edition · 95 €. Поздравление напишете в форме."
             ]
         ]
     }
@@ -3253,8 +3221,8 @@ ru:{
     duoCardNote:"6 € за подарочное оформление одного бокса с персональной открыткой. Выбор действует для каждого Duo Pack. При заказе нескольких комплектов тексты открыток повторяются.",
     secondCard:"ВТОРАЯ ОТКРЫТКА",
     giftFee:"Подарочное оформление",
-    duoQuestion:"Сколько боксов оформить в подарок?",
-    duoOptions:[["Ни одного — оба без открыток", "Два классических Signature Box · 165 €."], ["Один в подарок", "Оформление одного бокса с персональной открыткой · итого 171 €."], ["Оба в подарок", "Оформление двух боксов, две персональные открытки · итого 177 €."]],
+    duoQuestion:"Сколько персональных открыток добавим?",
+    duoOptions:[["Без открыток", "Два Signature Box · итого 165 €."], ["Одна открытка · +6 €", "Один подарочный бокс и один Signature Box · итого 171 €."], ["Две открытки · +12 €", "Два подарочных бокса, каждый со своей открыткой · итого 177 €."]],
     total:"Предварительная сумма",
     shippingIncluded:"Доставка по Германии включена",
     nextShipping:"К доставке →",
@@ -3328,13 +3296,13 @@ ua:{
     trust2:"✦ Готово до вручення",
     trust3:"✦ Доставку Німеччиною включено",
 
-    quizTitle:"Знайдіть свій ідеальний набір LYS за 3 швидкі кроки",
-    quizSubtitle:"Оберіть догляд для себе, персональний подарунок або два повні бокси.",
+    quizTitle:"Ваш бокс LYS — за кілька відповідей",
+    quizSubtitle:"Собі чи в подарунок? Оберіть кількість боксів, а для подарунка — листівки.",
     step:"КРОК",
     next:"Далі →",
-    seeResult:"Показати рекомендацію →",
+    seeResult:"Переглянути мій набір →",
     back:"← Назад",
-    yourChoice:"ВАША РЕКОМЕНДАЦІЯ",
+    yourChoice:"ВАШ ВИБІР",
     restart:"Пройти квіз знову",
     quizBonus:"Якщо маєте промокод, введіть його самостійно у формі заявки.",
     quizDuoBonus:"Базова ціна — 165 € замість 178 € за два окремі Signature Box. Подарункове оформлення оплачується додатково за вибором.",
@@ -3346,53 +3314,41 @@ ua:{
     resultCtas:["Обрати Signature Box","Оформити Gift Edition + листівка","Замовити Duo Pack"],
     quizQuestions:[
     {
-        "question": "Скільки наборів вам потрібно?",
+        "question": "Для кого обираєте LYS?",
         "options": [
             [
-                "Один для свого автомобіля",
-                "Повний бокс для особистого догляду."
+                "Для себе",
+                "Для догляду за своїм автомобілем."
             ],
             [
-                "Один у подарунок",
-                "Повний бокс для близької людини."
-            ],
-            [
-                "Два повні набори",
-                "Два Signature Box за 165 € замість 178 €. "
+                "У подарунок",
+                "Для людини, яку хочеться потішити."
             ]
         ]
     },
     {
-        "question": "Як оформити ваш бокс?",
+        "question": "Скільки боксів вам потрібно?",
+        "options": [
+            [
+                "Один бокс",
+                "Один повний набір · від 89 €."
+            ],
+            [
+                "Два бокси · Duo Pack",
+                "Два повні набори · від 165 € замість 178 €."
+            ]
+        ]
+    },
+    {
+        "question": "Додамо персональну листівку?",
         "options": [
             [
                 "Без листівки",
-                "Хочу лише набір для догляду."
+                "Signature Box · 89 €."
             ],
             [
                 "З персональною листівкою",
-                "Додам ім’я отримувача та своє привітання."
-            ],
-            [
-                "Ще не визначилася / не визначився",
-                "Оберу деталі під час заповнення заявки."
-            ]
-        ]
-    },
-    {
-        "question": "Як вам зручно отримати замовлення?",
-        "options": [
-            [
-                "Доставка на мою адресу",
-                "Вкажу свою адресу в заявці."
-            ],
-            [
-                "Самовивіз у Берліні",
-                "Окремо узгодимо час отримання."
-            ],
-            [
-                "Доставка просто отримувачу",
-                "Вкажу окреме ім’я та адресу отримувача подарунка."
+                "Gift Edition · 95 €. Привітання напишете у формі."
             ]
         ]
     }
@@ -3550,8 +3506,8 @@ ua:{
     duoCardNote:"6 € за подарункове оформлення одного боксу з персональною листівкою. Вибір діє для кожного Duo Pack. Для кількох комплектів тексти листівок повторюються.",
     secondCard:"ДРУГА ЛИСТІВКА",
     giftFee:"Подарункове оформлення",
-    duoQuestion:"Скільки боксів оформити в подарунок?",
-    duoOptions:[["Жодного — обидва без листівок", "Два класичні Signature Box · 165 €."], ["Один у подарунок", "Оформлення одного боксу з персональною листівкою · разом 171 €."], ["Обидва в подарунок", "Оформлення двох боксів, дві персональні листівки · разом 177 €."]],
+    duoQuestion:"Скільки персональних листівок додамо?",
+    duoOptions:[["Без листівок", "Два Signature Box · разом 165 €."], ["Одна листівка · +6 €", "Один подарунковий бокс і один Signature Box · разом 171 €."], ["Дві листівки · +12 €", "Два подарункові бокси, кожен зі своєю листівкою · разом 177 €."]],
     total:"Попередня сума",
     shippingIncluded:"Доставку Німеччиною включено",
     nextShipping:"До доставки →",
@@ -3770,29 +3726,51 @@ function setLanguage(value) {
 /* Квиз */
 
 function recommend(answers) {
-    if (answers[0] === "C") return "duo";
-    if (answers[0] === "B" || answers[1] === "B") return "gift";
+    if (answers[1] === "B") return "duo";
+    if (answers[0] === "B" && answers[2] === "B") return "gift";
     return "signature";
 }
 
 function quizGiftCount(answers) {
-    if (answers[0] !== "C") return 0;
-    return answers[1] === "B" ? 1 : answers[1] === "C" ? 2 : 0;
+    if (answers[0] !== "B" || answers[1] !== "B") return 0;
+    return answers[2] === "B" ? 1 : answers[2] === "C" ? 2 : 0;
+}
+
+function quizStepCount(answers) {
+    return answers[0] === "A" ? 2 : 3;
 }
 
 function quizQuestion(step,answers) {
-    if (step === 1 && answers[0] === "C") {
+    if (step === 2 && answers[1] === "B") {
         return {question:t().duoQuestion,options:t().duoOptions};
     }
     return t().quizQuestions[step];
 }
 
 function quizOptionAllowed(answers,step,value) {
-    return !(step === 2 && value === "C" && answers[0] === "A");
+    if (step < 0 || step > 2 || !["A","B","C"].includes(value)) return false;
+    if (step < 2) return value === "A" || value === "B";
+    if (answers[0] !== "B") return false;
+    return answers[1] === "B" || value !== "C";
 }
 
 function sanitizeQuizAnswers() {
-    if (!quizOptionAllowed(quizAnswers,2,quizAnswers[2])) quizAnswers[2] = null;
+    for (let step = 0; step < 3; step++) {
+        if (quizAnswers[step] !== null && !quizOptionAllowed(quizAnswers,step,quizAnswers[step])) {
+            quizAnswers[step] = null;
+        }
+    }
+}
+
+function updateQuizProgress() {
+    const total = quizStepCount(quizAnswers);
+    $("#quiz-step-label").textContent = quizAnswers[0]
+        ? `${t().step} ${quizStep + 1} / ${total}`
+        : `${t().step} 1`;
+    $("#quiz-progress-fill").style.width = `${(quizStep + 1) / total * 100}%`;
+    $("#quiz-progress").setAttribute("aria-valuemax",String(total));
+    $("#quiz-progress").setAttribute("aria-valuenow",String(quizStep + 1));
+    $("#quiz-next").textContent = quizStep === total - 1 ? t().seeResult : t().next;
 }
 
 function renderQuiz() {
@@ -3807,10 +3785,8 @@ function renderQuiz() {
 
     const question = quizQuestion(quizStep,quizAnswers);
 
-    $("#quiz-step-label").textContent = `${t().step} ${quizStep + 1} / 3`;
     $("#quiz-question").textContent = question.question;
-    $("#quiz-progress-fill").style.width = `${(quizStep + 1) / 3 * 100}%`;
-    $("#quiz-progress").setAttribute("aria-valuenow",String(quizStep + 1));
+    updateQuizProgress();
 
     const options = $("#quiz-options");
     options.replaceChildren();
@@ -3835,7 +3811,7 @@ function renderQuiz() {
 
     $("#quiz-back").disabled = quizStep === 0;
     $("#quiz-next").disabled = !quizAnswers[quizStep];
-    $("#quiz-next").textContent = quizStep === 2 ? t().seeResult : t().next;
+    updateQuizProgress();
 }
 
 function renderQuizResult() {
@@ -3847,6 +3823,13 @@ function renderQuizResult() {
 
     $("#quiz-result-title").textContent = edition.name.toUpperCase();
     $("#quiz-result-description").textContent = t().resultDescriptions[index];
+    const summary = $("#quiz-selection-summary");
+    summary.replaceChildren();
+    quizAnswers.forEach((answer,step) => {
+        if (!answer || step >= quizStepCount(quizAnswers)) return;
+        const option = quizQuestion(step,quizAnswers).options[["A","B","C"].indexOf(answer)];
+        if (option) summary.append(el("li",option[0]));
+    });
 
     $("#quiz-result-price").replaceChildren(
         el("span",money(price))
@@ -3866,8 +3849,8 @@ $("#quiz-options").addEventListener("click",event => {
     if (!button) return;
 
     if (!quizOptionAllowed(quizAnswers,quizStep,button.dataset.quizAnswer)) return;
-    if (quizStep === 0 && quizAnswers[0] !== button.dataset.quizAnswer) {
-        quizAnswers[1] = null;
+    if (quizAnswers[quizStep] !== button.dataset.quizAnswer) {
+        for (let next = quizStep + 1; next < 3; next++) quizAnswers[next] = null;
     }
     quizAnswers[quizStep] = button.dataset.quizAnswer;
     sanitizeQuizAnswers();
@@ -3879,12 +3862,13 @@ $("#quiz-options").addEventListener("click",event => {
     });
 
     $("#quiz-next").disabled = false;
+    updateQuizProgress();
 });
 
 $("#quiz-next").addEventListener("click",() => {
     if (!quizAnswers[quizStep]) return;
 
-    if (quizStep < 2) {
+    if (quizStep < quizStepCount(quizAnswers) - 1) {
         quizStep++;
         renderQuiz();
         $("#quiz-question").focus({preventScroll:true});
@@ -3914,15 +3898,11 @@ $("#quiz-order").addEventListener("click",() => {
     const key = recommend(quizAnswers);
 
     openCheckout(key,{
-        card:quizAnswers[1] === "B" || key === "gift",
+        card:key === "gift" || quizGiftCount(quizAnswers) > 0,
         giftCount:quizGiftCount(quizAnswers),
-        direct:quizAnswers[2] === "C" && quizAnswers[0] !== "A",
+        direct:false,
         quiz:[...quizAnswers]
     });
-    if (quizAnswers[2] === "B") {
-        $("#shipping").value = "pickup";
-        updateShipping();
-    }
 });
 
 /* Коллекция */
@@ -4829,8 +4809,10 @@ form.addEventListener("submit",async event => {
 
     if (orderQuizAnswers) {
         orderQuizAnswers.forEach((answer,index) => {
+            if (!answer || index >= quizStepCount(orderQuizAnswers)) return;
             const optionIndex = ["A","B","C"].indexOf(answer);
-            data.set(`quiz_answer_${index + 1}`,quizQuestion(index,orderQuizAnswers).options[optionIndex][0]);
+            const option = quizQuestion(index,orderQuizAnswers).options[optionIndex];
+            if (option) data.set(`quiz_answer_${index + 1}`,option[0]);
         });
     }
 
