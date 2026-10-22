@@ -1519,6 +1519,12 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 @media(max-width:900px){.about-layout{grid-template-columns:1fr;max-width:680px;}.about-visual{width:100%;max-width:520px;margin:auto;}.about-copy>.eyebrow{text-align:left;}}
 @media(max-width:500px){.about-title{font-size:32px;letter-spacing:-.6px;}.about-intro{font-size:13px;}.about-actions{gap:16px;}.about-visual{border-radius:16px;}.about-visual-label{font-size:8px;letter-spacing:1px;}}
 
+/* Keep the brand section short; the product breakdown remains in Inside the Box. */
+.about-layout {grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(28px,5vw,76px);}
+.about-copy {max-width:520px;}
+.about-title {font-size:clamp(30px,3vw,44px);}
+.about-actions {margin-top:28px;}
+@media(max-width:900px){.about-layout{grid-template-columns:1fr;}.about-copy{max-width:none;}}
 </style>
 </head>
 
@@ -1609,9 +1615,7 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
         </div>
 
         <div class="product-visual">
-            <video id="rotating-box" muted loop playsinline preload="metadata" poster="./products.png"></video>
-
-            <div class="hero-fallback" id="hero-fallback" hidden>
+            <div class="hero-fallback" id="hero-fallback">
                 <img id="hero-image" src="./products.png" alt="LYS Auto Care Box" width="900" height="600">
                 <div class="brand-fallback" id="brand-fallback" hidden>
                     <strong class="shimmer">LYS</strong>
@@ -1809,16 +1813,14 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 <section class="section brand-section" id="about">
     <div class="container about-layout">
         <div class="about-visual">
-            <img id="about-set-photo" src="./kit-open.png" alt="LYS Auto Care Box" loading="lazy">
-            <video id="about-box-video" muted loop playsinline preload="none" poster="./kit-open.png" hidden></video>
-            <div class="about-monogram" id="about-monogram" hidden><span>LYS</span><small>AUTO CARE · BERLIN</small></div>
+            <video id="about-box-video" muted loop playsinline preload="none" poster="./logo.png" hidden></video>
+            <div class="about-monogram" id="about-monogram"><span>LYS</span><small>AUTO CARE · BERLIN</small></div>
             <div class="about-visual-label" aria-hidden="true"><span>LYS AUTO CARE</span><span>BERLIN</span></div>
         </div>
         <div class="about-copy">
             <p class="eyebrow" data-i18n="aboutEyebrow"></p>
             <h2 class="about-title shimmer" data-i18n="brandTitle"></h2>
             <p class="about-intro" data-i18n="brandSubtitle"></p>
-            <div class="brand-reasons" id="pillars-grid"></div>
             <div class="about-actions">
                 <a class="btn" href="#shop" data-i18n="aboutShop"></a>
                 <a class="about-contact" data-whatsapp href="https://wa.me/491787242067" target="_blank" rel="noopener noreferrer" data-i18n="aboutContact"></a>
@@ -1833,7 +1835,6 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
         <h2 class="section-title shimmer" data-i18n="communityTitle"></h2>
         <p class="section-description" data-i18n="communitySubtitle"></p>
         <div class="community-story">
-            <p data-i18n="brandStory"></p>
             <p data-i18n="communityBenefits"></p>
         </div>
         <div class="community-profiles">
@@ -2623,8 +2624,8 @@ de:{
     giftCta:"Gift Edition gestalten · 95 €",
     directDelivery:"Direkt an den Geschenkempfänger liefern",
 
-    brandTitle:"Für Menschen, die ihr Auto lieben.",
-    brandSubtitle:"Ein gutes Pflegeset muss nicht kompliziert sein. LYS bringt Pflegeprodukte, passende Accessoires und eine klare Geschenkidee in einer Box zusammen. Aus Berlin. Für deinen Alltag.",
+    brandTitle:"Aus Berlin. Mit Liebe zum Auto.",
+    brandSubtitle:"Wir mögen klare Formen, durchdachte Details und Geschenke, die zum Menschen passen. Genau dafür steht LYS Auto Care.",
     aboutEyebrow:"ÜBER LYS · BERLIN",
     aboutShop:"Unsere Boxen entdecken",
     aboutContact:"Frag uns auf WhatsApp ↗",
@@ -2919,8 +2920,8 @@ en:{
     giftCta:"Personalise Gift Edition · €95",
     directDelivery:"Deliver directly to the gift recipient",
 
-    brandTitle:"For people who love their cars.",
-    brandSubtitle:"A good care set does not have to be complicated. LYS brings care products, matching accessories and a thoughtful gift together in one box. From Berlin. For your everyday life.",
+    brandTitle:"From Berlin. With a love for cars.",
+    brandSubtitle:"We like clean design, thoughtful details and gifts that suit the person receiving them. That is what LYS Auto Care stands for.",
     aboutEyebrow:"ABOUT LYS · BERLIN",
     aboutShop:"Explore the boxes",
     aboutContact:"Ask us on WhatsApp ↗",
@@ -3215,8 +3216,8 @@ ru:{
     giftCta:"Персонализировать Gift Edition · 95 €",
     directDelivery:"Отправить прямо получателю подарка",
 
-    brandTitle:"Для тех, кто любит свой автомобиль.",
-    brandSubtitle:"Хороший набор для ухода не должен быть сложным. Мы собрали средства, подходящие аксессуары и идею подарка в одном боксе LYS. Из Берлина — для ваших повседневных забот об автомобиле.",
+    brandTitle:"Из Берлина. С любовью к автомобилям.",
+    brandSubtitle:"Нам близки лаконичный дизайн, продуманные детали и подарки, которые подходят человеку. Именно об этом LYS Auto Care.",
     aboutEyebrow:"О LYS · БЕРЛИН",
     aboutShop:"Посмотреть боксы",
     aboutContact:"Написать в WhatsApp ↗",
@@ -3511,8 +3512,8 @@ ua:{
     giftCta:"Персоналізувати Gift Edition · 95 €",
     directDelivery:"Надіслати просто отримувачу подарунка",
 
-    brandTitle:"Для тих, хто любить свій автомобіль.",
-    brandSubtitle:"Хороший набір для догляду не має бути складним. Ми зібрали засоби, відповідні аксесуари та ідею подарунка в одному боксі LYS. З Берліна — для щоденної турботи про автомобіль.",
+    brandTitle:"З Берліна. З любов’ю до автомобілів.",
+    brandSubtitle:"Нам близькі лаконічний дизайн, продумані деталі та подарунки, що пасують людині. Саме про це LYS Auto Care.",
     aboutEyebrow:"ПРО LYS · БЕРЛІН",
     aboutShop:"Переглянути бокси",
     aboutContact:"Написати у WhatsApp ↗",
@@ -3766,7 +3767,6 @@ function setLanguage(value) {
     renderQuiz();
     renderPricing();
     renderContents();
-    renderPillars();
     renderFaq();
     renderHotspots();
     updateGiftPreview();
@@ -4213,18 +4213,6 @@ $("#personalized-order").addEventListener("click",() => {
 
 /* Бренд и FAQ */
 
-function renderPillars() {
-    const grid = $("#pillars-grid");
-    grid.replaceChildren();
-
-    t().pillars.forEach(([title,description],index) => {
-        const row = el("article",undefined,"brand-reason");
-        const body = el("div");
-        body.append(el("h3",title),el("p",description));
-        row.append(el("span",`0${index + 1}`,"brand-reason-number"),body);
-        grid.append(row);
-    });
-}
 
 function renderFaq() {
     const list = $("#faq-list");
@@ -4368,17 +4356,6 @@ function initMainVideos() {
 
     registerVideo(hero,true);
     hero.src = CONFIG.heroVideo;
-
-    const rotation = $("#rotating-box");
-
-    rotation.addEventListener("error",() => {
-        unregisterVideo(rotation);
-        rotation.hidden = true;
-        $("#hero-fallback").hidden = false;
-    },{once:true});
-
-    registerVideo(rotation);
-    rotation.src = CONFIG.rotationVideo;
 
     const unboxing = $("#unboxing-video");
 
@@ -5295,34 +5272,24 @@ matchMedia("(max-width:1050px)").addEventListener("change",() => setMobileMenu(f
 
 
 function initAboutVisual() {
-    const photo = $("#about-set-photo");
     const video = $("#about-box-video");
-    photo.addEventListener("error",() => {
-        photo.hidden = true;
-        $("#about-monogram").hidden = !video.hidden;
-    },{once:true});
-    if (photo.complete && photo.naturalWidth === 0) {
-        photo.hidden = true;
-        $("#about-monogram").hidden = false;
-    }
+    const fallback = $("#about-monogram");
     if (!CONFIG.rotationVideo || motionPreference.matches) return;
     function load() {
         if (video.dataset.initialized === "true") return;
         video.dataset.initialized = "true";
         video.addEventListener("loadeddata",() => {
             video.hidden = false;
-            photo.hidden = true;
-            $("#about-monogram").hidden = true;
+            fallback.hidden = true;
             syncAllVideos();
         },{once:true});
         video.addEventListener("error",() => {
             unregisterVideo(video);
             video.hidden = true;
-            photo.hidden = photo.naturalWidth === 0;
-            $("#about-monogram").hidden = !photo.hidden;
+            fallback.hidden = false;
         },{once:true});
         registerVideo(video);
-        video.preload = "metadata";
+        video.preload = "auto";
         video.src = CONFIG.rotationVideo;
     }
     if (!("IntersectionObserver" in window)) {load();return;}
