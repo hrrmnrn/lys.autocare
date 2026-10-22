@@ -1573,6 +1573,16 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 @media(max-width:600px){.guide-stage{padding:12px 0 17px;}.guide-tilt{transform:rotateX(var(--tilt-x,-3deg)) rotateY(var(--tilt-y,-6deg));}}
 @media(prefers-reduced-motion:reduce){.guide-tilt{transform:none;transition:none;}.guide-card{transition:none;}.guide-face::after{display:none;}}
 
+
+/* The rotation demonstrates the product next to the collection, not the founder story. */
+.collection-film {width:min(100%,720px);margin:0 auto 32px;border:1px solid var(--border);border-radius:20px;overflow:hidden;background:radial-gradient(ellipse,#221a12,#0e0d0c 75%);}
+.collection-film video {display:block;width:100%;height:clamp(230px,29vw,360px);object-fit:contain;cursor:pointer;}
+#about .about-layout {display:block;max-width:850px;}
+#about .about-copy {max-width:none;}
+#about .about-title {max-width:720px;}
+#about .about-intro,#about .about-story {max-width:780px;}
+@media(max-width:600px){.collection-film{border-radius:14px;margin-bottom:24px;}.collection-film video{height:240px;}}
+
 </style>
 </head>
 
@@ -1723,6 +1733,9 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
         <p class="eyebrow">LYS COLLECTION</p>
         <h2 class="section-title shimmer" data-i18n="shopTitle"></h2>
         <p class="section-description" data-i18n="shopSubtitle"></p>
+        <div class="collection-film" id="collection-film" hidden>
+            <video id="collection-box-video" muted loop playsinline preload="none"></video>
+        </div>
         <div class="pricing-grid" id="pricing-grid"></div>
     </div>
 </section>
@@ -1854,11 +1867,6 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 
 <section class="section brand-section" id="about">
     <div class="container about-layout">
-        <div class="about-visual">
-            <video id="about-box-video" muted loop playsinline preload="none" poster="./logo.png" hidden></video>
-            <div class="about-monogram" id="about-monogram"><span>LYS</span><small>AUTO CARE · BERLIN</small></div>
-            <div class="about-visual-label" aria-hidden="true"><span>LYS AUTO CARE</span><span>BERLIN</span></div>
-        </div>
         <div class="about-copy">
             <p class="eyebrow" data-i18n="aboutEyebrow"></p>
             <h2 class="about-title shimmer" data-i18n="brandTitle"></h2>
@@ -5459,22 +5467,20 @@ document.addEventListener("keydown",event => {
 matchMedia("(max-width:1050px)").addEventListener("change",() => setMobileMenu(false));
 
 
-function initAboutVisual() {
-    const video = $("#about-box-video");
-    const fallback = $("#about-monogram");
-    if (!CONFIG.rotationVideo || motionPreference.matches) return;
+function initCollectionVideo() {
+    const video = $("#collection-box-video");
+    const frame = $("#collection-film");
+    if (!CONFIG.rotationVideo) return;
     function load() {
         if (video.dataset.initialized === "true") return;
         video.dataset.initialized = "true";
         video.addEventListener("loadeddata",() => {
-            video.hidden = false;
-            fallback.hidden = true;
+            frame.hidden = false;
             syncAllVideos();
         },{once:true});
         video.addEventListener("error",() => {
             unregisterVideo(video);
-            video.hidden = true;
-            fallback.hidden = false;
+            frame.hidden = true;
         },{once:true});
         registerVideo(video);
         video.preload = "auto";
@@ -5484,7 +5490,7 @@ function initAboutVisual() {
     const observer = new IntersectionObserver(entries => {
         if (entries.some(entry => entry.isIntersecting)) {observer.disconnect();load();}
     },{rootMargin:"250px"});
-    observer.observe($("#about"));
+    observer.observe($("#shop"));
 }
 
 /* Запуск */
@@ -5499,7 +5505,7 @@ updatePromoHeight();
 updateHeader();
 
 initMainVideos();
-initAboutVisual();
+initCollectionVideo();
 initAsmr();
 initComparison();
 initCommunity();
