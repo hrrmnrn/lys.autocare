@@ -4204,7 +4204,7 @@ function updateHotspot(index) {
 
     $("#hotspot-title").textContent = title;
     $("#hotspot-description").textContent = description;
-    $("#hotspot-open").hidden = !hasMedia(index);
+    $("#hotspot-open").hidden = false;
 
     document.querySelectorAll("[data-hotspot]").forEach(button => {
         const active = Number(button.dataset.hotspot) === index;
@@ -4218,7 +4218,7 @@ $(".inside-photo-column").addEventListener("click",event => {
     if (button) {
         const index = Number(button.dataset.hotspot);
         updateHotspot(index);
-        if (index === 5 && hasMedia(index)) openProduct(index);
+        openProduct(index);
     }
 });
 
@@ -4666,24 +4666,25 @@ function renderGuideViewer(container,media) {
 }
 
 function openProduct(index) {
-    if (!hasMedia(index)) return;
+    if (!Number.isInteger(index) || !t().contents[index]) return;
 
     clearProductVideo();
     updateGuideViewer = null;
     productDialog.classList.remove("guide-mode","guide-reading");
     currentProduct = index;
 
-    const media = PRODUCT_MEDIA[index];
+    const media = hasMedia(index) ? PRODUCT_MEDIA[index] : null;
     const container = $("#product-media");
 
     container.replaceChildren();
+    container.hidden = !media;
     updateProductText(index);
     openDialog(productDialog);
 
-    if (media.presentation === "flip") {
+    if (media?.presentation === "flip") {
         productDialog.classList.add("guide-mode");
         renderGuideViewer(container,media);
-    } else if (media.type === "video") {
+    } else if (media?.type === "video") {
         const video = el("video",undefined,"product-video");
         video.preload = "metadata";
 
@@ -4696,7 +4697,7 @@ function openProduct(index) {
         container.append(video);
         registerVideo(video);
         video.src = media.src;
-    } else {
+    } else if (media) {
         const grid = el("div",undefined,"gallery-grid");
         if (media.items.length === 1) grid.classList.add("single");
 
