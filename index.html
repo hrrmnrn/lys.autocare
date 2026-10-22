@@ -1470,6 +1470,26 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 .analytics-choice .btn {margin:4px 4px 0 0;}.analytics-settings {color:var(--muted);background:none;border:0;text-decoration:underline;font:inherit;cursor:pointer;margin:12px;}
 @media(max-width:650px){.community-profiles{grid-template-columns:1fr;}.promo .promo-copy{gap:7px;font-size:10px;}.analytics-choice{right:16px;bottom:85px;max-width:none;}}
 
+
+/* Full navigation with a compact menu and a separate quiz button on smaller screens. */
+.desktop-nav {gap:clamp(12px,1.5vw,22px);flex-shrink:0;}
+.desktop-nav a {white-space:nowrap;}
+.mobile-menu-bar {display:none;}
+.mobile-menu-toggle {display:inline-flex;align-items:center;gap:9px;padding:10px 14px;background:transparent;border:1px solid var(--border);border-radius:12px;color:var(--text);font:inherit;font-size:12px;cursor:pointer;min-height:42px;}
+.menu-icon {font-size:18px;color:var(--gold-light);}
+.mobile-menu-toggle[aria-expanded="true"] {border-color:var(--gold);background:#c69a7210;}
+.mobile-menu-toggle:focus-visible,.mobile-nav a:focus-visible {outline:2px solid var(--gold);outline-offset:3px;}
+@media(max-width:1200px) and (min-width:1051px){.header-inner{gap:12px;}.desktop-nav{gap:12px;}.desktop-nav a{font-size:10px;}.header-actions{gap:8px;}.header-order{padding:12px;}}
+@media(max-width:1050px){
+ .header-order {display:none;}
+ .mobile-menu-bar {display:flex;align-items:center;justify-content:space-between;width:94%;margin:auto;padding:7px 0 10px;gap:12px;}
+ .mobile-menu-bar>.btn {padding:11px 17px;font-size:11px;min-height:42px;}
+ .mobile-nav:not([hidden]) {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:8px 3% 16px;border-top:1px solid var(--border);}
+ .mobile-nav a {display:flex;align-items:center;justify-content:center;min-height:44px;padding:10px 8px;border-radius:10px;border:1px solid #c69a721a;text-decoration:none;font-size:11px;text-align:center;overflow-wrap:anywhere;}
+ .mobile-nav a:hover {background:#c69a7212;color:var(--gold-light);}
+}
+@media(max-width:480px){.mobile-nav:not([hidden]){grid-template-columns:repeat(2,minmax(0,1fr));}}
+
 </style>
 </head>
 
@@ -1495,10 +1515,12 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
         </a>
 
         <nav class="desktop-nav" aria-label="Navigation">
-            <a href="#experience" data-i18n="navQuiz"></a>
             <a href="#shop" data-i18n="navShop"></a>
             <a href="#inside" data-i18n="navInside"></a>
             <a href="#gift" data-i18n="navGift"></a>
+            <a href="#about" data-i18n="navAbout"></a>
+            <a href="#community-section" data-i18n="navCommunity"></a>
+            <a href="#faq" data-i18n="navFaq"></a>
         </nav>
 
         <div class="header-actions">
@@ -1512,11 +1534,19 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
         </div>
     </div>
 
-    <nav class="mobile-nav" aria-label="Mobile navigation">
-        <a href="#experience" data-i18n="navQuiz"></a>
-        <a href="#shop" data-i18n="navShop"></a>
-        <a href="#inside" data-i18n="navInside"></a>
-        <a href="#gift" data-i18n="navGift"></a>
+    <div class="mobile-menu-bar">
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" type="button" aria-controls="mobile-site-menu" aria-expanded="false">
+            <span class="menu-icon" aria-hidden="true">☰</span><span data-i18n="navMenu"></span>
+        </button>
+        <a class="btn btn-small" href="#experience" data-i18n="findSet"></a>
+    </div>
+    <nav class="mobile-nav" id="mobile-site-menu" aria-label="Mobile navigation" hidden>
+            <a href="#shop" data-i18n="navShop"></a>
+            <a href="#inside" data-i18n="navInside"></a>
+            <a href="#gift" data-i18n="navGift"></a>
+            <a href="#about" data-i18n="navAbout"></a>
+            <a href="#community-section" data-i18n="navCommunity"></a>
+            <a href="#faq" data-i18n="navFaq"></a>
     </nav>
 </header>
 
@@ -1746,7 +1776,7 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
     </div>
 </section>
 
-<section class="section brand-section">
+<section class="section brand-section" id="about">
     <div class="container">
         <p class="eyebrow">LYS AUTO CARE · BERLIN</p>
         <h2 class="section-title shimmer" data-i18n="brandTitle"></h2>
@@ -1783,7 +1813,7 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
     </div>
 </section>
 
-<section class="section">
+<section class="section" id="faq">
     <div class="container faq">
         <p class="eyebrow">GOOD TO KNOW</p>
         <h2 class="section-title shimmer" data-i18n="faqTitle"></h2>
@@ -2389,7 +2419,11 @@ de:{
     navQuiz:"Dein Set finden",
     navShop:"Kollektion",
     navInside:"Inhalt",
-    navGift:"Verschenken",
+    navGift:"Geschenkservice",
+    navAbout:"Über LYS",
+    navCommunity:"Community",
+    navFaq:"FAQ",
+    navMenu:"Menü",
     findSet:"Set finden",
 
     heroFirst:"Autopflege mit Stil.",
@@ -2684,7 +2718,11 @@ en:{
     navQuiz:"Find your set",
     navShop:"Collection",
     navInside:"Inside the box",
-    navGift:"Gifting",
+    navGift:"Gift service",
+    navAbout:"About LYS",
+    navCommunity:"Community",
+    navFaq:"FAQ",
+    navMenu:"Menu",
     findSet:"Find my set",
 
     heroFirst:"Car care with style.",
@@ -2977,7 +3015,11 @@ ru:{
     navQuiz:"Подобрать набор",
     navShop:"Коллекция",
     navInside:"Что внутри",
-    navGift:"В подарок",
+    navGift:"Подарки",
+    navAbout:"О LYS",
+    navCommunity:"Сообщество",
+    navFaq:"Вопросы",
+    navMenu:"Меню",
     findSet:"Подобрать набор",
 
     heroFirst:"Уход со вкусом.",
@@ -3270,7 +3312,11 @@ ua:{
     navQuiz:"Підібрати набір",
     navShop:"Колекція",
     navInside:"Що всередині",
-    navGift:"У подарунок",
+    navGift:"Подарунки",
+    navAbout:"Про LYS",
+    navCommunity:"Спільнота",
+    navFaq:"Запитання",
+    navMenu:"Меню",
     findSet:"Підібрати набір",
 
     heroFirst:"Догляд зі смаком.",
@@ -5161,6 +5207,26 @@ $("#load-tiktok").addEventListener("click",() => {
     target.append(script);
     trackEvent("social_embed_load",{channel:"tiktok"});
 });
+
+
+/* Mobile menu: keyboard accessible; follows section anchors and closes after a choice. */
+const mobileMenuToggle = $("#mobile-menu-toggle");
+const mobileSiteMenu = $("#mobile-site-menu");
+function setMobileMenu(open,restoreFocus = false) {
+    mobileSiteMenu.hidden = !open;
+    mobileMenuToggle.setAttribute("aria-expanded",String(open));
+    if (restoreFocus) mobileMenuToggle.focus();
+}
+mobileMenuToggle.addEventListener("click",() => setMobileMenu(mobileSiteMenu.hidden));
+mobileSiteMenu.addEventListener("click",event => {
+    if (event.target.closest('a[href^="#"]')) setMobileMenu(false);
+});
+document.addEventListener("keydown",event => {
+    if (event.key === "Escape" && !mobileSiteMenu.hidden && !document.querySelector("dialog[open]")) {
+        setMobileMenu(false,true);
+    }
+});
+matchMedia("(max-width:1050px)").addEventListener("change",() => setMobileMenu(false));
 
 /* Запуск */
 
