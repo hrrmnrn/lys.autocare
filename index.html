@@ -4218,7 +4218,7 @@ $(".inside-photo-column").addEventListener("click",event => {
     if (button) {
         const index = Number(button.dataset.hotspot);
         updateHotspot(index);
-        openProduct(index);
+        if (window.matchMedia("(max-width:760px)").matches) openProduct(index);
     }
 });
 
