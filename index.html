@@ -1537,20 +1537,21 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 @media(max-width:600px){.about-story p{font-size:13px;}.about-title{font-size:36px;}}
 
 /* The printed guide belongs inside item 6 rather than in another page section. */
-.product-dialog.guide-mode {width:min(1020px,calc(100% - 24px));}
-.product-dialog.guide-reading {width:min(1500px,calc(100% - 24px));}
+.product-dialog.guide-mode {width:min(900px,calc(100% - 24px));}
+.product-dialog.guide-reading {width:min(900px,calc(100% - 24px));}
 .guide-viewer {max-width:100%;}
 .guide-switches {display:flex;justify-content:center;gap:8px;margin-bottom:20px;}
 .guide-side {padding:10px 20px;border:1px solid var(--border);border-radius:30px;color:var(--muted);background:transparent;font:inherit;font-size:12px;cursor:pointer;}
 .guide-side[aria-pressed="true"] {background:#c69a7218;border-color:var(--gold);color:var(--gold-light);}
-.guide-stage {perspective:1600px;width:min(100%,800px);margin:auto;}
+.guide-stage {perspective:1600px;width:min(100%,640px,calc(46dvh * 1748 / 1240));margin:auto;}
 .guide-card {position:relative;width:100%;aspect-ratio:1748/1240;transform-style:preserve-3d;transition:transform .85s cubic-bezier(.2,.7,.25,1);}
 .guide-card.is-back {transform:rotateY(180deg);}
 .guide-face {position:absolute;inset:0;overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;border:1px solid #b58a514d;box-shadow:0 18px 45px #0007;background:#0d0d0d;}
 .guide-face-back {transform:rotateY(180deg);}
 .guide-face img {display:block;width:100%;height:100%;object-fit:contain;}
-.guide-reader {max-height:62dvh;overflow:auto;border:1px solid var(--border);border-radius:12px;background:#0d0d0d;overscroll-behavior:contain;}
-.guide-reader img {display:block;width:max(100%,1400px);max-width:none;height:auto;}
+.guide-reader {position:relative;width:min(100%,640px,calc(46dvh * 1748 / 1240));margin:auto;overflow:hidden;touch-action:none;cursor:crosshair;border:1px solid var(--border);border-radius:12px;background:#0d0d0d;overscroll-behavior:contain;}
+.guide-reader img {display:block;width:100%;height:auto;user-select:none;}
+.guide-lens {position:absolute;width:clamp(110px,25vw,170px);aspect-ratio:1;border-radius:50%;border:2px solid #dfbb91;box-shadow:0 8px 28px #0009,0 0 0 4px #0b0b0b77;pointer-events:none;background-color:#0d0d0d;background-repeat:no-repeat;}
 .guide-reader:focus-visible {outline:2px solid var(--gold);outline-offset:3px;}
 .guide-actions {display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:26px;}
 .guide-actions .btn {font-size:12px;padding:13px 20px;}
@@ -2658,10 +2659,10 @@ de:{
     ]
 ],
     details:"Details ansehen",
-    guideReadHint:"Das vergrößerte Bild lässt sich seitlich und nach unten scrollen.",
+    guideReadHint:"Bewege die Lupe mit der Maus, dem Finger oder den Pfeiltasten über die Karte.",
     guideHint:"Mit der Maus neigen und ziehen oder mit dem Finger seitlich wischen. Die Rückseite lässt sich zum Lesen vergrößern.",
-    guideZoomOut:"Zur Kartenansicht",
-    guideZoom:"Zum Lesen vergrößern",
+    guideZoomOut:"Lupe ausschalten",
+    guideZoom:"Lupe aktivieren",
     guideFlip:"Karte umdrehen",
     front:"Vorderseite",
     backPhoto:"Rückseite",
@@ -2951,10 +2952,10 @@ en:{
     ]
 ],
     details:"View details",
-    guideReadHint:"Scroll sideways and down to explore the enlarged image.",
+    guideReadHint:"Move the magnifier over the card with your mouse, finger or arrow keys.",
     guideHint:"Tilt and drag with your mouse, or swipe sideways with your finger. Enlarge the back to read it.",
-    guideZoomOut:"Back to card view",
-    guideZoom:"Enlarge to read",
+    guideZoomOut:"Turn magnifier off",
+    guideZoom:"Activate magnifier",
     guideFlip:"Turn the card over",
     front:"Front",
     backPhoto:"Back",
@@ -3244,10 +3245,10 @@ ru:{
     ]
 ],
     details:"Подробнее",
-    guideReadHint:"Увеличенное изображение можно прокручивать в стороны и вниз.",
+    guideReadHint:"Водите лупой по карточке мышкой, пальцем или стрелками на клавиатуре.",
     guideHint:"Наклоняйте мышью, перетаскивайте или смахните пальцем в сторону. Для чтения оборота нажмите «Увеличить».",
-    guideZoomOut:"Вернуться к карточке",
-    guideZoom:"Увеличить для чтения",
+    guideZoomOut:"Выключить лупу",
+    guideZoom:"Включить лупу",
     guideFlip:"Перевернуть карточку",
     front:"Спереди",
     backPhoto:"Сзади",
@@ -3537,10 +3538,10 @@ ua:{
     ]
 ],
     details:"Докладніше",
-    guideReadHint:"Збільшене зображення можна прокручувати вбік і вниз.",
+    guideReadHint:"Рухайте лупу по картці мишею, пальцем або стрілками на клавіатурі.",
     guideHint:"Нахиляйте мишею, перетягуйте або проведіть пальцем убік. Для читання звороту натисніть «Збільшити».",
-    guideZoomOut:"Повернутися до картки",
-    guideZoom:"Збільшити для читання",
+    guideZoomOut:"Вимкнути лупу",
+    guideZoom:"Увімкнути лупу",
     guideFlip:"Перевернути картку",
     front:"Спереду",
     backPhoto:"Ззаду",
@@ -4556,8 +4557,55 @@ function renderGuideViewer(container,media) {
     largeImage.draggable = false;
     largeImage.addEventListener("error",() => {
         largeImage.alt = t().mediaMissing;
+        lens.hidden = true;
     });
-    reader.append(largeImage);
+    const lens = el("div",undefined,"guide-lens");
+    lens.hidden = true;
+    lens.setAttribute("aria-hidden","true");
+    reader.append(largeImage,lens);
+    let lensPoint = {x:.5,y:.5};
+    function placeLens(x = lensPoint.x,y = lensPoint.y) {
+        if (!zoomed || !largeImage.getAttribute("src")) return;
+        lensPoint = {x:Math.max(0,Math.min(1,x)),y:Math.max(0,Math.min(1,y))};
+        const rect = largeImage.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        lens.hidden = false;
+        const diameter = lens.offsetWidth || 160;
+        const radius = diameter / 2;
+        const px = lensPoint.x * rect.width, py = lensPoint.y * rect.height;
+        const cx = Math.max(radius,Math.min(rect.width - radius,px));
+        const cy = Math.max(radius,Math.min(rect.height - radius,py));
+        lens.style.left = `${cx - radius}px`;
+        lens.style.top = `${cy - radius}px`;
+        lens.style.backgroundImage = `url("${largeImage.getAttribute("src")}")`;
+        lens.style.backgroundSize = `${rect.width * 3}px ${rect.height * 3}px`;
+        lens.style.backgroundPosition = `${radius - px * 3}px ${radius - py * 3}px`;
+        lens.hidden = false;
+    }
+    function moveLens(event) {
+        const rect = largeImage.getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        placeLens((event.clientX - rect.left) / rect.width,(event.clientY - rect.top) / rect.height);
+    }
+    reader.addEventListener("pointermove",moveLens);
+    reader.addEventListener("pointerdown",event => {
+        moveLens(event);
+        if (event.pointerType === "touch") {
+            try { reader.setPointerCapture(event.pointerId); } catch {}
+        }
+    });
+    reader.addEventListener("pointerleave",() => { lens.hidden = true; });
+    reader.addEventListener("pointercancel",() => { lens.hidden = true; });
+    reader.addEventListener("focus",() => placeLens());
+    reader.addEventListener("blur",() => { lens.hidden = true; });
+    reader.addEventListener("keydown",event => {
+        const shifts = {ArrowLeft:[-.04,0],ArrowRight:[.04,0],ArrowUp:[0,-.04],ArrowDown:[0,.04]};
+        const shift = shifts[event.key];
+        if (!shift) return;
+        event.preventDefault();
+        placeLens(lensPoint.x + shift[0],lensPoint.y + shift[1]);
+    });
+    largeImage.addEventListener("load",() => placeLens());
     const actions = el("div",undefined,"guide-actions");
     const flip = el("button",undefined,"btn btn-secondary");
     const zoom = el("button",undefined,"btn");
@@ -4599,9 +4647,11 @@ function renderGuideViewer(container,media) {
         const item = media.items.find(item=>item.side === side);
         if (zoomed && largeImage.getAttribute("src") !== item.src) {
             largeImage.src = item.src;
-            reader.scrollTop=0;reader.scrollLeft=0;
+            lensPoint = {x:.5,y:.5};
         }
         largeImage.alt = label;
+        lens.hidden = true;
+        if (zoomed) placeLens();
     }
     function resetTilt() {
         tilt.style.removeProperty("--tilt-x");
