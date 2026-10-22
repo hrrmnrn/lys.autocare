@@ -4591,6 +4591,7 @@ function renderGuideViewer(container,media) {
         const pixels = sourcePixels.data, sw = sourcePixels.width, sh = sourcePixels.height;
         const sx = sw / rect.width, sy = sh / rect.height;
         const sample = (x,y,c) => {
+            if (x < 0 || y < 0 || x > sw - 1 || y > sh - 1) return 13;
             x = Math.max(0,Math.min(sw - 1,x)); y = Math.max(0,Math.min(sh - 1,y));
             const ix = Math.floor(x), iy = Math.floor(y), fx = x - ix, fy = y - iy;
             const right = Math.min(ix + 1,sw - 1), bottom = Math.min(iy + 1,sh - 1);
@@ -4649,7 +4650,7 @@ function renderGuideViewer(container,media) {
         lens.style.setProperty("--lens-size",`${rect.width * magnification}px ${rect.height * magnification}px`);
         lens.style.setProperty("--lens-position",`${radius - px * magnification}px ${radius - py * magnification}px`);
         lens.hidden = false;
-        scheduleFisheye(rect,cx,cy,diameter);
+        scheduleFisheye(rect,px,py,diameter);
     }
     function moveLens(event) {
         const rect = largeImage.getBoundingClientRect();
