@@ -1583,6 +1583,13 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 #about .about-intro,#about .about-story {max-width:780px;}
 @media(max-width:600px){.collection-film{border-radius:14px;margin-bottom:24px;}.collection-film video{height:240px;}}
 
+
+/* Price and delivery on the first screen */
+.hero .hero-description { margin-bottom:18px; max-width:620px; }
+.hero-offer { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px 16px; margin:0 auto 26px; padding:0 12px; }
+.hero-offer strong { color:#ead0ad; font-size:clamp(23px,3.4vw,30px); font-weight:600; letter-spacing:-.5px; line-height:1.3; }
+.hero-offer span { color:#cbb7a4; font-size:12px; line-height:1.6; }
+@media(max-width:480px) { .hero-offer { flex-direction:column; gap:4px; } }
 </style>
 </head>
 
@@ -1660,6 +1667,11 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
         </h1>
 
         <p class="hero-description" data-i18n="heroDescription"></p>
+
+        <div class="hero-offer">
+            <strong data-i18n="heroPrice">Ab 89 €</strong>
+            <span data-i18n="heroDelivery">Versand in Deutschland inklusive</span>
+        </div>
 
         <div class="button-row">
             <a class="btn" href="#experience" data-i18n="heroQuiz"></a>
@@ -2524,7 +2536,9 @@ de:{
 
     heroFirst:"Autopflege mit Stil.",
     heroPhrases:["Freude inklusive."],
-    heroDescription:"Für das Auto, das man liebt. Und für Menschen, denen man etwas Persönliches schenken möchte.",
+    heroDescription:"Dein Geschenkset für die Autopflege: drei Pflegeprodukte à 250 ml, Mikrofasertücher und Pinsel mit Etui. Für dein Auto oder als Geschenk für jemanden, der seines liebt.",
+    heroPrice:"Ab 89 €",
+    heroDelivery:"Versand in Deutschland inklusive",
     heroQuiz:"Quiz starten & Set finden",
     heroShop:"Kollektion ansehen · ab 89 €",
     trust1:"✦ 3 Pflegeprodukte à 250 ml",
@@ -2817,7 +2831,9 @@ en:{
 
     heroFirst:"Car care with style.",
     heroPhrases:["Made to delight."],
-    heroDescription:"For the car you love. And for someone you would like to give a thoughtful gift.",
+    heroDescription:"Your car care gift set: three 250 ml care products, microfibre cloths and brushes with a case. For your own car or someone who loves theirs.",
+    heroPrice:"From €89",
+    heroDelivery:"Shipping within Germany included",
     heroQuiz:"Take the quiz & find your set",
     heroShop:"Explore the collection · from €89",
     trust1:"✦ 3 care products · 250 ml each",
@@ -3108,7 +3124,9 @@ ru:{
 
     heroFirst:"Уход со вкусом.",
     heroPhrases:["Радость в деталях."],
-    heroDescription:"Для автомобиля, который любят. И для человека, которому хочется подарить что-то личное.",
+    heroDescription:"Подарочный набор для ухода за автомобилем: три средства по 250 мл, микрофибры и кисти с чехлом. Для своей машины или в подарок тому, кто любит свою.",
+    heroPrice:"От 89 €",
+    heroDelivery:"Доставка по Германии включена",
     heroQuiz:"Пройти квиз и подобрать набор",
     heroShop:"Смотреть коллекцию · от 89 €",
     trust1:"✦ 3 средства по 250 мл",
@@ -3399,7 +3417,9 @@ ua:{
 
     heroFirst:"Догляд зі смаком.",
     heroPhrases:["Радість у деталях."],
-    heroDescription:"Для автомобіля, який люблять. І для людини, якій хочеться подарувати щось особисте.",
+    heroDescription:"Подарунковий набір для догляду за автомобілем: три засоби по 250 мл, мікрофібри та пензлі з чохлом. Для власного авто або в подарунок тому, хто любить своє.",
+    heroPrice:"Від 89 €",
+    heroDelivery:"Доставку Німеччиною включено",
     heroQuiz:"Пройти квіз і підібрати набір",
     heroShop:"Переглянути колекцію · від 89 €",
     trust1:"✦ 3 засоби по 250 мл",
