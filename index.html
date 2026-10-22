@@ -4,9 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b0b0b">
-<meta name="description" content="LYS Auto Care — Autopflege-Geschenkboxen aus Berlin.">
+<meta name="description" content="Premium Autopflege-Geschenkboxen aus Berlin: 3 Pflegeprodukte à 250 ml, Mikrofasertücher und Pinsel mit Etui. Ab 89 €, Versand in Deutschland inklusive.">
+<link rel="canonical" href="https://lysautocare-cyan.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LYS Auto Care">
+<meta property="og:url" content="https://lysautocare-cyan.vercel.app/">
+<meta property="og:title" content="LYS Auto Care Berlin | Premium Autopflege-Geschenkboxen">
+<meta property="og:description" content="Entdecke Signature Box, Gift Edition und Duo Pack aus Berlin. Drei Pflegeprodukte à 250 ml und passende Accessoires.">
+<meta property="og:image" content="https://lysautocare-cyan.vercel.app/products.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "LYS Auto Care", "url": "https://lysautocare-cyan.vercel.app/", "logo": "https://lysautocare-cyan.vercel.app/logo.png", "email": "autocare.lys@gmail.com", "telephone": "+491787242067", "address": {"@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE"}, "sameAs": ["https://www.instagram.com/lys_autocare.de/", "https://www.tiktok.com/@lys_autocare.de"]}</script>
 
-<title>LYS Auto Care — Pflege mit Stil.</title>
+<title>LYS Auto Care Berlin | Premium Autopflege-Geschenkboxen</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1442,6 +1451,25 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 @keyframes lysArrival {from{opacity:.65;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 @media(prefers-reduced-motion:reduce){.hero-title::after{animation:none;} .hero .hero-slogan,.hero .hero-title,.hero .hero-description,.hero .button-row,.hero .trust{animation:none;}}
 
+
+.promo .promo-copy {display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;width:100%;padding:6px 12px;background:transparent;border:0;color:var(--text);font:inherit;cursor:pointer;}
+.promo-copy .copy-hint {padding:5px 12px;border:1px solid var(--border);border-radius:20px;color:var(--gold-light);}
+.promo-copy:focus-visible {outline:2px solid var(--gold);outline-offset:-3px;}
+.box-value,.community-story {max-width:900px;margin:32px auto;padding:26px;border:1px solid var(--border);border-radius:20px;background:linear-gradient(130deg,#21180f,#121212);}
+.box-value h3 {margin-bottom:14px;color:var(--gold-light);font-size:23px;}
+.box-value p,.community-story p {color:var(--muted);font-size:14px;line-height:1.9;}
+.community-story p+p {margin-top:15px;}
+.community-profiles {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;}
+.community-profile {display:block;padding:28px;border:1px solid var(--border);border-radius:20px;background:#15120f;text-decoration:none;min-width:0;}
+.community-profile .eyebrow{text-align:left;}.community-profile h3 {margin:16px 0;overflow-wrap:anywhere;}
+.community-profile p{color:var(--muted);font-size:13px;line-height:1.9;margin-bottom:20px;}
+.community-profile>a,.community-profile>span:last-child {color:var(--gold-light);font-size:12px;}
+#tiktok-profile {margin:24px auto;max-width:720px;overflow:hidden;border-radius:20px;}
+.analytics-choice {position:fixed;left:16px;bottom:16px;z-index:5000;padding:22px;max-width:460px;background:#17130f;border:1px solid var(--gold);border-radius:18px;box-shadow:0 10px 50px #0008;}
+.analytics-choice p {font-size:13px;line-height:1.7;color:var(--muted);margin-bottom:16px;}
+.analytics-choice .btn {margin:4px 4px 0 0;}.analytics-settings {color:var(--muted);background:none;border:0;text-decoration:underline;font:inherit;cursor:pointer;margin:12px;}
+@media(max-width:650px){.community-profiles{grid-template-columns:1fr;}.promo .promo-copy{gap:7px;font-size:10px;}.analytics-choice{right:16px;bottom:85px;max-width:none;}}
+
 </style>
 </head>
 
@@ -1449,9 +1477,11 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 <div class="reading-progress" aria-hidden="true"></div>
 
 <div class="promo" id="promo">
-    <span data-i18n="promo"></span>
-    <strong>LYS10 · −10%</strong>
-    <button id="copy-code" type="button" data-i18n="copy"></button>
+    <button id="copy-code" class="promo-copy" type="button">
+        <span data-i18n="promo"></span>
+        <strong>LYS10 · −10%</strong>
+        <span class="copy-hint" data-i18n="copy"></span>
+    </button>
 </div>
 
 <header class="header" id="header">
@@ -1501,7 +1531,7 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
         <p class="hero-slogan">AUTO CARE · BERLIN</p>
 
         <h1 class="hero-title">
-            <span class="hero-first-line" id="hero-first-line">Pflege mit Stil.</span>
+            <span class="hero-first-line" id="hero-first-line">Autopflege mit Stil.</span>
             <span class="hero-changing-line" id="hero-changing-line" aria-hidden="true">Freude inklusive.</span>
             <span class="sr-only" id="hero-accessible-line"></span>
         </h1>
@@ -1634,6 +1664,7 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
             </div>
 
             <div class="contents-grid" id="contents-grid"></div>
+            <aside class="box-value"><h3 data-i18n="valueTitle"></h3><p data-i18n="valueText"></p></aside>
         </div>
 
         <div id="panel-unboxing" role="tabpanel" aria-labelledby="tab-unboxing" hidden>
@@ -1725,11 +1756,28 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
     </div>
 </section>
 
-<section class="section" id="community-section" hidden>
+<section class="section" id="community-section">
     <div class="container">
         <p class="eyebrow">LYS COMMUNITY</p>
         <h2 class="section-title shimmer" data-i18n="communityTitle"></h2>
         <p class="section-description" data-i18n="communitySubtitle"></p>
+        <div class="community-story">
+            <p data-i18n="brandStory"></p>
+            <p data-i18n="communityBenefits"></p>
+        </div>
+        <div class="community-profiles">
+            <a class="community-profile" href="https://www.instagram.com/lys_autocare.de/" target="_blank" rel="noopener noreferrer">
+                <span class="eyebrow">INSTAGRAM</span><h3>@lys_autocare.de</h3><p data-i18n="instagramCommunity"></p><span data-i18n="openInstagram"></span>
+            </a>
+            <div class="community-profile">
+                <span class="eyebrow">TIKTOK</span><h3>@lys_autocare.de</h3><p data-i18n="tiktokCommunity"></p>
+                <button class="btn btn-secondary" type="button" id="load-tiktok" data-i18n="loadTikTok"></button>
+                <p class="form-note" data-i18n="socialLoadNotice"></p>
+                <a href="https://www.tiktok.com/@lys_autocare.de" target="_blank" rel="noopener noreferrer" data-i18n="openTikTok"></a>
+            </div>
+        </div>
+        <div id="tiktok-profile" hidden></div>
+        <div class="ugc-grid" id="social-posts-grid"></div>
         <div class="reviews-grid" id="reviews-grid"></div>
         <div class="ugc-grid" id="ugc-grid"></div>
     </div>
@@ -1812,7 +1860,8 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 
     <div class="footer-bottom">
         <p>© <span id="year"></span> LYS Auto Care · Berlin</p>
-        <div class="legal-links" id="legal-links"></div>
+        <button class="analytics-settings" id="analytics-settings" type="button" data-i18n="analyticsSettings" hidden></button>
+                <div class="legal-links" id="legal-links"></div>
     </div>
 </div>
 </footer>
@@ -1833,6 +1882,11 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
     <a class="btn btn-small" href="#experience" data-i18n="findSet"></a>
 </div>
 
+<div class="analytics-choice" id="analytics-choice" role="region" aria-label="Analytics" hidden>
+    <p data-i18n="analyticsNotice"></p>
+    <button class="btn btn-small" type="button" id="analytics-accept" data-i18n="analyticsAccept"></button>
+    <button class="btn btn-secondary btn-small" type="button" id="analytics-reject" data-i18n="analyticsReject"></button>
+</div>
 <div class="toast" id="toast" role="status" hidden></div>
 
 <!-- Медиа товара -->
@@ -2009,6 +2063,16 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
                         <textarea class="input" id="order-card-message-2" name="gift_message_2" maxlength="250" rows="3" disabled></textarea>
                     </div>
                 </div>
+                <div class="field">
+                    <label for="extra-care" data-i18n="extraCareLabel"></label>
+                    <select class="input" id="extra-care" name="extra_care_request">
+                        <option value="none" data-i18n="extraCareNone"></option>
+                        <option value="wheel_250">01 Felgenreiniger · 250 ml</option>
+                        <option value="interior_250">02 Innenraumreiniger · 250 ml</option>
+                        <option value="glass_250">03 Glasreiniger · 250 ml</option>
+                    </select>
+                    <p class="form-note" id="extra-care-note" data-i18n="extraCareNote" hidden></p>
+                </div>
                 <p class="form-note" id="gift-fee-summary" hidden></p>
                 <div class="summary">
                     <div>
@@ -2182,6 +2246,10 @@ images/guide.png
 
 const CONFIG = {
     endpoint:"https://formspree.io/f/xjygqyjp",
+    /* Paste your own GA4 measurement ID here. Without an ID no analytics is sent. */
+    analytics:{measurementId:""},
+    /* Real posts only: {url:"https://www.instagram.com/reel/REAL_ID/", image:"./images/real-post.jpg", alt:"Actual photo description"}. */
+    socialPosts:[],
     whatsapp:"491787242067",
     videoSpeed:0.75,
     heroVideo:"./hero-macro.mp4",
@@ -2296,6 +2364,26 @@ const EDITION_KEYS = ["signature","gift","duo"];
 const TEXT = {
 de:{
     promo:"Autopflege-Geschenkboxen aus Berlin. Dein Willkommenscode:",
+    extraCareLabel:"Zusätzliches Pflegemittel anfragen",
+    extraCareNone:"Kein zusätzliches Produkt",
+    extraCareNote:"Preis und Verfügbarkeit bestätigen wir separat. Dieses Zusatzprodukt ist im angezeigten Gesamtbetrag noch nicht enthalten.",
+    seoTitle:"LYS Auto Care Berlin | Premium Autopflege-Geschenkboxen",
+    seoDescription:"Autopflege-Geschenkboxen aus Berlin mit 3 Pflegeprodukten à 250 ml, Mikrofasertüchern und Pinseln mit Etui. Ab 89 €, Versand in Deutschland inklusive.",
+    brandStory:"LYS Auto Care verbindet Autopflege mit der Freude am Schenken. Der Berliner Charakter zeigt sich im klaren Design und in einer Box, die Pflegeprodukte und passende Accessoires zusammenbringt.",
+    communityBenefits:"Entdecke Einblicke in unsere Boxen und teile deinen eigenen LYS Moment. Fragen zu Produkten oder zur passenden Edition? Schreib uns direkt.",
+    instagramCommunity:"Unsere Boxen, ihre Details und die Menschen hinter LYS — auf Instagram.",
+    tiktokCommunity:"Entdecke die aktuellen öffentlichen Videos unseres TikTok-Profils.",
+    loadTikTok:"TikTok-Inhalte laden",
+    openInstagram:"Auf Instagram entdecken ↗",
+    openTikTok:"Profil auf TikTok öffnen ↗",
+    socialLoadNotice:"Beim Laden wird eine Verbindung zu TikTok hergestellt. Alternativ kannst du das Profil direkt öffnen.",
+    analyticsNotice:"Dürfen wir Google Analytics verwenden, um Besuche und Klicks auf dieser Website auszuwerten? Die Auswahl ist freiwillig.",
+    analyticsAccept:"Analytics erlauben",
+    analyticsReject:"Ohne Analytics",
+    analyticsSettings:"Analytics-Einstellungen",
+    galleryOpen:"Beitrag öffnen ↗",
+    valueTitle:"Ein Set, das zusammenpasst.",
+    valueText:"Drei Reiniger, drei Tücher, Pinsel mit Etui, Anleitung und eine Überraschung: Die Signature Box verbindet die wichtigsten Bestandteile für deine Pflegeroutine in einem Set für 89 €. Du wählst die Box statt jedes Teil einzeln zusammenzustellen.",
     copy:"Kopieren",
     codeCopied:"Dein Code: LYS10",
     navQuiz:"Dein Set finden",
@@ -2304,7 +2392,7 @@ de:{
     navGift:"Verschenken",
     findSet:"Set finden",
 
-    heroFirst:"Pflege mit Stil.",
+    heroFirst:"Autopflege mit Stil.",
     heroPhrases:["Freude inklusive."],
     heroDescription:"Dein Auto verdient Aufmerksamkeit. Pack sie aus — mit drei Pflegeprodukten, passenden Accessoires und einer Überraschung von LYS.",
     heroQuiz:"Quiz starten & Set finden",
@@ -2412,14 +2500,35 @@ de:{
     filterAccessories:"Accessoires",
     filterExtras:"Extras",
     contents:[
-        ["01 Felgenreiniger · 250 ml","Für die Reinigung deiner Felgen. Materialverträglichkeit und Anwendungshinweise auf dem Produkt beachten."],
-        ["02 Innenraumreiniger · 250 ml","Für geeignete Oberflächen im Innenraum. Beachte die Hinweise auf dem Produkt."],
-        ["03 Glasreiniger · 250 ml","Für die Reinigung von Scheiben und Spiegeln."],
-        ["3× Mikrofasertücher","Für Glas, Finish und Innenraum."],
-        ["Detailing-Pinsel mit Etui","Für kleine Zwischenräume und schwer erreichbare Stellen – mit praktischem Etui."],
-        ["Soft-Touch Anleitung","Eine übersichtliche Anleitung für deine Pflegeroutine."],
-        ["Überraschung von LYS","Ein besonderes Extra in deiner Box."]
+    [
+        "01 Felgenreiniger · 250 ml",
+        "Für die Reinigung von Felgen. Ein eigener Reiniger für diesen Bereich ergänzt die Mittel für Innenraum und Glas. Geeignete Materialien und Anwendung findest du auf dem Flaschenetikett."
     ],
+    [
+        "02 Innenraumreiniger · 250 ml",
+        "Für geeignete Oberflächen im Fahrzeuginnenraum. Mit den Pinseln erreichst du kleine Zwischenräume; für das Nachwischen stehen separate Tücher zur Verfügung. Anwendung und Materialeignung nach Etikett."
+    ],
+    [
+        "03 Glasreiniger · 250 ml",
+        "Für Scheiben und Spiegel. Nutze ein separates Mikrofasertuch für Glas, damit Rückstände anderer Pflegemittel nicht übertragen werden. Anwendung nach Etikett."
+    ],
+    [
+        "3× Mikrofasertücher",
+        "Drei Tücher zum getrennten Arbeiten an Glas, Innenraum und Finish. So kannst du die Einsatzbereiche auseinanderhalten."
+    ],
+    [
+        "Detailing-Pinsel mit Etui",
+        "Für kleine Zwischenräume und schwer erreichbare Stellen. Das Etui hält die Pinsel zusammen und erleichtert das Aufbewahren."
+    ],
+    [
+        "Soft-Touch Anleitung",
+        "Die beiliegende Anleitung begleitet deine Pflegeroutine. Die Hinweise auf den einzelnen Produkten bleiben für die Anwendung maßgeblich."
+    ],
+    [
+        "Überraschung von LYS",
+        "Ein zusätzliches Extra für den Moment beim Auspacken. Es ergänzt deine Box; die konkrete Überraschung wird hier nicht vorweggenommen."
+    ]
+],
     details:"Details ansehen",
     front:"Vorderseite",
     backPhoto:"Rückseite",
@@ -2471,7 +2580,11 @@ de:{
         ["Kann direkt an den Empfänger geliefert werden?","Ja. Aktiviere die direkte Geschenkzustellung und gib Name und Lieferadresse des Empfängers an. Deine Kontaktdaten bleiben separat."],
         ["Was kostet der Versand?","Der Versand innerhalb Deutschlands ist in den angezeigten Preisen enthalten. Eine Abholung in Berlin ist nach Absprache möglich."],
         ["Wie verwende ich LYS10?","Gib LYS10 selbst in das Feld für den Rabattcode im Anfrageformular ein. Der Rabatt wird erst nach deiner Eingabe berechnet."],
-        ["Wo finde ich Produktinformationen?","Beachte die Angaben auf den Flaschen und die beigefügte Anleitung. Fragen zu Inhaltsstoffen, Eignung oder Produktunterlagen kannst du uns direkt stellen."]
+        ["Wo finde ich Produktinformationen?","Beachte die Angaben auf den Flaschen und die beigefügte Anleitung. Fragen zu Inhaltsstoffen, Eignung oder Produktunterlagen kannst du uns direkt stellen."],
+        ["Wie lange dauert die Lieferung?", "Wir bestätigen den Versandtermin und die voraussichtliche Lieferzeit zusammen mit deiner Anfrage. Eine feste Lieferfrist ist hier noch nicht angegeben."],
+        ["Liefert ihr auch außerhalb Deutschlands?", "Die angezeigten Preise enthalten den Versand innerhalb Deutschlands. Für andere Länder frage bitte das Ziel und die Versandkosten direkt bei uns an."],
+        ["Wie kann ich bezahlen?", "PayPal oder Überweisung nach unserer persönlichen Bestätigung. Die Anfrage auf der Website löst noch keine Online-Zahlung aus."],
+        ["Wie funktioniert die Geschenkgestaltung beim Duo Pack?", "Ohne Grußkarten kostet das Duo Pack 165 €. Mit einer Geschenkbox und persönlicher Karte sind es 171 €, mit zwei Geschenkboxen und zwei Karten 177 €. Du kannst für jede Karte einen eigenen Text eingeben."]
     ],
 
     newsletterTitle:"Bleib mit LYS in Verbindung",
@@ -2546,6 +2659,26 @@ de:{
 
 en:{
     promo:"Car care gift boxes from Berlin. Your welcome code:",
+    extraCareLabel:"Request an additional care product",
+    extraCareNone:"No additional product",
+    extraCareNote:"We confirm price and availability separately. This additional product is not included in the displayed total yet.",
+    seoTitle:"LYS Auto Care Berlin | Premium Car Care Gift Boxes",
+    seoDescription:"Car care gift boxes from Berlin: 3 products of 250 ml, microfibre cloths and brushes with a case. From €89 including shipping within Germany.",
+    brandStory:"LYS Auto Care brings car care and thoughtful gifting together. Its Berlin character comes through in clear design and a box that pairs care products with useful accessories.",
+    communityBenefits:"Explore the boxes and share your own LYS moment. Need help with a product or choosing an edition? Message us directly.",
+    instagramCommunity:"Our boxes, their details and the people behind LYS — on Instagram.",
+    tiktokCommunity:"Explore the latest public videos from our TikTok profile.",
+    loadTikTok:"Load TikTok content",
+    openInstagram:"Explore on Instagram ↗",
+    openTikTok:"Open profile on TikTok ↗",
+    socialLoadNotice:"Loading connects to TikTok. You can also open the profile directly.",
+    analyticsNotice:"May we use Google Analytics to measure visits and clicks on this website? Your choice is optional.",
+    analyticsAccept:"Allow Analytics",
+    analyticsReject:"Continue without Analytics",
+    analyticsSettings:"Analytics settings",
+    galleryOpen:"Open post ↗",
+    valueTitle:"A set that works together.",
+    valueText:"Three cleaners, three cloths, brushes with a case, a guide and a surprise: the €89 Signature Box brings the main parts of your car care routine together, so you can choose one set rather than assemble each item separately.",
     copy:"Copy",
     codeCopied:"Your code: LYS10",
     navQuiz:"Find your set",
@@ -2554,7 +2687,7 @@ en:{
     navGift:"Gifting",
     findSet:"Find my set",
 
-    heroFirst:"Care with style.",
+    heroFirst:"Car care with style.",
     heroPhrases:["Made to delight."],
     heroDescription:"Give your car a little attention. Unbox three care products, matching accessories and a surprise from LYS.",
     heroQuiz:"Take the quiz & find your set",
@@ -2660,14 +2793,35 @@ en:{
     filterAccessories:"Accessories",
     filterExtras:"Extras",
     contents:[
-        ["01 Wheel cleaner · 250 ml","For cleaning your wheels. Follow material compatibility and application instructions."],
-        ["02 Interior cleaner · 250 ml","For suitable interior surfaces. Follow the product instructions."],
-        ["03 Glass cleaner · 250 ml","For cleaning windows and mirrors."],
-        ["3× microfibre cloths","For glass, finishing and interior care."],
-        ["Detailing brushes with case","For small gaps and hard-to-reach areas, with a practical case."],
-        ["Soft-touch guide","A clear guide for your care routine."],
-        ["A surprise from LYS","A special extra inside your box."]
+    [
+        "01 Wheel Cleaner · 250 ml",
+        "A dedicated cleaner for wheels, complementing the products for interior and glass. Check the bottle label for suitable materials and application."
     ],
+    [
+        "02 Interior Cleaner · 250 ml",
+        "For suitable interior surfaces. The brushes help reach small gaps and separate cloths are available for wiping. Follow the product label for use and compatibility."
+    ],
+    [
+        "03 Glass Cleaner · 250 ml",
+        "For windows and mirrors. Keep a separate microfibre cloth for glass to avoid transferring residues from other products. Follow the bottle instructions."
+    ],
+    [
+        "3× Microfibre cloths",
+        "Three cloths let you keep glass, interior and finishing work separate."
+    ],
+    [
+        "Detailing brushes with a case",
+        "For small gaps and hard-to-reach areas. The case keeps the brushes together for storage."
+    ],
+    [
+        "Soft-Touch guide",
+        "The included guide accompanies your routine. The instructions on each product remain the reference for application."
+    ],
+    [
+        "A surprise from LYS",
+        "An extra for the unboxing moment. It complements the box without revealing the surprise here."
+    ]
+],
     details:"View details",
     front:"Front",
     backPhoto:"Back",
@@ -2719,7 +2873,11 @@ en:{
         ["Can you deliver directly to the recipient?","Yes. Select direct gift delivery and enter the recipient's name and delivery address. Your contact details remain separate."],
         ["How much is shipping?","Shipping within Germany is included in the displayed prices. Pickup in Berlin is available by arrangement."],
         ["How do I use LYS10?","Enter LYS10 yourself in the discount code field in the enquiry form. The discount is calculated only after you enter the code."],
-        ["Where can I find product information?","Follow the bottle labels and included guide. Contact us with questions about ingredients, suitability or product documents."]
+        ["Where can I find product information?","Follow the bottle labels and included guide. Contact us with questions about ingredients, suitability or product documents."],
+        ["How long does delivery take?", "We confirm the dispatch date and estimated delivery time with your enquiry. A fixed delivery period is not stated here yet."],
+        ["Do you ship outside Germany?", "Displayed prices include shipping within Germany. Please ask us directly about your destination and shipping costs for other countries."],
+        ["How can I pay?", "PayPal or bank transfer after our personal confirmation. The website enquiry does not trigger an online payment."],
+        ["How does Duo Pack gift presentation work?", "Duo Pack costs €165 without greeting cards, €171 with one gift box and personal card, or €177 with two gift boxes and two cards. Each card can have its own message."]
     ],
 
     newsletterTitle:"Stay connected with LYS",
@@ -2794,6 +2952,26 @@ en:{
 
 ru:{
     promo:"Подарочные боксы для автоухода из Берлина. Ваш приветственный код:",
+    extraCareLabel:"Запросить дополнительное средство",
+    extraCareNone:"Без дополнительного средства",
+    extraCareNote:"Цену и наличие подтвердим отдельно. Дополнительное средство пока не включено в отображаемую сумму.",
+    seoTitle:"LYS Auto Care Berlin | Подарочные наборы для автоухода",
+    seoDescription:"Боксы для автоухода из Берлина: 3 средства по 250 мл, микрофибры и кисти с чехлом. От 89 €, доставка по Германии включена.",
+    brandStory:"LYS Auto Care объединяет уход за автомобилем и удовольствие от подарка. Берлинский характер бренда — в лаконичном дизайне и боксе, где средства для ухода собраны вместе с подходящими аксессуарами.",
+    communityBenefits:"Рассматривайте боксы и делитесь своим моментом с LYS. Нужна помощь со средством или выбором набора? Напишите нам напрямую.",
+    instagramCommunity:"Наши боксы, их детали и люди за брендом LYS — в Instagram.",
+    tiktokCommunity:"Свежие публичные видео из нашего профиля TikTok.",
+    loadTikTok:"Загрузить TikTok",
+    openInstagram:"Смотреть в Instagram ↗",
+    openTikTok:"Открыть профиль TikTok ↗",
+    socialLoadNotice:"При загрузке устанавливается соединение с TikTok. Также можно открыть профиль напрямую.",
+    analyticsNotice:"Разрешить Google Analytics для анализа посещений и кликов на сайте? Выбор добровольный.",
+    analyticsAccept:"Разрешить аналитику",
+    analyticsReject:"Без аналитики",
+    analyticsSettings:"Настройки аналитики",
+    galleryOpen:"Открыть публикацию ↗",
+    valueTitle:"Всё складывается в один набор.",
+    valueText:"Три очистителя, три салфетки, кисти с чехлом, инструкция и сюрприз: Signature Box за 89 € собирает основные составляющие ухода в одном боксе. Можно выбрать готовый комплект, вместо того чтобы подбирать каждую вещь отдельно.",
     copy:"Копировать",
     codeCopied:"Ваш код: LYS10",
     navQuiz:"Подобрать набор",
@@ -2908,14 +3086,35 @@ ru:{
     filterAccessories:"Аксессуары",
     filterExtras:"Дополнения",
     contents:[
-        ["01 Очиститель дисков · 250 мл","Для очистки колёсных дисков. Учитывайте совместимость материалов и инструкцию на флаконе."],
-        ["02 Очиститель салона · 250 мл","Для подходящих поверхностей в салоне. Следуйте указаниям на флаконе."],
-        ["03 Очиститель стёкол · 250 мл","Для очистки автомобильных стёкол и зеркал."],
-        ["3 микрофибровые салфетки","Для стёкол, финишного ухода и салона."],
-        ["Кисточки с чехлом","Для щелей и труднодоступных участков. В комплекте удобный чехол."],
-        ["Инструкция Soft-Touch","Понятная инструкция для вашей процедуры ухода."],
-        ["Сюрприз от LYS","Особенное дополнение внутри вашего бокса."]
+    [
+        "01 Очиститель дисков · 250 мл",
+        "Отдельное средство для дисков дополняет очистители салона и стёкол. Подходящие материалы и способ применения указаны на этикетке флакона."
     ],
+    [
+        "02 Очиститель салона · 250 мл",
+        "Для подходящих поверхностей внутри автомобиля. Кисти помогают добраться до небольших щелей, а отдельные салфетки — протереть поверхность. Применяйте по этикетке с учётом совместимости материалов."
+    ],
+    [
+        "03 Очиститель стёкол · 250 мл",
+        "Для стёкол и зеркал. Выделите отдельную микрофибру для стекла, чтобы не переносить остатки других средств. Следуйте инструкции на флаконе."
+    ],
+    [
+        "3 микрофибровые салфетки",
+        "Три салфетки позволяют разделить работу со стёклами, салоном и финишной протиркой."
+    ],
+    [
+        "Кисти для детейлинга с чехлом",
+        "Для небольших щелей и труднодоступных мест. Чехол помогает хранить кисти вместе."
+    ],
+    [
+        "Инструкция Soft-Touch",
+        "Инструкция сопровождает вашу процедуру ухода. При использовании средств ориентируйтесь прежде всего на указания на каждом флаконе."
+    ],
+    [
+        "Сюрприз от LYS",
+        "Дополнение для приятного момента распаковки. Оно входит в бокс, а сам сюрприз заранее не раскрываем."
+    ]
+],
     details:"Подробнее",
     front:"Спереди",
     backPhoto:"Сзади",
@@ -2967,7 +3166,11 @@ ru:{
         ["Можно отправить подарок прямо получателю?","Да. Выберите прямую доставку и укажите имя и адрес получателя. Ваши контактные данные заполняются отдельно."],
         ["Сколько стоит доставка?","Доставка по Германии включена в указанные цены. Самовывоз в Берлине возможен по договорённости."],
         ["Как применить LYS10?","Введите LYS10 самостоятельно в поле промокода в форме заявки. Скидка рассчитывается только после ввода кода."],
-        ["Где найти информацию о средствах?","Следуйте маркировке на флаконах и вложенной инструкции. Вопросы о составе, совместимости и документах можно задать нам напрямую."]
+        ["Где найти информацию о средствах?","Следуйте маркировке на флаконах и вложенной инструкции. Вопросы о составе, совместимости и документах можно задать нам напрямую."],
+        ["Сколько занимает доставка?", "Дату отправки и ориентировочный срок доставки подтвердим вместе с вашей заявкой. Фиксированный срок здесь пока не указан."],
+        ["Есть ли доставка за пределы Германии?", "В указанные цены включена доставка по Германии. Для других стран уточните у нас направление и стоимость отправки."],
+        ["Как оплатить заказ?", "PayPal или банковский перевод после нашего подтверждения. Заявка на сайте не запускает онлайн-оплату."],
+        ["Как работает подарочное оформление Duo Pack?", "Без открыток Duo Pack стоит 165 €. С оформлением одного бокса и открыткой — 171 €, обоих с двумя открытками — 177 €. Для каждой открытки можно написать отдельное поздравление."]
     ],
 
     newsletterTitle:"Оставайтесь на связи с LYS",
@@ -3042,6 +3245,26 @@ ru:{
 
 ua:{
     promo:"Подарункові бокси для автодогляду з Берліна. Ваш вітальний код:",
+    extraCareLabel:"Запросити додатковий засіб",
+    extraCareNone:"Без додаткового засобу",
+    extraCareNote:"Ціну й наявність підтвердимо окремо. Додатковий засіб поки не включений у відображену суму.",
+    seoTitle:"LYS Auto Care Berlin | Подарункові набори для автодогляду",
+    seoDescription:"Бокси для автодогляду з Берліна: 3 засоби по 250 мл, мікрофібри та пензлі з чохлом. Від 89 €, доставка Німеччиною включена.",
+    brandStory:"LYS Auto Care поєднує догляд за автомобілем і радість подарунка. Берлінський характер бренду — у лаконічному дизайні та боксі, де засоби зібрані разом із відповідними аксесуарами.",
+    communityBenefits:"Роздивляйтеся бокси та діліться своїм моментом із LYS. Потрібна допомога із засобом або вибором набору? Напишіть нам напряму.",
+    instagramCommunity:"Наші бокси, їхні деталі та люди за брендом LYS — в Instagram.",
+    tiktokCommunity:"Свіжі публічні відео з нашого профілю TikTok.",
+    loadTikTok:"Завантажити TikTok",
+    openInstagram:"Дивитися в Instagram ↗",
+    openTikTok:"Відкрити профіль TikTok ↗",
+    socialLoadNotice:"Під час завантаження встановлюється з’єднання з TikTok. Також можна відкрити профіль напряму.",
+    analyticsNotice:"Дозволити Google Analytics для аналізу відвідувань і кліків на сайті? Вибір добровільний.",
+    analyticsAccept:"Дозволити аналітику",
+    analyticsReject:"Без аналітики",
+    analyticsSettings:"Налаштування аналітики",
+    galleryOpen:"Відкрити публікацію ↗",
+    valueTitle:"Усе складається в один набір.",
+    valueText:"Три очисники, три серветки, пензлі з чохлом, інструкція та сюрприз: Signature Box за 89 € збирає основні складові догляду в одному боксі. Можна обрати готовий комплект замість підбирати кожну річ окремо.",
     copy:"Копіювати",
     codeCopied:"Ваш код: LYS10",
     navQuiz:"Підібрати набір",
@@ -3156,14 +3379,35 @@ ua:{
     filterAccessories:"Аксесуари",
     filterExtras:"Доповнення",
     contents:[
-        ["01 Очисник дисків · 250 мл","Для очищення колісних дисків. Враховуйте сумісність матеріалів та інструкцію на флаконі."],
-        ["02 Очисник салону · 250 мл","Для відповідних поверхонь у салоні. Дотримуйтеся вказівок на флаконі."],
-        ["03 Очисник скла · 250 мл","Для очищення автомобільного скла та дзеркал."],
-        ["3 мікрофіброві серветки","Для скла, фінішного догляду й салону."],
-        ["Пензлі з чохлом","Для щілин і важкодоступних ділянок. Зі зручним чохлом."],
-        ["Інструкція Soft-Touch","Зрозуміла інструкція для вашого догляду."],
-        ["Сюрприз від LYS","Особливе доповнення всередині вашого боксу."]
+    [
+        "01 Очисник дисків · 250 мл",
+        "Окремий засіб для дисків доповнює очисники салону та скла. Відповідні матеріали й спосіб використання вказані на етикетці флакона."
     ],
+    [
+        "02 Очисник салону · 250 мл",
+        "Для відповідних поверхонь усередині автомобіля. Пензлі допомагають дістатися невеликих щілин, а окремі серветки — протерти поверхню. Використовуйте за етикеткою з урахуванням сумісності матеріалів."
+    ],
+    [
+        "03 Очисник скла · 250 мл",
+        "Для скла й дзеркал. Виділіть окрему мікрофібру для скла, щоб не переносити залишки інших засобів. Дотримуйтеся інструкції на флаконі."
+    ],
+    [
+        "3 мікрофіброві серветки",
+        "Три серветки дають змогу розділити роботу зі склом, салоном і фінішним протиранням."
+    ],
+    [
+        "Пензлі для детейлінгу з чохлом",
+        "Для невеликих щілин і важкодоступних місць. Чохол допомагає зберігати пензлі разом."
+    ],
+    [
+        "Інструкція Soft-Touch",
+        "Інструкція супроводжує ваш догляд. Під час використання засобів орієнтуйтеся передусім на вказівки на кожному флаконі."
+    ],
+    [
+        "Сюрприз від LYS",
+        "Доповнення для приємного моменту розпакування. Воно входить до боксу, а сам сюрприз заздалегідь не розкриваємо."
+    ]
+],
     details:"Докладніше",
     front:"Спереду",
     backPhoto:"Ззаду",
@@ -3215,7 +3459,11 @@ ua:{
         ["Можна надіслати подарунок просто отримувачу?","Так. Оберіть пряму доставку й укажіть ім’я та адресу отримувача. Ваші контакти заповнюються окремо."],
         ["Скільки коштує доставка?","Доставку Німеччиною включено у вказані ціни. Самовивіз у Берліні можливий за домовленістю."],
         ["Як застосувати LYS10?","Введіть LYS10 самостійно в поле промокоду у формі заявки. Знижка розраховується лише після введення коду."],
-        ["Де знайти інформацію про засоби?","Дотримуйтеся маркування на флаконах та вкладеної інструкції. Питання про склад, сумісність і документи можна поставити нам напряму."]
+        ["Де знайти інформацію про засоби?","Дотримуйтеся маркування на флаконах та вкладеної інструкції. Питання про склад, сумісність і документи можна поставити нам напряму."],
+        ["Скільки триває доставка?", "Дату відправлення й орієнтовний строк доставки підтвердимо разом із вашою заявкою. Фіксований строк тут поки не вказаний."],
+        ["Чи є доставка за межі Німеччини?", "У вказані ціни включена доставка Німеччиною. Для інших країн уточніть у нас напрямок і вартість відправлення."],
+        ["Як оплатити замовлення?", "PayPal або банківський переказ після нашого підтвердження. Заявка на сайті не запускає онлайн-оплату."],
+        ["Як працює подарункове оформлення Duo Pack?", "Без листівок Duo Pack коштує 165 €. З оформленням одного боксу й листівкою — 171 €, обох із двома листівками — 177 €. Для кожної листівки можна написати окреме привітання."]
     ],
 
     newsletterTitle:"Залишайтеся на зв’язку з LYS",
@@ -3427,6 +3675,10 @@ function setLanguage(value) {
             encodeURIComponent(t().whatsappMessage);
     });
 
+    document.title = t().seoTitle;
+    document.querySelector('meta[name="description"]').content = t().seoDescription;
+    document.querySelector('meta[property="og:title"]').content = t().seoTitle;
+    document.querySelector('meta[property="og:description"]').content = t().seoDescription;
     renderHero();
     renderQuiz();
     renderPricing();
@@ -4216,9 +4468,7 @@ function initComparison() {
 /* Настоящие отзывы */
 
 function updateCommunityVisibility() {
-    $("#community-section").hidden =
-        $("#reviews-grid").children.length === 0 &&
-        $("#ugc-grid").children.length === 0;
+    $("#community-section").hidden = false;
 }
 
 function initCommunity() {
@@ -4286,6 +4536,7 @@ function calculateTotal() {
     const total = Math.round(subtotal * (code === "LYS10" ? .9 : 1) * 100) / 100;
 
     $("#total").textContent = money(total);
+    $("#extra-care-note").hidden = $("#extra-care").value === "none";
     $("#gift-fee-summary").hidden = giftFee === 0;
     $("#gift-fee-summary").textContent = `${t().giftFee}: ${giftBoxes * quantity} × ${money(6)} = ${money(giftFee)}`;
     return {key,edition,quantity,code,total,giftBoxes,giftFee,subtotal};
@@ -4414,6 +4665,7 @@ function openCheckout(key = "signature",options = {}) {
     updateShipping();
     calculateTotal();
     openDialog(checkout);
+    trackEvent("begin_checkout",{edition:$("#edition").value,value:calculateTotal().total,currency:"EUR"});
     setFormStep(1,false);
 }
 
@@ -4437,6 +4689,8 @@ $("#request-card").addEventListener("change",() => {
     updateCardFields();
     calculateTotal();
 });
+
+$("#extra-care").addEventListener("change",calculateTotal);
 
 $("#duo-gift-count").addEventListener("change",() => {
     updateCardFields();
@@ -4502,6 +4756,7 @@ form.addEventListener("submit",async event => {
     data.set("subtotal_before_discount_eur",subtotal.toFixed(2));
     data.set("gift_boxes_per_pack",String(edition.boxes === 2 ? giftBoxes : (edition === EDITIONS.gift ? 1 : 0)));
     data.set("gift_upgrade_fee_eur",giftFee.toFixed(2));
+    data.set("extra_care_price_status",$("#extra-care").value === "none" ? "not_requested" : "quote_required_not_in_estimated_total");
     data.set("personal_cards_total",String(quantity * (edition.boxes === 2 ? giftBoxes : (edition === EDITIONS.gift ? 1 : 0))));
     data.set("language",language);
     data.set("card_requested",$("#request-card").checked ? "yes" : "no");
@@ -4548,6 +4803,7 @@ form.addEventListener("submit",async event => {
     try {
         await submitToFormspree(data);
 
+        trackEvent("generate_lead",{lead_type:"order",value:total,currency:"EUR"});
         submissionComplete = true;
         $("#form-fields").hidden = true;
         $("#progress").hidden = true;
@@ -4604,6 +4860,7 @@ document.querySelectorAll(".lead-form").forEach(leadForm => {
 
         try {
             await submitToFormspree(data);
+            trackEvent("generate_lead",{lead_type:callback ? "callback" : "newsletter"});
 
             const resultKey = callback ? "callbackSuccess" : "subscribed";
             status.dataset.resultKey = resultKey;
@@ -4723,6 +4980,7 @@ $("#copy-code").addEventListener("click",async () => {
     try { await navigator.clipboard.writeText("LYS10"); }
     catch {}
 
+    trackEvent("promo_copy",{method:"banner"});
     showToast(t().codeCopied);
 });
 
@@ -4807,6 +5065,103 @@ function updateHeader() {
 window.addEventListener("scroll",updateHeader,{passive:true});
 window.addEventListener("resize",updateHeader,{passive:true});
 
+
+/* Analytics: optional GA4 ID; visitor consent required before external collection. */
+let analyticsActive = false;
+function analyticsConfigured() { return /^G-[A-Z0-9]+$/.test(CONFIG.analytics.measurementId); }
+function trackEvent(name,params = {}) {
+    const safe = {language};
+    for (const key of ["channel","placement","edition","value","currency","lead_type","method"]) {
+        if (typeof params[key] === "string" || typeof params[key] === "number") safe[key] = params[key];
+    }
+    window.dispatchEvent(new CustomEvent("lys:analytics",{detail:{name,params:safe}}));
+    if (analyticsActive && typeof window.gtag === "function") window.gtag("event",name,safe);
+}
+function enableAnalytics() {
+    if (!analyticsConfigured() || analyticsActive) return;
+    const id = CONFIG.analytics.measurementId;
+    window["ga-disable-" + id] = false;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
+    window.gtag("js",new Date());
+    window.gtag("config",id,{send_page_view:false,allow_google_signals:false,allow_ad_personalization_signals:false});
+    analyticsActive = true;
+    const tag = document.createElement("script");
+    tag.async = true;
+    tag.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
+    document.head.append(tag);
+    window.gtag("event","page_view",{page_location:location.origin + location.pathname,page_title:document.title});
+}
+function initAnalytics() {
+    if (!analyticsConfigured()) return;
+    $("#analytics-settings").hidden = false;
+    const choice = readStorage("lys-analytics-consent");
+    if (choice === "granted") enableAnalytics();
+    else if (choice !== "denied") $("#analytics-choice").hidden = false;
+}
+$("#analytics-accept").addEventListener("click",() => {
+    writeStorage("lys-analytics-consent","granted");
+    $("#analytics-choice").hidden = true;
+    enableAnalytics();
+});
+$("#analytics-reject").addEventListener("click",() => {
+    writeStorage("lys-analytics-consent","denied");
+    analyticsActive = false;
+    if (analyticsConfigured()) window["ga-disable-" + CONFIG.analytics.measurementId] = true;
+    $("#analytics-choice").hidden = true;
+});
+$("#analytics-settings").addEventListener("click",() => {$("#analytics-choice").hidden = false;});
+document.addEventListener("click",event => {
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+    let channel = "";
+    try {
+        const url = new URL(link.href,location.href);
+        if (url.protocol === "mailto:") channel = "email";
+        else if (url.hostname === "wa.me") channel = "whatsapp";
+        else if (["instagram.com","www.instagram.com"].includes(url.hostname)) channel = "instagram";
+        else if (["tiktok.com","www.tiktok.com"].includes(url.hostname)) channel = "tiktok";
+    } catch {}
+    if (channel) trackEvent("contact_click",{channel,placement:link.closest("footer") ? "footer" : link.closest("#community-section") ? "community" : link.classList.contains("whatsapp-float") ? "floating" : "page"});
+});
+
+/* Real social posts only. This is a curated gallery, not a fabricated social feed. */
+function approvedSocialUrl(raw) {
+    try {
+        const u = new URL(raw);
+        if (u.protocol !== "https:") return "";
+        return ["www.instagram.com","instagram.com","www.tiktok.com","tiktok.com"].includes(u.hostname) ? u.href : "";
+    } catch {return "";}
+}
+function initSocialPosts() {
+    const grid = $("#social-posts-grid");
+    CONFIG.socialPosts.forEach(post => {
+        const href = approvedSocialUrl(post.url);
+        if (!href || !post.image) return;
+        const a = el("a",undefined,"social-post");
+        a.href = href;a.target = "_blank";a.rel = "noopener noreferrer";
+        const img = el("img");img.alt = post.alt || "LYS Auto Care";img.loading = "lazy";
+        img.addEventListener("error",()=>a.remove(),{once:true});img.src = post.image;
+        a.append(img);grid.append(a);
+    });
+}
+$("#load-tiktok").addEventListener("click",() => {
+    const target = $("#tiktok-profile");
+    if (target.dataset.loaded === "true") return;
+    target.dataset.loaded = "true";target.hidden = false;
+    const block = el("blockquote",undefined,"tiktok-embed");
+    block.cite = "https://www.tiktok.com/@lys_autocare.de";
+    block.dataset.uniqueId = "lys_autocare.de";
+    block.dataset.embedType = "creator";
+    block.style.maxWidth = "720px";block.style.minWidth = "0";
+    const section = el("section");
+    const link = el("a","@lys_autocare.de");link.href=block.cite;link.target="_blank";link.rel="noopener noreferrer";
+    section.append(link);block.append(section);target.append(block);
+    const script = el("script");script.async = true;script.src = "https://www.tiktok.com/embed.js";
+    target.append(script);
+    trackEvent("social_embed_load",{channel:"tiktok"});
+});
+
 /* Запуск */
 
 $("#year").textContent = new Date().getFullYear();
@@ -4822,6 +5177,8 @@ initMainVideos();
 initAsmr();
 initComparison();
 initCommunity();
+initSocialPosts();
+initAnalytics();
 
 document.querySelectorAll("main > section:not(.hero)").forEach(observeReveal);
 
