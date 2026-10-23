@@ -5706,11 +5706,23 @@ syncAllVideos();
  const START=-18;
  let angle=START,dragStart=null,baseAngle=START;
  const setAngle=(a,dragging=false)=>{angle=a;card.classList.toggle('dragging',dragging);card.style.setProperty('--card-angle',a+'deg');};
- const showFace=face=>setAngle(face==='back'?162:-18);
+ // Snap to the nearest equivalent angle, never rewind through an unnecessary full turn.
+ const nearestEquivalent=target=>target+360*Math.round((angle-target)/360);
+ const showFace=face=>setAngle(nearestEquivalent(face==='back'?162:-18));
  document.querySelectorAll('[data-rotate-card]').forEach(btn=>btn.addEventListener('click',()=>showFace(btn.dataset.rotateCard)));
  scene.addEventListener('pointerdown',e=>{if(e.button!==0)return;dragStart=e.clientX;baseAngle=angle;scene.setPointerCapture(e.pointerId);card.classList.add('dragging');});
  scene.addEventListener('pointermove',e=>{if(dragStart!==null)setAngle(baseAngle+(e.clientX-dragStart)*.5,true);});
- const finish=()=>{if(dragStart===null)return;dragStart=null;const normalized=((angle+18)%360+360)%360;showFace(normalized>90&&normalized<270?'back':'front');};
+ const finish=()=>{
+   if(dragStart===null)return;
+   dragStart=null;
+   const candidates=[];
+   for(const target of [-18,162]){
+     const nearest=nearestEquivalent(target);
+     candidates.push({angle:nearest,distance:Math.abs(angle-nearest)});
+   }
+   candidates.sort((a,b)=>a.distance-b.distance);
+   setAngle(candidates[0].angle);
+ };
  scene.addEventListener('pointerup',finish);scene.addEventListener('pointercancel',finish);
  scene.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();showFace(e.key==='ArrowRight'?'back':'front');}});
  const ctx=document.createElement('canvas').getContext('2d');
