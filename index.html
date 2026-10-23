@@ -1607,7 +1607,7 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 .lys-card-front {background-image:url('fox_front.png');}
 .lys-card-back {background-image:url('fox_back.png');transform:rotateY(180deg);color:#403128;text-align:left;}
 .lys-card-recipient {position:absolute;top:13.4%;left:13.5%;width:34%;font:italic 3.1cqw Georgia,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.25;}
-.lys-card-lines {position:absolute;top:23%;left:7.1%;width:72.3%;height:40.2%;display:grid;grid-template-rows:repeat(6,1fr);}
+.lys-card-lines {position:absolute;top:23%;left:7.1%;width:72.3%;height:53.6%;display:grid;grid-template-rows:repeat(8,1fr);}
 .lys-card-line {display:flex;align-items:flex-end;min-width:0;padding-bottom:.24cqw;color:#46362c;font:italic 2.4cqw/1.15 Georgia,serif;white-space:pre;overflow:hidden;}
 .lys-card-rotate-controls {display:flex;justify-content:center;gap:12px;margin-top:22px;flex-wrap:wrap;}
 .lys-rotate-btn {padding:11px 16px;color:var(--gold-light);background:#16130f;border:1px solid var(--border);border-radius:22px;font-size:12px;cursor:pointer;}
@@ -1883,7 +1883,7 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
                 <div class="field">
                     <label for="gift-preview-message" data-i18n="cardMessage"></label>
                     <textarea class="input" id="gift-preview-message" data-gift-message rows="4" maxlength="250" aria-describedby="lys-message-limit"></textarea>
-                    <p class="lys-limit-indicator" id="lys-message-limit" aria-live="polite">0 / 250 Zeichen · 0 / 6 Zeilen</p>
+                    <p class="lys-limit-indicator" id="lys-message-limit" aria-live="polite">0 / 250 Zeichen · 0 / 8 Zeilen</p>
                 </div>
 
                 <p class="lys-handwritten-note" data-i18n="handwrittenNote">Deine persönlichen Worte werden von Hand auf eine hochwertige Grußkarte geschrieben.</p>
@@ -1902,7 +1902,7 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
                         <div class="lys-card-face lys-card-front" aria-label="Vorderseite mit Fuchs"></div>
                         <div class="lys-card-face lys-card-back" aria-label="Rückseite mit persönlicher Nachricht">
                             <span class="lys-card-recipient" data-card-name></span>
-                            <div class="lys-card-lines" data-card-lines aria-label="Vorschau der Nachricht"><span class="lys-card-line"></span><span class="lys-card-line"></span><span class="lys-card-line"></span><span class="lys-card-line"></span><span class="lys-card-line"></span><span class="lys-card-line"></span></div>
+                            <div class="lys-card-lines" data-card-lines aria-label="Vorschau der Nachricht"><span class="lys-card-line"></span><span class="lys-card-line"></span><span class="lys-card-line"></span><span class="lys-card-line"></span><span class="lys-card-line"></span><span class="lys-card-line"></span><span class="lys-card-line"></span><span class="lys-card-line"></span></div>
                         </div>
                     </div>
                 </div>
@@ -5697,12 +5697,12 @@ syncAllVideos();
 
 <script>
 
-/* LYS fox gift card: tilted 3D rotation + 6 measured handwritten lines. */
+/* LYS fox gift card: tilted 3D rotation + 8 measured handwritten lines. */
 (() => {
  const scene=document.getElementById('lys-card-scene');
  const card=document.getElementById('lys-card-3d');
  const lines=[...document.querySelectorAll('[data-card-lines] .lys-card-line')];
- if(!scene||!card||lines.length!==6)return;
+ if(!scene||!card||lines.length!==8)return;
  const START=-18;
  let angle=START,dragStart=null,baseAngle=START;
  const setAngle=(a,dragging=false)=>{angle=a;card.classList.toggle('dragging',dragging);card.style.setProperty('--card-angle',a+'deg');};
@@ -5753,22 +5753,22 @@ syncAllVideos();
    lines.forEach((el,i)=>{el.textContent=chunks[i]||'';});
    const indicator=document.getElementById('lys-message-limit');
    if(indicator){
-     indicator.textContent=`${charCount(message)} / 250 Zeichen · ${message?chunks.length:0} / 6 Zeilen`;
-     indicator.classList.toggle('is-full',chunks.length>=6||charCount(message)>=250);
+     indicator.textContent=`${charCount(message)} / 250 Zeichen · ${message?chunks.length:0} / ${lines.length} Zeilen`;
+     indicator.classList.toggle('is-full',chunks.length>=lines.length||charCount(message)>=250);
    }
  }
  window.LYSCardPreview={render};
- // Capture before existing checkout listeners; the six-line rule applies to both fields.
+ // Capture before existing checkout listeners; the available-line rule applies to both fields.
  let lastAccepted='';
  document.addEventListener('input',e=>{
    if(!e.target.matches('[data-gift-message]'))return;
    const input=e.target;
    const proposal=Array.from(input.value).slice(0,250).join('');
-   if(wrap(proposal).length>6){
+   if(wrap(proposal).length>lines.length){
      // Preserve as much typed/pasted text as fits; never lose prior valid content.
      let prefix='';
      for(const ch of Array.from(proposal)){
-       if(wrap(prefix+ch).length>6)break;
+       if(wrap(prefix+ch).length>lines.length)break;
        prefix+=ch;
      }
      input.value=prefix;
