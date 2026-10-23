@@ -1597,23 +1597,28 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 @media(max-width:480px) { .hero-offer { flex-direction:column; gap:4px; } }
 
 /* LYS fox A6 card: accurate two-sided rotating preview */
-.lys-card-preview-wrap { width:100%; min-width:0; text-align:center; perspective:1100px; }
-.lys-card-scene { width:100%; aspect-ratio:1200/853; perspective:1400px; cursor:grab; touch-action:pan-y; user-select:none; outline-offset:8px; }
-.lys-card-scene:active { cursor:grabbing; }
-.lys-card-3d { position:relative; width:100%; height:100%; transform-style:preserve-3d; transform:rotateY(var(--card-angle,0deg)); transition:transform .65s cubic-bezier(.2,.68,.25,1); }
-.lys-card-3d.dragging { transition:none; }
-.lys-card-face { position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; background-position:center; background-size:100% 100%; background-repeat:no-repeat; border-radius:3px; box-shadow:0 20px 55px #0007; overflow:hidden; }
-.lys-card-front { background-image:url('fox_front.png'); }
-.lys-card-back { background-image:url('fox_back.png'); transform:rotateY(180deg); color:#403128; text-align:left; }
-.lys-card-recipient { position:absolute; top:13.6%; left:13.4%; width:33%; height:6%; font:italic clamp(9px,1.25vw,16px) Georgia,serif; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
-.lys-card-handwriting { position:absolute; left:7.2%; top:22.7%; width:71.5%; height:58%; white-space:pre-wrap; overflow-wrap:anywhere; overflow:hidden; font:italic clamp(9px,1.12vw,15px)/1.66 Georgia,serif; }
-.lys-card-rotate-controls { display:flex; justify-content:center; gap:12px; margin-top:22px; flex-wrap:wrap; }
-.lys-rotate-btn { background:#1a1713; color:#ddbb9a; border:1px solid #c69a7266; border-radius:24px; padding:10px 15px; font-size:12px; }
-.lys-rotate-btn:hover { border-color:#ddbb9a; }
-.lys-card-hint { color:var(--muted); font-size:11px; margin-top:12px; }
-.lys-handwritten-note { color:#ddbb9a; font-size:11px; line-height:1.7; margin:-4px 0 18px; }
-@media(max-width:760px) {.lys-card-preview-wrap {max-width:600px;margin:12px auto;} .lys-card-recipient {font-size:clamp(10px,2.5vw,16px);} .lys-card-handwriting{font-size:clamp(10px,2.2vw,15px);}}
+/* Fox A6 card: true two-sided 3D preview */
+.lys-card-preview-wrap {width:100%;min-width:0;text-align:center;perspective:1800px;}
+.lys-card-scene {width:100%;aspect-ratio:1200/853;perspective:1800px;cursor:grab;touch-action:pan-y;user-select:none;container-type:inline-size;outline-offset:8px;}
+.lys-card-scene:active {cursor:grabbing;}
+.lys-card-3d {position:relative;width:100%;height:100%;transform-style:preserve-3d;transform:rotateX(6deg) rotateY(var(--card-angle,-18deg)) rotateZ(-1deg);transition:transform .8s cubic-bezier(.2,.68,.25,1);}
+.lys-card-3d.dragging {transition:none;}
+.lys-card-face {position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background-position:center;background-size:100% 100%;background-repeat:no-repeat;border-radius:5px;box-shadow:0 22px 60px #0008;overflow:hidden;}
+.lys-card-front {background-image:url('fox_front.png');}
+.lys-card-back {background-image:url('fox_back.png');transform:rotateY(180deg);color:#403128;text-align:left;}
+.lys-card-recipient {position:absolute;top:13.4%;left:13.5%;width:34%;font:italic 3.1cqw Georgia,serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.25;}
+.lys-card-lines {position:absolute;top:23%;left:7.1%;width:72.3%;height:40.2%;display:grid;grid-template-rows:repeat(6,1fr);}
+.lys-card-line {display:flex;align-items:flex-end;min-width:0;padding-bottom:.24cqw;color:#46362c;font:italic 2.4cqw/1.15 Georgia,serif;white-space:pre;overflow:hidden;}
+.lys-card-rotate-controls {display:flex;justify-content:center;gap:12px;margin-top:22px;flex-wrap:wrap;}
+.lys-rotate-btn {padding:11px 16px;color:var(--gold-light);background:#16130f;border:1px solid var(--border);border-radius:22px;font-size:12px;cursor:pointer;}
+.lys-rotate-btn:hover {border-color:var(--gold-light);}
+.lys-card-hint {color:var(--muted);font-size:11px;margin-top:12px;}
+.lys-handwritten-note {color:#ddbb9a;font-size:11px;line-height:1.7;margin:-4px 0 18px;}
+.lys-limit-indicator {font-size:11px;line-height:1.6;color:var(--muted);margin-top:7px;}
+.lys-limit-indicator.is-full {color:#ecb18a;}
+@media(max-width:760px){.lys-card-preview-wrap{max-width:600px;margin:12px auto;}}
 @media(prefers-reduced-motion:reduce){.lys-card-3d{transition:none;}}
+
 
 </style>
 </head>
@@ -1877,7 +1882,8 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
 
                 <div class="field">
                     <label for="gift-preview-message" data-i18n="cardMessage"></label>
-                    <textarea class="input" id="gift-preview-message" data-gift-message rows="4" maxlength="250"></textarea>
+                    <textarea class="input" id="gift-preview-message" data-gift-message rows="4" maxlength="250" aria-describedby="lys-message-limit"></textarea>
+                    <p class="lys-limit-indicator" id="lys-message-limit" aria-live="polite">0 / 250 Zeichen · 0 / 6 Zeilen</p>
                 </div>
 
                 <p class="lys-handwritten-note" data-i18n="handwrittenNote">Deine persönlichen Worte werden von Hand auf eine hochwertige Grußkarte geschrieben.</p>
@@ -1896,7 +1902,7 @@ h1,h2,h3,.quiz-option { font-family:"Manrope","Plus Jakarta Sans",sans-serif; }
                         <div class="lys-card-face lys-card-front" aria-label="Vorderseite mit Fuchs"></div>
                         <div class="lys-card-face lys-card-back" aria-label="Rückseite mit persönlicher Nachricht">
                             <span class="lys-card-recipient" data-card-name></span>
-                            <span class="lys-card-handwriting" data-card-message></span>
+                            <div class="lys-card-lines" data-card-lines aria-label="Vorschau der Nachricht"><span class="lys-card-line"></span><span class="lys-card-line"></span><span class="lys-card-line"></span><span class="lys-card-line"></span><span class="lys-card-line"></span><span class="lys-card-line"></span></div>
                         </div>
                     </div>
                 </div>
@@ -4269,12 +4275,9 @@ $("#hotspot-open").addEventListener("click",() => openProduct(selectedHotspot));
 
 function updateGiftPreview() {
     document.querySelectorAll("[data-card-name]").forEach(node => {
-        node.textContent = giftDraft.name.trim() || t().cardDefaultName;
+        node.textContent = giftDraft.name.trim();
     });
-
-    document.querySelectorAll("[data-card-message]").forEach(node => {
-        node.textContent = giftDraft.message.trim() || t().cardDefaultMessage;
-    });
+    if (window.LYSCardPreview) window.LYSCardPreview.render(giftDraft.message);
 }
 
 document.addEventListener("input",event => {
@@ -5694,45 +5697,88 @@ syncAllVideos();
 
 <script>
 
-/* Rotating fox gift card; live preview only – the physical card is handwritten. */
+/* LYS fox gift card: tilted 3D rotation + 6 measured handwritten lines. */
 (() => {
  const scene=document.getElementById('lys-card-scene');
  const card=document.getElementById('lys-card-3d');
- if(!scene||!card)return;
- let angle=0,dragStart=null,baseAngle=0,didDrag=false;
- const setAngle=(deg,dragging=false)=>{
-   angle=deg;card.classList.toggle('dragging',dragging);
-   card.style.setProperty('--card-angle',`${angle}deg`);
- };
- const showFace=(face)=>setAngle(face==='back'?180:0);
+ const lines=[...document.querySelectorAll('[data-card-lines] .lys-card-line')];
+ if(!scene||!card||lines.length!==6)return;
+ const START=-18;
+ let angle=START,dragStart=null,baseAngle=START;
+ const setAngle=(a,dragging=false)=>{angle=a;card.classList.toggle('dragging',dragging);card.style.setProperty('--card-angle',a+'deg');};
+ const showFace=face=>setAngle(face==='back'?162:-18);
  document.querySelectorAll('[data-rotate-card]').forEach(btn=>btn.addEventListener('click',()=>showFace(btn.dataset.rotateCard)));
- scene.addEventListener('pointerdown',e=>{
-   if(e.button!==0)return;
-   dragStart=e.clientX;baseAngle=angle;didDrag=false;
-   scene.setPointerCapture(e.pointerId);card.classList.add('dragging');
- });
- scene.addEventListener('pointermove',e=>{
-   if(dragStart===null)return;
-   const dx=e.clientX-dragStart;
-   if(Math.abs(dx)>5)didDrag=true;
-   setAngle(baseAngle+dx*.75,true);
- });
- const finish=()=>{
-   if(dragStart===null)return;
-   dragStart=null;
-   const snap=Math.round(angle/180)*180;
-   setAngle(snap);
- };
- scene.addEventListener('pointerup',finish);
- scene.addEventListener('pointercancel',finish);
- scene.addEventListener('keydown',e=>{
-   if(e.key==='ArrowLeft'||e.key==='ArrowRight'){
-     e.preventDefault();setAngle(angle+(e.key==='ArrowRight'?180:-180));
+ scene.addEventListener('pointerdown',e=>{if(e.button!==0)return;dragStart=e.clientX;baseAngle=angle;scene.setPointerCapture(e.pointerId);card.classList.add('dragging');});
+ scene.addEventListener('pointermove',e=>{if(dragStart!==null)setAngle(baseAngle+(e.clientX-dragStart)*.5,true);});
+ const finish=()=>{if(dragStart===null)return;dragStart=null;const normalized=((angle+18)%360+360)%360;showFace(normalized>90&&normalized<270?'back':'front');};
+ scene.addEventListener('pointerup',finish);scene.addEventListener('pointercancel',finish);
+ scene.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();showFace(e.key==='ArrowRight'?'back':'front');}});
+ const ctx=document.createElement('canvas').getContext('2d');
+ const charCount=s=>Array.from(s).length;
+ // Use the actual preview font/width, so text never spills beyond the lines.
+ function wrap(text){
+   const css=getComputedStyle(lines[0]);
+   ctx.font=`${css.fontStyle} ${css.fontSize} ${css.fontFamily}`;
+   const maxWidth=lines[0].clientWidth-2;
+   if(!maxWidth)return [''];
+   const result=[];
+   let current='';
+   const fits=str=>ctx.measureText(str).width<=maxWidth;
+   function push(){result.push(current);current='';}
+   const paragraphs=text.replace(/\r/g,'').split('\n');
+   for(let p=0;p<paragraphs.length;p++){
+     if(p>0)push();
+     const words=paragraphs[p].match(/\S+|\s+/g)||[];
+     for(const segment of words){
+       if(/^\s+$/.test(segment)){
+         if(current&&!current.endsWith(' '))current+=' ';
+         continue;
+       }
+       const word=segment;
+       const joined=current+word;
+       if(fits(joined)){current=joined;continue;}
+       if(current.trim()){push();}
+       if(fits(word)){current=word;continue;}
+       for(const letter of Array.from(word)){
+         if(current&&!fits(current+letter))push();
+         current+=letter;
+       }
+     }
    }
- });
- document.querySelectorAll('[data-gift-name],[data-gift-message]').forEach(el=>{
-   el.addEventListener('input',()=>{if(!dragStart)showFace('back');});
- });
+   if(current||!result.length)result.push(current);
+   return result;
+ }
+ function render(message){
+   const chunks=wrap(message);
+   lines.forEach((el,i)=>{el.textContent=chunks[i]||'';});
+   const indicator=document.getElementById('lys-message-limit');
+   if(indicator){
+     indicator.textContent=`${charCount(message)} / 250 Zeichen · ${message?chunks.length:0} / 6 Zeilen`;
+     indicator.classList.toggle('is-full',chunks.length>=6||charCount(message)>=250);
+   }
+ }
+ window.LYSCardPreview={render};
+ // Capture before existing checkout listeners; the six-line rule applies to both fields.
+ let lastAccepted='';
+ document.addEventListener('input',e=>{
+   if(!e.target.matches('[data-gift-message]'))return;
+   const input=e.target;
+   const proposal=Array.from(input.value).slice(0,250).join('');
+   if(wrap(proposal).length>6){
+     // Preserve as much typed/pasted text as fits; never lose prior valid content.
+     let prefix='';
+     for(const ch of Array.from(proposal)){
+       if(wrap(prefix+ch).length>6)break;
+       prefix+=ch;
+     }
+     input.value=prefix;
+   }else input.value=proposal;
+   lastAccepted=input.value;
+   showFace('back');
+ },true);
+ document.addEventListener('input',e=>{if(e.target.matches('[data-gift-name]'))showFace('back');},true);
+ window.addEventListener('resize',()=>render(document.querySelector('[data-gift-message]')?.value||''));
+ setAngle(START);render(document.querySelector('[data-gift-message]')?.value||'');
 })();
 
 </script>
